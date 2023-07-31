@@ -342,7 +342,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB-sökning</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Det finns ingen freedb-post för denna skiva.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Det finns ingen freedb-post för denna skiva.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Ansluter till freedb-server på</entry>
 	<entry id="4103" string="Requesting CD information">Begär CD-information</entry>
 	<entry id="4104" string="No exact matches found">Inga exakta träffar hittades</entry>
@@ -743,7 +743,7 @@
       <entry id="9013" string="Automatization">Automatisering</entry>
       <entry id="9014" string="Read CD contents on insert">Läs CD-innehåll vid inmatning</entry>
       <entry id="9015" string="Start ripping automatically">Starta rippning automatiskt</entry>
-      <entry id="9016" string="Eject disk after ripping">Mata ut CD-skiva efter rippning</entry>
+      <entry id="9016" string="Eject disc after ripping">Mata ut CD-skiva efter rippning</entry>
       <entry id="9017" string="CD options">CD-inställningar</entry>
       <entry id="9018" string="Use read offset">Använd läsförskjutning</entry>
       <entry id="9019" string="samples">sampel</entry>

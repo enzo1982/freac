@@ -273,7 +273,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">إستعلام قاعدة بيانات قرص مدمج</entry>
-	<entry id="4101" string="No freedb entry for this disk.">لهذا القرص لا تدخل قاعدة بيانات مجانية.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">لهذا القرص لا تدخل قاعدة بيانات مجانية.</entry>
 	<entry id="4102" string="Connecting to freedb server at">الاتصال بخادم قاعدة بيانات مجانية في</entry>
 	<entry id="4103" string="Requesting CD information">طلب معلومات عن قرص مضغوط</entry>
 	<entry id="4104" string="No exact matches found">لم يتم العثور على مطابقة تامة</entry>
@@ -500,7 +500,7 @@
       <entry id="9013" string="Automatization">التلقائية</entry>
       <entry id="9014" string="Read CD contents on insert">قراء محتويات القرص المضغوط عند الإدراج</entry>
       <entry id="9015" string="Start ripping automatically">تبدء الإشتقاق تلقائيا</entry>
-      <entry id="9016" string="Eject disk after ripping">لفظ القرص بعد الإشتقاق</entry>
+      <entry id="9016" string="Eject disc after ripping">لفظ القرص بعد الإشتقاق</entry>
       <entry id="9017" string="CD options">خيارات قرص مدمج</entry>
     </section>
 

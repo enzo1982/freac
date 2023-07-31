@@ -342,7 +342,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Richiesta CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Alcuna entrata freeDB per stu discu.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Alcuna entrata freeDB per stu discu.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Cunnessione à u servitore freedb à</entry>
 	<entry id="4103" string="Requesting CD information">Dumanda d’infurmazione nant’à u CD</entry>
 	<entry id="4104" string="No exact matches found">Alcuna cuncurdanza esatta trova</entry>
@@ -743,7 +743,7 @@
       <entry id="9013" string="Automatization">Autumatisazione</entry>
       <entry id="9014" string="Read CD contents on insert">Leghje u cuntenutu di u CD à l’intruduzzione</entry>
       <entry id="9015" string="Start ripping automatically">Principià à estrae autumaticamente</entry>
-      <entry id="9016" string="Eject disk after ripping">Espulsione di u CD dopu l’estrazzione</entry>
+      <entry id="9016" string="Eject disc after ripping">Espulsione di u CD dopu l’estrazzione</entry>
       <entry id="9017" string="CD options">Ozzioni di u CD</entry>
       <entry id="9018" string="Use read offset">Impiegà u spiazzamentu di lettura</entry>
       <entry id="9019" string="samples">campioni</entry>

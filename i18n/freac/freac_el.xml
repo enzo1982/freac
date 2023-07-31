@@ -342,7 +342,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Ερώτηση CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Δεν υπάρχουν πληροφορίες στο freedb server για το CD.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Δεν υπάρχουν πληροφορίες στο freedb server για το CD.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Σύνδεση με τον freedb server στο</entry>
 	<entry id="4103" string="Requesting CD information">Ζήτηση πληροφοριών για το CD</entry>
 	<entry id="4104" string="No exact matches found">Δε βρέθηκε παρόμοια καταγραφή</entry>
@@ -743,7 +743,7 @@
       <entry id="9013" string="Automatization">Αυτοματοποίηση</entry>
       <entry id="9014" string="Read CD contents on insert">Ανάγνωση CD κατά την εισαγωγή</entry>
       <entry id="9015" string="Start ripping automatically">Έναρξη ripping αυτόματα</entry>
-      <entry id="9016" string="Eject disk after ripping">Εξαγωγή μετά το rip</entry>
+      <entry id="9016" string="Eject disc after ripping">Εξαγωγή μετά το rip</entry>
       <entry id="9017" string="CD options">Επιλογές CD</entry>
       <entry id="9018" string="Use read offset">Χρήση αναγνωσθέντος μετατόπιση</entry>
       <entry id="9019" string="samples">δείγματα</entry>

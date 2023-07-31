@@ -342,7 +342,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB upit</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Nema podatka u freedb bazi za ovaj disk.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Nema podatka u freedb bazi za ovaj disk.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Povezivanje sa freedb serverom u</entry>
 	<entry id="4103" string="Requesting CD information">Zahtevanje CD informacije</entry>
 	<entry id="4104" string="No exact matches found">Nisu nađena tačna poklapanja</entry>
@@ -743,7 +743,7 @@
       <entry id="9013" string="Automatization">Automatizacija</entry>
       <entry id="9014" string="Read CD contents on insert">Pri ubacivanju CD-a očitaj sadržaj</entry>
       <entry id="9015" string="Start ripping automatically">Automatski započni ripovanje</entry>
-      <entry id="9016" string="Eject disk after ripping">Izbaci disk nakon ripovanja</entry>
+      <entry id="9016" string="Eject disc after ripping">Izbaci disk nakon ripovanja</entry>
       <entry id="9017" string="CD options">CD opcije</entry>
       <entry id="9018" string="Use read offset">Koristi čitanje nepoklapanja</entry>
       <entry id="9019" string="samples">semplovi</entry>

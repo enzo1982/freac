@@ -343,7 +343,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB 查询</entry>
-	<entry id="4101" string="No freedb entry for this disk.">没有此光盘的 freedb 条目。</entry>
+	<entry id="4101" string="No freedb entry for this disc.">没有此光盘的 freedb 条目。</entry>
 	<entry id="4102" string="Connecting to freedb server at">正在连接 freedb 服务器</entry>
 	<entry id="4103" string="Requesting CD information">正在索取 CD 信息</entry>
 	<entry id="4104" string="No exact matches found">未找到相匹配的条目</entry>
@@ -744,7 +744,7 @@
       <entry id="9013" string="Automatization">自动化</entry>
       <entry id="9014" string="Read CD contents on insert">放入 CD 时读取内容</entry>
       <entry id="9015" string="Start ripping automatically">自动启动翻录</entry>
-      <entry id="9016" string="Eject disk after ripping">翻录完成后弹出光盘</entry>
+      <entry id="9016" string="Eject disc after ripping">翻录完成后弹出光盘</entry>
       <entry id="9017" string="CD options">CD 选项</entry>
       <entry id="9018" string="Use read offset">使用读取偏移</entry>
       <entry id="9019" string="samples">采样</entry>

@@ -323,7 +323,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">सीडीडीबी क्वेरी</entry>
-	<entry id="4101" string="No freedb entry for this disk.">इस डिस्क के लिए कोई फ्रीडब एंट्री नहीं।</entry>
+	<entry id="4101" string="No freedb entry for this disc.">इस डिस्क के लिए कोई फ्रीडब एंट्री नहीं।</entry>
 	<entry id="4102" string="Connecting to freedb server at">फ्रीडब सर्वर से कनेक्ट करना</entry>
 	<entry id="4103" string="Requesting CD information">सीडी की जानकारी के लिए अनुरोध</entry>
 	<entry id="4104" string="No exact matches found">कोई सटीक मिलान नहीं मिला</entry>
@@ -683,7 +683,7 @@
       <entry id="9013" string="Automatization">ऑटोमाइज़ेशन</entry>
       <entry id="9014" string="Read CD contents on insert">डालने पर सीडी सामग्री पढ़ें</entry>
       <entry id="9015" string="Start ripping automatically">स्वचालित रूप से तेजस्वी शुरू करें</entry>
-      <entry id="9016" string="Eject disk after ripping">तेजस्वी के बाद डिस्क निकालें</entry>
+      <entry id="9016" string="Eject disc after ripping">तेजस्वी के बाद डिस्क निकालें</entry>
       <entry id="9017" string="CD options">सीडी विकल्प</entry>
       <entry id="9018" string="Use read offset">रीड ऑफ़सेट का उपयोग करें</entry>
       <entry id="9019" string="samples">नमूने</entry>

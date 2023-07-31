@@ -223,7 +223,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB päring</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Plaadi kohta puuduvad andmed.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Plaadi kohta puuduvad andmed.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Ühendamine freedb serveriga</entry>
 	<entry id="4103" string="Requesting CD information">Info saamine CD kohta</entry>
 	<entry id="4104" string="No exact matches found">Ei leitud täpset vastavust</entry>
@@ -425,7 +425,7 @@
       <entry id="9013" string="Automatization">Automatiseerimine</entry>
       <entry id="9014" string="Read CD contents on insert">Lugeda CD sisu sisestamisel</entry>
       <entry id="9015" string="Start ripping automatically">Käivitada rippimine autom.</entry>
-      <entry id="9016" string="Eject disk after ripping">Väljastada plaat peale rippimist</entry>
+      <entry id="9016" string="Eject disc after ripping">Väljastada plaat peale rippimist</entry>
       <entry id="9017" string="CD options">CD sätted</entry>
     </section>
 

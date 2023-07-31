@@ -223,7 +223,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Consulta a CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Non hai un rexistro freedb deste CD</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Non hai un rexistro freedb deste CD</entry>
 	<entry id="4102" string="Connecting to freedb server at">Conectando co servidor freedb en</entry>
 	<entry id="4103" string="Requesting CD information">Solicitando información do CD</entry>
 	<entry id="4104" string="No exact matches found">Sen resultados exactos</entry>
@@ -428,7 +428,7 @@
       <entry id="9013" string="Automatization">Automatización</entry>
       <entry id="9014" string="Read CD contents on insert">Ler o contido do CD ao inserilo</entry>
       <entry id="9015" string="Start ripping automatically">Extracción automática</entry>
-      <entry id="9016" string="Eject disk after ripping">Expulsar disco ao rematar</entry>
+      <entry id="9016" string="Eject disc after ripping">Expulsar disco ao rematar</entry>
       <entry id="9017" string="CD options">Opcións de CD</entry>
     </section>
 

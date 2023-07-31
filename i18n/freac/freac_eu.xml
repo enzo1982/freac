@@ -223,7 +223,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB eskaera</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Ez dago freedb sarrerarik diska honentzat.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Ez dago freedb sarrerarik diska honentzat.</entry>
 	<entry id="4102" string="Connecting to freedb server at">freedb zerbitzariarekin elkartzen</entry>
 	<entry id="4103" string="Requesting CD information">CD argibideak eskatzen</entry>
 	<entry id="4104" string="No exact matches found">Ez da bat datorrenik aurkitu</entry>
@@ -433,7 +433,7 @@
       <entry id="9013" string="Automatization">Berezgaitasuna</entry>
       <entry id="9014" string="Read CD contents on insert">Irakurri CD edukiak txertatzean</entry>
       <entry id="9015" string="Start ripping automatically">Hasi erauzten berezgaitasunez</entry>
-      <entry id="9016" string="Eject disk after ripping">Atera diska erauzi ondoren</entry>
+      <entry id="9016" string="Eject disc after ripping">Atera diska erauzi ondoren</entry>
       <entry id="9017" string="CD options">CD aukerak</entry>
     </section>
 

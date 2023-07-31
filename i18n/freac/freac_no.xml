@@ -289,7 +289,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB-forespørsel</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Ingen freedb-oppføring for denne CDen.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Ingen freedb-oppføring for denne CDen.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Kontakter freedb-servern på</entry>
 	<entry id="4103" string="Requesting CD information">Etterspørr CD-informasjon</entry>
 	<entry id="4104" string="No exact matches found">Ingen eksakte treff funnet</entry>
@@ -619,7 +619,7 @@
       <entry id="9013" string="Automatization">Automatisering</entry>
       <entry id="9014" string="Read CD contents on insert">Les CDer som settes inn</entry>
       <entry id="9015" string="Start ripping automatically">Start ripping automatisk</entry>
-      <entry id="9016" string="Eject disk after ripping">Løs ut CD etter ripping</entry>
+      <entry id="9016" string="Eject disc after ripping">Løs ut CD etter ripping</entry>
       <entry id="9017" string="CD options">CD-alternativer</entry>
     </section>
 

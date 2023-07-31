@@ -339,7 +339,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Dotaz na CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Pro toto CD není na freedb záznam</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Pro toto CD není na freedb záznam</entry>
 	<entry id="4102" string="Connecting to freedb server at">Připojit na freedb serverem</entry>
 	<entry id="4103" string="Requesting CD information">Žádám informace o CD</entry>
 	<entry id="4104" string="No exact matches found">Hodící se údaje nenalezeny</entry>
@@ -736,7 +736,7 @@
       <entry id="9013" string="Automatization">Automatizace</entry>
       <entry id="9014" string="Read CD contents on insert">Číst obsah CD po vložení</entry>
       <entry id="9015" string="Start ripping automatically">Začít automaticky ripovat</entry>
-      <entry id="9016" string="Eject disk after ripping">Vysunout disk po ripovaní</entry>
+      <entry id="9016" string="Eject disc after ripping">Vysunout disk po ripovaní</entry>
       <entry id="9017" string="CD options">CD volby</entry>
       <entry id="9018" string="Use read offset">Použijte offset</entry>
       <entry id="9019" string="samples">vzorky</entry>

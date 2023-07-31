@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -198,7 +198,7 @@ Bool freac::cddbQueryDlg::Query(CDDB &cddb)
 	if (result == QUERY_RESULT_NONE)
 	{
 		errorState  = True;
-		errorString = i18n->TranslateString("%1:", "Characters").Replace("%1", queryString.SubString(11, 8)).Append(" ").Append(i18n->TranslateString("No freedb entry for this disk.")).Append("\n\n").Append(queryString);
+		errorString = i18n->TranslateString("%1:", "Characters").Replace("%1", queryString.SubString(11, 8)).Append(" ").Append(i18n->TranslateString("No freedb entry for this disc.")).Append("\n\n").Append(queryString);
 	}
 	else if (result == QUERY_RESULT_SINGLE)
 	{

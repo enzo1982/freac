@@ -341,7 +341,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB-aanvraag</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Geen freedb info voor deze schijf.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Geen freedb info voor deze schijf.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Bezig met verbinden met server op</entry>
 	<entry id="4103" string="Requesting CD information">Bezig met aanvragen van schijfinformatie</entry>
 	<entry id="4104" string="No exact matches found">Geen resultaten gevonden</entry>
@@ -703,7 +703,7 @@
       <entry id="9013" string="Automatization">Automatisatie</entry>
       <entry id="9014" string="Read CD contents on insert">Cd-inhoud lezen bij plaatsing</entry>
       <entry id="9015" string="Start ripping automatically">Automatisch rippen starten</entry>
-      <entry id="9016" string="Eject disk after ripping">Schijf uitwerpen na het rippen</entry>
+      <entry id="9016" string="Eject disc after ripping">Schijf uitwerpen na het rippen</entry>
       <entry id="9017" string="CD options">Cd-opties</entry>
       <entry id="9018" string="Use read offset">Lees-offset gebruiken</entry>
       <entry id="9019" string="samples">samples</entry>

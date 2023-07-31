@@ -223,7 +223,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Truy vấn CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Không có entry phản hồi cho ổ đĩa này.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Không có entry phản hồi cho ổ đĩa này.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Kết nối với máy chủ feedback tại</entry>
 	<entry id="4103" string="Requesting CD information">Đang yêu cầu thông tin về CD</entry>
 	<entry id="4104" string="No exact matches found">Không tìm thấy</entry>
@@ -427,7 +427,7 @@
       <entry id="9013" string="Automatization">Tự động</entry>
       <entry id="9014" string="Read CD contents on insert">Đọc dữ liệu đĩa CD khi đưa đĩa vào</entry>
       <entry id="9015" string="Start ripping automatically">Tự động bắt đầu rip</entry>
-      <entry id="9016" string="Eject disk after ripping">Mở ổ đĩa CD-ROM khi đã rip đĩa xong</entry>
+      <entry id="9016" string="Eject disc after ripping">Mở ổ đĩa CD-ROM khi đã rip đĩa xong</entry>
       <entry id="9017" string="CD options">Tùy chọn CD</entry>
     </section>
 

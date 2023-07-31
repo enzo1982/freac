@@ -342,7 +342,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Заявка към CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Няма записи в freedb за този диск</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Няма записи в freedb за този диск</entry>
 	<entry id="4102" string="Connecting to freedb server at">Свързване към freedb сървъра</entry>
 	<entry id="4103" string="Requesting CD information">Заявка на информация за CD</entry>
 	<entry id="4104" string="No exact matches found">Няма открити точни съответствия</entry>
@@ -743,7 +743,7 @@
       <entry id="9013" string="Automatization">Автоматизация</entry>
       <entry id="9014" string="Read CD contents on insert">Четене на CD при поставяне</entry>
       <entry id="9015" string="Start ripping automatically">Авт. старт на извличането</entry>
-      <entry id="9016" string="Eject disk after ripping">Извади CD след извличането</entry>
+      <entry id="9016" string="Eject disc after ripping">Извади CD след извличането</entry>
       <entry id="9017" string="CD options">CD настройки</entry>
       <entry id="9018" string="Use read offset">Изместване при четене</entry>
       <entry id="9019" string="samples">образец</entry>

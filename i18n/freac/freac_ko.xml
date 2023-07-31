@@ -319,7 +319,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB 쿼리</entry>
-	<entry id="4101" string="No freedb entry for this disk.">이 디스크에 대한 freedb 항목이 존재하지 않습니다.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">이 디스크에 대한 freedb 항목이 존재하지 않습니다.</entry>
 	<entry id="4102" string="Connecting to freedb server at">freedb 서버에 접속하는 중</entry>
 	<entry id="4103" string="Requesting CD information">CD 정보를 요청하는 중</entry>
 	<entry id="4104" string="No exact matches found">검색 결과가 없습니다</entry>
@@ -630,7 +630,7 @@
       <entry id="9012" string="Switch stereo channels">좌우 채널 스왑</entry>
       <entry id="9013" string="Automatization">자동화</entry>
       <entry id="9014" string="Read CD contents on insert">삽입 CD 내용 읽기</entry>
-      <entry id="9016" string="Eject disk after ripping">리핑후 디스크 배출</entry>
+      <entry id="9016" string="Eject disc after ripping">리핑후 디스크 배출</entry>
       <entry id="9017" string="CD options">CD 옵션</entry>
     </section>
 

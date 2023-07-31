@@ -223,7 +223,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB lekérdezése</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Nem találtam bejegyzést ehhez a CD-hez.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Nem találtam bejegyzést ehhez a CD-hez.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Kapcsoldás a freedb szerverhez</entry>
 	<entry id="4103" string="Requesting CD information">CD Információ kérése</entry>
 	<entry id="4104" string="No exact matches found">Nem találtam pontos megfelelelö</entry>
@@ -428,7 +428,7 @@
       <entry id="9013" string="Automatization">Automatizálás</entry>
       <entry id="9014" string="Read CD contents on insert">CD-tartalom beolvasása behelyezésnél</entry>
       <entry id="9015" string="Start ripping automatically">Automatikus másolás indítása</entry>
-      <entry id="9016" string="Eject disk after ripping">Lemez kidobása másolás után</entry>
+      <entry id="9016" string="Eject disc after ripping">Lemez kidobása másolás után</entry>
       <entry id="9017" string="CD options">Cd beállítások</entry>
     </section>
 

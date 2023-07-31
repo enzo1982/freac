@@ -223,7 +223,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB-pridemando</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Neniu freedb-enskribo por tiu disko.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Neniu freedb-enskribo por tiu disko.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Konektanta kun freedb-servilo ĉe</entry>
 	<entry id="4103" string="Requesting CD information">Demandanta la KD-informo</entry>
 	<entry id="4104" string="No exact matches found">Neniu ekzakta korespondaĵo estas trovita</entry>
@@ -420,7 +420,7 @@
       <entry id="9013" string="Automatization">Aŭtomatigo</entry>
       <entry id="9014" string="Read CD contents on insert">Legi KD-enhavon aŭtomate</entry>
       <entry id="9015" string="Start ripping automatically">Starti aŭtomate la ripilon</entry>
-      <entry id="9016" string="Eject disk after ripping">Elĵeti la diskon post la ripado</entry>
+      <entry id="9016" string="Eject disc after ripping">Elĵeti la diskon post la ripado</entry>
       <entry id="9017" string="CD options">KD-opcioj</entry>
     </section>
 

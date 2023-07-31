@@ -184,7 +184,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB בדיקת</entry>
-	<entry id="4101" string="No freedb entry for this disk.">אין מידע חינם לגבי דיסק זה</entry>
+	<entry id="4101" string="No freedb entry for this disc.">אין מידע חינם לגבי דיסק זה</entry>
 	<entry id="4103" string="Requesting CD information">מבקש מידע CD</entry>
 	<entry id="4104" string="No exact matches found">לא נמצאו התאמות</entry>
 	<entry id="4105" string="Multiple matches found">נמצאו מספר התאמות</entry>
@@ -320,7 +320,7 @@
       <entry id="9012" string="Switch stereo channels">החלף בין ערוצי שמאל וימין</entry>
       <entry id="9013" string="Automatization">אוטומטיזציה</entry>
       <entry id="9015" string="Start ripping automatically">התחל המרה באופן אוטומטי</entry>
-      <entry id="9016" string="Eject disk after ripping">הוצא דיסק לאחר המרה</entry>
+      <entry id="9016" string="Eject disc after ripping">הוצא דיסק לאחר המרה</entry>
       <entry id="9017" string="CD options">אופציות CD</entry>
     </section>
 

@@ -323,7 +323,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">جستجو در پايگاه داده ديسک‌ها</entry>
-	<entry id="4101" string="No freedb entry for this disk.">هيچ اطلاعاتي براي اين ديسک در freedb يافت نشد.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">هيچ اطلاعاتي براي اين ديسک در freedb يافت نشد.</entry>
 	<entry id="4102" string="Connecting to freedb server at">در حال اتصال به سرور freedb در</entry>
 	<entry id="4103" string="Requesting CD information">در حال درخواست اطلاعات ديسک</entry>
 	<entry id="4104" string="No exact matches found">هيچ يافته مطابقي پيدا نشد</entry>
@@ -683,7 +683,7 @@
       <entry id="9013" string="Automatization">خودکارسازي</entry>
       <entry id="9014" string="Read CD contents on insert">اطلاعات ديسک را به محض قرار گيري در درايو بخوان</entry>
       <entry id="9015" string="Start ripping automatically">تبديل از روي ديسک به طور خودکار انجام شود</entry>
-      <entry id="9016" string="Eject disk after ripping">ديسک پس از اتمام تبديل از درايو خارج شود</entry>
+      <entry id="9016" string="Eject disc after ripping">ديسک پس از اتمام تبديل از درايو خارج شود</entry>
       <entry id="9017" string="CD options">تنظيمات ديسک</entry>
       <entry id="9018" string="Use read offset">از آفست هاي خواندن استفاده کن</entry>
       <entry id="9019" string="samples">نمونه ها</entry>

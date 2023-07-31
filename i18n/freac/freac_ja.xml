@@ -341,7 +341,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB 問い合わせ</entry>
-	<entry id="4101" string="No freedb entry for this disk.">このディスクの情報は freedb にありません。</entry>
+	<entry id="4101" string="No freedb entry for this disc.">このディスクの情報は freedb にありません。</entry>
 	<entry id="4102" string="Connecting to freedb server at">freedb サーバに接続しています</entry>
 	<entry id="4103" string="Requesting CD information">CD 情報をリクエスト中</entry>
 	<entry id="4104" string="No exact matches found">一致する物がありません</entry>
@@ -703,7 +703,7 @@
       <entry id="9013" string="Automatization">自動化</entry>
       <entry id="9014" string="Read CD contents on insert">CD 挿入時に読み込みを行う</entry>
       <entry id="9015" string="Start ripping automatically">自動でリッピング開始</entry>
-      <entry id="9016" string="Eject disk after ripping">リッピング後ディスクを取り出す</entry>
+      <entry id="9016" string="Eject disc after ripping">リッピング後ディスクを取り出す</entry>
       <entry id="9017" string="CD options">CD 設定</entry>
       <entry id="9018" string="Use read offset">読み取りオフセットを使用する</entry>
       <entry id="9019" string="samples">サンプル</entry>
