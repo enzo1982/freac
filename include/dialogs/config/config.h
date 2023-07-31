@@ -25,6 +25,8 @@ namespace freac
 {
 	enum ConfigurePage
 	{
+		ConfigurePagePrevious = -1,
+
 		ConfigurePageEncoder = 0,
 		ConfigurePageProcessing = 2,
 
@@ -34,7 +36,10 @@ namespace freac
 	class ConfigDialog : public Dialogs::Dialog
 	{
 		private:
+			static ConfigurePage			 previousPage;
+
 			String					 initialConfig;
+			ConfigurePage				 initialPage;
 
 			Array<BoCA::AS::Component *, Void *>	 components;
 			Array<ConfigEntry *, Void *>		 entries;

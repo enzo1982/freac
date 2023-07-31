@@ -166,6 +166,7 @@ History
 		- Improvements
 
 			- moved encoding to separate thread for improved performance
+			- made the configuration dialog save the previously opened page during a session
 			- added support for reading UTF-16 encoded cue sheets
 
 		- Bug fixes

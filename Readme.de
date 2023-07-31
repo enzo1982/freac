@@ -165,6 +165,7 @@ Geschichte
 		- Verbesserungen
 
 			- Verarbeitungsgeschwindigkeit durch Umstellung auf separaten Kodierungsthread verbessert
+			- Der Konfigurationsdialog speichert nun die zuvor geöffnete Seite während einer Sitzung
 			- Unterstützung für das Einlesen von in UTF-16 kodierten Cuesheets hinzugefügt
 
 		- Bug fixes

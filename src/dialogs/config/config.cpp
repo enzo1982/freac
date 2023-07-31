@@ -31,6 +31,8 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
+freac::ConfigurePage	 freac::ConfigDialog::previousPage = ConfigurePageDefault;
+
 freac::ConfigDialog::ConfigDialog()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
@@ -39,6 +41,7 @@ freac::ConfigDialog::ConfigDialog()
 	i18n->SetContext("Configuration");
 
 	initialConfig = config->GetConfigurationName();
+	initialPage   = ConfigurePagePrevious;
 
 	mainWnd			= new Window(i18n->TranslateString("General settings setup"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(30, 30), Size(600, 512));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
@@ -152,6 +155,16 @@ freac::ConfigDialog::ConfigDialog()
 	mainWnd->Add(btn_ok);
 	mainWnd->Add(btn_cancel);
 	mainWnd->Add(list_layers);
+
+#ifdef __WIN32__
+	Int	 frameWidth = mainWnd->GetFrameWidth();
+#else
+	Int	 frameWidth = 4;
+#endif
+
+	Layer	*firstLayer = layers.GetFirst();
+
+	mainWnd->SetSize(Size(Math::Max(600, firstLayer->GetWidth() + 218 + 2 * frameWidth), Math::Max(512, firstLayer->GetHeight() + 105 + 2 * frameWidth)));
 
 	mainWnd->SetFlags(WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
@@ -427,14 +440,37 @@ Void freac::ConfigDialog::DeleteLayers()
 
 const Error &freac::ConfigDialog::ShowDialog()
 {
+	/* Select initial page.
+	 */
+	if (initialPage == ConfigurePagePrevious) initialPage = previousPage;
+
+	ConfigEntry	*initialEntry = entries.GetNth(initialPage);
+	Tree		*initialTree  = (Tree *) initialEntry->GetContainer()->GetContainer();
+
+	initialTree->Open();
+	initialTree->SelectEntry(initialEntry);
+
+	/* Show dialog.
+	 */
 	mainWnd->WaitUntilClosed();
+
+	/* Save selected page.
+	 */
+	foreach (ConfigEntry *entry, entries)
+	{
+		if (entry->GetLayer() != selectedLayer) continue;
+
+		previousPage = ConfigurePage(foreachindex);
+
+		break;
+	}
 
 	return error;
 }
 
 const Error &freac::ConfigDialog::ShowDialog(ConfigurePage page)
 {
-	tree_freac->SelectNthEntry(page);
+	initialPage = page;
 
 	return ShowDialog();
 }

@@ -513,7 +513,7 @@ Void freac::freacGUI::ConfigureSettings(ConfigurePage page)
 
 Void freac::freacGUI::ConfigureSettings()
 {
-	ConfigureSettings(ConfigurePageDefault);
+	ConfigureSettings(ConfigurePagePrevious);
 }
 
 Void freac::freacGUI::ConfigureProcessing()
