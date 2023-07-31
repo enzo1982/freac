@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -174,7 +174,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	Bool		 splitChapters	 = ScanForProgramOption("--split-chapters");
 
 	Bool		 ignoreChapters	 = ScanForProgramOption("--ignore-chapters");
-	Bool		 ignoreCoverArt	 = ScanForProgramOption("--ignore-coverart");
+	Bool		 ignoreAlbumArt	 = ScanForProgramOption("--ignore-albumart") || ScanForProgramOption("--ignore-coverart");
 
 	String		 cueSheetFile;
 	String		 playlistFile;
@@ -335,7 +335,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		return;
 	}
 
-	/* Load cover art files.
+	/* Load album art files.
 	 */
 	String	 coverFrontFile;
 	String	 coverBackFile;
@@ -345,14 +345,14 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (coverFrontFile != NIL)
 	{
-		coverFront = LoadCoverArt(coverFrontFile, 3);
+		coverFront = LoadAlbumArt(coverFrontFile, 3);
 
 		if (coverFront == Picture()) return;
 	}
 
 	if (coverBackFile != NIL)
 	{
-		coverBack = LoadCoverArt(coverBackFile, 4);
+		coverBack = LoadAlbumArt(coverBackFile, 4);
 
 		if (coverBack == Picture()) return;
 	}
@@ -439,10 +439,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, False);
 	}
 
-	if (ignoreCoverArt)
+	if (ignoreAlbumArt)
 	{
-		config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, False);
-		config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, False);
+		config->SetIntValue(Config::CategoryTagsID, Config::TagsAlbumArtReadFromTagsID, False);
+		config->SetIntValue(Config::CategoryTagsID, Config::TagsAlbumArtWriteToTagsID, False);
 	}
 
 	/* Perform actual conversion.
@@ -919,11 +919,11 @@ String freac::freacCommandline::GetAbsolutePathName(const String &path) const
 	return pathName;
 }
 
-Picture freac::freacCommandline::LoadCoverArt(const String &file, Int type)
+Picture freac::freacCommandline::LoadAlbumArt(const String &file, Int type)
 {
 	if (!File(file).Exists())
 	{
-		Console::OutputString(String("Cover art file not found: ").Append(file).Append("\n"));
+		Console::OutputString(String("Album art file not found: ").Append(file).Append("\n"));
 
 		errorCode = -3;
 
@@ -936,7 +936,7 @@ Picture freac::freacCommandline::LoadCoverArt(const String &file, Int type)
 
 	if (picture.GetBitmap() == NIL)
 	{
-		Console::OutputString(String("Invalid cover art file format: ").Append(file).Append("\n"));
+		Console::OutputString(String("Invalid album art file format: ").Append(file).Append("\n"));
 
 		errorCode = -1;
 
@@ -967,7 +967,7 @@ Bool freac::freacCommandline::AddToJoblist(const Array<String> &files, Bool cdTr
 
 	if (tracks->Length() == 0) return False;
 
-	/* Add cover images.
+	/* Add album art.
 	 */
 	if (coverFront != Picture() || coverBack != Picture())
 	{
@@ -1020,8 +1020,8 @@ Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userC
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsPreferCueSheetsToChaptersID, True);
 
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, False);
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, False);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsAlbumArtReadFromFilesID, False);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsAlbumArtWriteToFilesID, False);
 
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
@@ -1049,8 +1049,8 @@ Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userC
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, True);
 
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, True);
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, True);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsAlbumArtReadFromTagsID, True);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsAlbumArtWriteToTagsID, True);
 
 	return True;
 }
@@ -1221,7 +1221,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		}
 
 		Console::OutputString("  --ignore-chapters\t\tDo not write chapter information to tags\n");
-		Console::OutputString("  --ignore-coverart\t\tDo not write cover images to tags\n\n");
+		Console::OutputString("  --ignore-albumart\t\tDo not write album images to tags\n\n");
 
 		Console::OutputString("  --list-configs\t\tPrint a list of available configurations\n");
 		Console::OutputString("  --config=<cfg>\t\tSpecify configuration to use\n\n");

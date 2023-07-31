@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -48,8 +48,8 @@ namespace freac
 			Layer			*info_background;
 			CheckBox		*info_checkbox;
 			Divider			*info_bottom;
-			ActiveArea		*info_area_cover;
-			Image			*info_image_cover;
+			ActiveArea		*info_area_artwork;
+			Image			*info_image_artwork;
 			Text			*info_text_artist;
 			EditBox			*info_edit_artist;
 			Text			*info_text_title;
@@ -135,7 +135,7 @@ namespace freac
 
 			PlaybackWidget		*player;
 
-			BoCA::Picture		 currentCover;
+			BoCA::Picture		 currentArtwork;
 
 			Bool			 dontUpdateInfo;
 
@@ -152,8 +152,8 @@ namespace freac
 			EditBox			*GetActiveEditBox();
 			Void			 FocusEditBox(EditBox *);
 
-			Void			 ShowCoverArea();
-			Void			 HideCoverArea();
+			Void			 ShowArtworkArea();
+			Void			 HideArtworkArea();
 
 			static Bool		 IsWordBreakingCharacter(Int);
 

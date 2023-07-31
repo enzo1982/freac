@@ -460,11 +460,11 @@
 	<entry id="5504" string="Filename pattern">Filnavnmønster</entry>
 	<entry id="5505" string="Encoding">Koder</entry>
 	<entry id="5506" string="Comments">Kommentarer</entry>
-	<entry id="5507" string="Cover art">Album bilde</entry>
-	<entry id="5509" string="Read cover art from tags">Les album bilde fra etikett</entry>
-	<entry id="5510" string="Read cover art from files">Les album bilde fra filer</entry>
-	<entry id="5512" string="Write cover art to tags">Skriv album bilde til etiketter</entry>
-	<entry id="5513" string="Write cover art to files">Skriv album bilde til fil</entry>
+	<entry id="5507" string="Album art">Album bilde</entry>
+	<entry id="5509" string="Read album art from tags">Les album bilde fra etikett</entry>
+	<entry id="5510" string="Read album art from files">Les album bilde fra filer</entry>
+	<entry id="5512" string="Write album art to tags">Skriv album bilde til etiketter</entry>
+	<entry id="5513" string="Write album art to files">Skriv album bilde til fil</entry>
 	<entry id="5515" string="Other">Annet</entry>
 	<entry id="5516" string="Chapters">Kapittel</entry>
 	<entry id="5517" string="Read chapters from files">Les kapittel fra filer</entry>
@@ -1106,8 +1106,8 @@
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Enkelt</entry>
 	  <entry id="103102" string="Disc">Disk</entry>
-	  <entry id="103103" string="Cover art">Album bilde</entry>
-	  <entry id="103104" string="Covers">Album</entry>
+	  <entry id="103103" string="Album art">Album bilde</entry>
+	  <entry id="103104" string="Artwork">Bilde</entry>
 	  <entry id="103105" string="Type">Type</entry>
 	  <entry id="103106" string="Description">Beskrivelse</entry>
 	  <entry id="103107" string="Add">Legg til</entry>

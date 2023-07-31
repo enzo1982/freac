@@ -503,11 +503,11 @@
 	<entry id="5504" string="Filename pattern">الگوي نام فايل‌ها</entry>
 	<entry id="5505" string="Encoding">کدگذاري</entry>
 	<entry id="5506" string="Comments">توضيحات</entry>
-	<entry id="5507" string="Cover art">تصوير روي آلبوم</entry>
-	<entry id="5509" string="Read cover art from tags">تصوير آلبوم براساس تگ‌ها بارگذاري شود</entry>
-	<entry id="5510" string="Read cover art from files">تصوير آلبوم از روي فايلها بارگذاري شود</entry>
-	<entry id="5512" string="Write cover art to tags">تصوير آلبوم بروي تگ‌ها ثبت شود</entry>
-	<entry id="5513" string="Write cover art to files">تصوير آلبوم به روي فايل‌ها ثبت شود</entry>
+	<entry id="5507" string="Album art">تصوير روي آلبوم</entry>
+	<entry id="5509" string="Read album art from tags">تصوير آلبوم براساس تگ‌ها بارگذاري شود</entry>
+	<entry id="5510" string="Read album art from files">تصوير آلبوم از روي فايلها بارگذاري شود</entry>
+	<entry id="5512" string="Write album art to tags">تصوير آلبوم بروي تگ‌ها ثبت شود</entry>
+	<entry id="5513" string="Write album art to files">تصوير آلبوم به روي فايل‌ها ثبت شود</entry>
 	<entry id="5514" string="Add reference to audio file tag">مرجع بروي تگ اضافه شود</entry>
 	<entry id="5515" string="Other">غيره</entry>
 	<entry id="5516" string="Chapters">بخش‌ها</entry>
@@ -1296,8 +1296,8 @@
 	  <entry id="103100" string="Basic">تنظيمات پايه</entry>
 	  <entry id="103101" string="Title information">اطلاعات عنوان</entry>
 	  <entry id="103102" string="Disc">شماره ديسک</entry>
-	  <entry id="103103" string="Cover art">تصوير روي آلبوم</entry>
-	  <entry id="103104" string="Covers">تصاوير</entry>
+	  <entry id="103103" string="Album art">تصوير روي آلبوم</entry>
+	  <entry id="103104" string="Artwork">تصاوير</entry>
 	  <entry id="103105" string="Type">نوع</entry>
 	  <entry id="103106" string="Description">توصيف</entry>
 	  <entry id="103107" string="Add">افزودن</entry>

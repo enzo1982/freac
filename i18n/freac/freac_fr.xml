@@ -526,11 +526,11 @@
 	<entry id="5504" string="Filename pattern">Modèle de nom de fichier</entry>
 	<entry id="5505" string="Encoding">Encodage</entry>
 	<entry id="5506" string="Comments">Commentaires</entry>
-	<entry id="5507" string="Cover art">Illustration de couverture</entry>
-	<entry id="5509" string="Read cover art from tags">Lire les illustrations à partir des balises</entry>
-	<entry id="5510" string="Read cover art from files">Lire les illustrations à partir des fichiers</entry>
-	<entry id="5512" string="Write cover art to tags">Écrire les illustrations dans les balises</entry>
-	<entry id="5513" string="Write cover art to files">Écrire les illustrations dans les fichiers</entry>
+	<entry id="5507" string="Album art">Illustration de couverture</entry>
+	<entry id="5509" string="Read album art from tags">Lire les illustrations à partir des balises</entry>
+	<entry id="5510" string="Read album art from files">Lire les illustrations à partir des fichiers</entry>
+	<entry id="5512" string="Write album art to tags">Écrire les illustrations dans les balises</entry>
+	<entry id="5513" string="Write album art to files">Écrire les illustrations dans les fichiers</entry>
 	<entry id="5514" string="Add reference to audio file tag">Ajouter une référence à la balise d'un fichier audio</entry>
 	<entry id="5515" string="Other">Autre</entry>
 	<entry id="5516" string="Chapters">Chapitres</entry>
@@ -1406,8 +1406,8 @@
 	  <entry id="103100" string="Basic">Elémentaire</entry>
 	  <entry id="103101" string="Title information">Information de morceau</entry>
 	  <entry id="103102" string="Disc">Disque</entry>
-	  <entry id="103103" string="Cover art">Illustration de couverture</entry>
-	  <entry id="103104" string="Covers">Couvertures</entry>
+	  <entry id="103103" string="Album art">Illustration de couverture</entry>
+	  <entry id="103104" string="Artwork">Couvertures</entry>
 	  <entry id="103105" string="Type">Type</entry>
 	  <entry id="103106" string="Description">Description</entry>
 	  <entry id="103107" string="Add">Ajouter</entry>

@@ -532,11 +532,11 @@
 	<entry id="5504" string="Filename pattern">文件名样式</entry>
 	<entry id="5505" string="Encoding">编码</entry>
 	<entry id="5506" string="Comments">注释</entry>
-	<entry id="5507" string="Cover art">封面</entry>
-	<entry id="5509" string="Read cover art from tags">从标签中读取封面</entry>
-	<entry id="5510" string="Read cover art from files">从文件中读取封面</entry>
-	<entry id="5512" string="Write cover art to tags">写入封面到标签</entry>
-	<entry id="5513" string="Write cover art to files">写入封面到文件</entry>
+	<entry id="5507" string="Album art">封面</entry>
+	<entry id="5509" string="Read album art from tags">从标签中读取封面</entry>
+	<entry id="5510" string="Read album art from files">从文件中读取封面</entry>
+	<entry id="5512" string="Write album art to tags">写入封面到标签</entry>
+	<entry id="5513" string="Write album art to files">写入封面到文件</entry>
 	<entry id="5514" string="Add reference to audio file tag">添加引用至音频文件标签</entry>
 	<entry id="5515" string="Other">其他</entry>
 	<entry id="5516" string="Chapters">章节</entry>
@@ -551,8 +551,8 @@
 	<entry id="5528" string="Miscellaneous">杂项</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">用从文件名获取的信息填充缺失的字段</entry>
 	<entry id="5530" string="Restrict file names">限制文件名</entry>
-	<entry id="5531" string="Cover art tags">封面艺术标签</entry>
-	<entry id="5532" string="Cover art files">封面艺术文件</entry>
+	<entry id="5531" string="Album art tags">封面艺术标签</entry>
+	<entry id="5532" string="Album art files">封面艺术文件</entry>
       </section>
 
       <section name="Joblist">
@@ -1428,8 +1428,8 @@
 	  <entry id="103100" string="Basic">基本</entry>
 	  <entry id="103101" string="Title information">标题信息</entry>
 	  <entry id="103102" string="Disc">光盘</entry>
-	  <entry id="103103" string="Cover art">封面</entry>
-	  <entry id="103104" string="Covers">封面</entry>
+	  <entry id="103103" string="Album art">封面</entry>
+	  <entry id="103104" string="Artwork">封面</entry>
 	  <entry id="103105" string="Type">类型</entry>
 	  <entry id="103106" string="Description">描述</entry>
 	  <entry id="103107" string="Add">添加</entry>

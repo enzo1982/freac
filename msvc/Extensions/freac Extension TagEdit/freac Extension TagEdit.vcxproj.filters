@@ -46,9 +46,6 @@
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic_cover.cpp">
-      <Filter>Quelldateien\editor</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_details.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
@@ -62,6 +59,9 @@
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_rating.cpp">
+      <Filter>Quelldateien\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic_albumart.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
   </ItemGroup>
@@ -111,9 +111,6 @@
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic_cover.h">
-      <Filter>Headerdateien\editor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_details.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
@@ -127,6 +124,9 @@
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_lyrics.h">
+      <Filter>Headerdateien\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic_albumart.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
   </ItemGroup>

@@ -516,11 +516,11 @@
 	<entry id="5504" string="Filename pattern">Patrón de nombre de archivo</entry>
 	<entry id="5505" string="Encoding">Codificación</entry>
 	<entry id="5506" string="Comments">Comentarios</entry>
-	<entry id="5507" string="Cover art">Imagen de portada</entry>
-	<entry id="5509" string="Read cover art from tags">Leer imagen de portada desde etiquetas</entry>
-	<entry id="5510" string="Read cover art from files">Leer imagen de portada desde archivos</entry>
-	<entry id="5512" string="Write cover art to tags">Escribir imagen de portada hacia etiquetas</entry>
-	<entry id="5513" string="Write cover art to files">Escribir imagen de portada hacia archivos</entry>
+	<entry id="5507" string="Album art">Imagen de portada</entry>
+	<entry id="5509" string="Read album art from tags">Leer imagen de portada desde etiquetas</entry>
+	<entry id="5510" string="Read album art from files">Leer imagen de portada desde archivos</entry>
+	<entry id="5512" string="Write album art to tags">Escribir imagen de portada hacia etiquetas</entry>
+	<entry id="5513" string="Write album art to files">Escribir imagen de portada hacia archivos</entry>
 	<entry id="5514" string="Add reference to audio file tag">Agregar referencia a etiqueta de archvio de audio</entry>
 	<entry id="5515" string="Other">Otros</entry>
 	<entry id="5516" string="Chapters">Capítulos</entry>

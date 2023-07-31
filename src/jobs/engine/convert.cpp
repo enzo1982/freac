@@ -1181,7 +1181,7 @@ Error freac::JobConvert::Perform()
 			playlistTracks.Add(playlistTrack);
 			cuesheetTracks.Add(playlistTrack);
 
-			/* Save cover art files.
+			/* Save album art files.
 			 */
 			String	 inputDirectory	 = File(track.fileName).GetFilePath();
 			String	 outputDirectory = encoderOutputDirectory;

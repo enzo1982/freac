@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -301,7 +301,7 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 			mTrack.SetInfo(mTrackInfo);
 
-			/* Update cover art.
+			/* Update album art.
 			 */
 			if (picturesChanged)
 			{
@@ -538,7 +538,6 @@ Void BoCA::ChooserAlbums::UpdateAlbumList()
 	foreachreverse (const Track &album, albums) RemoveFromAlbumList(album);
 }
 
-
 Void BoCA::ChooserAlbums::UpdateAlbum(const Track &track)
 {
 	if (dontUpdateAlbumList) return;
@@ -588,7 +587,7 @@ Void BoCA::ChooserAlbums::UpdateAlbum(const Track &track)
 
 		album.SetInfo(albumInfo);
 
-		/* Copy cover art.
+		/* Copy album art.
 		 */
 		album.pictures.RemoveAll();
 

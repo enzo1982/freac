@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -172,17 +172,17 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	info_checkbox = new CheckBox(NIL, pos, size, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault));
 	info_checkbox->onAction.Connect(&LayerJoblist::ShowHideTitleInfo, this);
 
-	info_area_cover	= new ActiveArea(Setup::BackgroundColor, Point(7, 167), Size(46, 46));
-	info_area_cover->SetOrientation(OR_LOWERLEFT);
-	info_area_cover->SetColor(Setup::ClientColor);
-	info_area_cover->Hide();
+	info_area_artwork	= new ActiveArea(Setup::BackgroundColor, Point(7, 167), Size(46, 46));
+	info_area_artwork->SetOrientation(OR_LOWERLEFT);
+	info_area_artwork->SetColor(Setup::ClientColor);
+	info_area_artwork->Hide();
 
-	info_image_cover = new Image(NIL, Point(8, 166), Size(44, 44));
-	info_image_cover->SetOrientation(OR_LOWERLEFT);
-	info_image_cover->Hide();
+	info_image_artwork	= new Image(NIL, Point(8, 166), Size(44, 44));
+	info_image_artwork->SetOrientation(OR_LOWERLEFT);
+	info_image_artwork->Hide();
 
-	Add(info_area_cover);
-	Add(info_image_cover);
+	Add(info_area_artwork);
+	Add(info_image_artwork);
 
 	pos.x = 7;
 	pos.y = 164;
@@ -619,8 +619,8 @@ freac::LayerJoblist::~LayerJoblist()
 	DeleteObject(info_bottom);
 	DeleteObject(info_background);
 	DeleteObject(info_checkbox);
-	DeleteObject(info_area_cover);
-	DeleteObject(info_image_cover);
+	DeleteObject(info_area_artwork);
+	DeleteObject(info_image_artwork);
 	DeleteObject(info_text_artist);
 	DeleteObject(info_edit_artist);
 	DeleteObject(info_text_title);
@@ -1080,8 +1080,8 @@ Void freac::LayerJoblist::OnJoblistSelectTrack(const Track &track)
 
 	surface->StartPaint(GetVisibleArea());
 
-	if (track.pictures.Length() > 0) ShowCoverArea();
-	else				 HideCoverArea();
+	if (track.pictures.Length() > 0) ShowArtworkArea();
+	else				 HideArtworkArea();
 
 	info_edit_artist->Activate();
 	info_edit_title->Activate();
@@ -1105,18 +1105,18 @@ Void freac::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 
 	if (track.pictures.Length() > 0)
 	{
-		if (currentCover != track.pictures.GetFirst())
+		if (currentArtwork != track.pictures.GetFirst())
 		{
-			currentCover = track.pictures.GetFirst();
+			currentArtwork = track.pictures.GetFirst();
 
-			info_image_cover->SetBitmap(currentCover.GetBitmap());
+			info_image_artwork->SetBitmap(currentArtwork.GetBitmap());
 		}
 
-		ShowCoverArea();
+		ShowArtworkArea();
 	}
 	else
 	{
-		HideCoverArea();
+		HideArtworkArea();
 	}
 
 	info_edit_artist->SetText(info.artist);
@@ -1147,7 +1147,7 @@ Void freac::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 
 		surface->StartPaint(GetVisibleArea());
 
-		HideCoverArea();
+		HideArtworkArea();
 
 		info_edit_artist->SetText(NIL);
 		info_edit_title->SetText(NIL);
@@ -1179,7 +1179,7 @@ Void freac::LayerJoblist::OnJoblistRemoveAllTracks()
 
 	surface->StartPaint(GetVisibleArea());
 
-	HideCoverArea();
+	HideArtworkArea();
 
 	info_edit_artist->SetText(NIL);
 	info_edit_title->SetText(NIL);
@@ -1218,7 +1218,7 @@ Void freac::LayerJoblist::FocusEditBox(EditBox *editBox)
 	editBox->MarkAll();
 }
 
-Void freac::LayerJoblist::ShowCoverArea()
+Void freac::LayerJoblist::ShowArtworkArea()
 {
 	if (info_text_artist->GetX() > 7) return;
 
@@ -1238,12 +1238,12 @@ Void freac::LayerJoblist::ShowCoverArea()
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
 	{
-		info_area_cover->Show();
-		info_image_cover->Show();
+		info_area_artwork->Show();
+		info_image_artwork->Show();
 	}
 }
 
-Void freac::LayerJoblist::HideCoverArea()
+Void freac::LayerJoblist::HideArtworkArea()
 {
 	if (info_text_artist->GetX() == 7) return;
 
@@ -1251,8 +1251,8 @@ Void freac::LayerJoblist::HideCoverArea()
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
 	{
-		info_area_cover->Hide();
-		info_image_cover->Hide();
+		info_area_artwork->Hide();
+		info_image_artwork->Hide();
 	}
 
 	info_text_artist->SetX(info_text_artist->GetX() - 54);
@@ -1659,8 +1659,8 @@ Void freac::LayerJoblist::ShowHideTitleInfo()
 
 		if (info_text_artist->GetX() > 7)
 		{
-			info_area_cover->Hide();
-			info_image_cover->Hide();
+			info_area_artwork->Hide();
+			info_image_artwork->Hide();
 		}
 
 		info_text_artist->Hide();
@@ -1697,8 +1697,8 @@ Void freac::LayerJoblist::ShowHideTitleInfo()
 
 		if (info_text_artist->GetX() > 7)
 		{
-			info_area_cover->Show();
-			info_image_cover->Show();
+			info_area_artwork->Show();
+			info_image_artwork->Show();
 		}
 
 		info_text_artist->Show();

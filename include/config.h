@@ -332,32 +332,32 @@ namespace freac
 
 			/* Category Tags
 			 */
-			static const String	 TagsCoverArtReadFromTagsID;
-			static const Bool	 TagsCoverArtReadFromTagsDefault;
+			static const String	 TagsAlbumArtReadFromTagsID;
+			static const Bool	 TagsAlbumArtReadFromTagsDefault;
 
-			static const String	 TagsCoverArtReadFromFilesID;
-			static const Bool	 TagsCoverArtReadFromFilesDefault;
+			static const String	 TagsAlbumArtReadFromFilesID;
+			static const Bool	 TagsAlbumArtReadFromFilesDefault;
 
-			static const String	 TagsCoverArtUsePatternsID;
-			static const Bool	 TagsCoverArtUsePatternsDefault;
+			static const String	 TagsAlbumArtUsePatternsID;
+			static const Bool	 TagsAlbumArtUsePatternsDefault;
 
-			static const String	 TagsCoverArtPatternsID;
-			static const String	 TagsCoverArtPatternsDefault;
+			static const String	 TagsAlbumArtPatternsID;
+			static const String	 TagsAlbumArtPatternsDefault;
 
-			static const String	 TagsCoverArtMaxFileSizeID;
-			static const Int	 TagsCoverArtMaxFileSizeDefault;
+			static const String	 TagsAlbumArtMaxFileSizeID;
+			static const Int	 TagsAlbumArtMaxFileSizeDefault;
 
-			static const String	 TagsCoverArtWriteToTagsID;
-			static const Bool	 TagsCoverArtWriteToTagsDefault;
+			static const String	 TagsAlbumArtWriteToTagsID;
+			static const Bool	 TagsAlbumArtWriteToTagsDefault;
 
-			static const String	 TagsCoverArtWriteToFilesID;
-			static const Bool	 TagsCoverArtWriteToFilesDefault;
+			static const String	 TagsAlbumArtWriteToFilesID;
+			static const Bool	 TagsAlbumArtWriteToFilesDefault;
 
-			static const String	 TagsCoverArtWriteToFilesWithReferenceID;
-			static const Bool	 TagsCoverArtWriteToFilesWithReferenceDefault;
+			static const String	 TagsAlbumArtWriteToFilesWithReferenceID;
+			static const Bool	 TagsAlbumArtWriteToFilesWithReferenceDefault;
 
-			static const String	 TagsCoverArtFilenamePatternID;
-			static const String	 TagsCoverArtFilenamePatternDefault;
+			static const String	 TagsAlbumArtFilenamePatternID;
+			static const String	 TagsAlbumArtFilenamePatternDefault;
 
 			static const String	 TagsReadEmbeddedCueSheetsID;
 			static const Int	 TagsReadEmbeddedCueSheetsDefault;

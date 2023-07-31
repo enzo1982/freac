@@ -531,11 +531,11 @@
 	<entry id="5504" string="Filename pattern">Šablon naziva</entry>
 	<entry id="5505" string="Encoding">Enkodovanje</entry>
 	<entry id="5506" string="Comments">Komentari</entry>
-	<entry id="5507" string="Cover art">Slika omota</entry>
-	<entry id="5509" string="Read cover art from tags">Očitaj sliku omota iz tagova</entry>
-	<entry id="5510" string="Read cover art from files">Očitaj sliku omota iz fajlova</entry>
-	<entry id="5512" string="Write cover art to tags">Upiši sliku omota u tagove</entry>
-	<entry id="5513" string="Write cover art to files">Upiši sliku omota u fajlove</entry>
+	<entry id="5507" string="Album art">Slika omota</entry>
+	<entry id="5509" string="Read album art from tags">Očitaj sliku omota iz tagova</entry>
+	<entry id="5510" string="Read album art from files">Očitaj sliku omota iz fajlova</entry>
+	<entry id="5512" string="Write album art to tags">Upiši sliku omota u tagove</entry>
+	<entry id="5513" string="Write album art to files">Upiši sliku omota u fajlove</entry>
 	<entry id="5514" string="Add reference to audio file tag">Dodaj referencu u tag audio fajla</entry>
 	<entry id="5515" string="Other">Ostalo</entry>
 	<entry id="5516" string="Chapters">Poglavlja</entry>
@@ -550,8 +550,8 @@
 	<entry id="5528" string="Miscellaneous">Razno</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Popuni nedostajuća polja podacima pribavljenim iz naziva fajlova</entry>
 	<entry id="5530" string="Restrict file names">Ograničenje naziva fajlova</entry>
-	<entry id="5531" string="Cover art tags">Tagovi za slike omota</entry>
-	<entry id="5532" string="Cover art files">Fajlovi za slike omota</entry>
+	<entry id="5531" string="Album art tags">Tagovi za slike omota</entry>
+	<entry id="5532" string="Album art files">Fajlovi za slike omota</entry>
       </section>
 
       <section name="Joblist">
@@ -1427,8 +1427,8 @@
 	  <entry id="103100" string="Basic">Osnovno</entry>
 	  <entry id="103101" string="Title information">Info o nazivu</entry>
 	  <entry id="103102" string="Disc">Disk</entry>
-	  <entry id="103103" string="Cover art">Slika omota</entry>
-	  <entry id="103104" string="Covers">Omoti</entry>
+	  <entry id="103103" string="Album art">Slika omota</entry>
+	  <entry id="103104" string="Artwork">Omoti</entry>
 	  <entry id="103105" string="Type">Tip</entry>
 	  <entry id="103106" string="Description">Opis</entry>
 	  <entry id="103107" string="Add">Dodaj</entry>

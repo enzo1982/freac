@@ -254,7 +254,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\dialogs\charset.cpp" />
-    <ClCompile Include="..\..\src\dialogs\config\config_coverart.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_albumart.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_cuesheets.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_dsp.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_files.cpp" />
@@ -375,7 +375,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\config.h" />
     <ClInclude Include="..\..\include\dialogs\charset.h" />
-    <ClInclude Include="..\..\include\dialogs\config\config_coverart.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_albumart.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_cuesheets.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_dsp.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_files.h" />

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -16,23 +16,23 @@ using namespace BoCA;
 
 freac::LayerTooltip::LayerTooltip(const Track &iTrack) : Layer()
 {
-	cover = NIL;
-	text  = NIL;
+	artwork = NIL;
+	text	= NIL;
 
 	UpdateFromTrack(iTrack);
 }
 
 freac::LayerTooltip::~LayerTooltip()
 {
-	if (cover != NIL) DeleteObject(cover);
-	if (text  != NIL) DeleteObject(text);
+	if (artwork != NIL) DeleteObject(artwork);
+	if (text    != NIL) DeleteObject(text);
 }
 
 Int freac::LayerTooltip::Show()
 {
-	/* Create and add cover thumbnail.
+	/* Create and add artwork thumbnail.
 	 */
-	if (track.pictures.Length() > 0 && cover == NIL)
+	if (track.pictures.Length() > 0 && artwork == NIL)
 	{
 		Bitmap	 bitmap = track.pictures.GetFirst().GetBitmap();
 
@@ -46,9 +46,9 @@ Int freac::LayerTooltip::Show()
 
 		/* Create and add image widget.
 		 */
-		cover = new Image(bmpScaled, Point(4, 4), Size(40, 40));
+		artwork = new Image(bmpScaled, Point(4, 4), Size(40, 40));
 
-		Add(cover);
+		Add(artwork);
 	}
 
 	/* Create and add tooltip text.
@@ -75,13 +75,13 @@ Int freac::LayerTooltip::Show()
 
 Void freac::LayerTooltip::UpdateFromTrack(const Track &nTrack)
 {
-	/* Clear cover thumbnail if different.
+	/* Clear artwork thumbnail if different.
 	 */
-	if (cover != NIL && nTrack.pictures.GetFirst() != track.pictures.GetFirst())
+	if (artwork != NIL && nTrack.pictures.GetFirst() != track.pictures.GetFirst())
 	{
-		DeleteObject(cover);
+		DeleteObject(artwork);
 
-		cover = NIL;
+		artwork = NIL;
 	}
 
 	/* Create and add tooltip text.

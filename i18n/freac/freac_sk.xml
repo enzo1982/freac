@@ -519,11 +519,11 @@
 	<entry id="5504" string="Filename pattern">Vzor súborovej cesty</entry>
 	<entry id="5505" string="Encoding">Kódovanie</entry>
 	<entry id="5506" string="Comments">Poznámky</entry>
-	<entry id="5507" string="Cover art">Obrázok obalu</entry>
-	<entry id="5509" string="Read cover art from tags">Načítať obrázok obalu z tagov</entry>
-	<entry id="5510" string="Read cover art from files">Načítať obrázok obalu zo súborov</entry>
-	<entry id="5512" string="Write cover art to tags">Zapísať obrázok obalu do tagov</entry>
-	<entry id="5513" string="Write cover art to files">Zapísať obrázok obalu do súborov</entry>
+	<entry id="5507" string="Album art">Obrázok obalu</entry>
+	<entry id="5509" string="Read album art from tags">Načítať obrázok obalu z tagov</entry>
+	<entry id="5510" string="Read album art from files">Načítať obrázok obalu zo súborov</entry>
+	<entry id="5512" string="Write album art to tags">Zapísať obrázok obalu do tagov</entry>
+	<entry id="5513" string="Write album art to files">Zapísať obrázok obalu do súborov</entry>
 	<entry id="5514" string="Add reference to audio file tag">Pridať referencie do tag súborov</entry>
 	<entry id="5515" string="Other">Iné</entry>
 	<entry id="5516" string="Chapters">Kapitoly</entry>
@@ -1330,8 +1330,8 @@
 	  <entry id="103100" string="Basic">Základné</entry>
 	  <entry id="103101" string="Title information">Titul</entry>
 	  <entry id="103102" string="Disc">Disk</entry>
-	  <entry id="103103" string="Cover art">Obrázok obalu</entry>
-	  <entry id="103104" string="Covers">Obaly</entry>
+	  <entry id="103103" string="Album art">Obrázok obalu</entry>
+	  <entry id="103104" string="Artwork">Obaly</entry>
 	  <entry id="103105" string="Type">Typ</entry>
 	  <entry id="103106" string="Description">Popis</entry>
 	  <entry id="103107" string="Add">Pridať</entry>

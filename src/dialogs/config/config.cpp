@@ -11,9 +11,10 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/config/config.h>
+#include <dialogs/config/config_albumart.h>
 #include <dialogs/config/config_cddb.h>
-#include <dialogs/config/config_coverart.h>
 #include <dialogs/config/config_cuesheets.h>
+#include <dialogs/config/config_dsp.h>
 #include <dialogs/config/config_encoders.h>
 #include <dialogs/config/config_files.h>
 #include <dialogs/config/config_interface.h>
@@ -23,7 +24,6 @@
 #include <dialogs/config/config_tagfields.h>
 #include <dialogs/config/config_tagformats.h>
 #include <dialogs/config/config_verification.h>
-#include <dialogs/config/config_dsp.h>
 
 #include <freac.h>
 #include <config.h>
@@ -324,9 +324,9 @@ Void freac::ConfigDialog::AddLayers()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_metadata->Add(entries.GetLast());
 
-	layers.Add(new ConfigureCoverArt());
+	layers.Add(new ConfigureAlbumArt());
 	createdLayers.Add(layers.GetLast());
-	entries.Add(new ConfigEntry(i18n->TranslateString("Cover art"), layers.GetLast()));
+	entries.Add(new ConfigEntry(i18n->TranslateString("Album art"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_metadata->Add(entries.GetLast());
 

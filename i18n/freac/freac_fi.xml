@@ -858,8 +858,8 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Perus</entry>
-	  <entry id="103103" string="Cover art">Kansitaide</entry>
-	  <entry id="103104" string="Covers">Kannet</entry>
+	  <entry id="103103" string="Album art">Kansitaide</entry>
+	  <entry id="103104" string="Artwork">Kannet</entry>
 	  <entry id="103105" string="Type">Tyyppi</entry>
 	  <entry id="103106" string="Description">Kuvaus</entry>
 	  <entry id="103107" string="Add">Lisää</entry>

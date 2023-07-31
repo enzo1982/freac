@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -59,34 +59,34 @@ namespace BoCA
 			Text				*text_comment;
 			MultiEdit			*edit_comment;
 
-			GroupBox			*group_cover;
+			GroupBox			*group_albumart;
 
-			Text				*text_covers;
-			ImageBox			*image_covers;
+			Text				*text_albumart;
+			ImageBox			*image_albumart;
 
-			Button				*button_cover_add;
-			Button				*button_cover_remove;
+			Button				*button_albumart_add;
+			Button				*button_albumart_remove;
 
-			Text				*text_cover_type;
-			ComboBox			*combo_cover_type;
+			Text				*text_albumart_type;
+			ComboBox			*combo_albumart_type;
 
-			Text				*text_cover_desc;
-			MultiEdit			*edit_cover_desc;
+			Text				*text_albumart_desc;
+			MultiEdit			*edit_albumart_desc;
 
 			Track				 track;
 			Bool				 ignoreSelect;
 
 			EditBox				*GetActiveEditBox();
 
-			Void				 LoadCoverImages(const Track &);
-			Void				 UpdateCoverImages(const Track &);
-			Void				 FreeCoverImages();
+			Void				 LoadAlbumArt(const Track &);
+			Void				 UpdateAlbumArt(const Track &);
+			Void				 FreeAlbumArt();
 		slots:
-			Void				 AddCover();
-			Void				 RemoveCover();
+			Void				 AddAlbumArt();
+			Void				 RemoveAlbumArt();
 
-			Void				 SelectCover(ListEntry *);
-			Void				 DisplayCover();
+			Void				 SelectAlbumArt(ListEntry *);
+			Void				 DisplayAlbumArt();
 
 			Void				 OnSelectTrack(const Track &);
 			Void				 OnSelectAlbum(const Track &);

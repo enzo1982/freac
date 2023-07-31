@@ -344,32 +344,32 @@ const String	 freac::Config::PlaylistCueSheetDefault				= NIL;
 
 /* Category Tags
  */
-const String	 freac::Config::TagsCoverArtReadFromTagsID			= "CoverArtReadFromTags";
-const Bool	 freac::Config::TagsCoverArtReadFromTagsDefault			= True;
+const String	 freac::Config::TagsAlbumArtReadFromTagsID			= "CoverArtReadFromTags";
+const Bool	 freac::Config::TagsAlbumArtReadFromTagsDefault			= True;
 
-const String	 freac::Config::TagsCoverArtReadFromFilesID			= "CoverArtReadFromFiles";
-const Bool	 freac::Config::TagsCoverArtReadFromFilesDefault		= True;
+const String	 freac::Config::TagsAlbumArtReadFromFilesID			= "CoverArtReadFromFiles";
+const Bool	 freac::Config::TagsAlbumArtReadFromFilesDefault		= True;
 
-const String	 freac::Config::TagsCoverArtUsePatternsID			= "CoverArtRestrictFilenames";
-const Bool	 freac::Config::TagsCoverArtUsePatternsDefault			= True;
+const String	 freac::Config::TagsAlbumArtUsePatternsID			= "CoverArtRestrictFilenames";
+const Bool	 freac::Config::TagsAlbumArtUsePatternsDefault			= True;
 
-const String	 freac::Config::TagsCoverArtPatternsID				= "CoverArtFilenames";
-const String	 freac::Config::TagsCoverArtPatternsDefault			= "folder;*cover*;*albumart*;*front*;*back*;*inside*;*cd*;*disc*;*booklet*";
+const String	 freac::Config::TagsAlbumArtPatternsID				= "CoverArtFilenames";
+const String	 freac::Config::TagsAlbumArtPatternsDefault			= "folder;*cover*;*albumart*;*front*;*back*;*inside*;*cd*;*disc*;*booklet*";
 
-const String	 freac::Config::TagsCoverArtMaxFileSizeID			= "CoverArtMaxFileSize";
-const Int	 freac::Config::TagsCoverArtMaxFileSizeDefault			= 250;
+const String	 freac::Config::TagsAlbumArtMaxFileSizeID			= "CoverArtMaxFileSize";
+const Int	 freac::Config::TagsAlbumArtMaxFileSizeDefault			= 250;
 
-const String	 freac::Config::TagsCoverArtWriteToTagsID			= "CoverArtWriteToTags";
-const Bool	 freac::Config::TagsCoverArtWriteToTagsDefault			= True;
+const String	 freac::Config::TagsAlbumArtWriteToTagsID			= "CoverArtWriteToTags";
+const Bool	 freac::Config::TagsAlbumArtWriteToTagsDefault			= True;
 
-const String	 freac::Config::TagsCoverArtWriteToFilesID			= "CoverArtWriteToFiles";
-const Bool	 freac::Config::TagsCoverArtWriteToFilesDefault			= False;
+const String	 freac::Config::TagsAlbumArtWriteToFilesID			= "CoverArtWriteToFiles";
+const Bool	 freac::Config::TagsAlbumArtWriteToFilesDefault			= False;
 
-const String	 freac::Config::TagsCoverArtWriteToFilesWithReferenceID		= "CoverArtWriteToFilesWithReference";
-const Bool	 freac::Config::TagsCoverArtWriteToFilesWithReferenceDefault	= False;
+const String	 freac::Config::TagsAlbumArtWriteToFilesWithReferenceID		= "CoverArtWriteToFilesWithReference";
+const Bool	 freac::Config::TagsAlbumArtWriteToFilesWithReferenceDefault	= False;
 
-const String	 freac::Config::TagsCoverArtFilenamePatternID			= "CoverArtFilenamePattern";
-const String	 freac::Config::TagsCoverArtFilenamePatternDefault		= String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<type>");
+const String	 freac::Config::TagsAlbumArtFilenamePatternID			= "CoverArtFilenamePattern";
+const String	 freac::Config::TagsAlbumArtFilenamePatternDefault		= String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<type>");
 
 const String	 freac::Config::TagsReadEmbeddedCueSheetsID			= "ReadEmbeddedCueSheets";
 const Int	 freac::Config::TagsReadEmbeddedCueSheetsDefault		= True;

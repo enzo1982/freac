@@ -531,11 +531,11 @@
 	<entry id="5504" string="Filename pattern">Filnamnsmönster</entry>
 	<entry id="5505" string="Encoding">Teckenkodning</entry>
 	<entry id="5506" string="Comments">Kommentarer</entry>
-	<entry id="5507" string="Cover art">Skivomslag</entry>
-	<entry id="5509" string="Read cover art from tags">Läs skivomslag från taggar</entry>
-	<entry id="5510" string="Read cover art from files">Läs skivomslag från filer</entry>
-	<entry id="5512" string="Write cover art to tags">Skriv skivomslag till taggar</entry>
-	<entry id="5513" string="Write cover art to files">Skriv skivomslag till filer</entry>
+	<entry id="5507" string="Album art">Skivomslag</entry>
+	<entry id="5509" string="Read album art from tags">Läs skivomslag från taggar</entry>
+	<entry id="5510" string="Read album art from files">Läs skivomslag från filer</entry>
+	<entry id="5512" string="Write album art to tags">Skriv skivomslag till taggar</entry>
+	<entry id="5513" string="Write album art to files">Skriv skivomslag till filer</entry>
 	<entry id="5514" string="Add reference to audio file tag">Lägg till referens till ljudfiltagg</entry>
 	<entry id="5515" string="Other">Övrigt</entry>
 	<entry id="5516" string="Chapters">Kapitel</entry>
@@ -550,8 +550,8 @@
 	<entry id="5528" string="Miscellaneous">Övrigt</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Fyll i saknade fält med information som hämtats från filnamn</entry>
 	<entry id="5530" string="Restrict file names">Begränsa filnamn</entry>
-	<entry id="5531" string="Cover art tags">Skivomslagstaggar</entry>
-	<entry id="5532" string="Cover art files">Skivomslagsfiler</entry>
+	<entry id="5531" string="Album art tags">Skivomslagstaggar</entry>
+	<entry id="5532" string="Album art files">Skivomslagsfiler</entry>
       </section>
 
       <section name="Joblist">
@@ -1427,8 +1427,8 @@
 	  <entry id="103100" string="Basic">Allmänt</entry>
 	  <entry id="103101" string="Title information">Titelinformation</entry>
 	  <entry id="103102" string="Disc">Skiva</entry>
-	  <entry id="103103" string="Cover art">Skivomslag</entry>
-	  <entry id="103104" string="Covers">Omslag</entry>
+	  <entry id="103103" string="Album art">Skivomslag</entry>
+	  <entry id="103104" string="Artwork">Omslag</entry>
 	  <entry id="103105" string="Type">Typ</entry>
 	  <entry id="103106" string="Description">Beskrivning</entry>
 	  <entry id="103107" string="Add">Lägg till</entry>

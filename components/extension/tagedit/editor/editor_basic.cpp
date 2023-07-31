@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -11,7 +11,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include "editor_basic.h"
-#include "editor_basic_cover.h"
+#include "editor_basic_albumart.h"
 
 #include "../utilities.h"
 
@@ -111,62 +111,62 @@ BoCA::LayerTagBasic::LayerTagBasic() : Editor("Basic")
 	group_info->Add(text_year);
 	group_info->Add(edit_year);
 
-	group_cover		= new GroupBox(NIL, Point(415, 10), Size(400, 178));
+	group_albumart		= new GroupBox(NIL, Point(415, 10), Size(400, 178));
 
-	text_covers		= new Text(NIL, Point(9, 13));
-	text_cover_type		= new Text(NIL, Point(9, 94));
-	text_cover_desc		= new Text(NIL, text_cover_type->GetPosition() + Point(0, 27));
+	text_albumart		= new Text(NIL, Point(9, 13));
+	text_albumart_type	= new Text(NIL, Point(9, 94));
+	text_albumart_desc	= new Text(NIL, text_albumart_type->GetPosition() + Point(0, 27));
 
-	image_covers		= new ImageBox(text_covers->GetPosition() + Point(7, -3), Size(300, 73));
-	image_covers->onSelectEntry.Connect(&LayerTagBasic::SelectCover, this);
+	image_albumart		= new ImageBox(text_albumart->GetPosition() + Point(7, -3), Size(300, 73));
+	image_albumart->onSelectEntry.Connect(&LayerTagBasic::SelectAlbumArt, this);
 
-	combo_cover_type	= new ComboBox(text_cover_type->GetPosition() + Point(7, -3), Size(300, 0));
-	combo_cover_type->AddEntry("Other");
-	combo_cover_type->AddEntry("32x32 pixels 'file icon' (PNG only)");
-	combo_cover_type->AddEntry("Other file icon");
-	combo_cover_type->AddEntry("Cover (front)");
-	combo_cover_type->AddEntry("Cover (back)");
-	combo_cover_type->AddEntry("Leaflet page");
-	combo_cover_type->AddEntry("Media (e.g. label side of CD)");
-	combo_cover_type->AddEntry("Lead artist/lead performer/soloist");
-	combo_cover_type->AddEntry("Artist/performer");
-	combo_cover_type->AddEntry("Conductor");
-	combo_cover_type->AddEntry("Band/Orchestra");
-	combo_cover_type->AddEntry("Composer");
-	combo_cover_type->AddEntry("Lyricist/text writer");
-	combo_cover_type->AddEntry("Recording Location");
-	combo_cover_type->AddEntry("During recording");
-	combo_cover_type->AddEntry("During performance");
-	combo_cover_type->AddEntry("Movie/video screen capture");
-	combo_cover_type->AddEntry("A bright coloured fish");
-	combo_cover_type->AddEntry("Illustration");
-	combo_cover_type->AddEntry("Band/artist logotype");
-	combo_cover_type->AddEntry("Publisher/Studio logotype");
-	combo_cover_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
+	combo_albumart_type	= new ComboBox(text_albumart_type->GetPosition() + Point(7, -3), Size(300, 0));
+	combo_albumart_type->AddEntry("Other");
+	combo_albumart_type->AddEntry("32x32 pixels 'file icon' (PNG only)");
+	combo_albumart_type->AddEntry("Other file icon");
+	combo_albumart_type->AddEntry("Cover (front)");
+	combo_albumart_type->AddEntry("Cover (back)");
+	combo_albumart_type->AddEntry("Leaflet page");
+	combo_albumart_type->AddEntry("Media (e.g. label side of CD)");
+	combo_albumart_type->AddEntry("Lead artist/lead performer/soloist");
+	combo_albumart_type->AddEntry("Artist/performer");
+	combo_albumart_type->AddEntry("Conductor");
+	combo_albumart_type->AddEntry("Band/Orchestra");
+	combo_albumart_type->AddEntry("Composer");
+	combo_albumart_type->AddEntry("Lyricist/text writer");
+	combo_albumart_type->AddEntry("Recording Location");
+	combo_albumart_type->AddEntry("During recording");
+	combo_albumart_type->AddEntry("During performance");
+	combo_albumart_type->AddEntry("Movie/video screen capture");
+	combo_albumart_type->AddEntry("A bright coloured fish");
+	combo_albumart_type->AddEntry("Illustration");
+	combo_albumart_type->AddEntry("Band/artist logotype");
+	combo_albumart_type->AddEntry("Publisher/Studio logotype");
+	combo_albumart_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
 
-	edit_cover_desc		= new MultiEdit(text_cover_desc->GetPosition() + Point(7, -3), Size(300, 50));
-	edit_cover_desc->onInput.Connect(&LayerTagBasic::OnModifyTrack, this);
+	edit_albumart_desc		= new MultiEdit(text_albumart_desc->GetPosition() + Point(7, -3), Size(300, 50));
+	edit_albumart_desc->onInput.Connect(&LayerTagBasic::OnModifyTrack, this);
 
-	button_cover_add	= new Button(String(), Point(89, 9), Size(0, 0));
-	button_cover_add->SetOrientation(OR_UPPERRIGHT);
-	button_cover_add->onAction.Connect(&LayerTagBasic::AddCover, this);
+	button_albumart_add	= new Button(String(), Point(89, 9), Size(0, 0));
+	button_albumart_add->SetOrientation(OR_UPPERRIGHT);
+	button_albumart_add->onAction.Connect(&LayerTagBasic::AddAlbumArt, this);
 
-	button_cover_remove	= new Button(String(), button_cover_add->GetPosition() + Point(0, 28), Size(0, 0));
-	button_cover_remove->SetOrientation(OR_UPPERRIGHT);
-	button_cover_remove->Deactivate();
-	button_cover_remove->onAction.Connect(&LayerTagBasic::RemoveCover, this);
+	button_albumart_remove	= new Button(String(), button_albumart_add->GetPosition() + Point(0, 28), Size(0, 0));
+	button_albumart_remove->SetOrientation(OR_UPPERRIGHT);
+	button_albumart_remove->Deactivate();
+	button_albumart_remove->onAction.Connect(&LayerTagBasic::RemoveAlbumArt, this);
 
-	group_cover->Add(text_covers);
-	group_cover->Add(image_covers);
-	group_cover->Add(text_cover_type);
-	group_cover->Add(combo_cover_type);
-	group_cover->Add(text_cover_desc);
-	group_cover->Add(edit_cover_desc);
-	group_cover->Add(button_cover_add);
-	group_cover->Add(button_cover_remove);
+	group_albumart->Add(text_albumart);
+	group_albumart->Add(image_albumart);
+	group_albumart->Add(text_albumart_type);
+	group_albumart->Add(combo_albumart_type);
+	group_albumart->Add(text_albumart_desc);
+	group_albumart->Add(edit_albumart_desc);
+	group_albumart->Add(button_albumart_add);
+	group_albumart->Add(button_albumart_remove);
 
 	Add(group_info);
-	Add(group_cover);
+	Add(group_albumart);
 
 	allowTrackChangeByArrowKey.Connect(&LayerTagBasic::AllowTrackChangeByArrowKey, this);
 	allowTrackRemoveByDeleteKey.Connect(&LayerTagBasic::AllowTrackRemoveByDeleteKey, this);
@@ -184,7 +184,7 @@ BoCA::LayerTagBasic::~LayerTagBasic()
 {
 	Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerTagBasic::OnChangeLanguageSettings, this);
 
-	FreeCoverImages();
+	FreeAlbumArt();
 
 	DeleteObject(group_info);
 	DeleteObject(text_artist);
@@ -209,15 +209,15 @@ BoCA::LayerTagBasic::~LayerTagBasic()
 	DeleteObject(text_year);
 	DeleteObject(edit_year);
 
-	DeleteObject(group_cover);
-	DeleteObject(text_covers);
-	DeleteObject(image_covers);
-	DeleteObject(text_cover_type);
-	DeleteObject(combo_cover_type);
-	DeleteObject(text_cover_desc);
-	DeleteObject(edit_cover_desc);
-	DeleteObject(button_cover_add);
-	DeleteObject(button_cover_remove);
+	DeleteObject(group_albumart);
+	DeleteObject(text_albumart);
+	DeleteObject(image_albumart);
+	DeleteObject(text_albumart_type);
+	DeleteObject(combo_albumart_type);
+	DeleteObject(text_albumart_desc);
+	DeleteObject(edit_albumart_desc);
+	DeleteObject(button_albumart_add);
+	DeleteObject(button_albumart_remove);
 }
 
 /* Called when layer size changes.
@@ -232,7 +232,7 @@ Void BoCA::LayerTagBasic::OnChangeSize(const Size &nSize)
 
 	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(text_artist->GetUnscaledTextWidth(), text_genre->GetUnscaledTextWidth()), text_title->GetUnscaledTextWidth()), Math::Max(text_album->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()));
 	Int	 maxTextSize2 = Math::Max(Math::Max(text_track->GetUnscaledTextWidth(), text_disc->GetUnscaledTextWidth()), text_year->GetUnscaledTextWidth());
-	Int	 maxTextSize3 = Math::Max(Math::Max(text_covers->GetUnscaledTextWidth(), text_cover_type->GetUnscaledTextWidth()), text_cover_desc->GetUnscaledTextWidth());
+	Int	 maxTextSize3 = Math::Max(Math::Max(text_albumart->GetUnscaledTextWidth(), text_albumart_type->GetUnscaledTextWidth()), text_albumart_desc->GetUnscaledTextWidth());
 
 	edit_artist->SetWidth(group_info->GetWidth() - 26 - maxTextSize);
 	edit_title->SetWidth(group_info->GetWidth() - 91 - maxTextSize - maxTextSize2);
@@ -240,12 +240,12 @@ Void BoCA::LayerTagBasic::OnChangeSize(const Size &nSize)
 	edit_genre->SetWidth(group_info->GetWidth() - 91 - maxTextSize - maxTextSize2);
 	edit_comment->SetWidth(group_info->GetWidth() - 26 - maxTextSize);
 
-	group_cover->SetX((clientSize.cx / 2) + 4);
-	group_cover->SetWidth((clientSize.cx - 24) / 2 + (clientSize.cx % 2));
+	group_albumart->SetX((clientSize.cx / 2) + 4);
+	group_albumart->SetWidth((clientSize.cx - 24) / 2 + (clientSize.cx % 2));
 
-	image_covers->SetWidth(group_cover->GetWidth() - 113 - maxTextSize3);
-	combo_cover_type->SetWidth(group_cover->GetWidth() - 26 - maxTextSize3);
-	edit_cover_desc->SetWidth(group_cover->GetWidth() - 26 - maxTextSize3);
+	image_albumart->SetWidth(group_albumart->GetWidth() - 113 - maxTextSize3);
+	combo_albumart_type->SetWidth(group_albumart->GetWidth() - 26 - maxTextSize3);
+	edit_albumart_desc->SetWidth(group_albumart->GetWidth() - 26 - maxTextSize3);
 }
 
 /* Called when application language is changed.
@@ -292,20 +292,20 @@ Void BoCA::LayerTagBasic::OnChangeLanguageSettings()
 	text_disc->SetX(maxTextSize2 + 68);
 	text_year->SetX(maxTextSize2 + 68);
 
-	group_cover->SetText(i18n->TranslateString("Cover art"));
+	group_albumart->SetText(i18n->TranslateString("Album art"));
 
-	text_covers->SetText(i18n->AddColon(i18n->TranslateString("Covers")));
-	text_cover_type->SetText(i18n->AddColon(i18n->TranslateString("Type")));
-	text_cover_desc->SetText(i18n->AddColon(i18n->TranslateString("Description")));
+	text_albumart->SetText(i18n->AddColon(i18n->TranslateString("Artwork")));
+	text_albumart_type->SetText(i18n->AddColon(i18n->TranslateString("Type")));
+	text_albumart_desc->SetText(i18n->AddColon(i18n->TranslateString("Description")));
 
-	Int	 maxTextSize3 = Math::Max(Math::Max(text_cover_type->GetUnscaledTextWidth(), text_covers->GetUnscaledTextWidth()), text_cover_desc->GetUnscaledTextWidth());
+	Int	 maxTextSize3 = Math::Max(Math::Max(text_albumart_type->GetUnscaledTextWidth(), text_albumart->GetUnscaledTextWidth()), text_albumart_desc->GetUnscaledTextWidth());
 
-	image_covers->SetX(text_covers->GetX() + maxTextSize3 + 7);
-	combo_cover_type->SetX(text_cover_type->GetX() + maxTextSize3 + 7);
-	edit_cover_desc->SetX(text_cover_desc->GetX() + maxTextSize3 + 7);
+	image_albumart->SetX(text_albumart->GetX() + maxTextSize3 + 7);
+	combo_albumart_type->SetX(text_albumart_type->GetX() + maxTextSize3 + 7);
+	edit_albumart_desc->SetX(text_albumart_desc->GetX() + maxTextSize3 + 7);
 
-	button_cover_add->SetText(i18n->TranslateString("Add"));
-	button_cover_remove->SetText(i18n->TranslateString("Remove"));
+	button_albumart_add->SetText(i18n->TranslateString("Add"));
+	button_albumart_remove->SetText(i18n->TranslateString("Remove"));
 
 	/* OnChangeSize will correct sizes of any other widgets.
 	 */
@@ -316,44 +316,44 @@ Void BoCA::LayerTagBasic::OnChangeLanguageSettings()
 	if (prevVisible) Show();
 }
 
-Void BoCA::LayerTagBasic::LoadCoverImages(const Track &nTrack)
+Void BoCA::LayerTagBasic::LoadAlbumArt(const Track &nTrack)
 {
-	foreach (const Picture &cover, nTrack.pictures)
+	foreach (const Picture &picture, nTrack.pictures)
 	{
-		ImageEntry	*entry = new ImageEntry(cover.GetBitmap(), Size(70, 70));
+		ImageEntry	*entry = new ImageEntry(picture.GetBitmap(), Size(70, 70));
 
-		entry->onLeftButtonDoubleClick.Connect(&LayerTagBasic::DisplayCover, this);
+		entry->onLeftButtonDoubleClick.Connect(&LayerTagBasic::DisplayAlbumArt, this);
 
-		image_covers->Add(entry);
+		image_albumart->Add(entry);
 	}
 }
 
-Void BoCA::LayerTagBasic::UpdateCoverImages(const Track &nTrack)
+Void BoCA::LayerTagBasic::UpdateAlbumArt(const Track &nTrack)
 {
 	for (Int i = 0; i < Math::Max(track.pictures.Length(), nTrack.pictures.Length()); i++)
 	{
 		if (track.pictures.GetNth(i) == nTrack.pictures.GetNth(i)) continue;
 
-		FreeCoverImages();
-		LoadCoverImages(nTrack);
+		FreeAlbumArt();
+		LoadAlbumArt(nTrack);
 
 		break;
 	}
 }
 
-Void BoCA::LayerTagBasic::FreeCoverImages()
+Void BoCA::LayerTagBasic::FreeAlbumArt()
 {
-	while (image_covers->Length() > 0)
+	while (image_albumart->Length() > 0)
 	{
-		ListEntry	*entry = image_covers->GetNthEntry(image_covers->Length() - 1);
+		ListEntry	*entry = image_albumart->GetNthEntry(image_albumart->Length() - 1);
 
-		image_covers->Remove(entry);
+		image_albumart->Remove(entry);
 
 		delete entry;
 	}
 }
 
-Void BoCA::LayerTagBasic::AddCover()
+Void BoCA::LayerTagBasic::AddAlbumArt()
 {
 	Config	*config = Config::Get();
 	I18n	*i18n	= I18n::Get();
@@ -397,17 +397,17 @@ Void BoCA::LayerTagBasic::AddCover()
 			 */
 			ImageEntry	*entry = new ImageEntry(bitmap, Size(70, 70));
 
-			entry->onLeftButtonDoubleClick.Connect(&LayerTagBasic::DisplayCover, this);
+			entry->onLeftButtonDoubleClick.Connect(&LayerTagBasic::DisplayAlbumArt, this);
 
-			image_covers->Add(entry);
+			image_albumart->Add(entry);
 
 			/* Add picture to track.
 			 */
 			track.pictures.Add(picture);
 
-			/* Select cover and send notifications.
+			/* Select album art and send notifications.
 			 */
-			image_covers->SelectNthEntry(image_covers->Length() - 1);
+			image_albumart->SelectNthEntry(image_albumart->Length() - 1);
 
 			onModifyTrack.Emit(track);
 		}
@@ -420,60 +420,58 @@ Void BoCA::LayerTagBasic::AddCover()
 	}
 }
 
-Void BoCA::LayerTagBasic::RemoveCover()
+Void BoCA::LayerTagBasic::RemoveAlbumArt()
 {
-	Int		 index = image_covers->GetSelectedEntryNumber();
-	ListEntry	*entry = image_covers->GetNthEntry(index);
+	Int		 index = image_albumart->GetSelectedEntryNumber();
+	ListEntry	*entry = image_albumart->GetNthEntry(index);
 
-	image_covers->Remove(entry);
+	image_albumart->Remove(entry);
 
 	delete entry;
 
 	track.pictures.RemoveNth(index);
 
-	combo_cover_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
+	combo_albumart_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
 
-	combo_cover_type->SelectNthEntry(0);
-	edit_cover_desc->SetText(NIL);
+	combo_albumart_type->SelectNthEntry(0);
+	edit_albumart_desc->SetText(NIL);
 
-	combo_cover_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
+	combo_albumart_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
 
-	button_cover_remove->Deactivate();
-	text_cover_type->Deactivate();
-	combo_cover_type->Deactivate();
-	text_cover_desc->Deactivate();
-	edit_cover_desc->Deactivate();
+	button_albumart_remove->Deactivate();
+	text_albumart_type->Deactivate();
+	combo_albumart_type->Deactivate();
+	text_albumart_desc->Deactivate();
+	edit_albumart_desc->Deactivate();
 
 	onModifyTrack.Emit(track);
 }
 
-Void BoCA::LayerTagBasic::SelectCover(ListEntry *entry)
+Void BoCA::LayerTagBasic::SelectAlbumArt(ListEntry *entry)
 {
-	Int		 index = image_covers->GetSelectedEntryNumber();
+	Int		 index = image_albumart->GetSelectedEntryNumber();
 	const Picture	&picture = track.pictures.GetNth(index);
 
-	button_cover_remove->Activate();
-	text_cover_type->Activate();
-	combo_cover_type->Activate();
-	text_cover_desc->Activate();
-	edit_cover_desc->Activate();
+	button_albumart_remove->Activate();
+	text_albumart_type->Activate();
+	combo_albumart_type->Activate();
+	text_albumart_desc->Activate();
+	edit_albumart_desc->Activate();
 
-	combo_cover_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
+	combo_albumart_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
 
-	combo_cover_type->SelectNthEntry(picture.type);
-	edit_cover_desc->SetText(picture.description);
+	combo_albumart_type->SelectNthEntry(picture.type);
+	edit_albumart_desc->SetText(picture.description);
 
-	combo_cover_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
+	combo_albumart_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
 }
 
-Void BoCA::LayerTagBasic::DisplayCover()
+Void BoCA::LayerTagBasic::DisplayAlbumArt()
 {
-	Int		 index = image_covers->GetSelectedEntryNumber();
+	Int		 index = image_albumart->GetSelectedEntryNumber();
 	const Picture	&picture = track.pictures.GetNth(index);
 
-	CoverDisplay	 coverDisplay(picture.GetBitmap());
-
-	coverDisplay.ShowDialog();
+	AlbumArtDisplay(picture.GetBitmap()).ShowDialog();
 }
 
 EditBox *BoCA::LayerTagBasic::GetActiveEditBox()
@@ -494,7 +492,7 @@ EditBox *BoCA::LayerTagBasic::GetActiveEditBox()
 Bool BoCA::LayerTagBasic::AllowTrackChangeByArrowKey()
 {
 	if (IsVisible() && (edit_comment->IsFocussed() ||
-			    edit_cover_desc->IsFocussed())) return False;
+			    edit_albumart_desc->IsFocussed())) return False;
 
 	return True;
 }
@@ -503,7 +501,7 @@ Bool BoCA::LayerTagBasic::AllowTrackRemoveByDeleteKey()
 {
 	if (IsVisible() && (GetActiveEditBox() != NIL  ||
 			    edit_comment->IsFocussed() ||
-			    edit_cover_desc->IsFocussed())) return False;
+			    edit_albumart_desc->IsFocussed())) return False;
 
 	return True;
 }
@@ -520,28 +518,28 @@ Void BoCA::LayerTagBasic::OnSelectTrack(const Track &nTrack)
 
 	if (surface) surface->StartPaint(GetVisibleArea());
 
-	UpdateCoverImages(nTrack);
+	UpdateAlbumArt(nTrack);
 
-	if (image_covers->GetSelectedEntryNumber() == -1)
+	if (image_albumart->GetSelectedEntryNumber() == -1)
 	{
-		combo_cover_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
+		combo_albumart_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
 
-		combo_cover_type->SelectNthEntry(0);
-		edit_cover_desc->SetText(NIL);
+		combo_albumart_type->SelectNthEntry(0);
+		edit_albumart_desc->SetText(NIL);
 
-		combo_cover_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
+		combo_albumart_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
 
-		button_cover_remove->Deactivate();
-		text_cover_type->Deactivate();
-		combo_cover_type->Deactivate();
-		text_cover_desc->Deactivate();
-		edit_cover_desc->Deactivate();
+		button_albumart_remove->Deactivate();
+		text_albumart_type->Deactivate();
+		combo_albumart_type->Deactivate();
+		text_albumart_desc->Deactivate();
+		edit_albumart_desc->Deactivate();
 	}
 
 	track = nTrack;
 
 	group_info->Activate();
-	group_cover->Activate();
+	group_albumart->Activate();
 
 	text_title->Activate();
 	edit_title->Activate();
@@ -587,28 +585,28 @@ Void BoCA::LayerTagBasic::OnSelectAlbum(const Track &nTrack)
 
 	if (surface) surface->StartPaint(GetVisibleArea());
 
-	UpdateCoverImages(nTrack);
+	UpdateAlbumArt(nTrack);
 
-	if (image_covers->GetSelectedEntryNumber() == -1)
+	if (image_albumart->GetSelectedEntryNumber() == -1)
 	{
-		combo_cover_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
+		combo_albumart_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
 
-		combo_cover_type->SelectNthEntry(0);
-		edit_cover_desc->SetText(NIL);
+		combo_albumart_type->SelectNthEntry(0);
+		edit_albumart_desc->SetText(NIL);
 
-		combo_cover_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
+		combo_albumart_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
 
-		button_cover_remove->Deactivate();
-		text_cover_type->Deactivate();
-		combo_cover_type->Deactivate();
-		text_cover_desc->Deactivate();
-		edit_cover_desc->Deactivate();
+		button_albumart_remove->Deactivate();
+		text_albumart_type->Deactivate();
+		combo_albumart_type->Deactivate();
+		text_albumart_desc->Deactivate();
+		edit_albumart_desc->Deactivate();
 	}
 
 	track = nTrack;
 
 	group_info->Activate();
-	group_cover->Activate();
+	group_albumart->Activate();
 
 	text_title->Deactivate();
 	edit_title->Deactivate();
@@ -652,7 +650,7 @@ Void BoCA::LayerTagBasic::OnSelectNone()
 
 	if (surface) surface->StartPaint(GetVisibleArea());
 
-	FreeCoverImages();
+	FreeAlbumArt();
 
 	edit_artist->SetText(NIL);
 	edit_title->SetText(NIL);
@@ -667,21 +665,21 @@ Void BoCA::LayerTagBasic::OnSelectNone()
 	edit_disc->SetText(NIL);
 	edit_ndiscs->SetText(NIL);
 
-	combo_cover_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
+	combo_albumart_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
 
-	combo_cover_type->SelectNthEntry(0);
-	edit_cover_desc->SetText(NIL);
+	combo_albumart_type->SelectNthEntry(0);
+	edit_albumart_desc->SetText(NIL);
 
-	combo_cover_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
+	combo_albumart_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
 
 	group_info->Deactivate();
-	group_cover->Deactivate();
+	group_albumart->Deactivate();
 
-	button_cover_remove->Deactivate();
-	text_cover_type->Deactivate();
-	combo_cover_type->Deactivate();
-	text_cover_desc->Deactivate();
-	edit_cover_desc->Deactivate();
+	button_albumart_remove->Deactivate();
+	text_albumart_type->Deactivate();
+	combo_albumart_type->Deactivate();
+	text_albumart_desc->Deactivate();
+	edit_albumart_desc->Deactivate();
 
 	if (surface) surface->EndPaint();
 
@@ -711,14 +709,14 @@ Void BoCA::LayerTagBasic::OnModifyTrack()
 
 	track.SetInfo(info);
 
-	Int	 index = image_covers->GetSelectedEntryNumber();
+	Int	 index = image_albumart->GetSelectedEntryNumber();
 
 	if (index >= 0)
 	{
 		Picture	&picture = track.pictures.GetNthReference(index);
 
-		picture.type	    = combo_cover_type->GetSelectedEntryNumber();
-		picture.description = edit_cover_desc->GetText();
+		picture.type	    = combo_albumart_type->GetSelectedEntryNumber();
+		picture.description = edit_albumart_desc->GetText();
 	}
 
 	/* Prevent re-selecting entry and emit onModifyTrack signal.

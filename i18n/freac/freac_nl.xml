@@ -522,11 +522,11 @@
 	<entry id="5504" string="Filename pattern">Bestandspatroon</entry>
 	<entry id="5505" string="Encoding">Coderen</entry>
 	<entry id="5506" string="Comments">Opmerkingen</entry>
-	<entry id="5507" string="Cover art">Albumhoes</entry>
-	<entry id="5509" string="Read cover art from tags">Albumhoes lezen uit tags</entry>
-	<entry id="5510" string="Read cover art from files">Albumhoes lezen uit bestanden</entry>
-	<entry id="5512" string="Write cover art to tags">Albumhoes schrijven naar tags</entry>
-	<entry id="5513" string="Write cover art to files">Albumhoes schrijven naar bestanden</entry>
+	<entry id="5507" string="Album art">Albumhoes</entry>
+	<entry id="5509" string="Read album art from tags">Albumhoes lezen uit tags</entry>
+	<entry id="5510" string="Read album art from files">Albumhoes lezen uit bestanden</entry>
+	<entry id="5512" string="Write album art to tags">Albumhoes schrijven naar tags</entry>
+	<entry id="5513" string="Write album art to files">Albumhoes schrijven naar bestanden</entry>
 	<entry id="5514" string="Add reference to audio file tag">Referentie toevoegen aan audiobestand-tag</entry>
 	<entry id="5515" string="Other">Andere</entry>
 	<entry id="5516" string="Chapters">Hoofdstukken</entry>
@@ -1369,8 +1369,8 @@
 	  <entry id="103100" string="Basic">Algemeen</entry>
 	  <entry id="103101" string="Title information">Titel-informatie</entry>
 	  <entry id="103102" string="Disc">Schijf</entry>
-	  <entry id="103103" string="Cover art">Albumhoes</entry>
-	  <entry id="103104" string="Covers">Albumhoezen</entry>
+	  <entry id="103103" string="Album art">Albumhoes</entry>
+	  <entry id="103104" string="Artwork">Albumhoezen</entry>
 	  <entry id="103105" string="Type">Type</entry>
 	  <entry id="103106" string="Description">Beschrijving</entry>
 	  <entry id="103107" string="Add">Toevoegen</entry>

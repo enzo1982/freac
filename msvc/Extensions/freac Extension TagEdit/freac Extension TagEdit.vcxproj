@@ -241,6 +241,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\components\extension\tagedit\config.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic_albumart.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_lyrics.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_publisher.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_rating.cpp" />
@@ -253,7 +254,6 @@
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_advanced_number.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_advanced_text.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic.cpp" />
-    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic_cover.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_details.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_albums.cpp" />
@@ -264,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\components\extension\tagedit\config.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic_albumart.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_lyrics.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_publisher.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_rating.h" />
@@ -282,7 +283,6 @@
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_advanced_number.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_advanced_text.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic.h" />
-    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic_cover.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_details.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -519,11 +519,11 @@
 	<entry id="5504" string="Filename pattern">Failo vardo ruošinys</entry>
 	<entry id="5505" string="Encoding">Koduotė</entry>
 	<entry id="5506" string="Comments">Komentarai</entry>
-	<entry id="5507" string="Cover art">Viršelis</entry>
-	<entry id="5509" string="Read cover art from tags">Nuskaityti viršelius iš žymių</entry>
-	<entry id="5510" string="Read cover art from files">Nuskaityti viršelius iš failų</entry>
-	<entry id="5512" string="Write cover art to tags">Išsaugoti viršelius žymėse</entry>
-	<entry id="5513" string="Write cover art to files">Išsaugoti viršelius failuose</entry>
+	<entry id="5507" string="Album art">Viršelis</entry>
+	<entry id="5509" string="Read album art from tags">Nuskaityti viršelius iš žymių</entry>
+	<entry id="5510" string="Read album art from files">Nuskaityti viršelius iš failų</entry>
+	<entry id="5512" string="Write album art to tags">Išsaugoti viršelius žymėse</entry>
+	<entry id="5513" string="Write album art to files">Išsaugoti viršelius failuose</entry>
 	<entry id="5514" string="Add reference to audio file tag">Pridėti nuorodą į audio failo žymę</entry>
 	<entry id="5515" string="Other">Kita</entry>
 	<entry id="5516" string="Chapters">Skyriai</entry>
@@ -1366,8 +1366,8 @@
 	  <entry id="103100" string="Basic">Pagrindinis</entry>
 	  <entry id="103101" string="Title information">Pavadinimo informacija</entry>
 	  <entry id="103102" string="Disc">Diskas</entry>
-	  <entry id="103103" string="Cover art">Viršelis</entry>
-	  <entry id="103104" string="Covers">Viršeliai</entry>
+	  <entry id="103103" string="Album art">Viršelis</entry>
+	  <entry id="103104" string="Artwork">Viršeliai</entry>
 	  <entry id="103105" string="Type">Tipas</entry>
 	  <entry id="103106" string="Description">Aprašymas</entry>
 	  <entry id="103107" string="Add">Pridėti</entry>
