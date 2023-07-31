@@ -603,7 +603,7 @@
       <section name="Verification">
 	<entry id="5800" string="Verification">Overa</entry>
 	<entry id="5801" string="Enable input verification">Omogući ulaznu overu</entry>
-	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Overi da su ulazi bez gubitaka tačno dekodovani&#10;u fajlove iz kojih su prvobitno nastali</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Overi da su ulazi bez gubitaka tačno dekodovani u fajlove&#10;iz kojih su prvobitno nastali</entry>
 	<entry id="5803" string="Enable output verification">Omogući izlaznu overu</entry>
 	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Overi da su izlazi bez gubitaka tačno dekodovani u fajlove&#10;koji su korišćeni kada su enkodovani</entry>
       </section>

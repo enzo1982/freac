@@ -222,8 +222,8 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB sorgusu</entry>
-	<entry id="4101" string="No freedb entry for this disc.">Bu disk için freedb sonucu yok</entry>
-	<entry id="4102" string="Connecting to freedb server at">freedb servisine bağlanıyor:</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Bu disk için freedb sonucu yok.</entry>
+	<entry id="4102" string="Connecting to freedb server at">freedb servisine bağlanıyor</entry>
 	<entry id="4103" string="Requesting CD information">CD bilgisi isteniyor</entry>
 	<entry id="4104" string="No exact matches found">Tam eşleşme bulunamadı</entry>
 	<entry id="4105" string="Multiple matches found">Birden çok eşleşme bulundu</entry>

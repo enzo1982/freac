@@ -204,7 +204,7 @@
       <section name="Submit">
 	<entry id="4000" string="CDDB data">Dades CDDB</entry>
 	<entry id="4001" string="Submit">Enviar</entry>
-	<entry id="4002" string="No audio CD in drive!">cap CD d'àudio en la unitat</entry>
+	<entry id="4002" string="No audio CD in drive!">Cap CD d'àudio en la unitat!</entry>
 	<entry id="4003" string="Submitting CD information">Enviant informació del CD</entry>
 	<entry id="4004" string="Update joblist with this information">Actualitzar llista de tasques amb aquesta informació</entry>
 	<entry id="4005" string="Status">Estat</entry>
@@ -223,7 +223,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Consulta a CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disc.">No hi ha un registre freedb d'aquest CD</entry>
+	<entry id="4101" string="No freedb entry for this disc.">No hi ha un registre freedb d'aquest CD.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Connectant al servidor freedb a</entry>
 	<entry id="4103" string="Requesting CD information">Demanant informació del CD</entry>
 	<entry id="4104" string="No exact matches found">Sense resultats exactes</entry>
