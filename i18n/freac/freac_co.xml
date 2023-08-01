@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Information about Corsican localization:
+
+1. The latest update of Corsican translation file is available here:
+	https://github.com/enzo1982/freac/blob/master/i18n/freac/freac_co.xml
+
+2. History of Corsican translation for fre:ac:
+
+	- Updated in 2023 by Patriccollu di Santa Maria è Sichè: Jan. 6th (1.1.7), Jan. 28th (1.1.7), Aug. 1st (1.1.8)
+	- Updated in 2022 by Patriccollu di Santa Maria è Sichè: July 19th (1.1.7), Aug. 9th (1.1.7), Dec. 27th (1.1.7)
+	- Updated in 2022 by Patriccollu di Santa Maria è Sichè (Crowdin): Jan. 18th (1.1.6)
+	- Updated in 2021 by Patriccollu di Santa Maria è Sichè (Crowdin): Feb. 5th, June 1st, June 13th, Nov. 20th
+	- Updated in 2020 by Patriccollu di Santa Maria è Sichè (Crowdin): Feb. 10th, Apr. 10th, June 17th, Aug. 31st
+	- Updated in 2019 by Patriccollu di Santa Maria è Sichè (Crowdin): Dec. 4th, Dec. 6th, Dec. 8th, Dec. 26th 
+	- Updated on December 3rd, 2019 for versions 1.0.33 and 1.1 beta 1 by Patriccollu di Santa Maria è Sichè
+	- Created on April 18th, 2016 for version 1.0.27 by Patriccollu di Santa Maria è Sichè
+
+3. An additionnal information about Corsican translation for fre:ac is available here:
+	https://github.com/Patriccollu/Lingua_Corsa-Infurmatica/blob/ceppu/Prughjetti/freac/Traduzzione.md
+-->
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -162,7 +182,7 @@
     <section name="Toolbar">
       <entry id="2000" string="Add audio file(s) to the joblist">Aghjunghje schedarii audio à a lista di travagliu</entry>
       <entry id="2001" string="Add audio CD contents to the joblist">Aghjunghje u cuntenutu di u CD audio à a lista di travagliu</entry>
-      <entry id="2002" string="Remove the selected entry from the joblist">Caccià l’elementu selezziunatu da a lista di travagliu</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">Caccià l’elementu selezziunatu nant’à a lista di travagliu</entry>
       <entry id="2003" string="Clear the entire joblist">Viutà tutta a lista di travagliu</entry>
       <entry id="2004" string="Query CDDB database">Interrugà a basa di dati CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Sottumette i dati CDDB</entry>
@@ -294,8 +314,8 @@
 	<entry id="3605" string="Added %1 tracks, %2 errors occurred">%traccie aghjunte, %2 sbaglii scuntrati</entry>
 	<entry id="3606" string="Removing all tracks">Cacciatura di tutte e traccie</entry>
 	<entry id="3607" string="Removing tracks of disc in drive %1">Cacciatura di e traccie di u discu in u lettore %1</entry>
-	<entry id="3608" string="Removed all tracks from joblist">Tutte e traccie di a lista di travagliu sò state cacciate</entry>
-	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Traccie di u discu in lettore %1 cacciate da a lista di travagliu</entry>
+	<entry id="3608" string="Removed all tracks from joblist">Tutte e traccie sò state cacciate nant’à a lista di travagliu</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Traccie di u discu in lettore %1 cacciate nant’à a lista di travagliu</entry>
       </section>
 
       <section name="Convert">
@@ -342,7 +362,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Richiesta CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disc.">Alcuna entrata freeDB per stu discu.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Nisuna entrata freeDB per stu discu.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Cunnessione à u servitore freedb à</entry>
 	<entry id="4103" string="Requesting CD information">Dumanda d’infurmazione nant’à u CD</entry>
 	<entry id="4104" string="No exact matches found">Alcuna cuncurdanza esatta trova</entry>
@@ -431,7 +451,7 @@
 	<entry id="5103" string="Encode 'On-The-Fly'">Cudificà da volu</entry>
 	<entry id="5104" string="Keep ripped Wave files">Cunservà i schedarii Wave estratti</entry>
 	<entry id="5105" string="Encode to a single file">Cudificà in un schedariu unicu</entry>
-	<entry id="5106" string="Remove processed tracks from joblist">Caccià da a lista di travagliu e traccie trattate</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Caccià e traccie trattate nant’à a lista di travagliu</entry>
 	<entry id="5107" string="Add output files to joblist">Aghjunghje i schedarii d’esciuta à a lista di travagliu</entry>
       </section>
 
@@ -509,8 +529,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="5350" string="Please enter a valid eMail address.">Ci vole à scrive un indirizzu elettronicu accettevule.</entry>
-	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">U protocollu CDDBP di freedb ùn pò micca esse&#10;impiegatu nant’à i servi proxy HTTP Forward !&#10;&#10;Vulete cambià u protocollu è impiegà HTTP avà ?</entry>
+	  <entry id="5350" string="Please enter a valid eMail address.">Ci vole à stampittà un indirizzu elettronicu accettevule.</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">U protocollu CDDBP di freedb ùn pò micca esse&#10;impiegatu nant’à i servitori proxy HTTP Forward !&#10;&#10;Vulete cambià u protocollu è impiegà HTTP avà ?</entry>
 	</section>
       </section>
 
@@ -531,15 +551,15 @@
 	<entry id="5504" string="Filename pattern">Mudellu di nome di schedariu</entry>
 	<entry id="5505" string="Encoding">Cudificazione</entry>
 	<entry id="5506" string="Comments">Cummenti</entry>
-	<entry id="5507" string="Album art">Cuprendula</entry>
-	<entry id="5509" string="Read album art from tags">Leghje a cuprendula da l’etichette</entry>
-	<entry id="5510" string="Read album art from files">Leghje a cuprendula da i schedarii</entry>
-	<entry id="5512" string="Write album art to tags">Scrive a cuprendula in l’etichette</entry>
-	<entry id="5513" string="Write album art to files">Scrive a cuprendula in i schedarii</entry>
+	<entry id="5507" string="Album art">Illustrazione di l’albumu</entry>
+	<entry id="5509" string="Read album art from tags">Leghje l’illustrazione di l’albumu nant’à l’etichette</entry>
+	<entry id="5510" string="Read album art from files">Leghje l’illustrazione di l’albumu nant’à i schedarii</entry>
+	<entry id="5512" string="Write album art to tags">Scrive l’illustrazione di l’albumu in l’etichette</entry>
+	<entry id="5513" string="Write album art to files">Scrive l’illustrazione di l’albumu in i schedarii</entry>
 	<entry id="5514" string="Add reference to audio file tag">Aghjunghje una referenza à l’etichetta di u schedariu audio</entry>
 	<entry id="5515" string="Other">Altra</entry>
 	<entry id="5516" string="Chapters">Capituli</entry>
-	<entry id="5517" string="Read chapters from files">Leghje i capituli da i schedarii</entry>
+	<entry id="5517" string="Read chapters from files">Leghje i capituli nant’à i schedarii</entry>
 	<entry id="5518" string="Write chapters to files">Scrive i capituli in i schedarii</entry>
 	<entry id="5519" string="Special fields">Campi speziali</entry>
 	<entry id="5520" string="Write CD table of contents">Scrive l’indice di cuntenutu di u CD</entry>
@@ -550,8 +570,8 @@
 	<entry id="5528" string="Miscellaneous">Diversi</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Riempie i campi assente cù l’infurmazione ottinuta da i nomi di schedariu</entry>
 	<entry id="5530" string="Restrict file names">Restringhje i nomi di schedariu</entry>
-	<entry id="5531" string="Album art tags">Etichette di a cuprendula</entry>
-	<entry id="5532" string="Album art files">Schedarii di a cuprendula</entry>
+	<entry id="5531" string="Album art tags">Etichette di l’illustrazione di l’albumu</entry>
+	<entry id="5532" string="Album art files">Schedarii di l’illustrazione di l’albumu</entry>
       </section>
 
       <section name="Joblist">
@@ -639,7 +659,7 @@
       <entry id="7000" string="Currently converting">Cunversione in corsu</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Un trattamentu di cunversione hè sempre attivu ! Site sicuru di vulè chità quantunque ?</entry>
       <entry id="7002" string="Delete original files after encoding">Squassà u schedariu d’origine dopu à a cudificazione</entry>
-      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">St’ozzione hà da caccià i schedarii d’origine da l’urdinatore&#10;dopu à a cudificazione !&#10;&#10;Site sicuru di vulè attivà sta funzione ?</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">St’ozzione hà da caccià i schedarii d’origine nant’à l’urdinatore&#10;dopu à a cudificazione !&#10;&#10;Site sicuru di vulè attivà sta funzione ?</entry>
       <entry id="7004" string="Keep this option enabled even after restarting %1">Cunservà st’ozzione attiva ancu dopu u rilanciu di %1</entry>
       <entry id="7005" string="File already exists">U schedariu esiste dighjà</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">U schedariu di destinazione %1&#10;esiste dighjà ! Vulete rimpiazzallu ?</entry>
@@ -665,8 +685,8 @@
       <entry id="7114" string="Unknown error">Sbagliu scunnisciutu</entry>
       <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Impussibule di caricà i piloti NT SCSI ! Estrazzione CD disattivata !</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Impussibule d’apre u schedariu : %1&#10;&#10;Sbagliu : %2</entry>
-      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Ùn si pò micca leghje una traccia di CD quandu si face l’estrazzione cù u listessu lettore !</entry>
-      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Ùn si pò micca principià l’estrazzione quandu si leghje una traccia cù u listessu lettore !</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Ùn si pò micca leghje una traccia di CD quandu si face l’estrazzione nant’à u listessu lettore !</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Ùn si pò micca principià l’estrazzione quandu si leghje una traccia nant’à u listessu lettore !</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">L’accessu à a CDDB hè disattivatu ! Ci vole à attivà un&#10;accessu lucale o alluntanatu in u dialogu di cunfigurazione.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">L’accessu alluntanatu à a CDDB hè disattivatu !&#10;Ci vole à attivà st’accessu in u dialogu di cunfigurazione.</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows hà ricusatu l’accessu à i lettori CD-ROM.&#10;&#10;Ci vole à cuntattà l’amministratore di u vostru sistema&#10;per dumandallu u dirittu d’accessu à u lettore CD-ROM.</entry>
@@ -743,7 +763,7 @@
       <entry id="9013" string="Automatization">Autumatisazione</entry>
       <entry id="9014" string="Read CD contents on insert">Leghje u cuntenutu di u CD à l’intruduzzione</entry>
       <entry id="9015" string="Start ripping automatically">Principià à estrae autumaticamente</entry>
-      <entry id="9016" string="Eject disc after ripping">Espulsione di u CD dopu l’estrazzione</entry>
+      <entry id="9016" string="Eject disc after ripping">Espulsione di u discu dopu à l’estrazzione</entry>
       <entry id="9017" string="CD options">Ozzioni di u CD</entry>
       <entry id="9018" string="Use read offset">Impiegà u spiazzamentu di lettura</entry>
       <entry id="9019" string="samples">campioni</entry>
@@ -801,7 +821,7 @@
 
       <section name="CueSheet">
 	<entry id="22000" string="Title information">Infurmazione di titulu</entry>
-	<entry id="22001" string="Read tags from referenced files">Leghje l’etichette da i schedarii referenzati</entry>
+	<entry id="22001" string="Read tags from referenced files">Leghje l’etichette nant’à i schedarii referenzati</entry>
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Preferisce i metadati di fogliu di mischiera Cue à l’etichette di i schedarii referenzati</entry>
 	<entry id="22003" string="Alternative files">Schedarii alternativi</entry>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Circà schedarii alternativi cumpressi s’è ùn si trovanu micca quelli Wave di referenza</entry>
@@ -1427,8 +1447,8 @@
 	  <entry id="103100" string="Basic">Basicu</entry>
 	  <entry id="103101" string="Title information">Infurmazione di titulu</entry>
 	  <entry id="103102" string="Disc">Discu</entry>
-	  <entry id="103103" string="Album art">Cuprendula</entry>
-	  <entry id="103104" string="Artwork">Cuprendule</entry>
+	  <entry id="103103" string="Album art">Illustrazione di l’albumu</entry>
+	  <entry id="103104" string="Artwork">Illustrazioni</entry>
 	  <entry id="103105" string="Type">Tipu</entry>
 	  <entry id="103106" string="Description">Discrizzione</entry>
 	  <entry id="103107" string="Add">Aghjunghje</entry>
