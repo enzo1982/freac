@@ -28,7 +28,7 @@ Information about Corsican localization:
     <property name="encoding">UTF-8</property>
     <property name="template">freac.xml</property>
     <property name="author">Patriccollu di Santa Maria è Sichè</property>
-    <property name="url">https://github.com/Patriccollu/Lingua_Corsa-Infurmatica/tree/ceppu/Prughjetti/fre:ac</property>
+    <property name="url">https://github.com/Patriccollu/Lingua_Corsa-Infurmatica#readme</property>
   </info>
   <data>
     <entry id="100" string="OK">Vai</entry>
