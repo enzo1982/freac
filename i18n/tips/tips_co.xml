@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">tips.xml</property>
     <property name="author">Patriccollu di Santa Maria è Sichè</property>
-    <property name="url">https://github.com/Patriccollu/Lingua_Corsa-Infurmatica/tree/ceppu/Prughjetti/fre:ac</property>
+    <property name="url">https://github.com/Patriccollu/Lingua_Corsa-Infurmatica#readme</property>
   </info>
   <data>
     <entry id="100" string="%1 is available in %2 languages. If your language is not available&#10;or the translation is incomplete, you can easily translate %1&#10;using the 'smooth Translator' utility.&#10;&#10;To contribute your translations back to the %1 project, please&#10;refer to %3 for additional details.">%1 hè dispunibule in %2 lingue. S’è a vostra lingua ùn hè micca&#10;dispunibule o s’è a traduzzione vi pare incompleta, pudete traduce&#10;%1 cù l’appiecazione « smooth Translator ».&#10;&#10;Per cuntribuisce à u prughjettu %1 cù e vostre traduzzioni, ci vole&#10;à fighjà %3 per sapene di più.</entry>
