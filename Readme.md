@@ -37,9 +37,10 @@ As another alternative, users of Windows package managers may install community-
 ### macOS
 fre:ac is distributed as an Apple Disk Image (.dmg) file. To install it, open the .dmg image and drag the fre:ac application to a location of your choice like the desktop or the Applications folder. Then double click the application to start fre:ac.
 
-Alternatively, users of the package manager [MacPorts](http://www.macports.org) may install fre:ac using the following command:
+Alternatively, users of macOS package managers may install community-maintained packages of fre:ac using the following commands:
 
-    sudo port install freac
+- [MacPorts](http://www.macports.org): `sudo port install freac`
+- [Homebrew](https://brew.sh): `brew install --cask freac`
 
 ### Linux
 fre:ac is available as a Snap, Flatpak or AppImage package. The Snap and Flatpak versions can be found and installed from the respective app stores. Please note that these versions run in restriced environments and might offer limited functionality. The AppImage package must be marked as executable after downloading using the following command:
