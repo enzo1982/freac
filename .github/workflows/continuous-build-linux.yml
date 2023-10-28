@@ -54,6 +54,7 @@ jobs:
           echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports focal-updates main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
           echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports focal-security main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
           sudo sed -i 's/deb http/deb \[arch=amd64,i386\] http/g' /etc/apt/sources.list
+          sudo sed -i 's/deb mirror/deb \[arch=amd64,i386\] mirror/g' /etc/apt/sources.list
 
       - name: Install dependencies
         run: |
