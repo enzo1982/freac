@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -86,10 +86,6 @@ String freac::CDDBRemote::SendCommand(const String &iCommand)
 			if (command.StartsWith("quit"))		break;
 			if (command == NIL)			break;
 
-			hostNameBuffer.Resize(256);
-
-			gethostname(hostNameBuffer, hostNameBuffer.Size());
-
 			String	 freedb_server	  = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault);
 
 			Int	 freedb_http_port = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbHTTPPortID, Config::FreedbHTTPPortDefault);
@@ -97,7 +93,7 @@ String freac::CDDBRemote::SendCommand(const String &iCommand)
 			Net::Protocols::HTTP	 http(String("http://").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)).Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbQueryPathID, Config::FreedbQueryPathDefault)));
 
 			http.SetParameter("cmd", String(command).Replace(" ", "+"));
-			http.SetParameter("hello", String("user ").Append((char *) hostNameBuffer).Append(" ").Append(freac::appName).Append(" ").Append(freac::cddbVersion).Replace(" ", "+"));
+			http.SetParameter("hello", String("user host ").Append(freac::appName).Append(" ").Append(freac::cddbVersion).Replace(" ", "+"));
 			http.SetParameter("proto", "6");
 
 			http.SetHeaderField("User-Email", config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault));
@@ -193,11 +189,9 @@ Bool freac::CDDBRemote::ConnectToServer()
 	SendCommand(NIL);
 	SendCommand("proto 6");
 
-	hostNameBuffer.Resize(256);
-
 	gethostname(hostNameBuffer, hostNameBuffer.Size());
 
-	SendCommand(String("cddb hello user ").Append((char *) hostNameBuffer).Append(" ").Append(freac::appName).Append(" ").Append(freac::cddbVersion));
+	SendCommand(String("cddb hello user host ").Append(freac::appName).Append(" ").Append(freac::cddbVersion));
 
 	return True;
 }
