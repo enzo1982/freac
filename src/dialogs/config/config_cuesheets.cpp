@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -75,6 +75,10 @@ freac::ConfigureCueSheets::ConfigureCueSheets()
 
 	/* Adjust element widths.
 	 */
+	group_cueSheets->SetWidth(Math::Max(552, text_outdir->GetX() + text_outdir->GetUnscaledTextWidth() + 10));
+	group_outdir->SetWidth(group_cueSheets->GetWidth());
+	group_embedded->SetWidth(group_cueSheets->GetWidth());
+
 	check_createCueSheets->SetWidth(group_cueSheets->GetWidth() - 20);
 
 	check_readEmbedded->SetWidth(group_embedded->GetWidth() - 20);
