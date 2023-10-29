@@ -12,7 +12,7 @@
 @@ -168,6 +168,7 @@
  
  	check_autoRip	= new CheckBox(i18n->TranslateString("Start ripping automatically"), check_autoRead->GetPosition() + Point(0, 26), Size(170, 0), &autoRip);
- 	check_autoEject	= new CheckBox(i18n->TranslateString("Eject disk after ripping"), check_autoRip->GetPosition() + Point(0, 26), Size(170, 0), &autoEject);
+ 	check_autoEject	= new CheckBox(i18n->TranslateString("Eject disc after ripping"), check_autoRip->GetPosition() + Point(0, 26), Size(170, 0), &autoEject);
 +	check_autoEject->Deactivate();
  
  	group_automatization->Add(check_autoRead);
