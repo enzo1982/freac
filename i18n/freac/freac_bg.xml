@@ -1337,7 +1337,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Можете също да пратите пари директно до %1 през PayPal.</entry>
 	  <entry id="100102" string="usd">bgn</entry>
 	  <entry id="100103" string="$%1">%1 лв.</entry>
-	  <entry id="100104" string="5,10,20,other amount">5,10,20,друга сума</entry>
+	  <entry id="100104" string="10,15,20,other amount">10,15,20,друга сума</entry>
 	  <entry id="100105" string="monthly recurring">ежемесечно повтарящи се</entry>
 	  <entry id="100106" string="Donate">Дарете</entry>
 	</section>

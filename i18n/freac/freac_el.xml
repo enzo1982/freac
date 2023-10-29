@@ -1337,7 +1337,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Μπορείτε επίσης να στείλετε χρήματα απευθείας στο %1, μέσω PayPal.</entry>
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1">%1€</entry>
-	  <entry id="100104" string="5,10,20,other amount">5,10,20,άλλο ποσό</entry>
+	  <entry id="100104" string="10,15,20,other amount">10,15,20,άλλο ποσό</entry>
 	  <entry id="100105" string="monthly recurring">μηνιαία επανάληψη</entry>
 	  <entry id="100106" string="Donate">Δωρεά</entry>
 	</section>

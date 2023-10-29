@@ -1337,7 +1337,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Pudete dinù mandà i soldi à %1 cù PayPal.</entry>
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1">%1€</entry>
-	  <entry id="100104" string="5,10,20,other amount">5,10,20,altra somma</entry>
+	  <entry id="100104" string="10,15,20,other amount">10,15,20,altra somma</entry>
 	  <entry id="100105" string="monthly recurring">ricurrente misincu</entry>
 	  <entry id="100106" string="Donate">Dunazione</entry>
 	</section>

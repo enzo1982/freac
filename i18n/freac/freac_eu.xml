@@ -671,7 +671,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Dirua ere bidali dezakezu %1-ra zuzenean Paypal erabiliz.</entry>
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1">%1€</entry>
-	  <entry id="100104" string="5,10,20,other amount">5,10,20,beste kopuru</entry>
+	  <entry id="100104" string="10,15,20,other amount">10,15,20,beste kopuru</entry>
 	</section>
 
 	<section name="Donorbox">

@@ -891,7 +891,7 @@
 	<section name="PayPal">
 	  <entry id="100102" string="usd">krw</entry>
 	  <entry id="100103" string="$%1">₩%1</entry>
-	  <entry id="100104" string="5,10,20,other amount">5000,10000,20000,다른 금액</entry>
+	  <entry id="100104" string="10,15,20,other amount">10000,15000,20000,다른 금액</entry>
 	</section>
 
 	<section name="Donorbox">

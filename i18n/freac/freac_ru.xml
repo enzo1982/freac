@@ -1277,7 +1277,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Также вы можете отправить деньги %1 через PayPal напрямую.</entry>
 	  <entry id="100102" string="usd">rub</entry>
 	  <entry id="100103" string="$%1">%1 руб.</entry>
-	  <entry id="100104" string="5,10,20,other amount">250,500,1000,другая сумма</entry>
+	  <entry id="100104" string="5,10,20,other amount">500,750,1000,другая сумма</entry>
 	  <entry id="100105" string="monthly recurring">повторять ещемесячно</entry>
 	  <entry id="100106" string="Donate">Пожертвовать</entry>
 	</section>

@@ -1210,7 +1210,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">आप PayPal से सीधे %1 पर भी पैसे भेज सकते हैं।</entry>
 	  <entry id="100102" string="usd">inr</entry>
 	  <entry id="100103" string="$%1">₹%1</entry>
-	  <entry id="100104" string="5,10,20,other amount">250,500,1000,अन्य राशि</entry>
+	  <entry id="100104" string="10,15,20,other amount">500,750,1000,अन्य राशि</entry>
 	  <entry id="100105" string="monthly recurring">मासिक आवर्ती</entry>
 	  <entry id="100106" string="Donate">दान करना</entry>
 	</section>

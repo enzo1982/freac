@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -61,7 +61,7 @@ BoCA::LayerPayPal::LayerPayPal()
 
 	/* Controls to choose amount.
 	 */
-	const Array<String>	&levels = i18n->TranslateString("5,10,20,other amount").Explode(",");
+	const Array<String>	&levels = i18n->TranslateString("10,15,20,other amount").Explode(",");
 
 	monthly = False;
 
@@ -70,7 +70,7 @@ BoCA::LayerPayPal::LayerPayPal()
 	for (Int i = 0; i < 3; i++) combo_amount->AddEntry(i18n->TranslateString("$%1").Replace("%1", levels.GetNth(i)));
 
 	combo_amount->AddEntry(levels.GetNth(3));
-	combo_amount->SelectNthEntry(1);
+	combo_amount->SelectNthEntry(0);
 
 	combo_amount->onSelectEntry.Connect(&LayerPayPal::OnChangeSettings, this);
 

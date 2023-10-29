@@ -1321,7 +1321,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Můžete také poslat peníze přímo na %1 s použitím PayPalu.</entry>
 	  <entry id="100102" string="usd">czk</entry>
 	  <entry id="100103" string="$%1">%1 Kč</entry>
-	  <entry id="100104" string="5,10,20,other amount">100,200,400,další částka</entry>
+	  <entry id="100104" string="10,15,20,other amount">200,300,400,další částka</entry>
 	  <entry id="100105" string="monthly recurring">měsíční opakování</entry>
 	  <entry id="100106" string="Donate">Darovat</entry>
 	</section>

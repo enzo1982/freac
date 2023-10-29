@@ -920,7 +920,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Puede enviar dinero directamente a %1 con PayPal.</entry>
 	  <entry id="100102" string="usd">usd</entry>
 	  <entry id="100103" string="$%1">$%1</entry>
-	  <entry id="100104" string="5,10,20,other amount">5,10,20,otra cantidad</entry>
+	  <entry id="100104" string="10,15,20,other amount">10,15,20,otra cantidad</entry>
 	</section>
 
 	<section name="Donorbox">

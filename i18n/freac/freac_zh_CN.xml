@@ -1338,7 +1338,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">您也可以使用 PayPal 直接发送至 %1 。</entry>
 	  <entry id="100102" string="usd">cny</entry>
 	  <entry id="100103" string="$%1">%1元</entry>
-	  <entry id="100104" string="5,10,20,other amount">25,50,100,其他金额</entry>
+	  <entry id="100104" string="10,15,20,other amount">50,75,100,其他金额</entry>
 	  <entry id="100105" string="monthly recurring">每月重复</entry>
 	  <entry id="100106" string="Donate">捐赠</entry>
 	</section>

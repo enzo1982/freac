@@ -664,7 +664,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Jy kan ook 'n donasie direk aan %1 stuur deur PayPal te gebruik.</entry>
 	  <entry id="100102" string="usd">zar</entry>
 	  <entry id="100103" string="$%1">R%1</entry>
-	  <entry id="100104" string="5,10,20,other amount">50,100,200,ander bedrag</entry>
+	  <entry id="100104" string="10,15,20,other amount">100,150,200,ander bedrag</entry>
 	</section>
 
 	<section name="Donorbox">

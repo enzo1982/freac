@@ -1276,7 +1276,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">您也可以使用 PayPal 直接付款給 %1。</entry>
 	  <entry id="100102" string="usd">usd</entry>
 	  <entry id="100103" string="$%1">$%1 美金</entry>
-	  <entry id="100104" string="5,10,20,other amount">5,10,20,元或其他金額</entry>
+	  <entry id="100104" string="10,15,20,other amount">10,15,20,元或其他金額</entry>
 	  <entry id="100105" string="monthly recurring">每個月自動捐款</entry>
 	  <entry id="100106" string="Donate">捐款</entry>
 	</section>

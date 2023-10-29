@@ -1337,7 +1337,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Takođe, možete izravno poslati novac %1-u putem PayPal-a.</entry>
 	  <entry id="100102" string="usd">rsd</entry>
 	  <entry id="100103" string="$%1">%1 din.</entry>
-	  <entry id="100104" string="5,10,20,other amount">500,1000,2000,drugi iznos</entry>
+	  <entry id="100104" string="10,15,20,other amount">1000,1500,2000,drugi iznos</entry>
 	  <entry id="100105" string="monthly recurring">mesečno obnavljanje</entry>
 	  <entry id="100106" string="Donate">Donirajte</entry>
 	</section>

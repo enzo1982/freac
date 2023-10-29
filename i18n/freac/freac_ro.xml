@@ -1279,7 +1279,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Puteți deasemenea trimite bani direct la %1 cu PayPal.</entry>
 	  <entry id="100102" string="usd">ron</entry>
 	  <entry id="100103" string="$%1">%1 lei</entry>
-	  <entry id="100104" string="5,10,20,other amount">20,40,80,altă sumă</entry>
+	  <entry id="100104" string="5,10,20,other amount">40,60,80,altă sumă</entry>
 	  <entry id="100105" string="monthly recurring">recurență lunară</entry>
 	  <entry id="100106" string="Donate">Donează</entry>
 	</section>

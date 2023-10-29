@@ -1279,7 +1279,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">PayPal を使って %1 へ直接送金することも可能です。</entry>
 	  <entry id="100102" string="usd">jpy</entry>
 	  <entry id="100103" string="$%1">%1 円</entry>
-	  <entry id="100104" string="5,10,20,other amount">500,1000,2000,別の金額</entry>
+	  <entry id="100104" string="10,15,20,other amount">1000,1500,2000,別の金額</entry>
 	  <entry id="100105" string="monthly recurring">毎月繰り返す</entry>
 	  <entry id="100106" string="Donate">寄付する</entry>
 	</section>

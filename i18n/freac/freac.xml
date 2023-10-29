@@ -1337,7 +1337,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal."/>
 	  <entry id="100102" string="usd"/>
 	  <entry id="100103" string="$%1"/>
-	  <entry id="100104" string="5,10,20,other amount"/>
+	  <entry id="100104" string="10,15,20,other amount"/>
 	  <entry id="100105" string="monthly recurring"/>
 	  <entry id="100106" string="Donate"/>
 	</section>
