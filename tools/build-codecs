@@ -153,7 +153,7 @@ fi
 exhale_version=1.2.0
 faac_version=1.30
 faad2_version=2.10.0
-fdk_aac_version=2.0.2
+fdk_aac_version=2.0.3
 ffmpeg_version=6.1
 flac_version=1.4.3
 lame_version=3.100
@@ -200,9 +200,6 @@ vorbis_location=https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-$vorbi
 wavpack_location=https://www.wavpack.com/wavpack-$wavpack_version.tar.bz2
 
 # Patch locations
-fdk_aac_patches=(https://freac.org/patches/fdk-aac-2.0.2-drcfix.patch)
-fdk_aac_patch_levels=(1)
-
 lame_patches=(https://freac.org/patches/lame-$lame_version-sse-20171014.diff https://freac.org/patches/lame-$lame_version-fastcrc.diff)
 lame_patch_levels=(0 1)
 
@@ -408,8 +405,6 @@ for package in ${packages[@]}; do
 
   elif [ $package == fdk-aac ]; then
     # Build FDK-AAC
-    patches=${fdk_aac_patches[@]}
-    patch_levels=(${fdk_aac_patch_levels[@]})
     export CXXFLAGS="$cflags $cflags_unroll"
     build $fdk_aac_location .libs/libfdk-aac$sharedinfix.$sharedext FDK-AAC.$sharedext
 

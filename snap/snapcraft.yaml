@@ -74,15 +74,13 @@ parts:
       - usr/lib/libfaad.so*
 
   libfdk-aac:
-    after: [ patches ]
-    source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.2.tar.gz
-    source-checksum: sha256/7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90
+    source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.3.tar.gz
+    source-checksum: sha256/e25671cd96b10bad896aa42ab91a695a9e573395262baed4e4a2ff178d6a3a78
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
       - CXXFLAGS: "$CXXFLAGS -O3 -funroll-loops"
     override-build: |
-      patch -p1 < $SNAPCRAFT_STAGE/fdk-aac-2.0.2-drcfix.patch
       autoreconf -i
       snapcraftctl build
     prime:

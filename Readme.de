@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.8 (November 2023)
+	Version 1.1.8 (Dezember 2023)
 
 		- Verbesserungen
 
@@ -182,6 +182,7 @@ Geschichte
 			- FLAC auf Version 1.4.3 aktualisiert
 			- MP4v2 auf Version 2.1.3 aktualisiert
 			- mpg123 auf Version 1.32.3 aktualisiert
+			- libfdk-aac auf Version 2.0.3 aktualisiert
 			- libsndfile auf Version 1.2.2 aktualisiert
 
 		- Neue Übersetzungen
