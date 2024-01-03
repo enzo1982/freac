@@ -15,7 +15,7 @@ Features include:
 - User interface available in 40+ languages
 - Optional command line interface"
 HOMEPAGE="https://freac.org/"
-COPYRIGHT="2001-2023 Robert Kausch"
+COPYRIGHT="2001-2024 Robert Kausch"
 LICENSE="GNU GPL v2"
 REVISION="1"
 SOURCE_URI="https://github.com/enzo1982/freac/releases/download/v${portVersion}/freac-${portVersion}.tar.gz"
