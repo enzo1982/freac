@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.8 (Dezember 2023)
+	Version 1.1.8 (Januar 2024)
 
 		- Verbesserungen
 
@@ -176,7 +176,7 @@ Geschichte
 
 		- Aktualisierte Codecs
 
-			- FFmpeg auf Version 6.1 aktualisiert
+			- FFmpeg auf Version 6.1.1 aktualisiert
 			- Opus auf Version 1.4 aktualisiert
 			- Monkey's Audio auf Version 10.25 aktualisiert
 			- FLAC auf Version 1.4.3 aktualisiert
