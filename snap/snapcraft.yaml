@@ -139,8 +139,8 @@ parts:
       - usr/lib/libmp4v2.so*
 
   libmpg123:
-    source: https://mpg123.de/download/mpg123-1.32.3.tar.bz2
-    source-checksum: sha256/2d9913a57d4ee8f497a182c6e82582602409782a4fb481e989feebf4435867b4
+    source: https://mpg123.de/download/mpg123-1.32.5.tar.bz2
+    source-checksum: sha256/af908cdf6cdb6544b97bc706a799f79894e69468af5881bf454a0ebb9171ed63
     plugin: make
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
