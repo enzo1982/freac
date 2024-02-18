@@ -1331,9 +1331,7 @@ Error freac::JobConvert::Perform()
 		/* Log conversion duration and speed.
 		 */
 		UnsignedInt64	 ticks	  = S::System::System::Clock() - startTicks;
-		String		 duration = String(ticks / 1000 / 60 % 60 <  10 ?			      "0"  : "").Append(String::FromInt(ticks / 1000 / 60 % 60)).Append(":")
-					   .Append(ticks / 1000 % 60	  <  10 ?			      "0"  : "").Append(String::FromInt(ticks / 1000 % 60     )).Append(".")
-					   .Append(ticks % 1000		  < 100 ? (ticks % 1000 < 10 ? "00" : "0") : "").Append(String::FromInt(ticks % 1000	      ));
+		String		 duration = BoCA::Utilities::ConvertTicksToTimestamp(ticks);
 		String		 speed	  = String::FromFloat(Math::Round(totalSeconds / (Float(ticks) / 1000.0) * 10.0) / 10.0);
 
 		if (!speed.Contains(".")) speed.Append(".0");
