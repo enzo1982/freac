@@ -457,6 +457,9 @@ namespace freac
 			/* Category Internal
 			 */
 			static const String	 InternalNotificationAvailableID;
+
+			static const String	 InternalDeleteAfterEncodingID;
+			static const String	 InternalShutdownAfterEncodingID;
 		private:
 			/* Singleton class, therefore private constructor/destructor
 			 */
@@ -467,9 +470,6 @@ namespace freac
 		public:
 			String			 resourcesPath;
 			String			 documentationPath;
-
-			Bool			 deleteAfterEncoding;
-			Bool			 shutdownAfterEncoding;
 
 			Bool			 enable_eUpdate;
 

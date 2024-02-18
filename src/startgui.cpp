@@ -1246,9 +1246,11 @@ Void freac::freacGUI::FillMenus()
 
 	/* Fill conversion menu.
 	 */
+	Bool	 deleteAfterEncoding = config->GetIntValue(Config::CategoryInternalID, Config::InternalDeleteAfterEncodingID, False);
+
 	i18n->SetContext("Menu::Encode");
 
-	entry = menu_encode->AddEntry(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start encoding (deleting original files)" : "Start encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png")));
+	entry = menu_encode->AddEntry(i18n->TranslateString(deleteAfterEncoding ? "Start encoding (deleting original files)" : "Start encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append(deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png")));
 	entry->onAction.Connect(&freacGUI::Convert, this);
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyE, mainWnd);
 
@@ -1313,10 +1315,10 @@ Void freac::freacGUI::FillMenus()
 	allowOverwriteMenuEntry = menu_encoder_options->AddEntry(i18n->TranslateString("Allow overwriting input file"), (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault));
 
 	menu_encoder_options->AddEntry();
-	menu_encoder_options->AddEntry(i18n->TranslateString("Delete original files after encoding"), &currentConfig->deleteAfterEncoding)->onAction.Connect(&freacGUI::ConfirmDeleteAfterEncoding, this);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Delete original files after encoding"), (Bool *) &config->GetPersistentIntValue(Config::CategoryInternalID, Config::InternalDeleteAfterEncodingID, False))->onAction.Connect(&freacGUI::ConfirmDeleteAfterEncoding, this);
 
 	menu_encoder_options->AddEntry();
-	menu_encoder_options->AddEntry(i18n->TranslateString("Shutdown after encoding"), &currentConfig->shutdownAfterEncoding);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Shutdown after encoding"), (Bool *) &config->GetPersistentIntValue(Config::CategoryInternalID, Config::InternalShutdownAfterEncodingID, False));
 
 	menu_encode->AddEntry();
 	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings-codec.png")), menu_encoder_options);
@@ -1436,9 +1438,9 @@ Void freac::freacGUI::FillMenus()
 		switch (i18n->IsActiveLanguageRightToLeft() ? 2 - i : i)
 		{
 			case 0:
-				entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
+				entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append(deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
 				entry->onAction.Connect(&freacGUI::Convert, this);
-				entry->SetTooltipText(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start the encoding process (deleting original files)" : "Start the encoding process"));
+				entry->SetTooltipText(i18n->TranslateString(deleteAfterEncoding ? "Start the encoding process (deleting original files)" : "Start the encoding process"));
 
 				break;
 			case 1:
@@ -1689,18 +1691,19 @@ Void freac::freacGUI::ConfirmDeleteAfterEncoding()
 
 	i18n->SetContext("Messages");
 
+	Bool	*deleteAfterEncoding = (Bool *) &config->GetPersistentIntValue(Config::CategoryInternalID, Config::InternalDeleteAfterEncodingID, False);
 	Bool	 keepOptionEnabled = config->GetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, Config::SettingsDeleteAfterEncodingDefault);
 
-	if (currentConfig->deleteAfterEncoding)
+	if (*deleteAfterEncoding)
 	{
 		MessageDlg	 messageBox(i18n->TranslateString("This option will remove the original files from your computer\nafter the encoding process!\n\nAre you sure you want to activate this function?"), i18n->TranslateString("Delete original files after encoding"), Message::Buttons::YesNo, Message::Icon::Question, i18n->TranslateString("Keep this option enabled even after restarting %1").Replace("%1", appName), &keepOptionEnabled);
 
 		messageBox.ShowDialog();
 
-		if (messageBox.GetButtonCode() == Message::Button::No) currentConfig->deleteAfterEncoding = False;
+		if (messageBox.GetButtonCode() == Message::Button::No) *deleteAfterEncoding = False;
 	}
 
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, currentConfig->deleteAfterEncoding && keepOptionEnabled);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, *deleteAfterEncoding && keepOptionEnabled);
 
 	FillMenus();
 }

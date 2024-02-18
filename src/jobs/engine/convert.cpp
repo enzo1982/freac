@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2024 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -289,6 +289,8 @@ Error freac::JobConvert::Perform()
 
 	Bool	 singlePlaylistFile	= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateSingleFileID, Config::PlaylistCreateSingleFileDefault);
 
+	Bool	 deleteAfterEncoding	= configuration->GetIntValue(Config::CategoryInternalID, Config::InternalDeleteAfterEncodingID, False);
+
 	/* Do not verify output if meh! encoder selected.
 	 */
 	if (selectedEncoderID == "meh-enc") verifyOutput = False;
@@ -571,7 +573,7 @@ Error freac::JobConvert::Perform()
 			{
 				/* Remove track from joblist.
 				 */
-				if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !enableConsole)
+				if ((removeProcessedTracks || deleteAfterEncoding) && !enableConsole)
 				{
 					BoCA::JobList		*joblist = BoCA::JobList::Get();
 					const Array<Track>	*tracks	 = joblist->getTrackList.Call();
@@ -591,7 +593,7 @@ Error freac::JobConvert::Perform()
 
 				/* Delete input file if requested.
 				 */
-				if (Config::Get()->deleteAfterEncoding && track.outputFile != track.fileName && !enableConsole)
+				if (deleteAfterEncoding && track.outputFile != track.fileName && !enableConsole)
 				{
 					/* Check if this was the last track depending on this input file.
 					 */
@@ -1778,6 +1780,8 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 
 	Bool	 logCompletePaths	= configuration->GetIntValue(Config::CategoryLoggingID, Config::LoggingLogCompletePathsID, Config::LoggingLogCompletePathsDefault);
 
+	Bool	 deleteAfterEncoding	= configuration->GetIntValue(Config::CategoryInternalID, Config::InternalDeleteAfterEncodingID, False);
+
 	/* Get encoder properties.
 	 */
 	Registry		&boca	 = Registry::Get();
@@ -1805,7 +1809,7 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 
 	if (enableParallel) log->Write(String("        SuperFast mode:   ").Append(enableSuperFast ? "Enabled" : "Disabled"));
 
-	if (Config::Get()->deleteAfterEncoding && !enableConsole)
+	if (deleteAfterEncoding && !enableConsole)
 	{
 		log->Write(NIL);
 		log->Write("    Remove source files:  Yes");

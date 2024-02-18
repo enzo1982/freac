@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2024 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -147,6 +147,8 @@ Int freac::ConvertWorker::Convert()
 	Bool	 writeToInputDirectory	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 	Bool	 allowOverwriteSource	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault);
 
+	Bool	 deleteAfterEncoding	= configuration->GetIntValue(Config::CategoryInternalID, Config::InternalDeleteAfterEncodingID, False);
+
 	/* Find encoder to use.
 	 */
 	String	 selectedEncoderID	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
@@ -242,9 +244,9 @@ Int freac::ConvertWorker::Convert()
 		 */
 		if (conversionStep == ConversionStepVerify)
 		{
-			if	(String(outFile).ToLower() != String(inFile).ToLower().Append(".temp"))			inFile = outFile;
-			else if (writeToInputDirectory && !allowOverwriteSource && !Config::Get()->deleteAfterEncoding) inFile = String(inFile).Append(".new");
-			else												inFile = String(outFile).Head(String(outFile).Length() - 5);
+			if	(String(outFile).ToLower() != String(inFile).ToLower().Append(".temp"))	 inFile = outFile;
+			else if (writeToInputDirectory && !allowOverwriteSource && !deleteAfterEncoding) inFile = String(inFile).Append(".new");
+			else										 inFile = String(outFile).Head(String(outFile).Length() - 5);
 
 			inFileName = inFile;
 
@@ -476,7 +478,7 @@ Int freac::ConvertWorker::Convert()
 		{
 			File	 targetOutFile = String(outFile).Head(String(outFile).Length() - 5);
 
-			if (!writeToInputDirectory || allowOverwriteSource || Config::Get()->deleteAfterEncoding || !targetOutFile.Exists())
+			if (!writeToInputDirectory || allowOverwriteSource || deleteAfterEncoding || !targetOutFile.Exists())
 			{
 				targetOutFile.Delete();
 				outFile.Move(targetOutFile);

@@ -470,14 +470,17 @@ const Bool	 freac::Config::LoggingLogCompletePathsDefault			= False;
  */
 const String	 freac::Config::InternalNotificationAvailableID			= "NotificationAvailable";
 
+const String	 freac::Config::InternalDeleteAfterEncodingID			= "DeleteAfterEncoding";
+const String	 freac::Config::InternalShutdownAfterEncodingID			= "ShutdownAfterEncoding";
+
 freac::Config::Config()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	/* Set default settings.
 	 */
-	deleteAfterEncoding	= config->GetIntValue(CategorySettingsID, SettingsDeleteAfterEncodingID, SettingsDeleteAfterEncodingDefault);
-	shutdownAfterEncoding	= False;
+	config->SetIntValue(CategoryInternalID, InternalDeleteAfterEncodingID, config->GetIntValue(CategorySettingsID, SettingsDeleteAfterEncodingID, SettingsDeleteAfterEncodingDefault));
+	config->SetIntValue(CategoryInternalID, InternalShutdownAfterEncodingID, False);
 
 	enable_eUpdate		= False;
 

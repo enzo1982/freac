@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2024 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -1514,7 +1514,9 @@ Void freac::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 
 	/* Shutdown system if requested.
 	 */
-	if (success && Job::GetPlannedJobs().Length() == 0 && Config::Get()->shutdownAfterEncoding) S::System::System::Shutdown();
+	BoCA::Config	*config	= BoCA::Config::Get();
+
+	if (success && Job::GetPlannedJobs().Length() == 0 && config->GetIntValue(Config::CategoryInternalID, Config::InternalShutdownAfterEncodingID, False)) S::System::System::Shutdown();
 }
 
 Void freac::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String &decoderName, const String &encoderName, ConversionStep mode)
