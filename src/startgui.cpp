@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2024 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -99,7 +99,7 @@ freac::freacGUI::freacGUI()
 		notification->onDiscRemove.Connect(&freacGUI::OnDiscRemove, this);
 	}
 
-	config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsNotificationAvailableID, False) = notification != NIL && notification->IsNotificationAvailable();
+	config->GetPersistentIntValue(Config::CategoryInternalID, Config::InternalNotificationAvailableID, False) = notification != NIL && notification->IsNotificationAvailable();
 
 	/* Create player.
 	 */
@@ -587,6 +587,10 @@ Void freac::freacGUI::OnChangeConfiguration()
 								  Config::SettingsLanguageID,
 								  Config::SettingsLanguageDefault)) SetLanguage();
 	else											    FillMenus();
+
+	/* Configure disc insert/removal notification availability.
+	 */
+	config->GetPersistentIntValue(Config::CategoryInternalID, Config::InternalNotificationAvailableID, False) = notification != NIL && notification->IsNotificationAvailable();
 
 	/* Notify components of configuration change.
 	 */

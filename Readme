@@ -161,7 +161,7 @@ Requirements
 History
 -------
 
-	Version 1.1.8 (January 2024)
+	Version 1.1.8 (February 2024)
 
 		- Improvements
 
@@ -174,6 +174,7 @@ History
 			- fixed crash reading CD contents on macOS Ventura
 			- fixed playback not working on some systems/configurations
 			- fixed reading/writing of unencoded string fields from/to ID3v2 tags
+			- fixed ripping automation options not being available after switching configuration
 
 		- Updated codecs
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2024 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -34,6 +34,7 @@ namespace freac
 			static const String	 CategoryVerificationID;
 			static const String	 CategoryProcessingID;
 			static const String	 CategoryLoggingID;
+			static const String	 CategoryInternalID;
 
 			/* Category Settings
 			 */
@@ -164,8 +165,6 @@ namespace freac
 
 			static const String	 SettingsDeleteAfterEncodingID;
 			static const Bool	 SettingsDeleteAfterEncodingDefault;
-
-			static const String	 SettingsNotificationAvailableID;
 
 			/* Category Dialogs
 			 */
@@ -454,6 +453,10 @@ namespace freac
 			 */
 			static const String	 LoggingLogCompletePathsID;
 			static const Bool	 LoggingLogCompletePathsDefault;
+
+			/* Category Internal
+			 */
+			static const String	 InternalNotificationAvailableID;
 		private:
 			/* Singleton class, therefore private constructor/destructor
 			 */

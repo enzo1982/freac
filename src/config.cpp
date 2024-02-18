@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2024 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -33,6 +33,7 @@ const String	 freac::Config::CategoryFreedbID				= "freedb";
 const String	 freac::Config::CategoryVerificationID				= "Verification";
 const String	 freac::Config::CategoryProcessingID				= "Processing";
 const String	 freac::Config::CategoryLoggingID				= "Logging";
+const String	 freac::Config::CategoryInternalID				= "Internal";
 
 /* Category Settings
  */
@@ -176,8 +177,6 @@ const String	 freac::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJo
 
 const String	 freac::Config::SettingsDeleteAfterEncodingID			= "DeleteAfterEncoding";
 const Bool	 freac::Config::SettingsDeleteAfterEncodingDefault		= False;
-
-const String	 freac::Config::SettingsNotificationAvailableID			= "NotificationAvailable";
 
 /* Category Dialogs
  */
@@ -466,6 +465,10 @@ const Bool	 freac::Config::FreedbDisplayNotFoundDefault			= True;
  */
 const String	 freac::Config::LoggingLogCompletePathsID			= "LogCompletePaths";
 const Bool	 freac::Config::LoggingLogCompletePathsDefault			= False;
+
+/* Category Internal
+ */
+const String	 freac::Config::InternalNotificationAvailableID			= "NotificationAvailable";
 
 freac::Config::Config()
 {
