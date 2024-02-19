@@ -171,6 +171,8 @@ Geschichte
 		- Bug fixes
 
 			- Absturz beim Einlesen von CD-Inhalten unter macOS Ventura behoben
+			- Absturz beim Versuch, nicht-Stereo-Daten mit FDK-AAC in HEv2-AAC zu kodieren, behoben
+			- Erzeugung ungültiger Ausgabedateien beim Versuch, nicht-Stereo-Daten mit Core Audio in ELDv2-AAC zu kodieren, behoben
 			- Problem mit der Audiowiedergabe auf einigen Systemen/Konfigurationen behoben
 			- Problem beim Lesen/Schreiben von unkodierten String-Feldern aus/in ID3v2-Tags behoben
 			- Problem mit Optionen zum Löschen von Dateien und zum Herunterfahren nach der Kodierung beim Wechsel der Konfiguration behoben

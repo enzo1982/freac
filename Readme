@@ -172,6 +172,8 @@ History
 		- Bug fixes
 
 			- fixed crash reading CD contents on macOS Ventura
+			- fixed crash trying to encode non-stereo data in HEv2 AAC using FDK-AAC
+			- fixed creation of invalid output files trying to encode non-stereo data in ELDv2 AAC using Core Audio
 			- fixed playback not working on some systems/configurations
 			- fixed reading/writing of unencoded string fields from/to ID3v2 tags
 			- fixed delete/shutdown after encoding options not changing when switching configuration
