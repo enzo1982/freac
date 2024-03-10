@@ -629,6 +629,8 @@ for package in ${packages[@]}; do
     elif [[ $uname == *MINGW* ]] && [[ $arm64 == true ]]; then
       configure_exports="ARM_DOTPROD_INTR_CFLAGS=\"$CFLAGS\""
       configure_flags="$configure_flags --disable-rtcd"
+    elif [[ $arm == true ]]; then
+      configure_flags="$configure_flags --disable-intrinsics --disable-rtcd"
     fi
     build $opus_location .libs/libopus$sharedinfix.$sharedext Opus.$sharedext
 

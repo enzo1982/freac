@@ -174,10 +174,16 @@ parts:
   libopus:
     source: https://ftp.osuosl.org/pub/xiph/releases/opus/opus-1.5.1.tar.gz
     source-checksum: sha256/b84610959b8d417b611aa12a22565e0a3732097c6389d19098d844543e340f85
-    plugin: autotools
-    autotools-configure-parameters: [ --prefix=/usr, --enable-float-approx, --enable-osce ]
+    plugin: make
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
+    override-build: |
+      if [ "$SNAP_ARCH" = "armhf" ]; then
+        ./configure --prefix=/usr --enable-float-approx --enable-osce --disable-intrinsics --disable-rtcd
+      else
+        ./configure --prefix=/usr --enable-float-approx --enable-osce
+      fi
+      snapcraftctl build
     prime:
       - usr/lib/libopus.so*
 
