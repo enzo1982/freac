@@ -161,7 +161,7 @@ Requirements
 History
 -------
 
-	Version 1.1.8 (February 2024)
+	Version 1.1.8 (March 2024)
 
 		- Improvements
 
@@ -183,7 +183,7 @@ History
 		- Updated codecs
 
 			- updated FFmpeg to version 6.1.1
-			- updated Opus to version 1.4
+			- updated Opus to version 1.5.1 with Opus Speech Coding Enhancement
 			- updated Monkey's Audio to version 10.39
 			- updated FLAC to version 1.4.3
 			- updated MP4v2 to version 2.1.3

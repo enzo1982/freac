@@ -167,7 +167,7 @@ mac_version=10.39
 mp4v2_version=2.1.3
 mpg123_version=1.32.5
 musepack_version=4.75
-opus_version=1.4
+opus_version=1.5.1
 rnnoise_version=9acc1e5
 rubberband_version=1.8.2
 speex_version=1.2.1
@@ -623,9 +623,12 @@ for package in ${packages[@]}; do
     if [[ $x86 == true ]]; then
       export CFLAGS="$CFLAGS -mfpmath=sse"
     fi
-    configure_flags="--enable-float-approx --disable-hardening"
+    configure_flags="--enable-float-approx --enable-osce --disable-hardening"
     if [[ $uname == Darwin ]] && [[ $x86_64 != true ]]; then
       configure_flags="$configure_flags --disable-intrinsics"
+    elif [[ $uname == *MINGW* ]] && [[ $arm64 == true ]]; then
+      configure_exports="ARM_DOTPROD_INTR_CFLAGS=\"$CFLAGS\""
+      configure_flags="$configure_flags --disable-rtcd"
     fi
     build $opus_location .libs/libopus$sharedinfix.$sharedext Opus.$sharedext
 
