@@ -8,15 +8,15 @@
     <property name="encoding">UTF-8</property>
     <property name="template">setup.xml</property>
     <property name="author">Patriccollu di Santa Maria è Sichè</property>
-    <property name="url">https://github.com/Patriccollu/Lingua_Corsa-Infurmatica/tree/ceppu/Prughjetti/fre:ac</property>
+    <property name="url">https://github.com/Patriccollu/Lingua_Corsa-Infurmatica#readme</property>
   </info>
   <data>
     <entry id="100" string="&lt;- Back">&lt;- Precedente</entry>
     <entry id="101" string="Next -&gt;">Seguente -&gt;</entry>
     <entry id="102" string="Cancel">Abbandunà</entry>
     <entry id="103" string="Finish">Piantà</entry>
-    <entry id="104" string="Yes">Iè</entry>
-    <entry id="105" string="No">Innò</entry>
+    <entry id="104" string="Yes">Sì</entry>
+    <entry id="105" string="No">Nò</entry>
 
     <entry id="200" string="Current file progress:">Prugressione attuale di schedariu :</entry>
     <entry id="201" string="Total installation progress:">Prugressione tutale di schedariu :</entry>
@@ -38,7 +38,7 @@
     <entry id="1" string="%LONGNAME% Setup">Assistente d’installazione di %LONGNAME%</entry>
     <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">Benvenuta in l’assistente d’installazione di %NAME%&#10;&#10;&#10;St’azzione installerà %NAME% %VERSION% nant’à l’urdinatore.&#10;&#10;Hè ricumandatu di chjode tutte l’altre appiecazioni chì funziuneghjanu&#10;nanzu di cuntinuà. Què aiuterà à impedisce certi cunflitti durante&#10;l’installazione.&#10;&#10;Sceglie Seguente per cuntinuà, o Abbandunà per compie l’assistente.</entry>
     <entry id="3" string="Setup - License Agreement">Assistente - Cuntrattu d’utilizazione</entry>
-    <entry id="4" string="Please read the following license agreement. Click Yes to accept&#10;the agreement, or No to cancel the Setup.">Ci vole à leghje u cuntrattu di licenza chì seguita. Cliccu Iè per accettallu,&#10;o Innò per abbandunà l’installazione.</entry>
+    <entry id="4" string="Please read the following license agreement. Click Yes to accept&#10;the agreement, or No to cancel the Setup.">Ci vole à leghje u cuntrattu di licenza chì seguita. Un cliccu nant’à Sì per accettallu,&#10;o nant’à Nò per abbandunà l’installazione.</entry>
     <entry id="5" string="Setup - Destination Directory">Assistente - Cartulare di destinazione</entry>
     <entry id="6" string="Setup will install %NAME% in the following folder.&#10;&#10;To install into a different folder, click Browse, and select another folder.">L’assistente hà da installà %NAME% in quellu cartulare.&#10;&#10;Per installallu in un cartulare sfarente, sciglite Navigà è selezziunate&#10;un altru cartulare.</entry>
     <entry id="7" string="Setup - Components to install">Assistente - Cumpunenti à installà</entry>
