@@ -808,6 +808,11 @@
 	<entry id="22005" string="Error handling">Грешка у управљању</entry>
 	<entry id="22006" string="Ignore errors during cue sheet processing">Игнориши грешке у току обраде &quot;cue&quot; листова</entry>
       </section>
+
+      <section name="Opus">
+	<entry id="23000" string="Quality">Квалитет</entry>
+	<entry id="23001" string="Complexity">Сложеност</entry>
+      </section>
     </section>
 
     <section name="Encoders">

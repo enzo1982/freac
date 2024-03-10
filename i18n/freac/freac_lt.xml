@@ -763,6 +763,11 @@
 	<entry id="22005" string="Error handling">Klaidų apdorojimas</entry>
 	<entry id="22006" string="Ignore errors during cue sheet processing">Nepaisyti klaidų apdorojant užuominų lakštus</entry>
       </section>
+
+      <section name="Opus">
+	<entry id="23000" string="Quality">Kokybė</entry>
+	<entry id="23001" string="Complexity">Sudėtingumas</entry>
+      </section>
     </section>
 
     <section name="Encoders">

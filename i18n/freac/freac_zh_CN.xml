@@ -809,6 +809,11 @@
 	<entry id="22005" string="Error handling">错误处理</entry>
 	<entry id="22006" string="Ignore errors during cue sheet processing">忽略处理 cue 表单文件时发生的错误</entry>
       </section>
+
+      <section name="Opus">
+	<entry id="23000" string="Quality">品质</entry>
+	<entry id="23001" string="Complexity">复杂性</entry>
+      </section>
     </section>
 
     <section name="Encoders">

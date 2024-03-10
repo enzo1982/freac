@@ -808,6 +808,11 @@
 	<entry id="22005" string="Error handling">Χειρισμός λαθών</entry>
 	<entry id="22006" string="Ignore errors during cue sheet processing">Να αγνοούνται τα λάθη κατά την επεξεργασία του cue sheet</entry>
       </section>
+
+      <section name="Opus">
+	<entry id="23000" string="Quality">Ποιότητα</entry>
+	<entry id="23001" string="Complexity">Πολυπλοκότητα</entry>
+      </section>
     </section>
 
     <section name="Encoders">

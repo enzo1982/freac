@@ -739,6 +739,11 @@
 	<entry id="22005" string="Error handling">رسيدگي به خطا</entry>
 	<entry id="22006" string="Ignore errors during cue sheet processing">به هنگام پردازش فايل هاي لاگ خطاها را ناديده بگير</entry>
       </section>
+
+      <section name="Opus">
+	<entry id="23000" string="Quality">کيفيت</entry>
+	<entry id="23001" string="Complexity">پيچيدگي</entry>
+      </section>
     </section>
 
     <section name="Encoders">

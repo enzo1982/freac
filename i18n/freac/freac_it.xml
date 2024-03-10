@@ -808,6 +808,11 @@
 	<entry id="22005" string="Error handling">Gestione errore</entry>
 	<entry id="22006" string="Ignore errors during cue sheet processing">Ignora errori durante l'elaborazione del cue sheet</entry>
       </section>
+
+      <section name="Opus">
+	<entry id="23000" string="Quality">Qualità</entry>
+	<entry id="23001" string="Complexity">Complessità</entry>
+      </section>
     </section>
 
     <section name="Encoders">
