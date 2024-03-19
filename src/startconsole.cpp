@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2024 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -803,6 +803,8 @@ Bool freac::freacCommandline::ParamHasArguments(const String &arg, Bool encoderO
 
 	foreach (Parameter *parameter, parameters)
 	{
+		if (parameter->GetHidden()) continue;
+
 		ParameterType		 type	 = parameter->GetType();
 		String			 spec	 = parameter->GetArgument();
 		const Array<Option *>	&options = parameter->GetOptions();
@@ -1076,6 +1078,8 @@ Bool freac::freacCommandline::SetEncoderDefaults(BoCA::Config *config, Bool user
 
 	foreach (Parameter *parameter, parameters)
 	{
+		if (parameter->GetHidden()) continue;
+
 		ParameterType		 type	 = parameter->GetType();
 		String			 name	 = parameter->GetName();
 		String			 spec	 = parameter->GetArgument();
@@ -1290,6 +1294,8 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 
 			foreach (Parameter *parameter, parameters)
 			{
+				if (parameter->GetHidden()) continue;
+
 				String	 spec = parameter->GetArgument().Replace("%VALUE", "<val>");
 
 				maxTabs = Math::Max(maxTabs, Math::Ceil((spec.Length() + 1) / 8.0));
@@ -1299,6 +1305,8 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 			 */
 			foreach (Parameter *parameter, parameters)
 			{
+				if (parameter->GetHidden()) continue;
+
 				ParameterType		 type	 = parameter->GetType();
 				String			 name	 = parameter->GetName();
 				String			 spec	 = parameter->GetArgument().Replace("%VALUE", "<val>");
