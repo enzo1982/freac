@@ -1091,7 +1091,7 @@
 	<entry id="50300" string="Basic controls">Baisbediening</entry>
 	<entry id="50301" string="Tempo">Tempo</entry>
 	<entry id="50302" string="Pitch">Toonhoogte</entry>
-	<entry id="50303" string="%1 Semitones">%1 semitonen</entry>
+	<entry id="50303" string="Semitones">Semitonen</entry>
 	<entry id="50304" string="Advanced options">Geavanceerde opties</entry>
 	<entry id="50305" string="Transient detection">Transient-detectie</entry>
 	<entry id="50306" string="Compound">Compound</entry>

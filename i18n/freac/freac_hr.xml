@@ -1054,7 +1054,7 @@
       <section name="RubberBand">
 	<entry id="50300" string="Basic controls">Osnovne kontrole</entry>
 	<entry id="50301" string="Tempo">Tempo</entry>
-	<entry id="50303" string="%1 Semitones">%1 Polutonova</entry>
+	<entry id="50303" string="Semitones">Polutonovi</entry>
 	<entry id="50304" string="Advanced options">Napredne opcije</entry>
       </section>
 

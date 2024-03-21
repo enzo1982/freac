@@ -1089,7 +1089,7 @@
 	<entry id="50300" string="Basic controls">Основные настройки</entry>
 	<entry id="50301" string="Tempo">Темп</entry>
 	<entry id="50302" string="Pitch">Высота</entry>
-	<entry id="50303" string="%1 Semitones">Полутона %1</entry>
+	<entry id="50303" string="Semitones">Полутона</entry>
 	<entry id="50304" string="Advanced options">Расширенные настройки</entry>
 	<entry id="50305" string="Transient detection">Обнаружение переходных процессов</entry>
 	<entry id="50306" string="Compound">Объединение</entry>

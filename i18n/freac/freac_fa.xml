@@ -1061,7 +1061,7 @@
 	<entry id="50300" string="Basic controls">تنظيمات ابتدايي</entry>
 	<entry id="50301" string="Tempo">ضرب آهنگ</entry>
 	<entry id="50302" string="Pitch">زيرو بم صدا</entry>
-	<entry id="50303" string="%1 Semitones">%1 نيم گام</entry>
+	<entry id="50303" string="Semitones">نيم گام</entry>
 	<entry id="50304" string="Advanced options">تنظيمات پيشرفته</entry>
 	<entry id="50305" string="Transient detection">تشخيص کوتاه</entry>
 	<entry id="50306" string="Compound">مرکب</entry>

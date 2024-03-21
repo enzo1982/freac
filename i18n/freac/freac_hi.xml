@@ -1065,7 +1065,7 @@
 	<entry id="50300" string="Basic controls">बुनियादी नियंत्रण</entry>
 	<entry id="50301" string="Tempo">गति</entry>
 	<entry id="50302" string="Pitch">पिच</entry>
-	<entry id="50303" string="%1 Semitones">%1 सेमीटोन्स</entry>
+	<entry id="50303" string="Semitones">सेमीटोन्स</entry>
 	<entry id="50304" string="Advanced options">उन्नत विकल्प</entry>
 	<entry id="50305" string="Transient detection">क्षणिक पहचान</entry>
 	<entry id="50306" string="Compound">यौगिक</entry>

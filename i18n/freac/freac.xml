@@ -1137,7 +1137,7 @@
 	<entry id="50300" string="Basic controls"/>
 	<entry id="50301" string="Tempo"/>
 	<entry id="50302" string="Pitch"/>
-	<entry id="50303" string="%1 Semitones"/>
+	<entry id="50303" string="Semitones"/>
 	<entry id="50304" string="Advanced options"/>
 	<entry id="50305" string="Transient detection"/>
 	<entry id="50306" string="Compound"/>
@@ -1165,6 +1165,11 @@
 	<entry id="50328" string="Stereo processing"/>
 	<entry id="50329" string="Separate"/>
 	<entry id="50330" string="Combined"/>
+	<entry id="50331" string="Frequency ratio"/>
+	<entry id="50332" string="Hz"/>
+	<entry id="50333" string=":"/>
+	<entry id="50334" string="="/>
+	<entry id="50335" string="invalid"/>
       </section>
 
       <section name="RNNoise">

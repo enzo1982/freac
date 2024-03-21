@@ -1137,7 +1137,7 @@
 	<entry id="50300" string="Basic controls">Основне контроле</entry>
 	<entry id="50301" string="Tempo">Темпо</entry>
 	<entry id="50302" string="Pitch">Пич</entry>
-	<entry id="50303" string="%1 Semitones">%1 Полутонови</entry>
+	<entry id="50303" string="Semitones">Полутонови</entry>
 	<entry id="50304" string="Advanced options">Напредне опције</entry>
 	<entry id="50305" string="Transient detection">Препознавање пролазног времена</entry>
 	<entry id="50306" string="Compound">Сједињено</entry>

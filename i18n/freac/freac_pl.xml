@@ -1137,7 +1137,7 @@
 	<entry id="50300" string="Basic controls">Ustawienia podstawowe</entry>
 	<entry id="50301" string="Tempo">Tempo</entry>
 	<entry id="50302" string="Pitch">Tonacja</entry>
-	<entry id="50303" string="%1 Semitones">%1 półtonów</entry>
+	<entry id="50303" string="Semitones">Półtonów</entry>
 	<entry id="50304" string="Advanced options">Opcje zaawansowane</entry>
 	<entry id="50305" string="Transient detection">Wykrywanie transjentu</entry>
 	<entry id="50306" string="Compound">złożone</entry>

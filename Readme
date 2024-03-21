@@ -167,6 +167,7 @@ History
 
 			- moved encoding to separate thread for improved performance
 			- made the configuration dialog save the previously opened page during a session
+			- added support for setting a frequency ratio for pitch adjustment in Rubberband
 			- added support for setting decoder complexity when using Opus 1.5 or later
 			- added support for reading UTF-16 encoded cue sheets
 

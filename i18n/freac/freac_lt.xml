@@ -1088,7 +1088,7 @@
 	<entry id="50300" string="Basic controls">Pagrindiniai valdikliai</entry>
 	<entry id="50301" string="Tempo">Tempas</entry>
 	<entry id="50302" string="Pitch">Garso aukštis</entry>
-	<entry id="50303" string="%1 Semitones">%1 pustoniai</entry>
+	<entry id="50303" string="Semitones">Pustoniai</entry>
 	<entry id="50304" string="Advanced options">Išplėstinės pasirinktys</entry>
 	<entry id="50305" string="Transient detection">Perėjimų aptikimas</entry>
 	<entry id="50306" string="Compound">Sudėtinis</entry>

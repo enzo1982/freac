@@ -1091,7 +1091,7 @@
 	<entry id="50300" string="Basic controls">Controale de baza</entry>
 	<entry id="50301" string="Tempo">Timpul</entry>
 	<entry id="50302" string="Pitch">Pasul</entry>
-	<entry id="50303" string="%1 Semitones">%1 Semitonuri</entry>
+	<entry id="50303" string="Semitones">Semitonuri</entry>
 	<entry id="50304" string="Advanced options">Optiuni avansate</entry>
 	<entry id="50305" string="Transient detection">detectare tranzitorie</entry>
 	<entry id="50306" string="Compound">Compus</entry>

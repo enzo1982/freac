@@ -1138,7 +1138,7 @@
 	<entry id="50300" string="Basic controls">基本控制</entry>
 	<entry id="50301" string="Tempo">节奏</entry>
 	<entry id="50302" string="Pitch">音调</entry>
-	<entry id="50303" string="%1 Semitones">%1 半音</entry>
+	<entry id="50303" string="Semitones">半音</entry>
 	<entry id="50304" string="Advanced options">高级选项</entry>
 	<entry id="50305" string="Transient detection">过渡检测</entry>
 	<entry id="50306" string="Compound">合成</entry>

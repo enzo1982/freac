@@ -1137,7 +1137,7 @@
 	<entry id="50300" string="Basic controls">Controlli di base</entry>
 	<entry id="50301" string="Tempo">Tempo</entry>
 	<entry id="50302" string="Pitch">Tonalità</entry>
-	<entry id="50303" string="%1 Semitones">%1 semitoni</entry>
+	<entry id="50303" string="Semitones">Semitoni</entry>
 	<entry id="50304" string="Advanced options">Opzioni avanzate</entry>
 	<entry id="50305" string="Transient detection">Rilevamento transiente</entry>
 	<entry id="50306" string="Compound">Composto</entry>

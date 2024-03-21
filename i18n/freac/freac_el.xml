@@ -1137,7 +1137,7 @@
 	<entry id="50300" string="Basic controls">Βασικοί χειρισμοί</entry>
 	<entry id="50301" string="Tempo">Τέμπο</entry>
 	<entry id="50302" string="Pitch">Ύψος</entry>
-	<entry id="50303" string="%1 Semitones">%1 Ημιτόνια</entry>
+	<entry id="50303" string="Semitones">Ημιτόνα</entry>
 	<entry id="50304" string="Advanced options">Προχωρημένες επιλογές</entry>
 	<entry id="50305" string="Transient detection">Ανίχνευση μεταβατικών</entry>
 	<entry id="50306" string="Compound">Συνδυαστική</entry>

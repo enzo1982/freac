@@ -1137,7 +1137,7 @@
 	<entry id="50300" string="Basic controls">Grundläggande kontroller</entry>
 	<entry id="50301" string="Tempo">Tempo</entry>
 	<entry id="50302" string="Pitch">Tonhöjd</entry>
-	<entry id="50303" string="%1 Semitones">%1 halvtoner</entry>
+	<entry id="50303" string="Semitones">Halvtoner</entry>
 	<entry id="50304" string="Advanced options">Avancerade inställningar</entry>
 	<entry id="50305" string="Transient detection">Övergående identifiering</entry>
 	<entry id="50306" string="Compound">Sammansatt</entry>

@@ -1137,7 +1137,7 @@
 	<entry id="50300" string="Basic controls">Osnovne kontrole</entry>
 	<entry id="50301" string="Tempo">Tempo</entry>
 	<entry id="50302" string="Pitch">Pitch</entry>
-	<entry id="50303" string="%1 Semitones">%1 Polutonovi</entry>
+	<entry id="50303" string="Semitones">Polutonovi</entry>
 	<entry id="50304" string="Advanced options">Napredne opcije</entry>
 	<entry id="50305" string="Transient detection">Prepoznavanje prolaznog vremena</entry>
 	<entry id="50306" string="Compound">Sjedinjeno</entry>

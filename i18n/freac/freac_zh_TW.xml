@@ -1088,7 +1088,7 @@
 	<entry id="50300" string="Basic controls">基本設定</entry>
 	<entry id="50301" string="Tempo">節奏</entry>
 	<entry id="50302" string="Pitch">音高</entry>
-	<entry id="50303" string="%1 Semitones">%1 半音</entry>
+	<entry id="50303" string="Semitones">半音</entry>
 	<entry id="50304" string="Advanced options">進階選項</entry>
 	<entry id="50305" string="Transient detection">暫態偵測</entry>
 	<entry id="50306" string="Compound">複合</entry>

@@ -1157,7 +1157,7 @@ Information about Corsican localization:
 	<entry id="50300" string="Basic controls">Cuntrolli di basa</entry>
 	<entry id="50301" string="Tempo">Tempo</entry>
 	<entry id="50302" string="Pitch">Tunalità</entry>
-	<entry id="50303" string="%1 Semitones">%1 semitoni</entry>
+	<entry id="50303" string="Semitones">Semitoni</entry>
 	<entry id="50304" string="Advanced options">Ozzioni esperte</entry>
 	<entry id="50305" string="Transient detection">Avventata transitoria</entry>
 	<entry id="50306" string="Compound">Cumpostu</entry>
