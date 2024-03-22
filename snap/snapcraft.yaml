@@ -98,8 +98,8 @@ parts:
       - usr/lib/libFLAC.so*
 
   libmac:
-    source: https://freac.org/patches/MAC_1053_SDK.zip
-    source-checksum: sha256/d136b0bf7c811d96adad816dc468f593931351c1cb37e403505f184f691f52a5
+    source: https://freac.org/patches/MAC_1060_SDK.zip
+    source-checksum: sha256/0c78df0f745ef763981fc8191eb262ba482326294f8b23f73616286f3c837f1e
     source-subdir: .
     plugin: cmake
     cmake-parameters: [ -DCMAKE_INSTALL_PREFIX=/usr ]
