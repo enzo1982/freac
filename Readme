@@ -184,7 +184,7 @@ History
 
 		- Updated codecs
 
-			- updated FFmpeg to version 6.1.1
+			- updated FFmpeg to version 7.0
 			- updated Opus to version 1.5.2 with Opus Speech Coding Enhancement
 			- updated Monkey's Audio to version 10.60
 			- updated WavPack to version 5.7.0
