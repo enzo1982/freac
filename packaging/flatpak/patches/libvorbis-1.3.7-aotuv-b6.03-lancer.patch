@@ -1,6 +1,6 @@
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/configure libvorbis-1.3.7-aotuv-b6.03-lancer/configure
---- libvorbis-1.3.7-aotuv-b6.03/configure	2020-07-04 09:20:13.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/configure	2022-02-07 23:51:17.457920700 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/configure	2020-07-04 08:20:13.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/configure	2024-09-29 18:44:19.368633500 +0200
 @@ -12717,10 +12717,10 @@
  $as_echo "$GCC_VERSION" >&6; }
  	case $host in
@@ -69,8 +69,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/configure libvorbis-1.3.7-aotuv-b6.03-lan
          esac
  
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/configure.ac libvorbis-1.3.7-aotuv-b6.03-lancer/configure.ac
---- libvorbis-1.3.7-aotuv-b6.03/configure.ac	2020-07-04 04:52:28.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/configure.ac	2022-02-07 23:51:17.489172700 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/configure.ac	2020-07-04 03:52:28.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/configure.ac	2024-09-29 18:44:19.391123600 +0200
 @@ -132,10 +132,10 @@
  	AC_MSG_RESULT([$GCC_VERSION])
  	case $host in
@@ -139,8 +139,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/configure.ac libvorbis-1.3.7-aotuv-b6.03-
          esac
  
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/CMakeLists.txt libvorbis-1.3.7-aotuv-b6.03-lancer/lib/CMakeLists.txt
---- libvorbis-1.3.7-aotuv-b6.03/lib/CMakeLists.txt	2020-04-15 19:20:52.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/CMakeLists.txt	2022-02-07 23:51:17.504775800 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/CMakeLists.txt	2020-04-15 18:20:52.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/CMakeLists.txt	2024-09-29 18:44:19.395544700 +0200
 @@ -24,6 +24,7 @@
      codec_internal.h
      backends.h
@@ -159,8 +159,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/CMakeLists.txt libvorbis-1.3.7-aotuv-
  
  set(VORBISFILE_SOURCES
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/Makefile.am libvorbis-1.3.7-aotuv-b6.03-lancer/lib/Makefile.am
---- libvorbis-1.3.7-aotuv-b6.03/lib/Makefile.am	2020-03-23 16:04:43.000000000 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/Makefile.am	2022-02-07 23:51:17.504775800 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/Makefile.am	2020-03-23 15:04:43.000000000 +0100
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/Makefile.am	2024-09-29 18:44:19.397496300 +0200
 @@ -8,13 +8,13 @@
  
  libvorbis_la_SOURCES = mdct.c smallft.c block.c envelope.c window.c lsp.c \
@@ -187,8 +187,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/Makefile.am libvorbis-1.3.7-aotuv-b6.
  test_sharedbook_LDADD = @VORBIS_LIBS@
  
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/Makefile.in libvorbis-1.3.7-aotuv-b6.03-lancer/lib/Makefile.in
---- libvorbis-1.3.7-aotuv-b6.03/lib/Makefile.in	2020-07-04 09:20:16.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/Makefile.in	2022-02-07 23:51:17.511296200 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/Makefile.in	2020-07-04 08:20:16.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/Makefile.in	2024-09-29 18:44:19.402364100 +0200
 @@ -140,7 +140,7 @@
  am_libvorbis_la_OBJECTS = mdct.lo smallft.lo block.lo envelope.lo \
  	window.lo lsp.lo lpc.lo analysis.lo synthesis.lo psy.lo \
@@ -349,8 +349,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/Makefile.in libvorbis-1.3.7-aotuv-b6.
  maintainer-clean-am: distclean-am maintainer-clean-generic
  
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/block.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/block.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/block.c	2022-02-07 23:49:38.007709400 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/block.c	2022-02-07 23:51:17.526941900 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/block.c	2024-09-29 18:43:04.548667600 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/block.c	2024-09-29 18:44:19.410686100 +0200
 @@ -29,6 +29,9 @@
  #include "lpc.h"
  #include "registry.h"
@@ -628,8 +628,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/block.c libvorbis-1.3.7-aotuv-b6.03-l
      }
  
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/codebook.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/codebook.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/codebook.c	2020-07-03 19:22:20.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/codebook.c	2022-02-07 23:51:17.542565300 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/codebook.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/codebook.c	2024-09-29 18:57:16.502248000 +0200
 @@ -23,6 +23,135 @@
  #include "scales.h"
  #include "misc.h"
@@ -688,7 +688,7 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/codebook.c libvorbis-1.3.7-aotuv-b6.0
 +
 +#if	!defined(_USRDLL)
 +/* Takes only up to 32 bits. */
-+STIN vorbis_oggpack_write(oggpack_buffer *b, unsigned long value, int bits)
++STIN void vorbis_oggpack_write(oggpack_buffer *b, unsigned long value, int bits)
 +{
 +	uint32_t lvalue, hvalue;
 +	if(b->endbyte+4>=b->storage){
@@ -1191,7 +1191,7 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/codebook.c libvorbis-1.3.7-aotuv-b6.0
  }
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/cpu.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/cpu.c
 --- libvorbis-1.3.7-aotuv-b6.03/lib/cpu.c	1970-01-01 01:00:00.000000000 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/cpu.c	2022-02-07 23:51:17.542565300 +0100
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/cpu.c	2024-09-29 18:44:19.423226000 +0200
 @@ -0,0 +1,62 @@
 +/********************************************************************
 + *                                                                  *
@@ -1256,8 +1256,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/cpu.c libvorbis-1.3.7-aotuv-b6.03-lan
 +}
 +#endif
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/envelope.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/envelope.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/envelope.c	2022-02-07 23:49:38.029873400 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/envelope.c	2022-02-07 23:51:17.558187400 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/envelope.c	2024-09-29 18:43:04.556992800 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/envelope.c	2024-09-29 18:44:19.427658500 +0200
 @@ -27,6 +27,9 @@
  #include "envelope.h"
  #include "mdct.h"
@@ -1666,8 +1666,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/envelope.c libvorbis-1.3.7-aotuv-b6.0
      acc*=bands[j].total;
  
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/floor1.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/floor1.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/floor1.c	2020-07-03 19:22:20.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/floor1.c	2022-02-07 23:51:17.558187400 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/floor1.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/floor1.c	2024-09-29 18:44:19.435979500 +0200
 @@ -24,6 +24,9 @@
  #include "codebook.h"
  #include "misc.h"
@@ -1709,8 +1709,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/floor1.c libvorbis-1.3.7-aotuv-b6.03-
  
  static const float FLOOR1_fromdB_LOOKUP[256]={
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/info.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/info.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/info.c	2022-02-07 23:49:38.029873400 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/info.c	2022-02-07 23:51:17.573811500 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/info.c	2024-09-29 18:43:04.567142800 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/info.c	2024-09-29 18:44:19.444772900 +0200
 @@ -28,9 +28,20 @@
  #include "psy.h"
  #include "misc.h"
@@ -1817,8 +1817,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/info.c libvorbis-1.3.7-aotuv-b6.03-la
  
    return(0);
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/mapping0.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/mapping0.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/mapping0.c	2022-02-07 23:49:38.045518600 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/mapping0.c	2022-02-07 23:51:17.589434900 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/mapping0.c	2024-09-29 18:43:04.573414400 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/mapping0.c	2024-09-29 18:44:19.455047100 +0200
 @@ -26,6 +26,10 @@
  #include "registry.h"
  #include "psy.h"
@@ -2476,8 +2476,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/mapping0.c libvorbis-1.3.7-aotuv-b6.0
  
    /* compute and apply spectral envelope */
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/mdct.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/mdct.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/mdct.c	2020-07-03 19:22:20.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/mdct.c	2022-02-07 23:51:17.605041300 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/mdct.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/mdct.c	2024-09-29 18:44:19.465318700 +0200
 @@ -44,6 +44,9 @@
  #include "mdct.h"
  #include "os.h"
@@ -3928,8 +3928,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/mdct.c libvorbis-1.3.7-aotuv-b6.03-la
  }
 +#endif														/* SSE Optimize */
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/mdct.h libvorbis-1.3.7-aotuv-b6.03-lancer/lib/mdct.h
---- libvorbis-1.3.7-aotuv-b6.03/lib/mdct.h	2020-07-03 19:22:20.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/mdct.h	2022-02-07 23:51:17.611545200 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/mdct.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/mdct.h	2024-09-29 18:44:19.469741100 +0200
 @@ -57,6 +57,16 @@
    int log2n;
  
@@ -3960,8 +3960,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/mdct.h libvorbis-1.3.7-aotuv-b6.03-la
  
  #endif
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/misc.h libvorbis-1.3.7-aotuv-b6.03-lancer/lib/misc.h
---- libvorbis-1.3.7-aotuv-b6.03/lib/misc.h	2020-07-03 19:22:20.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/misc.h	2022-02-07 23:51:17.611545200 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/misc.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/misc.h	2024-09-29 18:44:19.470714800 +0200
 @@ -50,8 +50,19 @@
  #endif
  #endif
@@ -3986,8 +3986,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/misc.h libvorbis-1.3.7-aotuv-b6.03-la
  
 +#endif
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/os.h libvorbis-1.3.7-aotuv-b6.03-lancer/lib/os.h
---- libvorbis-1.3.7-aotuv-b6.03/lib/os.h	2020-07-03 19:22:20.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/os.h	2022-02-07 23:51:17.611545200 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/os.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/os.h	2024-09-29 18:44:19.472661300 +0200
 @@ -23,6 +23,13 @@
  #include <math.h>
  #include <ogg/os_types.h>
@@ -4003,8 +4003,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/os.h libvorbis-1.3.7-aotuv-b6.03-lanc
  
  #ifndef _V_IFDEFJAIL_H_
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/psy.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/psy.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/psy.c	2022-02-07 23:49:38.145749200 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/psy.c	2022-02-07 23:51:17.627187400 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/psy.c	2024-09-29 18:43:04.668216700 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/psy.c	2024-09-29 18:44:19.481450800 +0200
 @@ -19,6 +19,9 @@
  #include <string.h>
  #include "vorbis/codec.h"
@@ -7130,8 +7130,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/psy.c libvorbis-1.3.7-aotuv-b6.03-lan
    /* tone masking */
    seed_loop(p,(const float ***)p->tonecurves,logfft,logmask,seed,global_specmax);
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/psy.h libvorbis-1.3.7-aotuv-b6.03-lancer/lib/psy.h
---- libvorbis-1.3.7-aotuv-b6.03/lib/psy.h	2022-02-07 23:49:38.145749200 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/psy.h	2022-02-07 23:46:03.699824000 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/psy.h	2024-09-29 18:43:04.673083400 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/psy.h	2024-09-29 18:44:19.486318700 +0200
 @@ -21,6 +21,8 @@
  #include "backends.h"
  #include "envelope.h"
@@ -7175,8 +7175,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/psy.h libvorbis-1.3.7-aotuv-b6.03-lan
  
  /* typedef for aoTuV */
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/sharedbook.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/sharedbook.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/sharedbook.c	2022-02-07 23:49:38.161375400 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/sharedbook.c	2022-02-07 23:51:17.642815900 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/sharedbook.c	2024-09-29 18:43:04.676031300 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/sharedbook.c	2024-09-29 18:44:19.491599200 +0200
 @@ -27,11 +27,17 @@
  
  /**** pack/unpack helpers ******************************************/
@@ -7196,8 +7196,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/sharedbook.c libvorbis-1.3.7-aotuv-b6
  /* 32 bit float (not IEEE; nonnormalized mantissa +
     biased exponent) : neeeeeee eeemmmmm mmmmmmmm mmmmmmmm
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/smallft.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/smallft.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/smallft.c	2020-07-03 19:22:20.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/smallft.c	2022-02-07 23:51:17.689687000 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/smallft.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/smallft.c	2024-09-29 18:44:19.519254700 +0200
 @@ -33,6 +33,5545 @@
  #include "smallft.h"
  #include "os.h"
@@ -12806,8 +12806,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/smallft.c libvorbis-1.3.7-aotuv-b6.03
      if(l->splitcache)_ogg_free(l->splitcache);
      memset(l,0,sizeof(*l));
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/vorbisfile.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/vorbisfile.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/vorbisfile.c	2020-07-03 19:22:20.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/vorbisfile.c	2022-02-07 23:51:17.711813300 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/vorbisfile.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/vorbisfile.c	2024-09-29 18:44:19.529533300 +0200
 @@ -28,6 +28,9 @@
  
  #include "os.h"
@@ -12992,8 +12992,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/vorbisfile.c libvorbis-1.3.7-aotuv-b6
  
              vorbis_fpu_setround(&fpu);
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/window.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/window.c
---- libvorbis-1.3.7-aotuv-b6.03/lib/window.c	2020-07-03 19:22:20.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/window.c	2022-02-07 23:51:17.711813300 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/lib/window.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/window.c	2024-09-29 18:44:19.536890400 +0200
 @@ -19,8 +19,15 @@
  #include "os.h"
  #include "misc.h"
@@ -13200,7 +13200,7 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/window.c libvorbis-1.3.7-aotuv-b6.03-
  }
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/xmmlib.c libvorbis-1.3.7-aotuv-b6.03-lancer/lib/xmmlib.c
 --- libvorbis-1.3.7-aotuv-b6.03/lib/xmmlib.c	1970-01-01 01:00:00.000000000 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/xmmlib.c	2022-02-07 23:51:17.727461800 +0100
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/xmmlib.c	2024-09-29 18:46:00.171394000 +0200
 @@ -0,0 +1,242 @@
 +/********************************************************************
 + *                                                                  *
@@ -13328,7 +13328,7 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/xmmlib.c libvorbis-1.3.7-aotuv-b6.03-
 +	void* p1 = (void*)malloc(size + offset);
 +	void** p2 = (void**)(((size_t)(p1) + offset) & ~15);
 +	if (p1 == NULL) return NULL;
-+	p2[-1] = size;
++	p2[-1] = (void*)size;
 +	p2[-2] = p1;
 +	return p2;
 +#endif
@@ -13446,7 +13446,7 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/xmmlib.c libvorbis-1.3.7-aotuv-b6.03-
 +#endif /* defined(__SSE__) */
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/xmmlib.h libvorbis-1.3.7-aotuv-b6.03-lancer/lib/xmmlib.h
 --- libvorbis-1.3.7-aotuv-b6.03/lib/xmmlib.h	1970-01-01 01:00:00.000000000 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/xmmlib.h	2022-02-07 23:51:17.727461800 +0100
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/lib/xmmlib.h	2024-09-29 18:44:19.545165900 +0200
 @@ -0,0 +1,241 @@
 +/********************************************************************
 + *                                                                  *
@@ -13690,8 +13690,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/lib/xmmlib.h libvorbis-1.3.7-aotuv-b6.03-
 +
 +#endif /* _XMMLIB_H_INCLUDED */
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/win32/VS2010/libvorbis/libvorbis_dynamic.vcxproj libvorbis-1.3.7-aotuv-b6.03-lancer/win32/VS2010/libvorbis/libvorbis_dynamic.vcxproj
---- libvorbis-1.3.7-aotuv-b6.03/win32/VS2010/libvorbis/libvorbis_dynamic.vcxproj	2020-04-15 18:59:06.000000000 +0200
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/win32/VS2010/libvorbis/libvorbis_dynamic.vcxproj	2022-02-07 23:51:17.743086100 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/win32/VS2010/libvorbis/libvorbis_dynamic.vcxproj	2020-04-15 17:59:06.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/win32/VS2010/libvorbis/libvorbis_dynamic.vcxproj	2024-09-29 18:44:19.551981500 +0200
 @@ -29,6 +29,7 @@
      <ConfigurationType>DynamicLibrary</ConfigurationType>
      <CharacterSet>Unicode</CharacterSet>
@@ -13817,8 +13817,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/win32/VS2010/libvorbis/libvorbis_dynamic.
    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
    <ImportGroup Label="ExtensionTargets">
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/win32/VS2010/libvorbis/libvorbis_static.vcxproj libvorbis-1.3.7-aotuv-b6.03-lancer/win32/VS2010/libvorbis/libvorbis_static.vcxproj
---- libvorbis-1.3.7-aotuv-b6.03/win32/VS2010/libvorbis/libvorbis_static.vcxproj	2020-03-23 16:04:43.000000000 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/win32/VS2010/libvorbis/libvorbis_static.vcxproj	2022-02-07 23:51:17.758708100 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/win32/VS2010/libvorbis/libvorbis_static.vcxproj	2020-03-23 15:04:43.000000000 +0100
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/win32/VS2010/libvorbis/libvorbis_static.vcxproj	2024-09-29 18:44:19.561716600 +0200
 @@ -28,6 +28,7 @@
      <ConfigurationType>StaticLibrary</ConfigurationType>
      <CharacterSet>Unicode</CharacterSet>
@@ -13956,8 +13956,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/win32/VS2010/libvorbis/libvorbis_static.v
    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
    <ImportGroup Label="ExtensionTargets">
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/win32/vorbis.def libvorbis-1.3.7-aotuv-b6.03-lancer/win32/vorbis.def
---- libvorbis-1.3.7-aotuv-b6.03/win32/vorbis.def	2020-03-23 16:04:43.000000000 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/win32/vorbis.def	2022-02-07 23:51:17.774311300 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/win32/vorbis.def	2020-03-23 15:04:43.000000000 +0100
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/win32/vorbis.def	2024-09-29 18:44:19.566583300 +0200
 @@ -1,6 +1,7 @@
 +LIBRARY libvorbis-0.dll
 +;
@@ -13968,8 +13968,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/win32/vorbis.def libvorbis-1.3.7-aotuv-b6
  _floor_P
  _mapping_P
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/win32/vorbisenc.def libvorbis-1.3.7-aotuv-b6.03-lancer/win32/vorbisenc.def
---- libvorbis-1.3.7-aotuv-b6.03/win32/vorbisenc.def	2020-03-23 16:04:43.000000000 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/win32/vorbisenc.def	2022-02-07 23:51:17.774311300 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/win32/vorbisenc.def	2020-03-23 15:04:43.000000000 +0100
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/win32/vorbisenc.def	2024-09-29 18:44:19.568703600 +0200
 @@ -1,7 +1,7 @@
 +LIBRARY libvorbisenc-2.dll
 +;
@@ -13981,8 +13981,8 @@ diff -Naur libvorbis-1.3.7-aotuv-b6.03/win32/vorbisenc.def libvorbis-1.3.7-aotuv
  vorbis_encode_init
  vorbis_encode_setup_managed
 diff -Naur libvorbis-1.3.7-aotuv-b6.03/win32/vorbisfile.def libvorbis-1.3.7-aotuv-b6.03-lancer/win32/vorbisfile.def
---- libvorbis-1.3.7-aotuv-b6.03/win32/vorbisfile.def	2020-03-23 16:04:43.000000000 +0100
-+++ libvorbis-1.3.7-aotuv-b6.03-lancer/win32/vorbisfile.def	2022-02-07 23:51:17.774311300 +0100
+--- libvorbis-1.3.7-aotuv-b6.03/win32/vorbisfile.def	2020-03-23 15:04:43.000000000 +0100
++++ libvorbis-1.3.7-aotuv-b6.03-lancer/win32/vorbisfile.def	2024-09-29 18:44:19.569677000 +0200
 @@ -1,6 +1,7 @@
 +LIBRARY libvorbisfile-3.dll
 +;

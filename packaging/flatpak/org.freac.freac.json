@@ -1,7 +1,7 @@
 {
     "app-id": "org.freac.freac",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "23.08",
+    "runtime-version": "24.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "freac",
     "finish-args": [
@@ -108,7 +108,10 @@
             "buildsystem": "cmake",
             "config-opts": [
                 "-DURIPARSER_BUILD_DOCS=OFF",
-                "-DURIPARSER_BUILD_TESTS=OFF"
+                "-DURIPARSER_BUILD_TESTS=OFF",
+                "-DCMAKE_INSTALL_BINDIR=bin",
+                "-DCMAKE_INSTALL_LIBDIR=lib",
+                "-DCMAKE_INSTALL_INCLUDEDIR=include"
             ],
             "cleanup": [
                 "/bin/uriparse"
@@ -145,6 +148,9 @@
         },
         {
             "name": "musepack",
+            "build-options": {
+                "cflags": "-Wno-incompatible-pointer-types"
+            },
             "config-opts": [
                 "--disable-shared"
             ],

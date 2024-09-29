@@ -1,6 +1,11 @@
 {
   "name": "libmac",
   "buildsystem": "cmake",
+  "config-opts": [
+    "-DCMAKE_INSTALL_BINDIR=bin",
+    "-DCMAKE_INSTALL_LIBDIR=lib",
+    "-DCMAKE_INSTALL_INCLUDEDIR=include"
+  ],
   "cleanup": [
     "/include/MAC"
   ],
