@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.8 (August 2024)
+	Version 1.1.8 (Oktober 2024)
 
 		- Verbesserungen
 
@@ -183,7 +183,7 @@ Geschichte
 
 		- Aktualisierte Codecs
 
-			- FFmpeg auf Version 7.0.2 aktualisiert
+			- FFmpeg auf Version 7.1 aktualisiert
 			- Opus auf Version 1.5.2 mit Opus Speech Coding Enhancement aktualisiert
 			- Monkey's Audio auf Version 10.76 aktualisiert
 			- WavPack auf Version 5.7.0 aktualisiert
