@@ -7,6 +7,7 @@ Information about Corsican localization:
 
 2. History of Corsican translation for fre:ac:
 
+	- Updated in 2024 by Patriccollu di Santa Maria è Sichè: Mar. 30th (1.1.8)
 	- Updated in 2023 by Patriccollu di Santa Maria è Sichè: Jan. 6th (1.1.7), Jan. 28th (1.1.7), Aug. 1st (1.1.8)
 	- Updated in 2022 by Patriccollu di Santa Maria è Sichè: July 19th (1.1.7), Aug. 9th (1.1.7), Dec. 27th (1.1.7)
 	- Updated in 2022 by Patriccollu di Santa Maria è Sichè (Crowdin): Jan. 18th (1.1.6)
@@ -855,7 +856,7 @@ Information about Corsican localization:
 	<entry id="31000" string="Encoder mode">Modu di Cudificatore</entry>
 	<entry id="31001" string="Stereo mode">Modu stereo</entry>
 	<entry id="31002" string="Quantization">Quantificazione</entry>
-	<entry id="31003" string="Downsampling ratio">Reditu di campiunariu</entry>
+	<entry id="31003" string="Downsampling ratio">Percentuale di campiunariu</entry>
 	<entry id="31004" string="Predictor size">Dimensione di a predizzione</entry>
 	<entry id="31005" string="Enable lossless encoding">Attivà a cudificazione senza perdita</entry>
 	<entry id="31006" string="Enable Joint Stereo">Attivà Joint Stereo</entry>
@@ -1185,6 +1186,11 @@ Information about Corsican localization:
 	<entry id="50328" string="Stereo processing">Trattamentu stereo</entry>
 	<entry id="50329" string="Separate">Separatu</entry>
 	<entry id="50330" string="Combined">Cumbinatu</entry>
+	<entry id="50331" string="Frequency ratio">Percentuale di frequenza</entry>
+	<entry id="50332" string="Hz">Hz</entry>
+	<entry id="50333" string=":">:</entry>
+	<entry id="50334" string="=">=</entry>
+	<entry id="50335" string="invalid">inaccettevule</entry>
       </section>
 
       <section name="RNNoise">
