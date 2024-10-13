@@ -108,10 +108,7 @@
             "buildsystem": "cmake",
             "config-opts": [
                 "-DURIPARSER_BUILD_DOCS=OFF",
-                "-DURIPARSER_BUILD_TESTS=OFF",
-                "-DCMAKE_INSTALL_BINDIR=bin",
-                "-DCMAKE_INSTALL_LIBDIR=lib",
-                "-DCMAKE_INSTALL_INCLUDEDIR=include"
+                "-DURIPARSER_BUILD_TESTS=OFF"
             ],
             "cleanup": [
                 "/bin/uriparse"
