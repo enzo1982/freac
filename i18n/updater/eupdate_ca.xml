@@ -7,29 +7,31 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">eupdate.xml</property>
-    <property name="author">chapter.0 software solutions</property>
+    <property name="author">Ricard Aós</property>
     <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>
   <data>
-    <entry id="1" string="Cancel">Cancel·lar</entry>
-    <entry id="2" string="Install">Instalar</entry>
-    <entry id="3" string="Show unstable releases">Mostrar versions inestables</entry>
-    <entry id="4" string="Select the updated program version to be installed:">Selecciona la versió actualitzada del programa per a instalar:</entry>
-    <entry id="5" string="You can select optional components to be installed:">Potse seleccionar components opcionals per a instalar:</entry>
+    <entry id="1" string="Cancel">Cancel·la</entry>
+    <entry id="2" string="Install">Instal·la</entry>
+    <entry id="3" string="Show unstable releases">Mostra versions inestables</entry>
+    <entry id="4" string="Select the updated program version to be installed:">Seleccioneu la versió actualitzada del programa per a instal·lar:</entry>
+    <entry id="5" string="You can select optional components to be installed:">Podeu seleccionar components opcionals per a instal·lar:</entry>
     <entry id="6" string="Version ID">ID de versió</entry>
     <entry id="7" string="Package">Paquet</entry>
     <entry id="8" string="Description">Descripció</entry>
     <entry id="9" string="Latest">Darrera</entry>
-    <entry id="10" string="Size">Tamany</entry>
-    <entry id="11" string="Yes">Si</entry>
+    <entry id="10" string="Size">Mida</entry>
+    <entry id="11" string="Yes">Sí</entry>
     <entry id="12" string="No">No</entry>
     <entry id="13" string="unknown">desconegut</entry>
-    <entry id="14" string="Installing files...">Instalant arxius...</entry>
-    <entry id="15" string="Installing file:">Instalant arxiu:</entry>
-    <entry id="16" string="Downloading file:">Baixant arxiu:</entry>
+    <entry id="14" string="Installing files...">Instal·lant fitxers...</entry>
+    <entry id="15" string="Installing file:">Instal·lant fitxer:</entry>
+    <entry id="16" string="Downloading file:">Baixant fitxer:</entry>
+    <entry id="17" string="Extracting file:">Extraient fitxer:</entry>
     <entry id="18" string="Update complete">Actualització completada</entry>
-    <entry id="19" string="Your application has been successfully updated!">La teva aplicació fou actualitzada satisfactòriament!</entry>
+    <entry id="19" string="Your application has been successfully updated!">L'aplicació ha estat actualitzada correctament!</entry>
     <entry id="20" string="Error">Error</entry>
     <entry id="21" string="Error downloading package!">Error al baixar el paquet!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Error instal·lant &quot;%1&quot;!&#10;&#10;Accés denegat al directori de l'aplicació.</entry>
   </data>
 </LangFile>

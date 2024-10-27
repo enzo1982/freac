@@ -7,17 +7,20 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">freac.xml</property>
-    <property name="author">el_libre &lt;el.libre@gmail.com&gt;</property>
-    <property name="url">https://www.catmidia.cat/</property>
-    <property name="incomplete">true</property>
+    <property name="author">Ricard Aós</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
-    <entry id="100" string="OK">Acceptar</entry>
-    <entry id="101" string="Cancel">Cancel·lar</entry>
-    <entry id="102" string="Close">Tancar</entry>
+    <entry id="100" string="OK">D'acord</entry>
+    <entry id="101" string="Cancel">Cancel·la</entry>
+    <entry id="102" string="Close">Tanca</entry>
 
     <entry id="200" string="Error">Error</entry>
-    <entry id="202" string="Info">Info</entry>
+    <entry id="201" string="Warning">Avís</entry>
+    <entry id="202" string="Info">Informació</entry>
+
+    <entry id="210" string="Do not display this warning again">No tornis a mostrar aquest avís</entry>
+    <entry id="211" string="Do not display this note again">No tornis a mostrar aquesta nota</entry>
 
     <entry id="300" string="Artist">Artista</entry>
     <entry id="301" string="Title">Títol</entry>
@@ -26,12 +29,29 @@
     <entry id="304" string="Genre">Gènere</entry>
     <entry id="305" string="Comment">Comentari</entry>
     <entry id="306" string="Year">Any</entry>
+    <entry id="307" string="Disc">Disc</entry>
+    <entry id="308" string="Rating">Valoració</entry>
+    <entry id="309" string="File name">Nom del fitxer</entry>
+    <entry id="310" string="File type">Tipus de fitxer</entry>
+    <entry id="311" string="Album artist">Artista de l'àlbum</entry>
+    <entry id="312" string="Conductor">Director</entry>
+    <entry id="313" string="Composer">Compositor</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key">Clau musical</entry>
 
     <entry id="350" string="unknown artist">artista desconegut</entry>
     <entry id="351" string="unknown title">títol desconegut</entry>
-    <entry id="352" string="unknown album">àlbum desconegut</entry>
-    <entry id="353" string="unknown genre">Gènere desconegut</entry>
-    <entry id="354" string="unknown year">Any desconegut</entry>
+    <entry id="352" string="unknown album">álbum desconegut</entry>
+    <entry id="353" string="unknown genre">gènere desconegut</entry>
+    <entry id="354" string="unknown year">any desconegut</entry>
+    <entry id="355" string="unknown conductor">director desconegut</entry>
+    <entry id="356" string="unknown composer">compositor desconegut</entry>
+    <entry id="357" string="unknown album artist">artista de l'àlbum desconegut</entry>
+    <entry id="358" string="unknown tempo">tempo desconegut</entry>
+    <entry id="359" string="unknown key">clau desconeguda</entry>
+
+    <entry id="380" string="hidden track">pista oculta</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -46,24 +66,41 @@
       <entry id="513" string="%1 ms">%1 ms</entry>
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
-      <entry id="516" string="%1 bytes">%1 octets</entry>
+      <entry id="516" string="%1 bytes">%1 bytes</entry>
+      <entry id="517" string="%1 kB">%1 kB</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">MiniDisc</entry>
+      <entry id="603" string="Compact Cassette">Casset compacta</entry>
+      <entry id="604" string="Reel tape">Cinta de bobina</entry>
+      <entry id="605" string="Vinyl">Vinil</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">LaserDisc</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Vídeo</entry>
+      <entry id="610" string="Radio">Ràdio</entry>
+      <entry id="611" string="Telephone">Telèfon</entry>
+    </section>
+
     <section name="Menu">
-      <entry id="1000" string="File">Arxiu</entry>
+      <entry id="1000" string="File">Fitxer</entry>
       <entry id="1001" string="Options">Opcions</entry>
       <entry id="1002" string="Database">Base de dades</entry>
-      <entry id="1004" string="Encode">Comprimir</entry>
+      <entry id="1003" string="Processing">Processament</entry>
+      <entry id="1004" string="Encode">Codificació</entry>
       <entry id="1005" string="Help">Ajuda</entry>
 
       <section name="File">
-	<entry id="1100" string="Add">Afegir</entry>
-	<entry id="1101" string="Remove">Eliminar</entry>
-	<entry id="1102" string="Load joblist">Carregar llista de tasques</entry>
-	<entry id="1103" string="Save joblist">Guardar llista de tasques</entry>
-	<entry id="1104" string="Clear joblist">Eliminar llesta</entry>
-	<entry id="1105" string="Exit">Sortir</entry>
+	<entry id="1100" string="Add">Afegeix</entry>
+	<entry id="1101" string="Remove">Elimina</entry>
+	<entry id="1102" string="Load joblist">Obre una llista</entry>
+	<entry id="1103" string="Save joblist">Desa la llista</entry>
+	<entry id="1104" string="Clear joblist">Neteja la llista</entry>
+	<entry id="1105" string="Exit">Surt</entry>
 	<entry id="1106" string="Audio file(s)">Fitxer(s) d'àudio</entry>
 	<entry id="1107" string="Audio CD contents">Contingut CD Àudio</entry>
 	<entry id="1108" string="By pattern">Per patró</entry>
@@ -71,131 +108,213 @@
       </section>
 
       <section name="Database">
-	<entry id="1200" string="Query CDDB database">Consultar base de dades CDDB</entry>
-	<entry id="1201" string="Submit CDDB data">Enviar dades CDDB</entry>
-	<entry id="1202" string="Query CDDB database later">Consultar base de dades CDDB després</entry>
-	<entry id="1203" string="Show queued CDDB entries">Mostrar registres CDDB guardats</entry>
-	<entry id="1204" string="Show queued CDDB queries">Mostrar les consultes CDDB guardades</entry>
-	<entry id="1205" string="Enable CDDB cache">Usar cachè de CDDB</entry>
-	<entry id="1206" string="Manage CDDB cache entries">Administrar registres del CDDB-Cache</entry>
-	<entry id="1207" string="Automatic CDDB queries">Consultes CDDB automàtiques</entry>
+	<entry id="1200" string="Query CDDB database">Consulta la base de dades CDDB</entry>
+	<entry id="1201" string="Submit CDDB data">Envia les dades CDDB</entry>
+	<entry id="1202" string="Query CDDB database later">Consulta la base de dades CDDB més tard</entry>
+	<entry id="1203" string="Show queued CDDB entries">Mostra les entrades CDDB en cua</entry>
+	<entry id="1204" string="Show queued CDDB queries">Mostra les consultes CDDB en cua</entry>
+	<entry id="1205" string="Enable CDDB cache">Habilita la memòria cau del CDDB</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Administra les entrades de la memòria cau del CDDB</entry>
+	<entry id="1207" string="Automatic CDDB queries">Consultes automàtiques CDDB</entry>
       </section>
 
       <section name="Options">
 	<entry id="1300" string="General settings">Configuració general</entry>
-	<entry id="1302" string="Configure selected encoder">Configurar compressor seleccionat</entry>
-	<entry id="1303" string="Active CD-ROM drive">Unitat CDROM activa</entry>
+	<entry id="1301" string="Configure signal processing">Configura el processament de senyal</entry>
+	<entry id="1302" string="Configure selected encoder">Configura el codificador seleccionat</entry>
+	<entry id="1303" string="Active CD-ROM drive">Unitat de CD-ROM activa</entry>
+	<entry id="1304" string="Active configuration">Configuració activa</entry>
+	<entry id="1305" string="Default configuration">Configuració per defecte</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">Habilita el processament de senyal</entry>
+	<entry id="1401" string="Enable processing during playback">Habilita el processamentt durant la reproducció</entry>
+	<entry id="1402" string="Selected signal processors">Processadors de senyal seleccionats</entry>
       </section>
 
       <section name="Encode">
-	<entry id="1500" string="Start encoding">Començar compresió</entry>
-	<entry id="1502" string="Start encoding with">Començar compresió amb</entry>
-	<entry id="1503" string="Pause/resume encoding">Pausar/continuar codificació</entry>
-	<entry id="1504" string="Stop encoding">Parar compresió</entry>
-	<entry id="1505" string="Encoder options">Opcions de codificador</entry>
-	<entry id="1506" string="Encode to a single file">Codificar a un sol fitxer</entry>
-	<entry id="1507" string="Encode to input file folder if possible">Codificar cap a carpeta d'entrada, si és possible</entry>
-	<entry id="1508" string="Allow overwriting input file">Permetre sobreescriure el fitxer d'entrada</entry>
-	<entry id="1509" string="Delete original files after encoding">Eliminar els fitxers originals a l'acabar la codificació</entry>
-	<entry id="1510" string="Shutdown after encoding">Apagar la PC a l'acabar la codificació</entry>
+	<entry id="1500" string="Start encoding">Inicia la codificació</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Inicia la codificació (eliminant els fitxers originals)</entry>
+	<entry id="1502" string="Start encoding with">Inicia la codificació amb</entry>
+	<entry id="1503" string="Pause/resume encoding">Pausa/continua la codificació</entry>
+	<entry id="1504" string="Stop encoding">Atura la codificació</entry>
+	<entry id="1505" string="Encoder options">Opcions del codificador</entry>
+	<entry id="1506" string="Encode to a single file">Codifica en un sol fitxer</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Codifica a la carpeta d'entrada quan sigui possible</entry>
+	<entry id="1508" string="Allow overwriting input file">Permet sobreescriure el fitxer d'entrada</entry>
+	<entry id="1509" string="Delete original files after encoding">Elimina els fitxers originals quan acabi la codificació</entry>
+	<entry id="1510" string="Shutdown after encoding">Tanca l'ordinador quan acabi la codificació</entry>
       </section>
 
       <section name="Help">
 	<entry id="1600" string="Help topics">Temes d'ajuda</entry>
-	<entry id="1601" string="Show Tip of the Day">Suggeriment del dia</entry>
-	<entry id="1602" string="Check for updates now">Comprovar si hi ha actualitzacions ara</entry>
-	<entry id="1603" string="Check for updates at startup">Comprovar si hi ha actualitzacions a l'inici</entry>
-	<entry id="1604" string="About %1">Sobri %1</entry>
+	<entry id="1601" string="Show Tip of the Day">Mostra el Consell del dia</entry>
+	<entry id="1602" string="Check for updates now">Comprova si hi ha actualitzacions ara</entry>
+	<entry id="1603" string="Check for updates at startup">Comprova si hi ha actualitzacions en iniciar</entry>
+	<entry id="1604" string="About %1">Quant a %1</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
+	<entry id="1606" string="Report an issue">Informa d'un problema</entry>
+	<entry id="1607" string="Suggest a feature">Fes un suggeriment</entry>
       </section>
     </section>
 
     <section name="Toolbar">
-      <entry id="2000" string="Add audio file(s) to the joblist">Afegir fitxer(s) d'àudio a la llista</entry>
-      <entry id="2001" string="Add audio CD contents to the joblist">Afegir contingut de CD Àudio a la llista</entry>
-      <entry id="2002" string="Remove the selected entry from the joblist">Eliminar l'entrada seleccionada de la llista</entry>
-      <entry id="2003" string="Clear the entire joblist">Eliminar tota la llista</entry>
-      <entry id="2004" string="Query CDDB database">Consultar base de dades CDDB</entry>
-      <entry id="2005" string="Submit CDDB data">Enviar dades CDDB</entry>
+      <entry id="2000" string="Add audio file(s) to the joblist">Afegeix fitxer(s) d'àudio a la llista</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">Afegeix contingut de CD Àudio a la llista</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">Elimina l'entrada seleccionada de la llista</entry>
+      <entry id="2003" string="Clear the entire joblist">Neteja la llista</entry>
+      <entry id="2004" string="Query CDDB database">Consulta la base de dades CDDB</entry>
+      <entry id="2005" string="Submit CDDB data">Envia les dades CDDB</entry>
       <entry id="2006" string="Configure general settings">Configuració general</entry>
-      <entry id="2008" string="Configure the selected audio encoder">Configurar el compressor triat</entry>
-      <entry id="2009" string="Start the encoding process">Començar el procés de compresió</entry>
-      <entry id="2011" string="Pause/resume encoding">Pausar/continuar codificació</entry>
-      <entry id="2012" string="Stop encoding">Parar compresió</entry>
+      <entry id="2007" string="Configure signal processing">Configura el processament de senyal</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Configura el codificador d'àudio seleccionat</entry>
+      <entry id="2009" string="Start the encoding process">Inicia el procés de codificació</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Inicia el procés de codificació (eliminant els fitxers originals)</entry>
+      <entry id="2011" string="Pause/resume encoding">Pausa/continua la codificació</entry>
+      <entry id="2012" string="Stop encoding">Atura la  codificació</entry>
+      <entry id="2013" string="Open the output splitting tool">Obre l'eina de divisió de sortida</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Time left">Temps que falta.</entry>
-      <entry id="3001" string="File progress">Progrés</entry>
-      <entry id="3002" string="Output folder">Ruta de sortida</entry>
-      <entry id="3003" string="%1 file(s) in joblist">%1 fitxer(s) en llista</entry>
-      <entry id="3004" string="Show title info">Mostrar Informació del títol</entry>
-      <entry id="3005" string="Play">Reproduir</entry>
-      <entry id="3006" string="Stop">Detenir</entry>
-      <entry id="3007" string="Select all">. Seleccionar tot</entry>
-      <entry id="3008" string="Select none">Seleccionar gens</entry>
-      <entry id="3009" string="Toggle selection">Invertir selecció</entry>
-      <entry id="3010" string="ripping/decoding">extraient/decodificando</entry>
+      <entry id="3000" string="Time left">Temps restant</entry>
+      <entry id="3001" string="File progress">Progrés del fitxer</entry>
+      <entry id="3002" string="Output folder">Carpeta de sortida</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 fitxer(s) a la llista</entry>
+      <entry id="3004" string="Show title info">Mostra la informació del títol</entry>
+      <entry id="3005" string="Play">Reprodueix</entry>
+      <entry id="3006" string="Stop">Atura</entry>
+      <entry id="3007" string="Select all">Selecciona-ho tot</entry>
+      <entry id="3008" string="Select none">No en seleccionis cap</entry>
+      <entry id="3009" string="Toggle selection">Inverteix la selecció</entry>
+      <entry id="3010" string="ripping/decoding">extraient/descodificant</entry>
       <entry id="3011" string="encoding">codificant</entry>
-      <entry id="3012" string="Create playlist">Crear llista de reproducció</entry>
-      <entry id="3013" string="Create cue sheet">Crear cua</entry>
-      <entry id="3014" string="Select">Buscar</entry>
-      <entry id="3015" string="Encode to a single file">Codificar a un sol fitxer</entry>
-      <entry id="3016" string="Remove">Eliminar</entry>
-      <entry id="3017" string="Clear joblist">Eliminar llesta</entry>
-      <entry id="3018" string="Use for all selected tracks">Utilitzar per a tots els tracks seleccionats</entry>
-      <entry id="3019" string="Interpret string as">Interpretar el text com:</entry>
-      <entry id="3020" string="selected tracks">Tracks seleccionats</entry>
-      <entry id="3021" string="Adjust upper/lower case">Ajustar majúscules i minúscules</entry>
-      <entry id="3022" string="all words upper case">Totes les paraules en majúscules</entry>
-      <entry id="3023" string="long words upper case">Paraules llargues en majúscules</entry>
-      <entry id="3024" string="first letter upper case">Primera lletra en majúscules</entry>
+      <entry id="3012" string="Create playlist">Crea llista de reproducció</entry>
+      <entry id="3013" string="Create cue sheet">Crea un cue sheet</entry>
+      <entry id="3014" string="Select">Selecció</entry>
+      <entry id="3015" string="Encode to a single file">Codifica en un sol fitxer</entry>
+      <entry id="3016" string="Remove">Elimina</entry>
+      <entry id="3017" string="Clear joblist">Neteja la llista</entry>
+      <entry id="3018" string="Use for all selected tracks">Utilitza per a totes les pistes seleccionades</entry>
+      <entry id="3019" string="Interpret string as">Interpreta el text com:</entry>
+      <entry id="3020" string="selected tracks">pistes seleccionades</entry>
+      <entry id="3021" string="Adjust upper/lower case">Canvia majúscules i minúscules</entry>
+      <entry id="3022" string="all words upper case">totes les paraules en majúscules</entry>
+      <entry id="3023" string="long words upper case">paraules llargues en majúscules</entry>
+      <entry id="3024" string="first letter upper case">primera lletra en majúscules</entry>
       <entry id="3025" string="all lower case">tot en minúscules</entry>
       <entry id="3026" string="all upper case">tot en majúscules</entry>
-      <entry id="3027" string="Select the folder in which the encoded files will be placed">Seleccioni la carpeta per als arxius comprimits</entry>
-      <entry id="3028" string="Sampling rate">Velocitat de mostreig</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Seleccioneu la carpeta on desar els fitxers codificats</entry>
+      <entry id="3028" string="Sampling rate">Freqüència de mostreig</entry>
       <entry id="3029" string="Sample resolution">Resolució de la mostra</entry>
       <entry id="3030" string="Number of samples">Nombre de mostres</entry>
-      <entry id="3031" string="Channels">Canales</entry>
+      <entry id="3031" string="Channels">Canals</entry>
       <entry id="3032" string="Mono">Mono</entry>
       <entry id="3033" string="Stereo">Estèreo</entry>
       <entry id="3034" string="Length">Duració</entry>
-      <entry id="3035" string="File">Arxiu</entry>
-      <entry id="3036" string="Size">Tamany</entry>
-      <entry id="3037" string="Bitrate">Ràtio de bits</entry>
-      <entry id="3038" string="Audio Files">Fitxers d'Àudio</entry>
+      <entry id="3035" string="File">Fitxer</entry>
+      <entry id="3036" string="Size">Mida</entry>
+      <entry id="3037" string="Bitrate">Taxa de bits</entry>
+      <entry id="3038" string="Audio Files">Fitxers d'àudio</entry>
       <entry id="3039" string="All Files">Tots els fitxers</entry>
-      <entry id="3040" string="Playlist Files">Arxius de llista de reproducció</entry>
+      <entry id="3040" string="Playlist Files">Fitxers a la llista de reproducció</entry>
+      <entry id="3041" string="Joblist">Llista de tasques</entry>
+      <entry id="3042" string="Other">Altres</entry>
+      <entry id="3043" string="Output file name">Nom del fitxer de sortida</entry>
+      <entry id="3044" string="verifying">verificant</entry>
+      <entry id="3045" string="Open">Obre</entry>
+      <entry id="3046" string="CD drive">Unitat de CD</entry>
+      <entry id="3047" string="Disc ID">ID del disc</entry>
 
       <section name="File">
-	<entry id="3050" string="Current file">Comprimint</entry>
+	<entry id="3050" string="Current file">Fitxer actual</entry>
 	<entry id="3051" string="none">cap</entry>
-	<entry id="3052" string="Skip current file">Ometre</entry>
+	<entry id="3052" string="Skip current file">Omet el fitxer actual</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder">Descodificador actiu</entry>
+	<entry id="3061" string="none">cap</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Filtres seleccionats</entry>
+	<entry id="3071" string="none">cap</entry>
+	<entry id="3072" string="disabled">desactivat</entry>
+	<entry id="3073" string="Configure signal processing">Configura el processament de senyal</entry>
       </section>
 
       <section name="Encoder">
-	<entry id="3080" string="Selected encoder">Compressor seleccionat</entry>
-	<entry id="3081" string="Configure selected encoder">Configurar compressor seleccionat</entry>
+	<entry id="3080" string="Selected encoder">Codificadorr seleccionat</entry>
+	<entry id="3081" string="Configure selected encoder">Configura el codificador seleccionat</entry>
       </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Carpeta</entry>
-	<entry id="3101" string="Add folder">Agregar carpeta</entry>
-	<entry id="3102" string="Choose folder">Seleccionar carpeta</entry>
-	<entry id="3103" string="Select the folder to add to the joblist">Seleccioni la carpeta per a agragar a la llista de tasques</entry>
+	<entry id="3101" string="Add folder">Afegeix carpeta</entry>
+	<entry id="3102" string="Choose folder">Selecciona carpeta</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Seleccioneu la carpeta a afegir a la llista de tasques</entry>
       </section>
 
       <section name="Add by pattern">
-	<entry id="3200" string="Add files by pattern">Agregar fitxers per patró</entry>
+	<entry id="3200" string="Add files by pattern">Afegeix fitxers per patró</entry>
 	<entry id="3201" string="Pattern">Patró</entry>
 	<entry id="3202" string="Start folder">Carpeta d'inici</entry>
-	<entry id="3203" string="Filename pattern">Patró de nom d'arxiu</entry>
-	<entry id="3205" string="Select the folder to add to the joblist">Seleccioni la carpeta per a agragar a la llista de tasques</entry>
+	<entry id="3203" string="Filename pattern">Patró del nom de fitxer</entry>
+	<entry id="3204" string="Search subfolders">Cerca subcarpetes</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Seleccioneu la carpeta a afegir a la llista de tasques</entry>
+      </section>
+
+      <section name="Character set">
+	<entry id="3300" string="Character set">Joc de caràcters</entry>
+	<entry id="3301" string="Choose character set">Tria el joc de caràcters</entry>
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="You did not select a track!">No ha seleccionat cap fitxer!</entry>
-	<entry id="3401" string="No files found matching pattern: %1">No es van trobar arxius corresponents al patró: %1</entry>
+	<entry id="3400" string="You did not select a track!">No heu seleccionat cap fitxer!</entry>
+	<entry id="3401" string="No files found matching pattern: %1">No s'ha trobat cap fitxer el nom del qual coincideixi amb el patró: %1</entry>
+      </section>
+    </section>
+
+    <section name="Jobs">
+      <entry id="3500" string="Jobs">Tasques</entry>
+      <entry id="3501" string="Progress">Progrés</entry>
+      <entry id="3502" string="Errors / Warnings">Errors / Avisos</entry>
+      <entry id="3503" string="Details">Detalls</entry>
+      <entry id="3504" string="Error details">Detalls de l'error</entry>
+      <entry id="3505" string="Time left">Temps restant</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">Esperant que acabin altres tasques</entry>
+
+      <section name="Joblist">
+	<entry id="3600" string="Reading folders">Llegint carpetes</entry>
+	<entry id="3601" string="Filtering duplicates">Filtrant duplicats</entry>
+	<entry id="3602" string="Adding files">Afegint fitxers</entry>
+	<entry id="3603" string="Adding tracks">Afegint pistes</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">S'han afegit %1 fitxers, i s'han produït %2 errors</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">S'han afegit %1 pistes, i s'han produït %2 errors</entry>
+	<entry id="3606" string="Removing all tracks">Suprimint totes les pistes</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">Suprimint les pistes del disc a la unitat %1</entry>
+	<entry id="3608" string="Removed all tracks from joblist">S'han suprimit totes les pistes de la llista de tasques</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">S'han suprimit totes les pistes del disc a la unitat %1 de la llista de tasques</entry>
+      </section>
+
+      <section name="Convert">
+	<entry id="3700" string="Checking sample formats">Comprovant el format de les mostres</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Comprovant la conversió amb pèrdua a sense pèrdua</entry>
+	<entry id="3702" string="Checking output file names">Comprovant els noms dels fitxers de sortida</entry>
+	<entry id="3703" string="Converting %1">Convertint %1</entry>
+	<entry id="3704" string="Verifying %1">Verificant %1</entry>
+	<entry id="3705" string="Conversion cancelled">Conversió cancel·lada</entry>
+	<entry id="3706" string="Conversion finished">Conversió finalitzada</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">Conversió finalitzada amb %1 avisos</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">Conversió finalitzada amb %1 errors</entry>
+      </section>
+
+      <section name="Update">
+	<entry id="3800" string="Preparing update check">Preparant la comprovació d'actualitzacions</entry>
+	<entry id="3801" string="Contacting update server">Contactant amb el servidor d'actualitzacions</entry>
+	<entry id="3802" string="Updates found">S'han trobat actualitzacions</entry>
+	<entry id="3803" string="No updates found">No s'han trobat actualitzacions</entry>
       </section>
     </section>
 
@@ -203,139 +322,185 @@
 
       <section name="Submit">
 	<entry id="4000" string="CDDB data">Dades CDDB</entry>
-	<entry id="4001" string="Submit">Enviar</entry>
-	<entry id="4002" string="No audio CD in drive!">Cap CD d'àudio en la unitat!</entry>
+	<entry id="4001" string="Submit">Envia</entry>
+	<entry id="4002" string="No audio CD in drive!">No s'ha trobat cap CD d'àudio a la unitat.</entry>
 	<entry id="4003" string="Submitting CD information">Enviant informació del CD</entry>
-	<entry id="4004" string="Update joblist with this information">Actualitzar llista de tasques amb aquesta informació</entry>
+	<entry id="4004" string="Update joblist with this information">Actualitza la llista de tasques amb aquesta informació</entry>
 	<entry id="4005" string="Status">Estat</entry>
-	<entry id="4006" string="Successfully read CD!">El CD es llegeix satisfactòriament!</entry>
-	<entry id="4007" string="Save entry">Guardar</entry>
-	<entry id="4008" string="Various artists">Artistes varis</entry>
+	<entry id="4006" string="Successfully read CD!">El CD s'ha llegit correctament.</entry>
+	<entry id="4007" string="Save entry">Desa l'entrada</entry>
+	<entry id="4008" string="Various artists">Diversos artistes</entry>
 	<entry id="4009" string="Data track">Pista de dades</entry>
-	<entry id="4010" string="Submit to online database later">Enviar després a força de dades remota</entry>
-	<entry id="4011" string="Active CD-ROM drive">Unitat CDROM activa</entry>
+	<entry id="4010" string="Submit to online database later">Envia més tard a la base de dades online</entry>
+	<entry id="4011" string="Active CD-ROM drive">Unitat de CD-ROM activa</entry>
 
 	<section name="Errors">
-	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Ha ocorregut un error a l'intentar connectar amb el servidor.</entry>
-	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Emplenar tots els camps i pistes abans d'enviar.</entry>
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">S'ha produït un error al provar de connectar amb el servidor freedb.</entry>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Si us plau, ompliu tots els camps i títols de les pistes abans d'enviar-les.</entry>
 	</section>
       </section>
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Consulta a CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disc.">No hi ha un registre freedb d'aquest CD.</entry>
+	<entry id="4101" string="No freedb entry for this disc.">No s'ha trobat cap entrada a freedb per a aquest disc.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Connectant al servidor freedb a</entry>
 	<entry id="4103" string="Requesting CD information">Demanant informació del CD</entry>
-	<entry id="4104" string="No exact matches found">Sense resultats exactes</entry>
-	<entry id="4105" string="Multiple matches found">Diversos resultats oposats</entry>
-	<entry id="4106" string="Matches">Resultats</entry>
-	<entry id="4107" string="Select the entry that best fits your CD">Seleccioni el registre que coincideix amb el teu CD</entry>
-	<entry id="4108" string="Would you like to perform this query again later?">Desitja realitzar aquesta consulta després novament?</entry>
+	<entry id="4104" string="No exact matches found">No s'ha trobat cap coincidència exacta</entry>
+	<entry id="4105" string="Multiple matches found">S'han trobat múltiples coincidències</entry>
+	<entry id="4106" string="Matches">Coincidències</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Seleccioneu l'entrada que coincideixi amb el vostre CD</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">Desitjeu tornar a realitzar aquesta consulta més tard?</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">Desitjeu tornar a realitzar les consultes restants més tard?</entry>
 	<entry id="4110" string="none">cap</entry>
 	<entry id="4111" string="Preview">Vista prèvia</entry>
+	<entry id="4112" string="loading preview">carregant vista prèvia</entry>
 
 	<section name="Errors">
-	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Ha ocorregut un error a l'intentar connectar amb el servidor.</entry>
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">S'ha produït un error al provar de connectar amb el servidor freedb.</entry>
 	</section>
       </section>
 
       <section name="Manage queries">
-	<entry id="4200" string="Remove entry">Esborrar</entry>
+	<entry id="4200" string="Remove entry">Suprimeix l'entrada</entry>
 	<entry id="4201" string="CDDB queries">Consultes CDDB</entry>
-	<entry id="4202" string="Query">Consultar</entry>
-	<entry id="4203" string="Query all">Consultar totes</entry>
-	<entry id="4204" string="Query string">String de consulta</entry>
-	<entry id="4205" string="CDDB queries to perform">Consultes CDDB planejades</entry>
+	<entry id="4202" string="Query">Consulta</entry>
+	<entry id="4203" string="Query all">Consulta totes</entry>
+	<entry id="4204" string="Query string">Cadena de consulta</entry>
+	<entry id="4205" string="CDDB queries to perform">Consultes CDDB a realitzar</entry>
+	<entry id="4206" string="Querying CD information">Consultant la informació del CD</entry>
       </section>
 
       <section name="Manage submits">
-	<entry id="4300" string="Remove entry">Esborrar</entry>
-	<entry id="4301" string="CDDB entries to submit">Registres CDDB per a enviar</entry>
-	<entry id="4302" string="Submit all">Enviar tots</entry>
+	<entry id="4300" string="Remove entry">Suprimeix l'entrada</entry>
+	<entry id="4301" string="CDDB entries to submit">Entrades CDDB per a enviar</entry>
+	<entry id="4302" string="Submit all">Envia-ho tot</entry>
 	<entry id="4303" string="CDDB data">Dades CDDB</entry>
-	<entry id="4304" string="Submit">Enviar</entry>
-	<entry id="4305" string="Disc name">títol del CD</entry>
+	<entry id="4304" string="Submit">Envia</entry>
+	<entry id="4305" string="Disc name">Nom del disc</entry>
 	<entry id="4306" string="Preview">Vista prèvia</entry>
 	<entry id="4307" string="Category">Categoria</entry>
-	<entry id="4308" string="Submitting CD information">Enviant informació del CD</entry>
+	<entry id="4308" string="Submitting CD information">Enviant la informació del CD</entry>
       </section>
 
       <section name="Manage cache">
 	<entry id="4400" string="CDDB data">Dades CDDB</entry>
-	<entry id="4401" string="Update joblist with this information">Actualitzar llista de tasques amb aquesta informació</entry>
-	<entry id="4402" string="Charset">Sistema de caràcters</entry>
-	<entry id="4403" string="Downloaded CDDB entries">Registres CDDB baixats</entry>
-	<entry id="4404" string="Disc name">títol del CD</entry>
+	<entry id="4401" string="Update joblist with this information">Actualitza la llista de tasques amb aquesta informació</entry>
+	<entry id="4402" string="Charset">Joc de caràcters</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Entrades CDDB baixades</entry>
+	<entry id="4404" string="Disc name">Nom del disc</entry>
 	<entry id="4405" string="Preview">Vista prèvia</entry>
-	<entry id="4406" string="Remove entry">Esborrar</entry>
-	<entry id="4407" string="Save entry">Guardar</entry>
+	<entry id="4406" string="Remove entry">Suprimeix l'entrada</entry>
+	<entry id="4407" string="Save entry">Desa l'entrada</entry>
       </section>
     </section>
 
     <section name="Configuration">
-      <entry id="5000" string="General settings setup">Configuracions generals</entry>
-      <entry id="5001" string="Encoders">Compressors</entry>
+      <entry id="5000" string="General settings setup">Configuració general</entry>
+      <entry id="5001" string="Encoders">Codificadors</entry>
       <entry id="5002" string="Playlists">Llistes de reproducció</entry>
       <entry id="5003" string="Language">Idioma</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Interfície</entry>
+      <entry id="5006" string="Metadata">Metadades</entry>
+      <entry id="5007" string="Components">Components</entry>
+      <entry id="5008" string="Decoders">Descodificadors</entry>
+      <entry id="5009" string="Output">Sortida</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">Extensions</entry>
+      <entry id="5012" string="Other">Altres</entry>
+      <entry id="5013" string="Active configuration">Configuració activa</entry>
+      <entry id="5014" string="New">Nou</entry>
+      <entry id="5015" string="Delete">Elimina</entry>
+      <entry id="5016" string="Command line arguments">Arguments de línia d'ordres</entry>
+      <entry id="5017" string="Resulting arguments string">Cadena d'arguments resultant</entry>
+      <entry id="5018" string="Default configuration">Configuració per defecte</entry>
+      <entry id="5019" string="New configuration">Nova configuració</entry>
+      <entry id="5020" string="Ripper">Extractor</entry>
+      <entry id="5021" string="Settings">Paràmetres</entry>
+      <entry id="5022" string="Resources">Recursos</entry>
+      <entry id="5023" string="Verifiers">Verificadors</entry>
+      <entry id="5024" string="Taggers">Etiquetadors</entry>
+      <entry id="5025" string="Processing">Processament</entry>
+      <entry id="5026" string="Additional arguments">Arguments addicionals</entry>
+      <entry id="5027" string="Output files">Fitxers de sortida</entry>
 
       <section name="Encoders">
-	<entry id="5100" string="Configure encoder">Configurar compressor</entry>
-	<entry id="5101" string="Encoder">Compressor</entry>
+	<entry id="5100" string="Configure encoder">Configura el codificador</entry>
+	<entry id="5101" string="Encoder">Codificador</entry>
 	<entry id="5102" string="Options">Opcions</entry>
-	<entry id="5103" string="Encode 'On-The-Fly'">Codificar 'Al vol'</entry>
-	<entry id="5104" string="Keep ripped Wave files">Mantenir fitxers wav extrets</entry>
-	<entry id="5105" string="Encode to a single file">Codificar a un sol fitxer</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Codifica 'sobre la marxa'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Conserva els fitxers Wave extrets</entry>
+	<entry id="5105" string="Encode to a single file">Codifica en un sol fitxer</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Suprimeix les pistes processades de la llista</entry>
+	<entry id="5107" string="Add output files to joblist">Afegeix els fitxers de sortida a la llista</entry>
       </section>
 
       <section name="Files">
 	<entry id="5150" string="Output folder">Carpeta de sortida</entry>
-	<entry id="5151" string="Use input file folder if possible">Utilitzar carpeta d'entrada, si és possible</entry>
-	<entry id="5152" string="Allow overwriting input file">Permetre sobreescriure el fitxer d'entrada</entry>
-	<entry id="5153" string="Select">Buscar</entry>
-	<entry id="5154" string="Select the folder in which the encoded files will be placed">Seleccioni la carpeta per als arxius comprimits</entry>
-	<entry id="5156" string="Filename pattern">Patró de nom d'arxiu</entry>
+	<entry id="5151" string="Use input file folder if possible">Utilitza la carpeta del fitxer d'entrada si és possible</entry>
+	<entry id="5152" string="Allow overwriting input file">Permet sobreescriure el fitxer d'entrada</entry>
+	<entry id="5153" string="Select">Selecció</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Seleccioneu la carpeta on es desaran els fitxers codificats</entry>
+	<entry id="5155" string="Output filenames">Noms dels fitxers de sortida</entry>
+	<entry id="5156" string="Filename pattern">Patró del nom de fitxer</entry>
+	<entry id="5157" string="Allow Unicode characters">Permet caràcters Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Canvia els espais per guions baixos</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Afegeix números seqüencials quan els noms de fitxers coincideixin</entry>
+	<entry id="5160" string="Keep time stamps of source files">Conserva les marques de temps dels fitxers font</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Utilitza &lt;filename&gt; quan la informació del títol no estigui disponible</entry>
 
 	<section name="Errors">
-	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">La carpeta de destinació no existeix. Desitja crear-la?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">La carpeta de sortida no existeix! Desitjeu crear-la?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
-	<entry id="5200" string="Create playlists">Generar llistes de reproducció</entry>
+	<entry id="5200" string="Create playlists">Crea llistes de reproducció</entry>
 	<entry id="5202" string="Output folder">Carpeta de sortida</entry>
-	<entry id="5203" string="Select">Buscar</entry>
-	<entry id="5204" string="Use encoder output folder">Utilitzar carpeta de sortida del codificador</entry>
-	<entry id="5205" string="Filename pattern">Patró de nom d'arxiu</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed">Esculli una carpeta per a guardar les llistes de reproducció</entry>
+	<entry id="5203" string="Select">Selecció</entry>
+	<entry id="5204" string="Use encoder output folder">Utilitza la carpeta de sortida del codificador</entry>
+	<entry id="5205" string="Filename pattern">Patró del nom de fitxer</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Seleccioneu la carpeta on es desaran els fitxers de la llista de reproducció</entry>
+	<entry id="5207" string="Output filenames">Noms dels fitxers de sortida</entry>
+	<entry id="5208" string="Configure plugin">Configura el connector</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Crea una sola llista de reproducció i/o fitxer cue sheet per conversió</entry>
       </section>
 
       <section name="Cue Sheets">
-	<entry id="5251" string="Create cue sheets">Generar cuesheets</entry>
+	<entry id="5250" string="Cue sheets">Cue sheets</entry>
+	<entry id="5251" string="Create cue sheets">Crea cue sheets</entry>
+	<entry id="5252" string="Embedded cue sheets">Cue sheets incrustades</entry>
+	<entry id="5253" string="Read cue sheets embedded in metadata">Llegeix les cue sheets incrustades a les metadadess</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">Prioritza les cue sheets per damunt de la informació de capítols</entry>
+	<entry id="5255" string="Output folder and filenames">Carpeta de sortida i noms dels fitxers</entry>
+	<entry id="5256" string="Note">Nota</entry>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">Les opcions de carpeta de sortida i nom de fitxer de les cue sheets es configuren a la secció 'Llistes de reproducció'.</entry>
       </section>
 
       <section name="CDDB">
-	<entry id="5300" string="Enable local CDDB database">Utilitzar base de dades CDDB local</entry>
-	<entry id="5301" string="Enable remote CDDB database">Utilitzar base de dades CDDB remota</entry>
-	<entry id="5302" string="CDDB path">Carpeta CDDB</entry>
-	<entry id="5303" string="Select">Buscar</entry>
-	<entry id="5304" string="Select the folder of the CDDB database">Seleccioni la carpeta de la base de dades CDDB</entry>
+	<entry id="5300" string="Enable local CDDB database">Habilita la base de dades CDDB local</entry>
+	<entry id="5301" string="Enable remote CDDB database">Habilita la base de dades CDDB remota</entry>
+	<entry id="5302" string="CDDB path">Camí al CDDB</entry>
+	<entry id="5303" string="Select">Selecció</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Seleccioneu la carpeta de la base de dades CDDB</entry>
 	<entry id="5305" string="CDDB access mode">Mode d'accés CDDB</entry>
 	<entry id="5306" string="CDDB server">Servidor CDDB</entry>
 	<entry id="5307" string="Port">Port</entry>
-	<entry id="5308" string="eMail address">direcció de eMail</entry>
-	<entry id="5309" string="HTTP settings">Configuracions HTTP</entry>
+	<entry id="5308" string="eMail address">Adreça electrònica</entry>
+	<entry id="5309" string="HTTP settings">Configuració HTTP</entry>
 	<entry id="5310" string="Proxy settings">Configuració del Proxy</entry>
 	<entry id="5311" string="Options">Opcions</entry>
 	<entry id="5312" string="Automatic CDDB queries">Consultes CDDB automàtiques</entry>
-	<entry id="5313" string="Prefer CDDB over CD-Text">Sobreescriure infos de CD-Text</entry>
-	<entry id="5314" string="Enable CDDB cache">Usar cachè de CDDB</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Prioritzar CDDB per damunt del CD-Text</entry>
+	<entry id="5314" string="Enable CDDB cache">Habilita la memòria cau del CDDB</entry>
 	<entry id="5315" string="Automatization">Automatizació</entry>
+	<entry id="5316" string="Always select first entry">Selecciona sempre la primera entrada</entry>
 
 	<section name="Extended">
-	  <entry id="5330" string="Extended CDDB settings">Configuracions CDDB ampliades</entry>
+	  <entry id="5330" string="Extended CDDB settings">Configuració avançada del CDDB</entry>
 	  <entry id="5331" string="CGI scripts">Scripts CGI</entry>
-	  <entry id="5332" string="CDDB query script">Script de cridada al CDDB</entry>
-	  <entry id="5333" string="CDDB submit script">Script de petició al CDDB</entry>
+	  <entry id="5332" string="CDDB query script">Script de consultes al CDDB</entry>
+	  <entry id="5333" string="CDDB submit script">Script d'enviaments al CDDB</entry>
 	  <entry id="5334" string="no proxy">sense proxy</entry>
 	  <entry id="5335" string="Proxy type">Tipus de proxy</entry>
 	  <entry id="5336" string="Proxy server">Servidor proxy</entry>
@@ -344,169 +509,387 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="5350" string="Please enter a valid eMail address.">Introdueixi una dir. de eMail vàlida.</entry>
-	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">El protocol CDDBP de freedb no pot ser utilitzat a travèS&#10;d'un servidor proxy HTTP!&#10;&#10;Desitja canviar el protocol a HTTP?</entry>
+	  <entry id="5350" string="Please enter a valid eMail address.">Si us plau, Introduïu una adreça electrònica vàlida.</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">El protocol CDDBP de freedb no es compatible amb&#10;el protocol HTTP Forward Proxy.&#10;&#10;Desitjeu canviar al protocol HTTP?</entry>
 	</section>
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language">Seleccioni l'idioma</entry>
-	<entry id="5401" string="Edit language file">Editar arxiu d'idioma</entry>
-	<entry id="5402" string="Information">Informacions</entry>
+	<entry id="5400" string="Select language">Seleccioneu l'idioma</entry>
+	<entry id="5401" string="Edit language file">Edita el fitxer d'idioma</entry>
+	<entry id="5402" string="Information">Informació</entry>
 	<entry id="5403" string="Encoding">Codificació</entry>
 	<entry id="5404" string="Author(s)">Autor(s)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tag formats">Codificació Tag</entry>
+	<entry id="5500" string="Tag formats">Format d'etiquetes</entry>
+	<entry id="5501" string="Tag fields">Camps d'etiquetes</entry>
 	<entry id="5502" string="Default comment string">Comentari per defecte</entry>
-	<entry id="5503" string="Replace existing comments with default comment">Reemplaça els comentaris existents amb el comentari per defecte</entry>
-	<entry id="5504" string="Filename pattern">Patró de nom d'arxiu</entry>
+	<entry id="5503" string="Replace existing comments with default comment">Substitueix els comentaris existents per el comentari per defecte</entry>
+	<entry id="5504" string="Filename pattern">Patró del nom de fitxer</entry>
 	<entry id="5505" string="Encoding">Codificació</entry>
+	<entry id="5506" string="Comments">Comentaris</entry>
+	<entry id="5507" string="Album art">Il·lustracions de portada</entry>
+	<entry id="5509" string="Read album art from tags">Llegeix les il·lustracions de portada de les etiquetes</entry>
+	<entry id="5510" string="Read album art from files">Llegeix les il·lustracions de portada dels fitxers</entry>
+	<entry id="5512" string="Write album art to tags">Desa les il·lustracions de portada a les etiquetes</entry>
+	<entry id="5513" string="Write album art to files">Desa les il·lustracions de portada als fitxers</entry>
+	<entry id="5514" string="Add reference to audio file tag">Afegeix una referencia a l'etiqueta del fitxer d'àudio</entry>
+	<entry id="5515" string="Other">Altres</entry>
+	<entry id="5516" string="Chapters">Capítols</entry>
+	<entry id="5517" string="Read chapters from files">Llegeix els capítols dels fitxers</entry>
+	<entry id="5518" string="Write chapters to files">Desa els capítols als fitxers</entry>
+	<entry id="5519" string="Special fields">Camps especials</entry>
+	<entry id="5520" string="Write CD table of contents">Desa la taula de continguts del CD</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Preserva la informació Replay Gain</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Anteposa un zero als números de pista inferiors a 10</entry>
+	<entry id="5526" string="File size limit">Mida màxima del fitxer</entry>
+	<entry id="5527" string="unlimited">il·limitada</entry>
+	<entry id="5528" string="Miscellaneous">Miscel·lània</entry>
+	<entry id="5529" string="Fill missing fields with information obtained from file names">Omple els camps que faltin amb informació obtinguda dels noms de fitxer</entry>
+	<entry id="5530" string="Restrict file names">Restringeix els noms de fitxers</entry>
+	<entry id="5531" string="Album art tags">Etiquetes d'il·lustracions de portades</entry>
+	<entry id="5532" string="Album art files">Fitxers d'il·lustracions de portades</entry>
+      </section>
+
+      <section name="Joblist">
+	<entry id="5600" string="Joblist">Llista de tasques</entry>
+	<entry id="5601" string="Columns">Columnes</entry>
+	<entry id="5602" string="Name">Nom</entry>
+	<entry id="5603" string="Description">Descripció</entry>
+	<entry id="5604" string="Up">Amunt</entry>
+	<entry id="5605" string="Down">Avall</entry>
+	<entry id="5606" string="Jobs">Tasques</entry>
+	<entry id="5607" string="Show Jobs tab">Mostra pestanya de tasques</entry>
+
+	<section name="Columns">
+	  <entry id="5650" string="Track artist">Artista</entry>
+	  <entry id="5651" string="Track title">Títol</entry>
+	  <entry id="5652" string="Track genre">Gènere</entry>
+	  <entry id="5653" string="Album title">Títol de l'àlbum</entry>
+	  <entry id="5654" string="Disc number">Número del disc</entry>
+	  <entry id="5655" string="Track number">Pista</entry>
+	  <entry id="5656" string="Track rating">Valoració</entry>
+	  <entry id="5657" string="Track length">Duració</entry>
+	  <entry id="5658" string="Track size">Mida</entry>
+	  <entry id="5659" string="File name">Nom del fitxer</entry>
+	  <entry id="5660" string="File type">Tipus de fitxer</entry>
+	  <entry id="5661" string="Output file name">Nom del fitxer de sortida</entry>
+	  <entry id="5662" string="Bitrate">Taxa de bits</entry>
+	  <entry id="5663" string="Sampling rate">Freqüència de mostreig</entry>
+	  <entry id="5664" string="Channels">Canals</entry>
+	  <entry id="5665" string="Sample resolution">Resolució de la mostra</entry>
+	  <entry id="5666" string="CD drive">Unitat de CD</entry>
+	  <entry id="5667" string="Disc ID">ID del disc</entry>
+	</section>
+      </section>
+
+      <section name="Resources">
+	<entry id="5700" string="Parallel processing">Processament paral·lel</entry>
+	<entry id="5701" string="Enable parallel processing">Habilita el processament paral·lel</entry>
+	<entry id="5702" string="Enable SuperFast mode">Habilita el mode SuperFast</entry>
+	<entry id="5703" string="Number of conversion threads">Nombre de processos de conversió</entry>
+	<entry id="5704" string="auto">auto</entry>
+	<entry id="5705" string="Process priority">Prioritat dels processos</entry>
+	<entry id="5706" string="lowest">la més baixa</entry>
+	<entry id="5707" string="lower">baixa</entry>
+	<entry id="5708" string="normal">normal</entry>
+	<entry id="5709" string="higher">alta</entry>
+	<entry id="5710" string="highest">la més alta</entry>
+      </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification">Verificació</entry>
+	<entry id="5801" string="Enable input verification">Habilita la verificació d'entrada</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Verifica que les entrades sense pèrdua descodifiquen&#10;exactament les dades amb que van ser creades.</entry>
+	<entry id="5803" string="Enable output verification">Habilita la verificació de sortida</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Verifica que les sortides sense pèrdua descodifiquen&#10;exactament a les dades amb que es van codificar.</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="5900" string="Signal processing">Processament de senyal</entry>
+	<entry id="5901" string="Enable signal processing">Habilita el processament de senyal</entry>
+	<entry id="5902" string="Enable processing during playback">Habilita el processament durant la reproducció</entry>
+	<entry id="5903" string="Components">Components</entry>
+	<entry id="5904" string="Available">Dissponible</entry>
+	<entry id="5905" string="Selected">Seleccionat</entry>
+	<entry id="5906" string="Configure component">Configura un component</entry>
+	<entry id="5907" string="Conversion to a single output file">Converteix a un únic fitxer de sortida</entry>
+	<entry id="5908" string="Process each track individually">Processa cada pista individualment</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">Tracta les pistes combinades com una sola pista</entry>
       </section>
     </section>
 
     <section name="About">
-      <entry id="6000" string="About %1">Sobri %1</entry>
-      <entry id="6001" string="Translated by %1.">Traduit per %1.</entry>
-      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Aquest programa es distribueix sota la clàusula&#10;GNU General Public License (GPL).</entry>
+      <entry id="6000" string="About %1">Quant a %1</entry>
+      <entry id="6001" string="Translated by %1.">Traduït per %1.</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Aquest programa es distribueix sota els termes&#10;de la llicència GNU General Public License (GPL).</entry>
     </section>
 
     <section name="Updates">
-      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Hi ha noves actualitzacions disponibles para %1!&#10;Desitja veure una llista de les actualitzacions disponibles?</entry>
-      <entry id="6101" string="There are no updates available at the moment!">No hi ha actualitzacions disponibles de moment</entry>
-      <entry id="6102" string="Check for updates at startup">Comprovar si hi ha actualitzacions a l'inici</entry>
-      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 pot buscar actualitzacions automàticament cada vegada que s'inicia.Desitja que %1 busqui actualitzacions a l'inici?</entry>
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Hi ha noves actualitzacions disponibles per a %1&#10;Desitjeu veure una llista de les actualitzacions disponibles?</entry>
+      <entry id="6101" string="There are no updates available at the moment!">No hi ha actualitzacions disponibles de moment.</entry>
+      <entry id="6102" string="Check for updates at startup">Comprova si hi ha actualitzacions a l'inici</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 pot buscar actualitzacions automàticament cada&#10;vegada que s'inicia.&#10;&#10;Desitjeu que %1 busqui actualitzacions a l'inici?</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="Currently converting">Iniciat procés de compresió</entry>
-      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">El procés de compresió encara no ha acabat! Realment vol sortir?</entry>
-      <entry id="7002" string="Delete original files after encoding">Eliminar els fitxers originals a l'acabar la codificació</entry>
-      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Aquesta opció elimina els fitxers originals&#10;a l'acabar la codificació!&#10;&#10;Està Vè. segur d'activar è funció?</entry>
-      <entry id="7005" string="File already exists">Fitxer ja existeix</entry>
-      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">El fitxer de sortida %1&#10;ja existeix! Desitja sobreescriure'l?</entry>
-      <entry id="7007" string="Overwrite all further files">Sobreescriure tots els fitxers següents</entry>
+      <entry id="7000" string="Currently converting">Convertint actualment</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Hi ha un procés de conversió encara actiu. Segur que voleu sortir?</entry>
+      <entry id="7002" string="Delete original files after encoding">Eliminar els fitxers originals al finalitzar la codificació</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Aquesta opció eliminarà els fitxers originals del vostre&#10;ordinador quan finalitzi el procés de codificació.&#10;&#10;Segur que voleu activar aquesta funció?</entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">Manté aquesta opció habilitada després de reiniciar %1</entry>
+      <entry id="7005" string="File already exists">El fitxer ja existeix</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">El fitxer de sortida %1&#10;ja existeix! Desitjeu sobreescriure'l?</entry>
+      <entry id="7007" string="Overwrite all further files">Sobreescriu tots els fitxers</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Sembla que esteu convertint d'un format amb pèrdua&#10;a un altre sense pèrdua.&#10;&#10;Teniu en compte que la pèrdua de qualitat no es pot revertir i, per tant,&#10;aquest procés no millorarà la qualitat, i és probable que augmenti&#10;la mida del fitxer.&#10;&#10;Segur que voleu continuar?</entry>
     </section>
 
     <section name="Errors">
-      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">No s'ha pogut accedir a l'arxiu d'entrada: %1&#10;&#10;Arxiu: %1&#10;Carpeta: %2</entry>
-      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">No es pot crear l'arxiu de sortida: %1&#10;&#10;Arxiu: %1&#10;Carpeta: %2</entry>
-      <entry id="7110" string="File not found">Arxiu no trobat</entry>
-      <entry id="7111" string="Unknown file type">Tipus d'arxiu desconegut</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">No s'ha pogut crear el component de descodificació: %1&#10;&#10;Fitxer: %1&#10;Camí: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">No s'ha pogut crear el component de codificació: %1&#10;</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">No s'ha pogut configurar el descodificador pel fitxer d'entrada: %1&#10;&#10;Fitxer: %1&#10;Camí: %2&#10;&#10;Error: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">No s'ha pogut configurar el codificador pel fitxer de sortida: %1&#10;&#10;Fitxer: %1&#10;Camí: %2&#10;&#10;Error: %3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">No s'ha pogut configurar el processador DSP: %1&#10;&#10;Error: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">No s'ha pogut accedir al fitxer d'entrada: %1&#10;&#10;Fitxer: %1&#10;Camí: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">No s'ha pogut crear el fitxer de sortida: %1&#10;&#10;Fitxer: %1&#10;Camí: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">Error al verificar el fitxer d'entrada: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">Error al verificar la pista d'entrada: %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Error de checksum al verificar el fitxer de sortida: %1&#10;&#10;Checksum del codificador: %2&#10;Checksum de la verificació: %3</entry>
+      <entry id="7110" string="File not found">No s'ha trobat el fitxer</entry>
+      <entry id="7111" string="Unknown file type">Tipus de fitxer desconegut</entry>
+      <entry id="7112" string="Invalid file format">Format de fitxer no vàlid</entry>
       <entry id="7113" string="Unsupported audio format">Format d'àudio no suportat</entry>
       <entry id="7114" string="Unknown error">Error desconegut</entry>
-      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">No es va poder carregar el controlador NT SCSI! Rippeado de CD desactivat!</entry>
-      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">No es pot obrir el fitxer: %1&#10;&#10;%2</entry>
-      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">El suport CDDB no està activat! Per favor activi&#10;suport CDDB local o remot en la finestra de configuració.</entry>
-      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">El suport per a la base de dades CDDB remota no està activat!&#10;Per favor activi la base de dades CDDB remota en la finestra de configuració.</entry>
-      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">L'accés a la unitat de CDROM va ser denegat per Windows.&#10;&#10;Per favor contacti el seu administrador de sistemes&#10;per a poder accedir a la unitat de CDROM.</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">No s'ha pogut carregar el controlador NT SCSI. Extracció de CD desactivada.</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">No s'ha pogut obrir el fitxer: %1&#10;&#10;Error: %2</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">No es pot reproduir una pista del CD mentre s'està extreient&#10;de la mateixa unitat.</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">No es pot començar l'extracció mentre es reprodueix una pista&#10;de la mateixa unitat.</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">El suport CDDB no està activat. Si us plau, activeu el&#10;suport CDDB local o remot al diàleg de configuració.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">El suport CDDB remot no està activat. Si us plau, activeu&#10;el suport CDDB remot al diàleg de configuració.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">L'accés a la unitat de CD-ROM ha estat denegat per Windows.&#10;&#10;Si us plau, contacteu amb el vostre administrador de&#10;sistemes per obtenir drets d'accés a la unitat de CD-ROM.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">No hi ha diàleg de configuració disponible per a:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">La carpeta seleccionada ja no existeix.</entry>
+      <entry id="7124" string="Access denied">Accés denegat</entry>
     </section>
 
     <section name="Dialogs">
 
       <section name="Overwrite">
-	<entry id="8006" string="Skip">Ometre</entry>
+	<entry id="8000" string="Confirm overwrite">Confirma sobreescriptura</entry>
+	<entry id="8001" string="Confirm">Confirmar</entry>
+	<entry id="8002" string="Skip all">Saltar tots</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Els següents %1 fitxers ja existeixen o tenen el nom duplicat</entry>
+	<entry id="8004" string="Action">Acció</entry>
+	<entry id="8005" string="Overwrite">Sobreescriu</entry>
+	<entry id="8006" string="Skip">Omet</entry>
+      </section>
+
+      <section name="Format">
+	<entry id="8100" string="Select sample format">Seleccioneu el format de la mostra</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">Les pistes seleccionades tenen diferents formats de mostra. Si us plau,&#10;seleccioneu el format de mostra desitjat pel fitxer de sortida.</entry>
+	<entry id="8102" string="Select">Selecciona</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="8200" string="Errors">Errors</entry>
+	<entry id="8201" string="%1 errors while processing job">%1 errors processant la tasca</entry>
+	<entry id="8202" string="select an entry for details">seleccioneu una entrada per veure els detalls</entry>
+      </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool">Eina de divisió de la sortida</entry>
+	<entry id="8301" string="%1 track(s) in joblist">%1 pista(es) a la llista</entry>
+	<entry id="8302" string="Split mode">Mode de divisió</entry>
+	<entry id="8303" string="Split by duration">Divideix per duració</entry>
+	<entry id="8304" string="Duration per part">Duració per part</entry>
+	<entry id="8305" string="at least">com a mínim</entry>
+	<entry id="8306" string="approximately">aproximadament</entry>
+	<entry id="8307" string="at most">com a màxim</entry>
+	<entry id="8308" string="exactly">exactament</entry>
+	<entry id="8309" string="second(s)">segon(s)</entry>
+	<entry id="8310" string="minute(s)">minut(s)</entry>
+	<entry id="8311" string="hour(s)">hora(es)</entry>
+	<entry id="8312" string="Fixed number of parts">Nombre de parts fix</entry>
+	<entry id="8313" string="Number of parts">Nombre de parts</entry>
+	<entry id="8314" string="Split upon metadata change">Divideix quan canviïn les metadades</entry>
+	<entry id="8315" string="Metadata pattern to compare">Patró de metadades a comparar</entry>
+	<entry id="8316" string="Split at track boundaries">Divideix als límits de les pistes </entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Repeteix el final de la part prèvia a l'inici de cada part</entry>
+	<entry id="8318" string="Repeat duration">Repeteix la duració</entry>
+	<entry id="8319" string="Output filenames">Noms dels fitxers de sortida</entry>
+	<entry id="8320" string="Filename pattern">Patró del nom de fitxer</entry>
+	<entry id="8321" string="Convert">Converteix</entry>
+	<entry id="8322" string="Save">Desa</entry>
       </section>
     </section>
 
     <section name="Ripper">
-      <entry id="9000" string="Active CD-ROM drive">Unitat CDROM activa</entry>
-      <entry id="9001" string="Set drive speed limit">Selecciona el límit de velocitat del dispositiu</entry>
-      <entry id="9002" string="CD information">Informacions del CD</entry>
-      <entry id="9003" string="Read CD-Text">Llegir el CD-Text</entry>
-      <entry id="9004" string="Read cdplayer.ini">Llegir cdplayer.ini</entry>
-      <entry id="9005" string="Ripper settings">Configuracions de extracció d'àudio</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Activar mode cdparanoia</entry>
-      <entry id="9007" string="Overlap only">Sols superposar</entry>
+      <entry id="9000" string="Active CD-ROM drive">Unitat de CD-ROM activa</entry>
+      <entry id="9001" string="Set drive speed limit">Estableix el límit de velocitat de la unitat</entry>
+      <entry id="9002" string="CD information">Informació del CD</entry>
+      <entry id="9003" string="Read CD-Text">Llegeix CD-Text</entry>
+      <entry id="9004" string="Read cdplayer.ini">Llegeix cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Configuració de l'extractor</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Activa el mode cdparanoia</entry>
+      <entry id="9007" string="Overlap only">Només superposa</entry>
       <entry id="9008" string="No verify">Sense verificació</entry>
-      <entry id="9009" string="No scratch repair">No reparar grinyols</entry>
+      <entry id="9009" string="No scratch repair">No reparis rascades</entry>
       <entry id="9010" string="Full cdparanoia mode">Mode cdparanoia complet</entry>
-      <entry id="9011" string="Activate jitter correction">Activar correcció Jitter</entry>
-      <entry id="9012" string="Switch stereo channels">Intercanviar canals</entry>
+      <entry id="9011" string="Activate jitter correction">Activa la correcció de fluctuacions</entry>
+      <entry id="9012" string="Switch stereo channels">Intercanvia els canals estéreo</entry>
       <entry id="9013" string="Automatization">Automatizació</entry>
-      <entry id="9014" string="Read CD contents on insert">Llegir CD a l'inserir-lo</entry>
-      <entry id="9015" string="Start ripping automatically">Començar automàticamente el ripeig</entry>
-      <entry id="9016" string="Eject disc after ripping">Expulsar disc després de la extracció</entry>
+      <entry id="9014" string="Read CD contents on insert">Llegeix el contingut del CD a l'inserir-lo</entry>
+      <entry id="9015" string="Start ripping automatically">Comença l'extracció automàticament</entry>
+      <entry id="9016" string="Eject disc after ripping">Expulsa el disc després de l'extracció</entry>
       <entry id="9017" string="CD options">Opcions de CD</entry>
+      <entry id="9018" string="Use read offset">Utilitza el decalatge de lectura</entry>
+      <entry id="9019" string="samples">mostres</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">Llegeix l'ISRC en afegir pistes a la llista</entry>
+      <entry id="9021" string="Spin up before ripping">Accelera abans d'extreure</entry>
+      <entry id="9022" string="%1 seconds">%1 segons</entry>
+    </section>
+
+    <section name="Components">
+
+      <section name="Decoders">
+	<entry id="10000" string="Cue Sheet Reader">Lector de cue sheets</entry>
+      </section>
+
+      <section name="Encoders">
+	<entry id="11000" string="meh! - multi encoder hub">meh! - mòdul multicodificador</entry>
+	<entry id="11001" string="SndFile Output Component">Component de sortida SndFile</entry>
+      </section>
+
+      <section name="DSP">
+	<entry id="12000" string="Channel Converter">Conversor de canals</entry>
+	<entry id="12001" string="Sample Format Converter">Conversor de format de mostra</entry>
+	<entry id="12002" string="Sample Rate Converter">Conversor de taxa de mostra</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">Reducció de soroll RNNoise</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Tempo elàstic/Canvi de to</entry>
+	<entry id="12005" string="HDCD Decoder">Descodificador HDCD</entry>
+	<entry id="12006" string="Matrix Surround Decoder">Descodificador Matrix Surround</entry>
+	<entry id="12007" string="Volume Adjustment">Ajust de volum</entry>
+      </section>
+
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">Verificador AccurateRip</entry>
+      </section>
+
+      <section name="Extensions">
+	<entry id="15000" string="Notifications">Notificacions</entry>
+	<entry id="15001" string="Logging">Registre</entry>
+	<entry id="15002" string="Video Downloader">Baixada de vídeos</entry>
+	<entry id="15003" string="Tag Editor">Editor d'etiquetes</entry>
+      </section>
+    </section>
+
+    <section name="Decoders">
+
+      <section name="MAD">
+	<entry id="20000" string="Decoding">Descodifica</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Habilita el descodificador de 24 bits</entry>
+      </section>
+
+      <section name="mpg123">
+	<entry id="21000" string="Decoder">Descodificador</entry>
+	<entry id="21001" string="Active decoder">Descodificador actiu</entry>
+	<entry id="21002" string="auto select">selecció automàtica</entry>
+      </section>
+
+      <section name="CueSheet">
+	<entry id="22000" string="Title information">Informació del títol</entry>
+	<entry id="22001" string="Read tags from referenced files">Llegeix les etiquetes dels fitxers referenciats</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Prioritza les metadades de cue sheet per damunt de les etiquetes dels fitxers</entry>
+	<entry id="22003" string="Alternative files">Fitxers alternatius</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Busca alternatives comprimides si no es troben els fitxers Wave referenciats</entry>
+	<entry id="22005" string="Error handling">Gestió d'errors</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Ignora els errors durant el processameent de cue sheets</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="23000" string="Quality">Qualitat</entry>
+	<entry id="23001" string="Complexity">Complexitat</entry>
+      </section>
     </section>
 
     <section name="Encoders">
 
       <section name="BladeEnc">
-	<entry id="30000" string="Bitrate">Ràtio de bits</entry>
-	<entry id="30001" string="Copyright bit">Copyright Bit</entry>
+	<entry id="30000" string="Bitrate">Taxa de bits</entry>
+	<entry id="30001" string="Copyright bit">Bit de copyright</entry>
 	<entry id="30002" string="CRC">CRC</entry>
-	<entry id="30003" string="Original bit">Original Bit</entry>
-	<entry id="30004" string="Channels">Canales</entry>
-	<entry id="30005" string="Private bit">Bit Privat</entry>
-	<entry id="30006" string="Set Copyright bit">Inserir Copyright Bit</entry>
-	<entry id="30007" string="Enable CRC">Activar CRC</entry>
-	<entry id="30008" string="Set Original bit">Inserir Bit original</entry>
-	<entry id="30009" string="Dual channel encoding">Separar canals d'àudio</entry>
-	<entry id="30010" string="Set Private bit">Inserir Bit Privat</entry>
+	<entry id="30003" string="Original bit">Bit original</entry>
+	<entry id="30004" string="Channels">Canals</entry>
+	<entry id="30005" string="Private bit">Bit privat</entry>
+	<entry id="30006" string="Set Copyright bit">Estableix el bit de copyright</entry>
+	<entry id="30007" string="Enable CRC">Habilita el CRC</entry>
+	<entry id="30008" string="Set Original bit">Estableixx el bit original</entry>
+	<entry id="30009" string="Dual channel encoding">Codificació de canal dual</entry>
+	<entry id="30010" string="Set Private bit">Estableix el bit privat</entry>
       </section>
 
       <section name="Bonk">
-	<entry id="31000" string="Encoder mode">Mode de compressió</entry>
-	<entry id="31001" string="Stereo mode">Mode Estèreo</entry>
-	<entry id="31002" string="Quantization">Quantizació</entry>
-	<entry id="31003" string="Downsampling ratio">Índex de resamplejat</entry>
-	<entry id="31004" string="Predictor size">Tamany del predictor</entry>
-	<entry id="31005" string="Enable lossless encoding">Compresió sense Pèrdua</entry>
-	<entry id="31006" string="Enable Joint Stereo">Activar Joint Stereo</entry>
+	<entry id="31000" string="Encoder mode">Mode de codificació</entry>
+	<entry id="31001" string="Stereo mode">Mode estéreo</entry>
+	<entry id="31002" string="Quantization">Quantificació</entry>
+	<entry id="31003" string="Downsampling ratio">Taxa de reducció de mostra</entry>
+	<entry id="31004" string="Predictor size">Mida del predictor</entry>
+	<entry id="31005" string="Enable lossless encoding">Habilita la codificació sense pèrdua</entry>
+	<entry id="31006" string="Enable Joint Stereo">Habilita el Joint Stereo</entry>
       </section>
 
       <section name="LAME">
 	<entry id="32000" string="Basic">Bàsic</entry>
-	<entry id="32001" string="Misc">Miscelànea</entry>
+	<entry id="32001" string="Misc">Miscel·lània</entry>
 	<entry id="32002" string="Expert">Expert</entry>
 	<entry id="32003" string="Audio processing">Processament d'àudio</entry>
 
 	<section name="Basic">
-	  <entry id="32100" string="Presets">Preconfiguracions</entry>
-	  <entry id="32101" string="Use preset">Usar preconfiguració</entry>
-	  <entry id="32102" string="Custom settings">Configuracions personals</entry>
+	  <entry id="32100" string="Presets">Preconfiguració</entry>
+	  <entry id="32101" string="Use preset">Fes serrvir la preconfiguració</entry>
+	  <entry id="32102" string="Custom settings">Paràmetres personalitzats</entry>
 	  <entry id="32103" string="Medium">Mig</entry>
-	  <entry id="32104" string="Standard">Estàndar</entry>
+	  <entry id="32104" string="Standard">Estàndard</entry>
 	  <entry id="32105" string="Extreme">Extrem</entry>
-	  <entry id="32106" string="Bitrate">Ràtio de bits</entry>
+	  <entry id="32106" string="Bitrate">Taxa de bits</entry>
 	  <entry id="32107" string="Quality">Qualitat</entry>
-	  <entry id="32108" string="Set bitrate">Ràtio de bits</entry>
-	  <entry id="32109" string="Set ratio">Relació</entry>
-	  <entry id="32110" string="Set quality">Qualitat</entry>
+	  <entry id="32108" string="Set bitrate">Estableix la  taxa de bits</entry>
+	  <entry id="32109" string="Set ratio">Estableix la ràtio</entry>
+	  <entry id="32110" string="Set quality">Estableix la qualitat</entry>
 	  <entry id="32111" string="worse">pitjor</entry>
 	  <entry id="32112" string="better">millor</entry>
 	  <entry id="32113" string="VBR mode">Mode VBR</entry>
 	  <entry id="32114" string="no VBR">sense VBR</entry>
-	  <entry id="32115" string="VBR quality">Qualitat VBR</entry>
-	  <entry id="32116" string="ABR target bitrate">ABR Ràtio de bits de destinació</entry>
+	  <entry id="32115" string="VBR quality">Qualitat del VBR</entry>
+	  <entry id="32116" string="ABR target bitrate">Taxa de bits de destinació de l'ABR</entry>
 	</section>
 
 	<section name="Misc">
 	  <entry id="32200" string="Control bits">Bits de control</entry>
-	  <entry id="32201" string="Set Copyright bit">Inserir Copyright Bit</entry>
-	  <entry id="32202" string="Set Original bit">Inserir Bit original</entry>
-	  <entry id="32203" string="Set Private bit">Inserir Bit Privat</entry>
+	  <entry id="32201" string="Set Copyright bit">Estableix el bit de copyright</entry>
+	  <entry id="32202" string="Set Original bit">Estableix el bit original</entry>
+	  <entry id="32203" string="Set Private bit">Estableix el bit privat</entry>
 	  <entry id="32204" string="CRC">CRC</entry>
-	  <entry id="32205" string="Enable CRC">Activar CRC</entry>
-	  <entry id="32206" string="Stereo mode">Mode Estèreo</entry>
-	  <entry id="32207" string="auto">acte</entry>
-	  <entry id="32208" string="Stereo">Estèreo</entry>
+	  <entry id="32205" string="Enable CRC">Habilita el CRC</entry>
+	  <entry id="32206" string="Stereo mode">Mode estéreo</entry>
+	  <entry id="32207" string="auto">automàtic</entry>
+	  <entry id="32208" string="Stereo">Estéreo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
-	  <entry id="32210" string="Force Joint Stereo">Forçar Joint Stereo</entry>
-	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR rang de Ràtio de bits</entry>
-	  <entry id="32212" string="Set minimum VBR/ABR bitrate">VBR/ABR Ràtio de bits min.</entry>
-	  <entry id="32213" string="Set maximum VBR/ABR bitrate">VBR/ABR Ràtio de bits màxim</entry>
+	  <entry id="32210" string="Force Joint Stereo">Força el Joint Stereo</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">Rang de la taxa de bits VBR/ABR</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Estableix la taxa de bits mínima VBR/ABR</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Estableix la taxa de bits màxima VBR/ABR</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH">Activar ATH</entry>
-	  <entry id="32302" string="Use default setting">Utilitzar ajustaments predeterminat</entry>
-	  <entry id="32303" string="Psycho acoustic model">Model acústic-físic</entry>
-	  <entry id="32304" string="Use Temporal Masking Effect">Utilitzar efecte de méscara temporal</entry>
+	  <entry id="32301" string="Enable ATH">Habilita l'ATH</entry>
+	  <entry id="32302" string="Use default setting">Utilitza la configuració predeterminada</entry>
+	  <entry id="32303" string="Psycho acoustic model">Model psicoacústic</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">Utilitza l'efecte de màscara temporal</entry>
 	  <entry id="32305" string="Stream format">Format de flux</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Forçar conformitat ISO estricta</entry>
 	  <entry id="32307" string="automatic">automàtic</entry>
@@ -514,45 +897,51 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Highpass filter">Filtre Highpass</entry>
-	  <entry id="32401" string="Set Highpass frequency (Hz)">Freqüència Highpass (Hz)</entry>
-	  <entry id="32402" string="Set Highpass width (Hz)">Ample Highpass (Hz)</entry>
-	  <entry id="32403" string="Lowpass filter">Filtre Lowpass</entry>
-	  <entry id="32404" string="Set Lowpass frequency (Hz)">Frecuancia Lowpass (Hz)</entry>
-	  <entry id="32405" string="Set Lowpass width (Hz)">Ample Lowpass (Hz)</entry>
-	  <entry id="32406" string="Misc settings">Altres Configuracions</entry>
-	  <entry id="32407" string="Disable all filtering">Deshabilitar filtres</entry>
+	  <entry id="32400" string="Highpass filter">Filtre passaalt</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Estableix la freqüència passaalt (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Estableix l'amplada passaalt (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">Filtre passabaix</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Estableix la freqüència passabaix (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Estableix l'amplada passabaix (Hz)</entry>
+	  <entry id="32406" string="Misc settings">Altres configuracions</entry>
+	  <entry id="32407" string="Disable all filtering">Deshabilita tots els filtres</entry>
 	</section>
       </section>
 
       <section name="AAC">
+	<entry id="33000" string="Codec">Còdec</entry>
 	<entry id="33001" string="Quality">Qualitat</entry>
 	<entry id="33002" string="Format">Format</entry>
 
+	<section name="Codec">
+	  <entry id="33100" string="Audio codec">Còdec d'àudio</entry>
+	</section>
+
 	<section name="Quality">
-	  <entry id="33200" string="Bitrate">Ràtio de bits</entry>
+	  <entry id="33200" string="Bitrate">Taxa de bits</entry>
 	  <entry id="33201" string="Bitrate / Quality">Taxa de bits / Qualitat</entry>
-	  <entry id="33202" string="Bitrate per channel">Ràtio de bits per canal</entry>
-	  <entry id="33203" string="Set quality">Qualitat</entry>
-	  <entry id="33204" string="Stereo mode">Mode Estèreo</entry>
-	  <entry id="33205" string="Allow Joint Stereo">Usar Joint Stereo</entry>
-	  <entry id="33206" string="Temporal Noise Shaping">Perfilació de Soroll Temporal</entry>
-	  <entry id="33207" string="Use Temporal Noise Shaping">Usar PRT</entry>
-	  <entry id="33208" string="Maximum bandwidth">Ample de banda màxim</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Freqüència màxima per a AAC en Hz</entry>
+	  <entry id="33202" string="Bitrate per channel">Taxa de bits per canal</entry>
+	  <entry id="33203" string="Set quality">Estableix la qualitat</entry>
+	  <entry id="33204" string="Stereo mode">Mode estéreo</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Habilita el Joint Stereo</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Modelatge temporal del soroll</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Habilita el modelatge temporal del soroll</entry>
+	  <entry id="33208" string="Maximum bandwidth">Amplada de banda màxima</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Freqüència màxima d'amplada de banda per a AAC (Hz)</entry>
 	  <entry id="33210" string="worse">pitjor</entry>
 	  <entry id="33211" string="better">millor</entry>
-	  <entry id="33212" string="auto">acte</entry>
+	  <entry id="33212" string="auto">automàtica</entry>
 	</section>
 
 	<section name="Format">
 	  <entry id="33300" string="MPEG version">Versió MPEG</entry>
 	  <entry id="33301" string="AAC object type">Tipus d'objecte AAC</entry>
 	  <entry id="33302" string="File format">Format de fitxer</entry>
-	  <entry id="33304" string="Tags">Info Etiquetes</entry>
-	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Permetre etiquetes ID3v2 en fitxers AAC</entry>
+	  <entry id="33303" string="File extension">Extensió de fitxer</entry>
+	  <entry id="33304" string="Tags">Etiquetes</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Permet etiquetes ID3v2 en fitxers AAC</entry>
 	  <entry id="33306" string="Note">Nota</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Alguns reproductors poden arribar a tenir problemes al reproduir&#10;fitxers AAC amb etiquetes ID3. Sols utilitzi aquesta opció si està&#10;segur que el reproductor pot manejar aquest tipus d'arxius.</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Alguns reproductors poden tenir problemes al reproduir fitxers&#10;AAC amb etiquetes ID3. Feu servir aquesta opció només si esteu&#10;segurs que el vostre reproductor suporta aquest tipus de fitxers.</entry>
 	</section>
       </section>
 
@@ -562,135 +951,585 @@
 	<entry id="34002" string="Expert">Expert</entry>
 
 	<section name="Basic">
-	  <entry id="34100" string="Presets">Preconfiguracions</entry>
-	  <entry id="34101" string="Use preset">Usar preconfiguració</entry>
-	  <entry id="34102" string="Custom settings">Configuracions personals</entry>
-	  <entry id="34103" string="Fastest encoding">Codificació més veloç</entry>
-	  <entry id="34104" string="Best compression">Millor compresió</entry>
-	  <entry id="34105" string="Stereo mode">Mode Estèreo</entry>
+	  <entry id="34100" string="Presets">Preconfiguració</entry>
+	  <entry id="34101" string="Use preset">Fes serrvir la preconfiguració</entry>
+	  <entry id="34102" string="Custom settings">Paràmetres personalitzats</entry>
+	  <entry id="34103" string="Fastest encoding">Codificació més ràpida</entry>
+	  <entry id="34104" string="Best compression">Millor compressió</entry>
+	  <entry id="34105" string="Stereo mode">Mode estéreo</entry>
 	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
-	  <entry id="34107" string="Adaptive Joint Stereo">Joint Stereo adaptivo</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">Joint Stereo adaptatiu</entry>
 	  <entry id="34108" string="File format">Format de fitxer</entry>
+	  <entry id="34109" string="Default">Per defecte</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="34200" string="Use streamable subset">Utilitzar Streamable Subset</entry>
-	  <entry id="34201" string="Blocksize">Tamany de bloc</entry>
+	  <entry id="34200" string="Use streamable subset">Utilitza un subconjunt transmissible</entry>
+	  <entry id="34201" string="Blocksize">Mida del bloc</entry>
+	  <entry id="34202" string="%1 samples">%1 mostres</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Signal processing">Apodització</entry>
-	  <entry id="34301" string="Window function(s)">Funció(és) de apodització</entry>
+	  <entry id="34300" string="Signal processing">Processament del senyal</entry>
+	  <entry id="34301" string="Window function(s)">Funcions de finestra</entry>
 	  <entry id="34302" string="Note">Nota</entry>
-	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Pot especificar diverses funcions separades per punt i coma.</entry>
-	  <entry id="34304" string="Linear predictor">Predictor linear</entry>
-	  <entry id="34305" string="Maximum LPC order">màxim grau LPC</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Podeu especificar múltiples funcions separades per punt i coma.</entry>
+	  <entry id="34304" string="Linear predictor">Predictor lineal</entry>
+	  <entry id="34305" string="Maximum LPC order">Ordre màxim de LPC</entry>
 	  <entry id="34306" string="disabled">desactivat</entry>
-	  <entry id="34307" string="Exhaustive model search">Optimitzar grau LPC</entry>
+	  <entry id="34307" string="Exhaustive model search">Cerca de model exhaustiva</entry>
 	  <entry id="34308" string="Quantized LPC precision">Precisió LPC quantificada</entry>
 	  <entry id="34309" string="auto">automàtic</entry>
-	  <entry id="34310" string="Optimize LPC quantization">Optimitzar cuantizació LPC</entry>
+	  <entry id="34310" string="Optimize LPC quantization">Optimitza la quantificació LPC</entry>
 	  <entry id="34311" string="Residual coding">Codificació residual</entry>
-	  <entry id="34312" string="Minimum partition order">El meu grau de partició</entry>
-	  <entry id="34313" string="Maximum partition order">màxim grau de partició</entry>
+	  <entry id="34312" string="Minimum partition order">Ordre mínim de partició</entry>
+	  <entry id="34313" string="Maximum partition order">Ordre màxim de partició</entry>
 	</section>
       </section>
 
       <section name="Vorbis">
-	<entry id="35000" string="Encoding Mode">Mode de compresió</entry>
-	<entry id="35001" string="Variable Bitrate">Ràtio de bits Variable</entry>
-	<entry id="35002" string="Average Bitrate">Mitjana Ràtio de bits</entry>
+	<entry id="35000" string="Encoding Mode">Mode de codificació</entry>
+	<entry id="35001" string="Variable Bitrate">Taxa de bits variable</entry>
+	<entry id="35002" string="Average Bitrate">Taxa de bits mitjana</entry>
 	<entry id="35003" string="Quality">Qualitat</entry>
-	<entry id="35004" string="Bitrate">Ràtio de bits</entry>
+	<entry id="35004" string="Bitrate">Taxa de bits</entry>
+	<entry id="35005" string="Minimum bitrate">Taxa de bits mínima</entry>
+	<entry id="35006" string="Average bitrate">Taxa de bits mitjana</entry>
+	<entry id="35007" string="Maximum bitrate">Taxa de bits màxima</entry>
+	<entry id="35008" string="File extension">Extensió de fitxer</entry>
       </section>
 
       <section name="WMA">
-	<entry id="36000" string="Select codec">Selecciona còdec</entry>
-	<entry id="36001" string="Select codec format">Selecciona el còdec del format</entry>
+	<entry id="36000" string="Select codec">Seleccioneu el còdec</entry>
+	<entry id="36001" string="Select codec format">Seleccioneu el format del còdec</entry>
 	<entry id="36002" string="Codec settings">Configuració del còdec</entry>
-	<entry id="36003" string="Use codec">Ús del còdec</entry>
-	<entry id="36004" string="Use format">Ús del format</entry>
-	<entry id="36005" string="Write uncompressed WMA files">Escriu arxius WMA no comprimits</entry>
-	<entry id="36006" string="Automatically select format based on settings and input format">Automàticament selecciona el format bassant-se en la configuració i format d'entrada</entry>
-	<entry id="36007" string="Use VBR encoding">Usa codificació de Ràtio Variable (VBR)</entry>
+	<entry id="36003" string="Use codec">Utilitza el còdec</entry>
+	<entry id="36004" string="Use format">Utilitza el format</entry>
+	<entry id="36005" string="Write uncompressed WMA files">Escriu fitxers WMA no comprimits</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Selecciona el format automàticament en funció de la configuració i del format d'entrada</entry>
+	<entry id="36007" string="Use VBR encoding">Utilitza la codificació VBR</entry>
 	<entry id="36008" string="Quality">Qualitat</entry>
-	<entry id="36009" string="Target bitrate">Ràtio de bits de destí</entry>
-	<entry id="36010" string="Use 2-pass encoding">Usa una codificació a 2 passades</entry>
+	<entry id="36009" string="Target bitrate">Taxa de bits de destinació</entry>
+	<entry id="36010" string="Use 2-pass encoding">Utilitza la codificació de 2 passades</entry>
       </section>
 
       <section name="TwinVQ">
-	<entry id="37000" string="Bitrate">Ràtio de bits</entry>
-	<entry id="37001" string="Bitrate per channel">Ràtio de bits per canal</entry>
+	<entry id="37000" string="Bitrate">Taxa de bits</entry>
+	<entry id="37001" string="Bitrate per channel">Taxa de bits per canal</entry>
 	<entry id="37002" string="Preselection">Preselecció</entry>
 	<entry id="37003" string="Number of preselection candidates">Nº de candidats de preselecció</entry>
       </section>
 
+      <section name="Monkey's Audio">
+	<entry id="38000" string="Compression">Compressió</entry>
+	<entry id="38001" string="Compression mode">Mode de compressió</entry>
+	<entry id="38002" string="Fast">Ràpida</entry>
+	<entry id="38003" string="Normal">Normal</entry>
+	<entry id="38004" string="High">Alta</entry>
+	<entry id="38005" string="Extra high">Molt alta</entry>
+	<entry id="38006" string="Insane">La més alta</entry>
+      </section>
+
       <section name="Speex">
-	<entry id="39002" string="auto">acte</entry>
+	<entry id="39000" string="Profile">Perfil</entry>
+	<entry id="39001" string="Select encoding profile">Seleccioneu el perfil de codificació</entry>
+	<entry id="39002" string="auto">automàtic</entry>
+	<entry id="39003" string="Narrowband (8 kHz)">Banda estreta (8 kHz)</entry>
+	<entry id="39004" string="Wideband (16 kHz)">Banda ampla (16 kHz)</entry>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)">Banda ultraampla (32 kHz)</entry>
 	<entry id="39006" string="VBR mode">Mode VBR</entry>
+	<entry id="39007" string="CBR (no VBR)">CBR (no VBR)</entry>
+	<entry id="39008" string="VBR">VBR</entry>
+	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Opcions</entry>
-	<entry id="39016" string="VBR quality">Qualitat VBR</entry>
-	<entry id="39017" string="ABR target bitrate">ABR Ràtio de bits de destinació</entry>
+	<entry id="39011" string="Voice Activity Detection">Detecció d'activitat de veu</entry>
+	<entry id="39012" string="Discontinuous Transmission">Transmissió discontínua</entry>
+	<entry id="39013" string="Algorithm complexity">Complexitat algorítmica</entry>
+	<entry id="39014" string="Complexity">Complexitat</entry>
+	<entry id="39015" string="CBR quality">Qualitat del CBR</entry>
+	<entry id="39016" string="VBR quality">Qualitat del VBR</entry>
+	<entry id="39017" string="ABR target bitrate">Taxa de bits de destinació de l'ABR</entry>
+	<entry id="39018" string="Bitrate">Taxa de bits</entry>
+	<entry id="39019" string="Quality">Qualitat</entry>
+	<entry id="39020" string="Max. bitrate">Taxa de bits màxima</entry>
       </section>
 
       <section name="Opus">
-	<entry id="40002" string="auto">acte</entry>
+	<entry id="40000" string="Basic settings">Configuració bàsica</entry>
+	<entry id="40001" string="Encoding mode">Mode de codificació</entry>
+	<entry id="40002" string="auto">automàtic</entry>
+	<entry id="40003" string="Voice">Veu</entry>
+	<entry id="40004" string="Music">Música</entry>
+	<entry id="40005" string="Bandwidth">Amplada de banda</entry>
+	<entry id="40006" string="Narrowband">Banda estreta</entry>
+	<entry id="40007" string="Mediumband">Banda mitjana</entry>
+	<entry id="40008" string="Wideband">Banda ampla</entry>
+	<entry id="40009" string="Superwideband">Banda ultraampla</entry>
+	<entry id="40010" string="Fullband">Banda completa</entry>
+	<entry id="40011" string="File extension">Extensió de fitxer</entry>
+	<entry id="40012" string="Variable bitrate">Taxa de bits variable</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">Habilita la codificació amb taxa de bits variable</entry>
+	<entry id="40014" string="Constrain bitrate to target value">Restringeix la taxa de bits al valor de destinació</entry>
 	<entry id="40015" string="Quality">Qualitat</entry>
+	<entry id="40016" string="Bitrate">Taxa de bits</entry>
+	<entry id="40017" string="Complexity">Complexitat</entry>
+	<entry id="40018" string="Stream">Flux</entry>
+	<entry id="40019" string="Frame length">Mida del quadre</entry>
 	<entry id="40020" string="Options">Opcions</entry>
+	<entry id="40021" string="Enable discontinous transmission">Habilita la transmissió discontínua</entry>
+	<entry id="40022" string="Expected packet loss">Pèrdua de paquets esperada</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion">Desactiva la inversió de fase estéreo d'intensitat</entry>
       </section>
 
       <section name="SndFile">
+	<entry id="41000" string="Output format">Format de sortida</entry>
 	<entry id="41001" string="File format">Format de fitxer</entry>
 	<entry id="41002" string="Audio format">Format d'àudio</entry>
 	<entry id="41003" string="mono">mono</entry>
+	<entry id="41004" string="auto select">selecció automàtica</entry>
+
+	<section name="Errors">
+	  <entry id="41100" string="Could not find suitable audio format.">No s'ha pogut trobar un format d'àudio adequat.</entry>
+	  <entry id="41101" string="Unable to use selected audio format.">No s'ha pogut utilitzar el format d'àudio seleccionat.</entry>
+	</section>
+      </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">Codificadors</entry>
+	<entry id="42001" string="Available">Disponible</entry>
+	<entry id="42002" string="Selected">Seleccionat</entry>
+	<entry id="42003" string="Configure encoder">Configura el codificador</entry>
+	<entry id="42004" string="Options">Opcions</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Crea una carpeta separada per a cada format de sortida</entry>
+      </section>
+    </section>
+
+    <section name="DSP">
+
+      <section name="Format">
+	<entry id="50000" string="Sample format">Format de la mostra</entry>
+	<entry id="50001" string="Number format">Format numèric</entry>
+	<entry id="50002" string="Sample resolution">Resolució de la mostra</entry>
+	<entry id="50003" string="bit">bit</entry>
+	<entry id="50004" string="unsigned">sense signe</entry>
+	<entry id="50005" string="Integer">Enter</entry>
+	<entry id="50006" string="Float">Coma flotant</entry>
+	<entry id="50007" string="Dithering">Difuminat</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Aplica difuminat al reduir la resolució de la mostra</entry>
+	<entry id="50009" string="Dither type">Tipus de difuminat</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50100" string="Output channels">Canals de sortida</entry>
+	<entry id="50101" string="Channel configuration">Configuració dels canals</entry>
+	<entry id="50102" string="Mono">Mono</entry>
+	<entry id="50103" string="Stereo">Estéreo</entry>
+	<entry id="50104" string="Switch stereo channels">Intercanvia canals estéreo</entry>
+      </section>
+
+      <section name="Resample">
+	<entry id="50200" string="Converter">Conversor</entry>
+	<entry id="50201" string="Sampling rate">Freqüència de mostreig</entry>
+	<entry id="50202" string="Output sampling rate">Freqüència de mostreig de sortida</entry>
+      </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls">Controls bàsics</entry>
+	<entry id="50301" string="Tempo">Tempo</entry>
+	<entry id="50302" string="Pitch">To</entry>
+	<entry id="50303" string="Semitones">Semitons</entry>
+	<entry id="50304" string="Advanced options">Opcions avançades</entry>
+	<entry id="50305" string="Transient detection">Detecció transitòria</entry>
+	<entry id="50306" string="Compound">Compost</entry>
+	<entry id="50307" string="Percussive">Percussiu</entry>
+	<entry id="50308" string="Soft">Suau</entry>
+	<entry id="50309" string="Transient handling">Gestió transitòria</entry>
+	<entry id="50310" string="Crisp">Nítid</entry>
+	<entry id="50311" string="Mixed">Mixt</entry>
+	<entry id="50312" string="Smooth">Suau</entry>
+	<entry id="50313" string="Transformation window">Finestra de transformació</entry>
+	<entry id="50314" string="Standard">Estàndard</entry>
+	<entry id="50315" string="Short">Curta</entry>
+	<entry id="50316" string="Long">Llarga</entry>
+	<entry id="50317" string="Use time-domain smoothing">Utilitza la suavització del domini temporal</entry>
+	<entry id="50318" string="Phase handling">Gestió de la fase</entry>
+	<entry id="50319" string="Laminar">Laminar</entry>
+	<entry id="50320" string="Independent">Independent</entry>
+	<entry id="50321" string="Formant handling">Gestió del format</entry>
+	<entry id="50322" string="Shift">Canvia</entry>
+	<entry id="50323" string="Preserve">Preserva</entry>
+	<entry id="50324" string="Pitch processing">Processa el to</entry>
+	<entry id="50325" string="High quality">Alta qualitat</entry>
+	<entry id="50326" string="High speed">Alta velocitat</entry>
+	<entry id="50327" string="High consistency">Alta consistència</entry>
+	<entry id="50328" string="Stereo processing">Processament estéreo</entry>
+	<entry id="50329" string="Separate">Separat</entry>
+	<entry id="50330" string="Combined">Combinat</entry>
+      </section>
+
+      <section name="RNNoise">
+	<entry id="50400" string="Signal/noise type">Tipus de senyal/soroll</entry>
+	<entry id="50401" string="Signal type">Tipus de senyal</entry>
+	<entry id="50402" string="Noise type">Tipus de soroll</entry>
+	<entry id="50403" string="General">General</entry>
+	<entry id="50404" string="Recording">Gravació</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">Veu (incl. riure, etc.)</entry>
+	<entry id="50406" string="Speech">Discurs</entry>
+      </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Canals de sortida</entry>
+	<entry id="50501" string="Channel configuration">Configuració de canals</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel">Redirigeix ​​els greus al canal LFE</entry>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment">Ajust del volum</entry>
+	<entry id="50601" string="Adjustment">Ajust</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">Format del capítol</entry>
+	<entry id="60001" string="both">ambdós</entry>
+      </section>
+    </section>
+
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Configura AccurateRip</entry>
+	<entry id="70001" string="General settings">Configuració general</entry>
+	<entry id="70002" string="Enable AccurateRip">Habilita AccurateRip</entry>
+	<entry id="70003" string="Database URL">URL de la base de dades</entry>
+	<entry id="70004" string="Cache">Memòria cau</entry>
+	<entry id="70005" string="Enable cache">Habilita la memòria cau</entry>
+	<entry id="70006" string="Expires after">Caduca després de</entry>
+	<entry id="70007" string="%1 day(s)">%1 dia(es)</entry>
+	<entry id="70008" string="%1 week(s)">%1 setmana(es)</entry>
+	<entry id="70009" string="%1 month(s)">%1 mes(os)</entry>
+	<entry id="70010" string="%1 year(s)">%1 any(s)</entry>
+	<entry id="70011" string="never">mai</entry>
+	<entry id="70012" string="Drives">Unitats</entry>
+	<entry id="70013" string="Drive">Unitat</entry>
+	<entry id="70014" string="Offset configuration">Configura el decalatge</entry>
+	<entry id="70015" string="Offset in drive database">Decalatge a la base de dades de la unitat</entry>
+	<entry id="70016" string="Detected offset">Decalatge detectat</entry>
+	<entry id="70017" string="Configured offset">Decalatge configurat</entry>
+	<entry id="70018" string="Detect offset now">Detecta el decalatge ara</entry>
+	<entry id="70019" string="not configured">sense configurar</entry>
+	<entry id="70020" string="automatically configured">configurat automàticament</entry>
+	<entry id="70021" string="configured by offset detection">configurat per detecció de decalatge</entry>
+	<entry id="70022" string="manually configured">configurat manualment</entry>
+	<entry id="70023" string="not present">no s'ha trobat</entry>
+	<entry id="70024" string="not detected">no s'ha detectat</entry>
+	<entry id="70025" string="disabled">desactivat</entry>
+	<entry id="70026" string="Options">Opcions</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">Notifica quan no es trobi un disc a la base de dades</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Notifica quan totes les pistes es verifiquin amb èxit</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">Configuració d'AccurateRip</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">No s'ha pogut trobar la vostra unitat de CD a la base de dades AccurateRip.&#10;&#10;Nom d'unitat: %1&#10;&#10;Voleu executar una detecció automàtica de decalatge a la unitat ara?</entry>
+	  <entry id="70052" string="Do not ask again">No ho tornis a preguntar</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Detecció de decalatge AccurateRip</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">No s'ha pogut trobar el disc inserit a la base de dades AccurateRip.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Si us plau, introduïu un altre disc a la unitat de CD i premeu 'D'acord'.&#10;&#10;Cal que el disc es trobi a la base de dades AccurateRip. Això és més&#10;probable per a CDs populars que altres usuaris ja hagin extret abans.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">La detecció de decalatge ha de comprovar un altre disc.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">El decalatge de la unitat s'ha detectat amb èxit i s'ha configurat a %1 mostres.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">S'han verificat amb èxit totes les pistes amb AccurateRip.</entry>
+	</section>
+      </section>
+    </section>
+
+    <section name="External">
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Converteix l'àudio multicanal a estéreo</entry>
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">Qualitat</entry>
+	<entry id="80101" string="poor">pobre</entry>
+	<entry id="80102" string="excellent">excel·lent</entry>
+	<entry id="80103" string="Mid/Side stereo mode">Mode estéreo mig/lateral</entry>
+	<entry id="80104" string="off">desactivat</entry>
+	<entry id="80105" string="reduced">reduït</entry>
+	<entry id="80106" string="on">activat</entry>
+	<entry id="80107" string="decoupled">desacoblat</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">millorat 1.5/3 dB</entry>
+	<entry id="80109" string="enhanced 2/6 dB">millorat 2/6 dB</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">millorat 2.5/9 dB</entry>
+	<entry id="80111" string="enhanced 3/12 dB">millorat 3/12 dB</entry>
+	<entry id="80112" string="enhanced 3/inf dB">millorat 3/inf dB</entry>
+	<entry id="80113" string="Adaptive noise shaping order">Ordre de modelatge de soroll adaptatiu</entry>
+	<entry id="80114" string="high">alt</entry>
+	<entry id="80115" string="Clear Voice Detection">Detecció de veu clara</entry>
+	<entry id="80116" string="dual">dual</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80200" string="Encoding mode">Mode de codificació</entry>
+	<entry id="80201" string="fast">ràpid</entry>
+	<entry id="80202" string="normal">normal</entry>
+	<entry id="80203" string="high">alt</entry>
+	<entry id="80204" string="extra">extra</entry>
+	<entry id="80205" string="best">millor</entry>
+	<entry id="80206" string="high, new">alt, nou</entry>
+	<entry id="80207" string="extra, new">extra, nou</entry>
+	<entry id="80208" string="best, new">millor, nou</entry>
+	<entry id="80209" string="Add MD5 checksum">Afegeix suma de comprovació MD5</entry>
+	<entry id="80210" string="Seeking">Cercant</entry>
+	<entry id="80211" string="slow">lent</entry>
+	<entry id="80212" string="minimum">mínim</entry>
+	<entry id="80213" string="Optimization">Optimització</entry>
+	<entry id="80214" string="disabled">desactivat</entry>
+	<entry id="80215" string="low">baix</entry>
+      </section>
+
+      <section name="Tom's Audiokompressor">
+	<entry id="80300" string="Encoder preset">Preconfiguració del codificador</entry>
+	<entry id="80301" string="fastest">més ràpida</entry>
+	<entry id="80302" string="strongest">més forta</entry>
+	<entry id="80303" string="Frame size limit">Mida de quadre límit</entry>
+	<entry id="80304" string="Add MD5 checksum">Afegeix suma de comprovació MD5</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80400" string="Enable lossy compression">Habilita la compressió amb pèrdua</entry>
+	<entry id="80401" string="Compression mode">Mode de compressió</entry>
+	<entry id="80402" string="fast">ràpid</entry>
+	<entry id="80403" string="high quality">alta qualitat</entry>
+	<entry id="80404" string="very high quality">molt alta qualitat</entry>
+	<entry id="80405" string="Extra encode processing">Processament de codificació addicional</entry>
+	<entry id="80406" string="faster">més ràpid</entry>
+	<entry id="80407" string="better">millor</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+	<entry id="80409" string="Create correction file">Crea fitxer de correcció</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80500" string="Encoding mode">Mode de codificació</entry>
+	<entry id="80501" string="auto">automàtic</entry>
+	<entry id="80502" string="Quality">Qualitat</entry>
+	<entry id="80503" string="worse">pitjor</entry>
+	<entry id="80504" string="better">millor</entry>
+	<entry id="80505" string="Bitrate">Taxa de bits</entry>
+	<entry id="80506" string="Bitrate (Streaming)">Taxa de bits (flux)</entry>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">Taxa de bits</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
       </section>
     </section>
 
     <section name="Extensions">
 
       <section name="Donate">
+	<entry id="100000" string="Support this project">Recolza aquest projecte</entry>
+	<entry id="100001" string="Please support this project!">Si us plau, recolzeu aquest projecte!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Si us plau, ajudeu a mantenir aquest programa gratuit donant suport al&#10;projecte %1 amb un donatiu.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Si us plau, adreceu-vos a %1 si voleu enviar diners o&#10;un taló per correu.</entry>
+	<entry id="100004" string="Thank you very much!">Moltes gràcies!</entry>
+	<entry id="100005" string="Remind me later">Recorda-m'ho més tard</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
+	<entry id="100007" string="Donate to the %1 project">Fes un donatiu al projecte %1</entry>
 
 	<section name="PayPal">
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Trieu una quantitat i feu clic al botó per fer un donatiu amb PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">També podeu enviar diners directament a %1 amb PayPal.</entry>
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1">%1€</entry>
 	  <entry id="100104" string="10,15,20,other amount">10,15,20,altra quantitat</entry>
+	  <entry id="100105" string="monthly recurring">repetir mensualment</entry>
+	  <entry id="100106" string="Donate">Dona</entry>
 	</section>
 
 	<section name="Donorbox">
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox permet fer donatius ràpids i senzills amb targeta de crèdit.&#10;Feu clic a aquest botó per fer un donatiu amb Donorbox:</entry>
+	  <entry id="100201" string="Donate">Dona</entry>
 	  <entry id="100202" string="usd">eur</entry>
+	</section>
+
+	<section name="Bitcoin">
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Si us plau, escanegeu o feu clic al codi QR o copieu&#10;la següent adreça per donar Bitcoin:</entry>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Aquesta adreça també accepta Bitcoin Cash i d'altres variants.</entry>
+	</section>
+
+	<section name="Ethereum">
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Si us plau, escanegeu o feu clic al codi QR o copieu&#10;la següent adreça per donar Ethereum:</entry>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Aquesta adreça també accepta tokens Ether Classic i ERC20.</entry>
+	</section>
+
+	<section name="SEPA">
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Podeu fer un donatiu mitjançant transferència electrònica&#10;al compte següent:</entry>
+	  <entry id="100501" string="Account holder:">Titular del compte:</entry>
+	  <entry id="100502" string="IBAN:">IBAN:</entry>
+	  <entry id="100503" string="BIC:">BIC:</entry>
 	</section>
       </section>
 
       <section name="Winamp Adapter">
 	<entry id="101000" string="Configure">Configurar</entry>
-	<entry id="101001" string="About">Sobre</entry>
-      </section>
+	<entry id="101001" string="About">Quant a</entry>
+     </section>
 
       <section name="Video Downloader">
+	<entry id="102000" string="Video">Vídeo</entry>
+	<entry id="102001" string="Enter video URL here">Introduïu l'URL del vídeo aquí</entry>
+	<entry id="102002" string="Download">Baixa</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Baixa automàticament els URL copiats al porta-retalls</entry>
+	<entry id="102004" string="Save downloaded video files">Desa els fitxers de vídeo baixats</entry>
+	<entry id="102005" string="Video downloads">Baixades de vídeo</entry>
+	<entry id="102006" string="Downloaded tracks">Pistes baixades</entry>
+	<entry id="102007" string="Uploader">Carregador</entry>
+	<entry id="102008" string="Video URL">URL del vídeo</entry>
+	<entry id="102009" string="Video title">Títol del vídeo</entry>
+	<entry id="102010" string="Video description">Descripció del vídeo</entry>
+	<entry id="102011" string="Site name">Nom del lloc</entry>
+	<entry id="102012" string="Uploaded by">Carregat per</entry>
+	<entry id="102013" string="Uploaded on">Carregat a </entry>
 	<entry id="102014" string="Length">Duració</entry>
-	<entry id="102015" string="Size">Tamany</entry>
+	<entry id="102015" string="Size">Mida</entry>
+	<entry id="102016" string="Cancel download">Cancel·la la baixada</entry>
+	<entry id="102017" string="unknown">desconegut</entry>
+	<entry id="102018" string="Note">Nota</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatizació</entry>
-	  <entry id="102103" string="Select">Buscar</entry>
+	  <entry id="102102" string="Video files">Fitxers de vídeo</entry>
+	  <entry id="102103" string="Select">Selecció</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">Seleccioneu la carpeta on desar els fitxers de vídeo descarregats</entry>
+	  <entry id="102105" string="Downloads">Baixades</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">Nombre màxim de baixades simultànies</entry>
+	  <entry id="102107" string="Output format">Format de sortida</entry>
+	  <entry id="102108" string="keep original format">conserva el format original</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">Aquest URL no és compatible o no és un URL de pàgina de vídeo.</entry>
+	  <entry id="102202" string="Error downloading video!">Error baixant el vídeo.</entry>
+	  <entry id="102203" string="You are already downloading this video!">Ja esteu baixant aquest vídeo.</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">No s'han pogut trobar alguns descodificadors de vídeo necessaris.&#10;Els vídeos no es poden afegir a la llista per convertir-los àudios.&#10;&#10;Si us plau, instal·leu FFmpeg o avconv per resoldre aquest problema&#13;.&#10;</entry>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="103000" string="Tags">Info Etiquetes</entry>
+	<entry id="103000" string="Tags">Etiquetes</entry>
 	<entry id="103001" string="Length">Duració</entry>
-	<entry id="103002" string="Size">Tamany</entry>
-	<entry id="103005" string="File">Arxiu</entry>
+	<entry id="103002" string="Size">Mida</entry>
+	<entry id="103003" string="Albums">Àlbums</entry>
+	<entry id="103004" string="Files">Fitxers</entry>
+	<entry id="103005" string="File">Fitxer</entry>
+	<entry id="103006" string="Tracks">Pistes</entry>
+	<entry id="103007" string="Save">Desa</entry>
+	<entry id="103008" string="Save all">Desa-ho tot</entry>
+	<entry id="103009" string="no audio files found">no s'han trobat fitxers d'àudio</entry>
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Bàsic</entry>
-	  <entry id="103107" string="Add">Afegir</entry>
-	  <entry id="103108" string="Remove">Eliminar</entry>
+	  <entry id="103101" string="Title information">Informació del títol</entry>
+	  <entry id="103102" string="Disc">Disc</entry>
+	  <entry id="103103" string="Album art">Il·lustracions de portada</entry>
+	  <entry id="103104" string="Artwork">Portades</entry>
+	  <entry id="103105" string="Type">Tipus</entry>
+	  <entry id="103106" string="Description">Descripció</entry>
+	  <entry id="103107" string="Add">Afegeix</entry>
+	  <entry id="103108" string="Remove">Elimina</entry>
+	</section>
+
+	<section name="Details">
+	  <entry id="103200" string="Details">Detalls</entry>
+	  <entry id="103201" string="Detailed information">Informació detallada</entry>
+	  <entry id="103202" string="Band / orchestra">Banda / orquesta</entry>
+	  <entry id="103205" string="Lyrics writer">Lletrista</entry>
+	  <entry id="103206" string="Modified / remixed by">Modificat / remesclat per</entry>
+	  <entry id="103207" string="Original information">Informació original</entry>
+	  <entry id="103208" string="Original artist">Artista original</entry>
+	  <entry id="103209" string="Original album">Àlbum original</entry>
+	  <entry id="103210" string="Original lyrics writer">Lletrista original</entry>
+	  <entry id="103211" string="Original release year">Any de llançament original</entry>
+	  <entry id="103212" string="Musical key/tempo">Clau musical/tempo</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key">Clau inicial</entry>
+	</section>
+
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Editor</entry>
+	  <entry id="103301" string="Publisher information">Informació de l'editor</entry>
+	  <entry id="103302" string="Publisher / label">Editor / etiqueta</entry>
+	  <entry id="103303" string="Media type">Tipus de suport</entry>
+	  <entry id="103304" string="Catalog number">Número de catàleg</entry>
+	  <entry id="103305" string="Barcode">Codi de barres</entry>
+	  <entry id="103307" string="Webpage URLs">URL de pàgines web</entry>
+	  <entry id="103308" string="Artist webpage">Pàgina web de l'artista</entry>
+	  <entry id="103309" string="Publisher webpage">Pàgina web de l'editor</entry>
+	  <entry id="103310" string="Internet radio station">Emissora de ràdio per Internet</entry>
+	  <entry id="103311" string="Audio source webpage">Pàgina web de font d'àudio</entry>
+	  <entry id="103312" string="Copyright information">Informació de drets d'autor</entry>
+	  <entry id="103313" string="Commercial information">Informació comercial</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Lletra</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Valoració</entry>
+	  <entry id="103361" string="none">cap</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Comportament</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Esborra el camp de l'artista de l'àlbum si coincideix amb l'artista de la pista</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">No es pot obrir el fitxer: %1&#10;&#10;%2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">No s'ha pogut obrir el fitxer: %1&#10;&#10;Error: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">No s'ha pogut actualitzar l'etiqueta: %1&#10;&#10;Error: %2</entry>
+	</section>
+      </section>
+
+      <section name="Logging">
+	<entry id="104000" string="Logs">Registres</entry>
+	<entry id="104001" string="Log">Registre</entry>
+	<entry id="104002" string="Save as">Anomena i desa</entry>
+	<entry id="104003" string="Log Files">Fitxers de registre</entry>
+	<entry id="104004" string="Time">Temps</entry>
+	<entry id="104005" string="Message">Missatge</entry>
+
+	<section name="Configuration">
+	  <entry id="104100" string="User interface">Interfície d'usuari</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Mostra la pestanya Registres a la finestra principal</entry>
+	  <entry id="104102" string="Log files">Fitxers de registre</entry>
+	  <entry id="104103" string="Archive log files">Arxiva els fitxers de registre</entry>
+	  <entry id="104104" string="Log file folder">Carpeta dels fitxers de registre</entry>
+	  <entry id="104105" string="Select">Selecció</entry>
+	  <entry id="104106" string="Select the folder for saving log files">Seleccioneu la carpeta per a desar els fitxers de registre</entry>
+	  <entry id="104107" string="Delete old log files after">Suprimeix els fitxers de registre antics després de</entry>
+	  <entry id="104108" string="days">dies</entry>
+	  <entry id="104109" string="Conversion logs">Registres de conversió</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">Desa els registres de conversió amb els fitxers d'àudio</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">Només registres d'extracció de CD d'àudio</entry>
+	  <entry id="104112" string="Filename pattern">Patró del nom de fitxer</entry>
+	  <entry id="104113" string="Log complete file paths">Registra els camins de fitxer complets</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<entry id="105000" string="Conversion process finished!">Procés de conversió finalitzat.</entry>
+
+	<section name="Configuration">
+	  <entry id="105100" string="Notifications">Notificacions</entry>
+	  <entry id="105101" string="Notify on finished conversion">Notifica quan finalitzi la conversió</entry>
+	  <entry id="105102" string="Play sound">Reprodueix un so</entry>
+	  <entry id="105103" string="Display message">Mostra un missatge</entry>
+	  <entry id="105104" string="Select">Selecció</entry>
+	  <entry id="105105" string="Only for conversions running longer than">Només per a conversions que triguin més de</entry>
+	  <entry id="105106" string="second(s)">segon(s)</entry>
+	  <entry id="105107" string="minute(s)">minut(s)</entry>
 	</section>
       </section>
     </section>
