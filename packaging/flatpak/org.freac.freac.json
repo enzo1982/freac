@@ -1,20 +1,17 @@
 {
     "app-id": "org.freac.freac",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "23.08",
+    "runtime-version": "24.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "freac",
     "finish-args": [
         "--device=all",
-        "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
         "--filesystem=host",
-        "--filesystem=xdg-run/dconf",
-        "--filesystem=~/.config/dconf:ro",
         "--share=ipc",
         "--share=network",
         "--socket=pulseaudio",
         "--socket=x11",
-        "--talk-name=ca.desrt.dconf"
+        "--metadata=X-DConf=migrate-path=/org/freac/freac/"
     ],
     "cleanup": [
         "/bin/mac",
@@ -119,8 +116,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/uriparser/uriparser/releases/download/uriparser-0.9.7/uriparser-0.9.7.tar.xz",
-                    "sha256": "1ddae35cb3cc2c36e8199829d46f1c7f8b222e74a723fdae67ec8561e1ac5a39"
+                    "url": "https://github.com/uriparser/uriparser/releases/download/uriparser-0.9.8/uriparser-0.9.8.tar.xz",
+                    "sha256": "1d71c054837ea32a31e462bce5a1af272379ecf511e33448e88100b87ff73b2e"
                 }
             ]
         },
@@ -148,6 +145,9 @@
         },
         {
             "name": "musepack",
+            "build-options": {
+                "cflags": "-Wno-incompatible-pointer-types"
+            },
             "config-opts": [
                 "--disable-shared"
             ],
