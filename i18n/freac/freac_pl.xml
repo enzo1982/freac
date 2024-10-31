@@ -1137,7 +1137,7 @@
 	<entry id="50300" string="Basic controls">Ustawienia podstawowe</entry>
 	<entry id="50301" string="Tempo">Tempo</entry>
 	<entry id="50302" string="Pitch">Tonacja</entry>
-	<entry id="50303" string="Semitones">Półtonów</entry>
+	<entry id="50303" string="Semitones">Półtony</entry>
 	<entry id="50304" string="Advanced options">Opcje zaawansowane</entry>
 	<entry id="50305" string="Transient detection">Wykrywanie transjentu</entry>
 	<entry id="50306" string="Compound">złożone</entry>
@@ -1165,6 +1165,11 @@
 	<entry id="50328" string="Stereo processing">Przetwarzanie stereo</entry>
 	<entry id="50329" string="Separate">oddzielnie</entry>
 	<entry id="50330" string="Combined">połączone</entry>
+	<entry id="50331" string="Frequency ratio">Współczynnik częstotliwości</entry>
+	<entry id="50332" string="Hz">Hz</entry>
+	<entry id="50333" string=":">:</entry>
+	<entry id="50334" string="=">=</entry>
+	<entry id="50335" string="invalid">nieprawidłowy</entry>
       </section>
 
       <section name="RNNoise">
