@@ -1166,9 +1166,9 @@
 	<entry id="50329" string="Separate">oddzielnie</entry>
 	<entry id="50330" string="Combined">połączone</entry>
 	<entry id="50331" string="Frequency ratio">Współczynnik częstotliwości</entry>
-	<entry id="50332" string="Hz"/>
-	<entry id="50333" string=":"/>
-	<entry id="50334" string="="/>
+	<entry id="50332" string="Hz">Hz</entry>
+	<entry id="50333" string=":">:</entry>
+	<entry id="50334" string="=">=</entry>
 	<entry id="50335" string="invalid">nieprawidłowy</entry>
       </section>
 
