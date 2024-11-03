@@ -14,12 +14,12 @@
     <entry id="1" string="Cancel">Отмена</entry>
     <entry id="2" string="Install">Установить</entry>
     <entry id="3" string="Show unstable releases">Показывать нестабильные релизы</entry>
-    <entry id="4" string="Select the updated program version to be installed:">Выберите обновленную версию программы для установки:</entry>
-    <entry id="5" string="You can select optional components to be installed:">Вы можете выбрать компоненты для установки:</entry>
+    <entry id="4" string="Select the updated program version to be installed:">Выберите обновлённую версию программы для установки:</entry>
+    <entry id="5" string="You can select optional components to be installed:">Вы можете выбрать дополнительные компоненты для установки:</entry>
     <entry id="6" string="Version ID">ID версии</entry>
     <entry id="7" string="Package">Пакет</entry>
     <entry id="8" string="Description">Описание</entry>
-    <entry id="9" string="Latest">Последняя</entry>
+    <entry id="9" string="Latest">Новейшая</entry>
     <entry id="10" string="Size">Размер</entry>
     <entry id="11" string="Yes">Да</entry>
     <entry id="12" string="No">Нет</entry>
@@ -29,9 +29,9 @@
     <entry id="16" string="Downloading file:">Загрузка файла:</entry>
     <entry id="17" string="Extracting file:">Извлечение файла:</entry>
     <entry id="18" string="Update complete">Обновление завершено</entry>
-    <entry id="19" string="Your application has been successfully updated!">Ваше приложение успешно обновлено!</entry>
+    <entry id="19" string="Your application has been successfully updated!">Программа успешно обновлена!</entry>
     <entry id="20" string="Error">Ошибка</entry>
     <entry id="21" string="Error downloading package!">Ошибка загрузки пакета!</entry>
-    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Ошибка установки &quot;%1&quot;!&#10;&#10;Доступ к каталогу приложения запрещен.</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Ошибка установки &quot;%1&quot;!&#10;&#10;Нет доступа к папке программы.</entry>
   </data>
 </LangFile>
