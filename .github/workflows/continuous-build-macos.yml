@@ -12,10 +12,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: macos-12
+          - os: macos-15
             target: 10.9
 
-          - os: macos-12
+          - os: macos-15
             target: 11.0
 
     runs-on: ${{ matrix.os }}
@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          brew install automake nasm yasm
+          brew install automake libtool nasm yasm
 
       - name: Import certificates
         uses: apple-actions/import-codesign-certs@v3
