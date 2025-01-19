@@ -17,7 +17,7 @@ BEGIN
             VALUE	"OriginalFilename",	"freac.exe\0"
             VALUE	"ProductName",		"fre:ac\0"
             VALUE	"ProductVersion",	"1.1.7\0"
-            VALUE	"LegalCopyright",	"Copyright © 2001-2024 Robert Kausch\0"
+            VALUE	"LegalCopyright",	"Copyright © 2001-2025 Robert Kausch\0"
             VALUE	"Official website",	"https://www.freac.org/\0"
          END
     END
