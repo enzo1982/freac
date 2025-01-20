@@ -45,8 +45,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://ftp.gnu.org/gnu/libcdio/libcdio-2.1.0.tar.bz2",
-                    "sha256": "8550e9589dbd594bfac93b81ecf129b1dc9d0d51e90f9696f1b2f9b2af32712b"
+                    "url": "https://github.com/libcdio/libcdio/releases/download/2.2.0/libcdio-2.2.0.tar.bz2",
+                    "sha256": "6f8fbdf4d189cf63f2a7a1549c516cd720c7b222c7aaadbc924a26e745a48539"
                 }
             ]
         },
@@ -62,8 +62,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/rocky/libcdio-paranoia/archive/release-10.2+2.0.1.tar.gz",
-                    "sha256": "7a4e257c85f3f84129cca55cd097c397364c7a6f79b9701bbc593b13bd59eb95"
+                    "url": "https://github.com/libcdio/libcdio-paranoia/releases/download/release-10.2+2.0.2/libcdio-paranoia-10.2+2.0.2.tar.bz2",
+                    "sha256": "186892539dedd661276014d71318c8c8f97ecb1250a86625256abd4defbf0d0c"
                 }
             ]
         },

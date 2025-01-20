@@ -193,6 +193,8 @@ History
 			- updated mpg123 to version 1.32.9
 			- updated libfdk-aac to version 2.0.3
 			- updated libsndfile to version 1.2.2
+			- updated libcdio to version 2.2.0
+			- updated libcdio-paranoia to version 10.2+2.0.2
 
 		- New and updated translations
 
