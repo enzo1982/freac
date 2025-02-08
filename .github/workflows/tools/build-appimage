@@ -191,7 +191,7 @@ fi
 strip --strip-all appdir/lib*.so*
 
 # Create AppImage using appimagetool
-wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-$AppImageArch.AppImage"
+wget -c -nv "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-$AppImageArch.AppImage"
 chmod a+x appimagetool-$AppImageArch.AppImage
 
 if [ "$AppImageArch" = armhf ]; then
