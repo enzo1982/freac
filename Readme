@@ -161,7 +161,7 @@ Requirements
 History
 -------
 
-	Version 1.1.8 (January 2025)
+	Version 1.1.8 (February 2025)
 
 		- Improvements
 
@@ -169,6 +169,7 @@ History
 			- made the configuration dialog save the previously opened page during a session
 			- added support for setting a frequency ratio for pitch adjustment in Rubberband
 			- added support for setting decoder complexity when using Opus 1.5 or later
+			- added support for disabling the FDK-AAC Afterburner feature
 			- added support for reading UTF-16 encoded cue sheets
 
 		- Bug fixes

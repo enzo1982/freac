@@ -931,6 +931,7 @@
 	  <entry id="33210" string="worse"/>
 	  <entry id="33211" string="better"/>
 	  <entry id="33212" string="auto"/>
+	  <entry id="33213" string="Enable Afterburner processing"/>
 	</section>
 
 	<section name="Format">
