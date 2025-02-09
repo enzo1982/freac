@@ -1,0 +1,20 @@
+diff -Naur type2-runtime/src/runtime/Makefile type2-runtime-build/src/runtime/Makefile
+--- type2-runtime/src/runtime/Makefile	2024-12-21 07:54:48.000000000 +0100
++++ type2-runtime-build/src/runtime/Makefile	2025-02-10 21:56:32.860399400 +0100
+@@ -1,12 +1,12 @@
+ GIT_COMMIT := $(shell cat version)
+-CC            = clang
+-CFLAGS        = -std=gnu99 -Os -D_FILE_OFFSET_BITS=64 -DGIT_COMMIT=\"$(GIT_COMMIT)\" -T data_sections.ld -ffunction-sections -fdata-sections -Wl,--gc-sections -static -Wall -Werror -static-pie
+-LIBS          = -lsquashfuse -lsquashfuse_ll -lzstd -lz -lfuse3
++CC            = gcc
++CFLAGS        = -std=gnu99 -Os -D_FILE_OFFSET_BITS=64 -DGIT_COMMIT=\"$(GIT_COMMIT)\" -T data_sections.ld -ffunction-sections -fdata-sections -Wl,--gc-sections -static -Wall
++LIBS          = -lsquashfuse -lsquashfuse_ll -lzstd -lz -lfuse3 -ldl -lpthread
+ 
+ all: runtime
+ 
+ runtime: runtime.c
+-	$(CC) -I/usr/local/include/squashfuse -I/usr/include/fuse3 $(CFLAGS) $^ $(LIBS) -o $@
++	$(CC) -I/usr/local/include -I/usr/local/include/fuse3 $(CFLAGS) $^ $(LIBS) -o $@
+ 
+ clean:
+ 	rm -f runtime
