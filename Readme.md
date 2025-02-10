@@ -32,7 +32,7 @@ As another alternative, users of Windows package managers may install community-
 
 - [Chocolatey](https://chocolatey.org): `choco install freac`
 - [Scoop](https://scoop.sh): `scoop install freac`
-- [Winget](https://winget.run): `winget install fre:ac`
+- [Winget](https://winget.run): `winget install "free audio"`
     
 ### macOS
 fre:ac is distributed as an Apple Disk Image (.dmg) file. To install it, open the .dmg image and drag the fre:ac application to a location of your choice like the desktop or the Applications folder. Then double click the application to start fre:ac.
