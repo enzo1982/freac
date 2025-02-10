@@ -162,6 +162,8 @@ Geschichte
 
 	Version 1.1.8 (Februar 2025)
 
+		- Linux AppImage-Pakete für die Architekturen RISC-V und PPC64EL hinzugefügt
+
 		- Verbesserungen
 
 			- Verarbeitungsgeschwindigkeit durch Umstellung auf separaten Kodierungsthread verbessert

@@ -71,7 +71,13 @@ elif [[ $machine == *aarch64* ]]; then
 elif [[ $machine == *arm* ]]; then
   cflags="$cflags -I/usr/local/include -march=armv7-a+simd"
   arm=true
-else
+elif [[ $machine == *riscv64* ]]; then
+  cflags="$cflags -I/usr/local/include -march=rv64gc"
+  riscv64=true
+elif [[ $machine == *powerpc64le* ]]; then
+  cflags="$cflags -I/usr/local/include -mcpu=powerpc64le"
+  ppc64el=true
+elif [[ $machine == *i586* || $machine == *i686* ]] || [[ $BUILD_X86 == True ]]; then
   cflags="$cflags -m32 -march=pentium4"
   ldflags="-m32"
   x86=true
@@ -94,6 +100,10 @@ if [[ $uname == Linux ]]; then
     host="aarch64-linux-gnu"
   elif [[ $arm == true ]]; then
     host="arm-linux-gnueabihf"
+  elif [[ $riscv64 == true ]]; then
+    host="riscv64-linux-gnu"
+  elif [[ $ppc64el == true ]]; then
+    host="powerpc64le-linux-gnu"
   fi
 fi
 
@@ -203,6 +213,9 @@ vorbis_location=https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-$vorbi
 wavpack_location=https://www.wavpack.com/wavpack-$wavpack_version.tar.bz2
 
 # Patch locations
+ffmpeg_patches=(https://freac.org/patches/ffmpeg-$ffmpeg_version-riscv.patch)
+ffmpeg_patch_levels=(1)
+
 lame_patches=(https://freac.org/patches/lame-$lame_version-sse-20171014.diff https://freac.org/patches/lame-$lame_version-fastcrc.diff)
 lame_patch_levels=(0 1)
 
@@ -410,14 +423,20 @@ for package in ${packages[@]}; do
 
   elif [ $package == ffmpeg ]; then
     # Build ffmpeg
+    patches=${ffmpeg_patches[@]}
+    patch_levels=(${ffmpeg_patch_levels[@]})
     export CFLAGS="$cflags"
     configure_flags="--disable-autodetect --disable-doc --enable-gpl --enable-small --enable-runtime-cpudetect"
-    if [[ $arm == true || $arm64 == true ]] && [[ `uname -m` == x86_64 ]]; then
+    if [[ $arm == true || $arm64 == true || $riscv64 == true || $ppc64el == true ]] && [[ `uname -m` == x86_64 ]]; then
       host_flags="--enable-cross-compile"
-      if [[ $arm == true ]]; then
-        host_flags="$host_flags --arch=arm"
-      else
+      if [[ $arm64 == true ]]; then
         host_flags="$host_flags --arch=aarch64"
+      elif [[ $arm == true ]]; then
+        host_flags="$host_flags --arch=arm"
+      elif [[ $riscv64 == true ]]; then
+        host_flags="$host_flags --arch=riscv"
+      elif [[ $ppc64el == true ]]; then
+        host_flags="$host_flags --arch=ppc64"
       fi
       if [[ $uname == Linux ]]; then
         host_flags="$host_flags --target-os=linux"
@@ -447,11 +466,9 @@ for package in ${packages[@]}; do
 
   elif [ $package == flac ]; then
     # Build FLAC
-    patches=${flac_patches[@]}
-    patch_levels=(${flac_patch_levels[@]})
     export CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=0"
     configure_flags="--disable-cpplibs --disable-doxygen-docs"
-    if [[ $x86_64 == true ]] || [[ $arm64 == true ]]; then
+    if [[ $x86_64 == true ]] || [[ $arm64 == true ]] || [[ $riscv64 == true ]] || [[ $ppc64el == true ]]; then
       if [[ $uname == *MINGW* ]]; then
         prepare="sed -i -e \"s/#undef FLAC__CPU_IA32//\" config.h.in"
         prepare="$prepare; sed -i -e \"s/ARCH_SUBDIRS = ia32/ARCH_SUBDIRS =/\" src/libFLAC/Makefile.in"

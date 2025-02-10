@@ -22,6 +22,10 @@ elif [ "$AppImageArch" = armhf ]; then
   export HOST=arm-linux-gnueabihf
 elif [ "$AppImageArch" = aarch64 ]; then
   export HOST=aarch64-linux-gnu
+elif [ "$AppImageArch" = riscv64 ]; then
+  export HOST=riscv64-linux-gnu
+elif [ "$AppImageArch" = ppc64el ]; then
+  export HOST=powerpc64le-linux-gnu
 fi
 
 # Build libcdio
@@ -190,16 +194,47 @@ fi
 
 strip --strip-all appdir/lib*.so*
 
-# Create AppImage using appimagetool
-wget -c -nv "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-$AppImageArch.AppImage"
-chmod a+x appimagetool-$AppImageArch.AppImage
+# Build custom AppImage runtime
+if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
+  # Check out AppImage runtime
+  git clone --depth=1 https://github.com/AppImage/type2-runtime.git
 
-if [ "$AppImageArch" = armhf ]; then
-  qemu-arm-static ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
-elif [ "$AppImageArch" = aarch64 ]; then
-  qemu-aarch64-static ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+  # Build custom libfuse3
+  git clone --depth=1 --branch=fuse-3.16.2 https://github.com/libfuse/libfuse.git
+  cd libfuse
+  patch -p1 < ../type2-runtime/patches/libfuse/mount.c.diff
+  mkdir build
+  cd build
+  meson setup -D default_library=both ..
+  ninja && sudo ninja install
+  cd ../..
+
+  # Build libsquashfuse
+  git clone --depth=1 --branch=0.5.2 https://github.com/vasi/squashfuse.git
+  cd squashfuse
+  export pkgconfig_fuse3_CFLAGS="-I/usr/local/include/fuse3"
+  export pkgconfig_fuse3_LIBS="-L/usr/local/lib/$HOST -lfuse3 -lpthread"
+  autoreconf -i
+  ./configure
+  make && sudo make install
+  sudo cp fuseprivate.h /usr/local/include/squashfuse
+  cd ..
+
+  # Build AppImage runtime
+  cd type2-runtime
+  patch -p1 < ../.github/workflows/patches/appimage-type2-runtime-build.patch
+  cd src/runtime
+  make
+  cd ../../..
+fi
+
+# Create AppImage using appimagetool
+wget -c -nv "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage"
+chmod a+x appimagetool-x86_64.AppImage
+if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
+  ARCH=x86_64 ./appimagetool-x86_64.AppImage --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
 else
-  ARCH=$AppImageArch ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+  ARCH=$AppImageArch ./appimagetool-x86_64.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
 fi
 
 # Upload AppImage to GitHub

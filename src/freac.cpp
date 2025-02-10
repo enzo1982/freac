@@ -56,9 +56,9 @@ String	 freac::freac::architecture   = "ARM";
 String	 freac::freac::architecture   = "ARM64";
 #elif defined __mips__
 String	 freac::freac::architecture   = "MIPS";
-#elif defined __ppc__
+#elif defined __ppc__ || defined __powerpc__
 String	 freac::freac::architecture   = "PPC";
-#elif defined __ppc64__
+#elif defined __ppc64__ || defined __powerpc64__
 String	 freac::freac::architecture   = "PPC64";
 #elif defined __riscv
 String	 freac::freac::architecture   = "RISC-V";

@@ -39,13 +39,17 @@ else ifneq ($(findstring mips,$(MACHINE)),)
 	ifneq ($(BUILD_MIPS),False)
 		BUILD_MIPS = True
 	endif
+else ifneq ($(findstring powerpc64,$(MACHINE)),)
+	ifneq ($(BUILD_PPC64),False)
+		BUILD_PPC64 = True
+	endif
 else ifneq ($(findstring powerpc,$(MACHINE)),)
 	ifneq ($(BUILD_PPC),False)
 		BUILD_PPC = True
 	endif
-else ifneq ($(findstring powerpc64,$(MACHINE)),)
-	ifneq ($(BUILD_PPC64),False)
-		BUILD_PPC64 = True
+else ifneq ($(findstring riscv64,$(MACHINE)),)
+	ifneq ($(BUILD_RISCV64),False)
+		BUILD_RISCV64 = True
 	endif
 else ifneq ($(findstring x86_64,$(MACHINE)),)
 	ifneq ($(BUILD_ARM64),True)
@@ -63,7 +67,7 @@ else ifneq ($(findstring amd64,$(MACHINE)),)
 	endif
 	endif
 	endif
-else
+else ifneq ($(findstring i586,$(MACHINE))$(findstring i686,$(MACHINE)),)
 	ifneq ($(BUILD_ARM64),True)
 	ifneq ($(BUILD_X86),False)
 	ifneq ($(BUILD_X86_64),True)
