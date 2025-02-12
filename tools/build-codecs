@@ -168,7 +168,7 @@ faac_version=1.30
 faad2_version=2.10.0
 fdk_aac_version=2.0.3
 ffmpeg_version=7.1
-flac_version=1.4.3
+flac_version=1.5.0
 lame_version=3.100
 libcdio_version=2.2.0
 libcdio_paranoia_version=10.2+2.0.2
@@ -193,7 +193,7 @@ faac_location=https://github.com/knik0/faac/archive/${faac_version//./_}.tar.gz
 faad2_location=https://github.com/knik0/faad2/archive/${faad2_version//./_}.tar.gz
 fdk_aac_location=https://sourceforge.net/projects/opencore-amr/files/fdk-aac/fdk-aac-$fdk_aac_version.tar.gz
 ffmpeg_location=https://ffmpeg.org/releases/ffmpeg-$ffmpeg_version.tar.xz
-flac_location=https://ftp.osuosl.org/pub/xiph/releases/flac/flac-$flac_version.tar.xz
+flac_location=https://github.com/xiph/flac/releases/download/$flac_version/flac-$flac_version.tar.xz
 lame_location=https://sourceforge.net/projects/lame/files/lame/$lame_version/lame-$lame_version.tar.gz
 libcdio_location=https://github.com/libcdio/libcdio/releases/download/$libcdio_version/libcdio-$libcdio_version.tar.bz2
 libcdio_paranoia_location=https://github.com/libcdio/libcdio-paranoia/releases/download/release-$libcdio_paranoia_version/libcdio-paranoia-$libcdio_paranoia_version.tar.bz2
@@ -371,7 +371,7 @@ for package in ${packages[@]}; do
   if [ $package == exhale ]; then
     # Build exhale
     if [[ $uname == *MINGW* ]]; then
-      prepare="sed -i -e \"s/-fPIC//\" src/makefile.base && sed -i -e \"s/= g../= \$\(CXX\)/\" src/makefile.base && sed -i -e \"s/= .(CPP)/= \$\(CXX\)/\" src/makefile.base && sed -i -e \"s/-ldl//\" src/app/makefile && sed -i -e \"s/printf_s/printf/\" src/app/exhaleApp.cpp && sed -i -e \"s/ú#+/-/\" src/app/exhaleApp.cpp"
+      prepare="sed -i -e \"s/-fPIC//\" src/makefile.base && sed -i -e \"s/= g../= \$\(CXX\)/\" src/makefile.base && sed -i -e \"s/= .(CPP)/= \$\(CXX\)/\" src/makefile.base && sed -i -e \"s/-ldl//\" src/app/makefile && sed -i -e \"s/printf_s/printf/\" src/app/exhaleApp.cpp && sed -i -e \"s/ï¿½#+/-/\" src/app/exhaleApp.cpp"
       if [[ $arm64 == true ]]; then
         prepare="$prepare; sed -i -e \"s/-l.(PRD_NAME).*/& -lstdc++/\" src/app/makefile"
       else
@@ -471,8 +471,6 @@ for package in ${packages[@]}; do
     if [[ $x86_64 == true ]] || [[ $arm64 == true ]] || [[ $riscv64 == true ]] || [[ $ppc64el == true ]]; then
       if [[ $uname == *MINGW* ]]; then
         prepare="sed -i -e \"s/#undef FLAC__CPU_IA32//\" config.h.in"
-        prepare="$prepare; sed -i -e \"s/ARCH_SUBDIRS = ia32/ARCH_SUBDIRS =/\" src/libFLAC/Makefile.in"
-        prepare="$prepare; sed -i -e \"s/LOCAL_EXTRA_LIBADD = ia32\/libFLAC-asm\.la/LOCAL_EXTRA_LIBADD =/\" src/libFLAC/Makefile.in"
         if [[ $x86_64 == true ]]; then
           prepare="$prepare; sed -i -e \"s/#undef FLAC__CPU_X86_64/#define FLAC__CPU_X86_64 1/\" config.h.in"
         else
@@ -484,7 +482,7 @@ for package in ${packages[@]}; do
     if [[ $uname == Darwin ]]; then
       configure_flags="$configure_flags --disable-asm-optimizations"
     elif [[ $uname == *MINGW* ]]; then
-      export CFLAGS="$CFLAGS -I$(pwd)/libogg-$libogg_version/include"
+      export CFLAGS="$CFLAGS -DWINPTHREAD_STATIC=1 -I$(pwd)/libogg-$libogg_version/include"
       export LDFLAGS="$LDFLAGS -L$(pwd)/libogg-$libogg_version/src/.libs"
       if [[ $x86 == true ]]; then
         export GNUTARGET=pe-i386
