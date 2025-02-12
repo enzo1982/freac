@@ -97,8 +97,8 @@ if [[ ${MACOSX_DEPLOYMENT_TARGET:0:2} = 11 ]]; then
 
   lipo -create musepack_src_r475/mpcdec/mpcdec arm64/musepack_src_r475/mpcdec/mpcdec -output mpcdec
   lipo -create musepack_src_r475/mpcenc/mpcenc arm64/musepack_src_r475/mpcenc/mpcenc -output mpcenc
-  lipo -create wavpack-5.7.0/cli/wavpack arm64/wavpack-5.7.0/cli/wavpack -output wavpack
-  lipo -create wavpack-5.7.0/cli/wvunpack arm64/wavpack-5.7.0/cli/wvunpack -output wvunpack
+  lipo -create wavpack-5.8.1/cli/wavpack arm64/wavpack-5.8.1/cli/wavpack -output wavpack
+  lipo -create wavpack-5.8.1/cli/wvunpack arm64/wavpack-5.8.1/cli/wvunpack -output wvunpack
   lipo -create ffmpeg-7.1/ffmpeg arm64/ffmpeg-7.1/ffmpeg -output ffmpeg
 
   sudo cp lib*.dylib /usr/local/lib
