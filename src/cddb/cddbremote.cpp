@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2025 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,12 +18,6 @@
 #include <cddb/cddbremote.h>
 #include <freac.h>
 #include <config.h>
-
-#ifdef __WIN32__
-#	include <winsock2.h>
-#else
-#	include <unistd.h>
-#endif
 
 using namespace BoCA;
 
@@ -188,8 +182,6 @@ Bool freac::CDDBRemote::ConnectToServer()
 
 	SendCommand(NIL);
 	SendCommand("proto 6");
-
-	gethostname(hostNameBuffer, hostNameBuffer.Size());
 
 	SendCommand(String("cddb hello user host ").Append(freac::appName).Append(" ").Append(freac::cddbVersion));
 
