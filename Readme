@@ -183,6 +183,7 @@ History
 			- fixed reading/writing of unencoded string fields from/to ID3v2 tags
 			- fixed delete/shutdown after encoding options not changing when switching configuration
 			- fixed ripping automation options not being available after switching configuration
+			- fixed track gain/peak information getting lost when converting with freaccmd
 			- fixed hours missing from total duration in logs
 
 		- Updated codecs

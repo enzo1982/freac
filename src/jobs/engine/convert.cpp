@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2024 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2025 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -1624,6 +1624,9 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 	singleTrackInfo.album_gain = firstTrackInfo.album_gain;
 	singleTrackInfo.album_peak = firstTrackInfo.album_peak;
 
+	singleTrackInfo.track_gain = firstTrackInfo.track_gain;
+	singleTrackInfo.track_peak = firstTrackInfo.track_peak;
+
 	singleTrackInfo.other	   = firstTrackInfo.other;
 
 	singleTrack.pictures	   = firstTrack.pictures;
@@ -1655,6 +1658,9 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 		if (chapterInfo.album_gain != singleTrackInfo.album_gain) singleTrackInfo.album_gain = NIL;
 		if (chapterInfo.album_peak != singleTrackInfo.album_peak) singleTrackInfo.album_peak = NIL;
+
+		if (chapterInfo.track_gain != singleTrackInfo.track_gain) singleTrackInfo.track_gain = NIL;
+		if (chapterInfo.track_peak != singleTrackInfo.track_peak) singleTrackInfo.track_peak = NIL;
 
 		/* Process other text info.
 		 */
@@ -1748,7 +1754,7 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 	singleTrack.SetInfo(singleTrackInfo);
 
-	foreach (const Track &chapterTrack, tracks) singleTrack.tracks.Add(chapterTrack);
+	if (tracks.Length() >= 2) foreach (const Track &chapterTrack, tracks) singleTrack.tracks.Add(chapterTrack);
 
 	return singleTrack;
 }

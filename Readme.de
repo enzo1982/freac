@@ -182,6 +182,7 @@ Geschichte
 			- Problem beim Lesen/Schreiben von unkodierten String-Feldern aus/in ID3v2-Tags behoben
 			- Problem mit Optionen zum Löschen von Dateien und zum Herunterfahren nach der Kodierung beim Wechsel der Konfiguration behoben
 			- Problem mit nicht verfügbaren Ripping-Automatisierungsoptionen nach Wechsel der Konfiguration behoben
+			- Verlust von Track-Gain/-Peak-Informationen bei der Konvertierung mit freaccmd behoben
 			- Problem mit fehlenden Stunden bei Gesamtzeit in Log-Dateien behoben
 
 		- Aktualisierte Codecs
