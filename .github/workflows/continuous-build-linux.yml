@@ -12,37 +12,37 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             arch: x86_64
             host: x86_64-linux-gnu
             pkgarch: amd64
             dependencies: g++-multilib nasm wget wine64-tools yasm
 
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             arch: i686
             host: i386-linux-gnu
             pkgarch: i386
             dependencies: g++-multilib nasm wget wine32-tools yasm
 
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             arch: armhf
             host: arm-linux-gnueabihf
             pkgarch: armhf
             dependencies: g++-arm-linux-gnueabihf nasm qemu qemu-user-static wget yasm
 
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             arch: aarch64
             host: aarch64-linux-gnu
             pkgarch: arm64
             dependencies: g++-aarch64-linux-gnu nasm qemu qemu-user-static wget yasm
 
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             arch: riscv64
             host: riscv64-linux-gnu
             pkgarch: riscv64
             dependencies: g++-riscv64-linux-gnu nasm qemu qemu-user-static wget yasm meson
 
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             arch: ppc64el
             host: powerpc64le-linux-gnu
             pkgarch: ppc64el
@@ -87,18 +87,22 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with: 
+          persist-credentials: false
 
       - name: Checkout smooth
         uses: actions/checkout@v4
         with:
           repository: enzo1982/smooth
           path: smooth
+          persist-credentials: false
 
       - name: Checkout BoCA
         uses: actions/checkout@v4
         with:
           repository: enzo1982/BoCA
           path: boca
+          persist-credentials: false
 
       - name: Build AppImage
         env:
