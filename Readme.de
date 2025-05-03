@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.8 (Februar 2025)
+	Version 1.1.8 (Mai 2025)
 
 		- Linux AppImage-Pakete für die Architekturen RISC-V und PPC64EL hinzugefügt
 
@@ -189,7 +189,7 @@ Geschichte
 
 			- FFmpeg auf Version 7.1 aktualisiert
 			- Opus auf Version 1.5.2 mit Opus Speech Coding Enhancement aktualisiert
-			- Monkey's Audio auf Version 10.96 aktualisiert
+			- Monkey's Audio auf Version 11.10 aktualisiert
 			- WavPack auf Version 5.8.1 aktualisiert
 			- FLAC auf Version 1.5.0 aktualisiert
 			- MP4v2 auf Version 2.1.3 aktualisiert

@@ -102,17 +102,13 @@ parts:
       - usr/lib/libFLAC.so*
 
   libmac:
-    source: https://freac.org/patches/MAC_1096_SDK.zip
-    source-checksum: sha256/73b25a517079bb015e2066b65854a7de0d8468f050b9b96025b7a3cb038f4dba
+    source: https://freac.org/patches/MAC_1110_SDK.zip
+    source-checksum: sha256/fe6f481e15eb03e0d4e0f8144a4fd1aff4398c77c419ff36aec99e807b38a54c
     source-subdir: .
     plugin: cmake
     cmake-parameters: [ -DCMAKE_INSTALL_PREFIX=/usr ]
     build-environment:
       - CXXFLAGS: "${CXXFLAGS-} -O3 -funroll-loops"
-    override-build: |
-      if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
-        craftctl default
-      fi
     prime:
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libMAC.so*
 
