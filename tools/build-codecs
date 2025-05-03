@@ -479,7 +479,9 @@ for package in ${packages[@]}; do
       fi
       configure_flags="$configure_flags --enable-64-bit-words"
     fi
-    if [[ $uname == Darwin ]]; then
+    if [[ $uname == Linux ]] && [[ $arm == true ]]; then
+      export CFLAGS="$CFLAGS -O2"
+    elif [[ $uname == Darwin ]]; then
       configure_flags="$configure_flags --disable-asm-optimizations"
     elif [[ $uname == *MINGW* ]]; then
       export CFLAGS="$CFLAGS -DWINPTHREAD_STATIC=1 -I$(pwd)/libogg-$libogg_version/include"
@@ -625,12 +627,12 @@ for package in ${packages[@]}; do
 
   elif [ $package == musepack ]; then
     # Build MusePack
-    prepare="touch include/config.h.in; head -n 34 configure.in >> configure.ac; echo \"AM_CONDITIONAL([HAVE_VISIBILITY], [false])\" >> configure.ac; echo \"AC_CHECK_LIB([m],[cos])\" >> configure.ac; tail -n 18 configure.in >> configure.ac; rm configure.in; mkdir -p m4"
+    prepare="touch include/config.h.in; head -n 34 configure.in >> configure.ac; echo \"AM_CONDITIONAL([HAVE_VISIBILITY], [false])\" >> configure.ac; echo \"AC_CHECK_LIB([m],[cos])\" >> configure.ac; tail -n 18 configure.in >> configure.ac; rm configure.in; mkdir -p m4; sed -i -e \"s/const/extern const/\" libmpcdec/requant.h"
     configure_flags="--disable-shared"
     if [[ $uname == *MINGW* ]]; then
       prepare="$prepare; sed -i -e \"s/mpc2sv8//\" Makefile.am; sed -i -e \"s/\*mingw32\*/*mingw*/\" configure.ac"
       if [[ $arm64 == true ]]; then
-        prepare="$prepare; sed -i -e \"s/const/extern const/\" libmpcdec/requant.h; sed -i -e \"s/__MINGW32__/__MINGWxx__/\" mpcenc/mpcenc.c"
+        prepare="$prepare; sed -i -e \"s/__MINGW32__/__MINGWxx__/\" mpcenc/mpcenc.c"
       fi
     fi
     build $musepack_location "mpcenc/mpcenc.$execext mpcdec/mpcdec.$execext" "mpcenc.$execext mpcdec.$execext"
