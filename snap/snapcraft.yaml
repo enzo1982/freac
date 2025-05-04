@@ -63,19 +63,14 @@ parts:
 
   libfaad:
     after: [ patches ]
-    source: https://github.com/knik0/faad2/archive/2_10_0.tar.gz
-    source-checksum: sha256/0c6d9636c96f95c7d736f097d418829ced8ec6dbd899cc6cc82b728480a84bfb
-    plugin: autotools
-    autotools-configure-parameters: [ --prefix=/usr ]
+    source: https://github.com/knik0/faad2/archive/2.11.2.tar.gz
+    source-checksum: sha256/3fcbd305e4abd34768c62050e18ca0986f7d9c5eca343fb98275418013065c0e
+    plugin: cmake
+    cmake-parameters: [ -DCMAKE_INSTALL_PREFIX=/usr ]
     build-environment:
-      - PATH: "/usr/bin:$PATH"
       - CFLAGS: "${CFLAGS-} -O3 -funroll-loops"
-    override-build: |
-      patch -p1 < $CRAFT_STAGE/faad2-2.10.0-configure.patch
-      chmod a+x configure
-      craftctl default
     prime:
-      - usr/lib/libfaad.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libfaad.so*
 
   libfdk-aac:
     source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.3.tar.gz

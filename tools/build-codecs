@@ -165,7 +165,7 @@ fi
 # Package versions
 exhale_version=1.2.0
 faac_version=1.30
-faad2_version=2.10.0
+faad2_version=2.11.2
 fdk_aac_version=2.0.3
 ffmpeg_version=7.1.1
 flac_version=1.5.0
@@ -190,7 +190,7 @@ wavpack_version=5.8.1
 # Package locations
 exhale_location=https://gitlab.com/ecodis/exhale/-/archive/v$exhale_version/exhale-v$exhale_version.tar.bz2
 faac_location=https://github.com/knik0/faac/archive/${faac_version//./_}.tar.gz
-faad2_location=https://github.com/knik0/faad2/archive/${faad2_version//./_}.tar.gz
+faad2_location=https://github.com/knik0/faad2/archive/${faad2_version}.tar.gz
 fdk_aac_location=https://sourceforge.net/projects/opencore-amr/files/fdk-aac/fdk-aac-$fdk_aac_version.tar.gz
 ffmpeg_location=https://ffmpeg.org/releases/ffmpeg-$ffmpeg_version.tar.xz
 flac_location=https://github.com/xiph/flac/releases/download/$flac_version/flac-$flac_version.tar.xz
@@ -405,13 +405,9 @@ for package in ${packages[@]}; do
 
   elif [ $package == faad2 ]; then
     # Build FAAD2
-    folder=faad2-${faad2_version//./_}
-    if [[ $uname == *MINGW* ]]; then
-      prepare="./utils/win32/ac2ver faad2 configure.ac > libfaad/win32_ver.h"
-    elif [[ $uname == Darwin ]]; then
-      prepare="sed -i -e \"s/__builtin_bswap16(u16)/((((u16) \\& 0xff) << 8) | ((u16) >> 8))/\" frontend/mp4read.c"
-    fi
-    build $faad2_location libfaad/.libs/libfaad$sharedinfix.$sharedext FAAD2.$sharedext
+    folder=faad2-${faad2_version}
+    prepare="sed -i -e \"s/PACKAGE_VERSION;/\\\"${faad2_version}\\\";/\" libfaad/decoder.c"
+    build $faad2_location libfaad.$sharedext FAAD2.$sharedext
 
   elif [ $package == fdk-aac ]; then
     # Build FDK-AAC
