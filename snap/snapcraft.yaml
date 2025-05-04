@@ -228,8 +228,8 @@ parts:
       - usr/lib/libvorbis*.so*
 
   ffmpeg:
-    source: https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
-    source-checksum: sha256/40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6
+    source: https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz
+    source-checksum: sha256/733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr, --disable-autodetect, --enable-gpl, --enable-small, --enable-runtime-cpudetect, --disable-vsx ]
     build-packages:

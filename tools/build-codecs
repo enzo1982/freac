@@ -167,7 +167,7 @@ exhale_version=1.2.0
 faac_version=1.30
 faad2_version=2.10.0
 fdk_aac_version=2.0.3
-ffmpeg_version=7.1
+ffmpeg_version=7.1.1
 flac_version=1.5.0
 lame_version=3.100
 libcdio_version=2.2.0
@@ -213,9 +213,6 @@ vorbis_location=https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-$vorbi
 wavpack_location=https://www.wavpack.com/wavpack-$wavpack_version.tar.bz2
 
 # Patch locations
-ffmpeg_patches=(https://freac.org/patches/ffmpeg-$ffmpeg_version-riscv.patch)
-ffmpeg_patch_levels=(1)
-
 lame_patches=(https://freac.org/patches/lame-$lame_version-sse-20171014.diff https://freac.org/patches/lame-$lame_version-fastcrc.diff)
 lame_patch_levels=(0 1)
 
@@ -228,9 +225,9 @@ rubberband_patch_levels=(1)
 vorbis_patches=(https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03.patch https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03-lancer.patch https://freac.org/patches/libvorbis-$vorbis_version-macos-fix.patch)
 vorbis_patch_levels=(1 1 1)
 
-# Keep using FFmpeg 4.3.8 on macOS PPC
+# Keep using FFmpeg 4.3.9 on macOS PPC
 if [[ $uname == Darwin ]] && [[ $BUILD_PPC == True ]]; then
-  ffmpeg_version=4.3.8
+  ffmpeg_version=4.3.9
   ffmpeg_location=https://ffmpeg.org/releases/ffmpeg-$ffmpeg_version.tar.xz
 fi
 
@@ -423,8 +420,6 @@ for package in ${packages[@]}; do
 
   elif [ $package == ffmpeg ]; then
     # Build ffmpeg
-    patches=${ffmpeg_patches[@]}
-    patch_levels=(${ffmpeg_patch_levels[@]})
     export CFLAGS="$cflags"
     configure_flags="--disable-autodetect --disable-doc --enable-gpl --enable-small --enable-runtime-cpudetect"
     if [[ $arm == true || $arm64 == true || $riscv64 == true || $ppc64el == true ]] && [[ `uname -m` == x86_64 ]]; then
