@@ -163,7 +163,7 @@ if [[ $uname == Haiku ]]; then
 fi
 
 # Package versions
-exhale_version=1.2.0
+exhale_version=1.2.1.2
 faac_version=1.31.1
 faad2_version=2.11.2
 fdk_aac_version=2.0.3
@@ -288,6 +288,8 @@ build () {
     else
       eval $configure_exports ./configure $host_flags $configure_flags $prefix
     fi
+  elif [[ -f Makefile ]] || [[ -f makefile ]]; then
+    true
   elif [[ -f CMakeLists.txt ]]; then
     if [[ $uname == *MINGW* ]]; then
       cmake . -G "MSYS Makefiles" $cmakeflags $cmake_flags
@@ -368,7 +370,7 @@ for package in ${packages[@]}; do
   if [ $package == exhale ]; then
     # Build exhale
     if [[ $uname == *MINGW* ]]; then
-      prepare="sed -i -e \"s/-fPIC//\" src/makefile.base && sed -i -e \"s/= g../= \$\(CXX\)/\" src/makefile.base && sed -i -e \"s/= .(CPP)/= \$\(CXX\)/\" src/makefile.base && sed -i -e \"s/-ldl//\" src/app/makefile && sed -i -e \"s/printf_s/printf/\" src/app/exhaleApp.cpp && sed -i -e \"s/�#+/-/\" src/app/exhaleApp.cpp"
+      prepare="sed -i -e \"s/-fPIC//\" src/makefile.base && sed -i -e \"s/= g../= \$\(CXX\)/\" src/makefile.base && sed -i -e \"s/= .(CPP)/= \$\(CXX\)/\" src/makefile.base && sed -i -e \"s/-ldl//\" src/app/makefile && sed -i -e \"s/printf_s/printf/\" src/app/exhaleApp.cpp && sed -i -e \"s/ú#+/-/\" src/app/exhaleApp.cpp"
       if [[ $arm64 == true ]]; then
         prepare="$prepare; sed -i -e \"s/-l.(PRD_NAME).*/& -lstdc++/\" src/app/makefile"
       else
