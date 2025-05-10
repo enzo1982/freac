@@ -164,7 +164,7 @@ fi
 
 # Package versions
 exhale_version=1.2.0
-faac_version=1.30
+faac_version=1.31.1
 faad2_version=2.11.2
 fdk_aac_version=2.0.3
 ffmpeg_version=7.1.1
@@ -189,7 +189,7 @@ wavpack_version=5.8.1
 
 # Package locations
 exhale_location=https://gitlab.com/ecodis/exhale/-/archive/v$exhale_version/exhale-v$exhale_version.tar.bz2
-faac_location=https://github.com/knik0/faac/archive/${faac_version//./_}.tar.gz
+faac_location=https://github.com/knik0/faac/archive/faac-${faac_version}.tar.gz
 faad2_location=https://github.com/knik0/faad2/archive/${faad2_version}.tar.gz
 fdk_aac_location=https://sourceforge.net/projects/opencore-amr/files/fdk-aac/fdk-aac-$fdk_aac_version.tar.gz
 ffmpeg_location=https://ffmpeg.org/releases/ffmpeg-$ffmpeg_version.tar.xz
@@ -386,12 +386,11 @@ for package in ${packages[@]}; do
 
   elif [ $package == faac ]; then
     # Build FAAC
-    folder=faac-${faac_version//./_}
+    folder=faac-faac-${faac_version}
     prepare="sed -i -e \"s/FAACAPI __stdcall/FAACAPI/\" include/faac.h"
     if [[ $uname == *MINGW* ]]; then
       if [[ $arm64 == true ]]; then
         configure_exports="WINDRES=\"aarch64-w64-mingw32-windres\""
-        prepare="sed -i -e \"s/-Wl,--add-stdcall-alias//\" libfaac/Makefile.am"
       elif [[ $x86 == true ]]; then
         configure_exports="WINDRES=\"windres -F pe-i386\""
       fi
