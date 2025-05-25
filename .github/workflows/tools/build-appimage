@@ -192,7 +192,10 @@ strip --strip-all appdir/lib*.so*
 # Build custom AppImage runtime
 if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
   # Check out AppImage runtime
-  git clone --depth=1 https://github.com/AppImage/type2-runtime.git
+  git clone https://github.com/AppImage/type2-runtime.git
+  cd type2-runtime
+  git reset --hard af6efe0
+  cd ..
 
   # Build custom libfuse3
   git clone --depth=1 --branch=fuse-3.16.2 https://github.com/libfuse/libfuse.git
