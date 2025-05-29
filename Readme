@@ -185,6 +185,7 @@ History
 			- fixed ripping automation options not being available after switching configuration
 			- fixed track gain/peak information getting lost when converting with freaccmd
 			- fixed hours missing from total duration in logs
+			- fixed detection of WMA Lossless files
 
 		- Updated codecs
 

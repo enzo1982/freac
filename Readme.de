@@ -184,6 +184,7 @@ Geschichte
 			- Problem mit nicht verfügbaren Ripping-Automatisierungsoptionen nach Wechsel der Konfiguration behoben
 			- Verlust von Track-Gain/-Peak-Informationen bei der Konvertierung mit freaccmd behoben
 			- Problem mit fehlenden Stunden bei Gesamtzeit in Log-Dateien behoben
+			- Problem mit der Erkennung von WMA Lossless Dateien behoben
 
 		- Aktualisierte Codecs
 
