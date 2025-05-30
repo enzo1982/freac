@@ -931,6 +931,7 @@
 	  <entry id="33210" string="worse">gorsza</entry>
 	  <entry id="33211" string="better">lepsza</entry>
 	  <entry id="33212" string="auto">automatycznie</entry>
+	  <entry id="33213" string="Enable Afterburner processing">Włącz przetwarzanie Afterburner</entry>
 	</section>
 
 	<section name="Format">
