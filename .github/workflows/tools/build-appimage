@@ -194,7 +194,7 @@ if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
   # Check out AppImage runtime
   git clone https://github.com/AppImage/type2-runtime.git
   cd type2-runtime
-  git reset --hard af6efe0
+  git reset --hard 5e7217b
   cd ..
 
   # Build custom libfuse3
