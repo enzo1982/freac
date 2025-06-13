@@ -496,10 +496,9 @@ for package in ${packages[@]}; do
       patches=${lame_patches[@]}
       patch_levels=(${lame_patch_levels[@]})
     fi
-    if [[ $uname == *MINGW* ]]; then
-      prepare="sed -i -e \"/lame_init_old/d\" include/libmp3lame.sym"
-    elif [[ $uname == Darwin ]]; then
-      prepare="sed -i -e \"/lame_init_old/d\" include/libmp3lame.sym && sed -i -e \"s/strnlen(\\(.*\\),[^)]*)/strlen(\1)/\" frontend/parse.c"
+    prepare="sed -i -e \"/lame_init_old/d\" include/libmp3lame.sym"
+    if [[ $uname == Darwin ]]; then
+      prepare="$prepare; sed -i -e \"s/strnlen(\\(.*\\),[^)]*)/strlen(\1)/\" frontend/parse.c"
     fi
     if [[ $ppc == true ]]; then
         export CFLAGS="$cflags $cflags_unroll -faltivec -DALTIVEC"
@@ -524,10 +523,10 @@ for package in ${packages[@]}; do
     if [[ $uname == Darwin ]]; then
       prepare="sed -i -e \"s/-Wl,--version-script=.*\\.la\\.ver//\" lib/*/Makefile.in"
     fi
-    if [[ $uname != FreeBSD ]]; then
-      configure_exports="LIBCDIO_CFLAGS=\"-I.\" LIBCDIO_LIBS=\"-lcdio\""
-    else
+    if [[ $uname == FreeBSD ]]; then
       configure_exports="LIBCDIO_CFLAGS=\"-I/usr/local/include\" LIBCDIO_LIBS=\"-L/usr/local/lib -lcdio\""
+    else
+      configure_exports="LIBCDIO_CFLAGS=\"-I.\" LIBCDIO_LIBS=\"-lcdio\""
     fi
     build $libcdio_paranoia_location "lib/cdda_interface/.libs/libcdio_cdda$sharedinfix.$sharedext lib/paranoia/.libs/libcdio_paranoia$sharedinfix.$sharedext" "libcdio_cdda.$sharedext libcdio_paranoia.$sharedext"
 
@@ -669,6 +668,8 @@ for package in ${packages[@]}; do
     elif [[ $uname == Darwin ]]; then
       prepare="sed -i -e \"s/-Wl,-Bsymbolic//\" Makefile.in && sed -i -e \"s/ -Wl,-soname=.*//\" Makefile.in && sed -i -e \"s/:= .so/:= .dylib/\" Makefile.in"
       configure_exports="$configure_exports SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\"-lsndfile\""
+    elif [[ $uname == FreeBSD ]]; then
+      configure_exports="$configure_exports SNDFILE_CFLAGS=\"-I/usr/local/include\" SNDFILE_LIBS=\"-L/usr/local/lib -lsndfile\""
     else
       configure_exports="$configure_exports SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\"-lsndfile\""
     fi
