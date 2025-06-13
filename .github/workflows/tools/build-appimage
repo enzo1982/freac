@@ -37,9 +37,9 @@ tar xfj curl-8.11.0.tar.bz2
 cd curl-8.11.0
 
 if [ $AppImageArch = i686 ]; then
-  CFLAGS="-m32" ./configure --with-ssl --without-librtmp --without-libpsl --disable-ldap
+  CFLAGS="-m32" ./configure --with-ssl --without-librtmp --without-libpsl --disable-ldap --without-zstd --without-brotli --without-nghttp2 --without-libidn2
 else
-  ./configure --host=$HOST --with-ssl --without-librtmp --without-libpsl --disable-ldap
+  ./configure --host=$HOST --with-ssl --without-librtmp --without-libpsl --disable-ldap --without-zstd --without-brotli --without-nghttp2 --without-libidn2
 fi
 
 make -j$jobs
