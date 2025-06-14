@@ -88,6 +88,11 @@ if [[ $uname == Linux ]]; then
   export cflags="$cflags -include $(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/headers/glibc_version_header.h"
 fi
 
+if [[ $uname == FreeBSD ]]; then
+  export cflags="$cflags -I/usr/local/include"
+  export ldflags="$ldflags -L/usr/local/lib"
+fi
+
 cflags_unroll="-funroll-loops"
 
 # Set host triple on Linux
@@ -523,11 +528,7 @@ for package in ${packages[@]}; do
     if [[ $uname == Darwin ]]; then
       prepare="sed -i -e \"s/-Wl,--version-script=.*\\.la\\.ver//\" lib/*/Makefile.in"
     fi
-    if [[ $uname == FreeBSD ]]; then
-      configure_exports="LIBCDIO_CFLAGS=\"-I/usr/local/include\" LIBCDIO_LIBS=\"-L/usr/local/lib -lcdio\""
-    else
-      configure_exports="LIBCDIO_CFLAGS=\"-I.\" LIBCDIO_LIBS=\"-lcdio\""
-    fi
+    configure_exports="LIBCDIO_CFLAGS=\"-I.\" LIBCDIO_LIBS=\"-lcdio\""
     build $libcdio_paranoia_location "lib/cdda_interface/.libs/libcdio_cdda$sharedinfix.$sharedext lib/paranoia/.libs/libcdio_paranoia$sharedinfix.$sharedext" "libcdio_cdda.$sharedext libcdio_paranoia.$sharedext"
 
   elif [ $package == libcdrip ]; then
@@ -593,7 +594,7 @@ for package in ${packages[@]}; do
 
   elif [ $package == mpg123 ]; then
     # Build mpg123
-    configure_flags="--enable-modules=no"
+    configure_flags="--disable-modules --disable-components --enable-libmpg123"
     if [[ $uname == *MINGW* ]]; then
       export CFLAGS="$cflags $cflags_unroll -DWIN32"
     elif [[ $uname == Darwin ]]; then
@@ -668,8 +669,6 @@ for package in ${packages[@]}; do
     elif [[ $uname == Darwin ]]; then
       prepare="sed -i -e \"s/-Wl,-Bsymbolic//\" Makefile.in && sed -i -e \"s/ -Wl,-soname=.*//\" Makefile.in && sed -i -e \"s/:= .so/:= .dylib/\" Makefile.in"
       configure_exports="$configure_exports SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\"-lsndfile\""
-    elif [[ $uname == FreeBSD ]]; then
-      configure_exports="$configure_exports SNDFILE_CFLAGS=\"-I/usr/local/include\" SNDFILE_LIBS=\"-L/usr/local/lib -lsndfile\""
     else
       configure_exports="$configure_exports SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\"-lsndfile\""
     fi
