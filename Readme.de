@@ -92,6 +92,20 @@ Installation
 
 		Alternativ wird fre:ac als AppImage-Paket bereitgestellt.
 
+		Um AppImages auszuführen müssen FUSE-Unterstützung und User Mounts aktiviert sein. Sie können mit folgenden Befehlen
+		das FUSE-Kernelmodul laden und User Mounts temporär aktivieren:
+
+			kldload fusefs
+			sysctl vfs.usermount=1
+
+		Um das FUSE-Modul automatisch beim Systemstart zu laden, fügen Sie folgende Zeile zur Datei /boot/loader.conf hinzu:
+
+			fusefs_load="YES"
+
+		Um User Mounts beim Systemstart zu aktivieren, fügen Sie folgende Zeile zur Datei /etc/sysctl.conf hinzu:
+
+			vfs.usermount=1
+
 		Das AppImage-Paket muss nach dem Download mit folgendem Befehl als ausführbar markiert werden:
 
 			chmod a+x freac*.AppImage
@@ -113,12 +127,12 @@ Voraussetzungen
 			- Windows XP/Vista/7/8.x/10/11
 			- macOS 10.5 Leopard oder neuer
 			- Linux (die meisten modernen Distributionen werden unterstützt)
-			- FreeBSD/PC-BSD (getestet unter FreeBSD 13.0)
+			- FreeBSD/PC-BSD (getestet unter FreeBSD 13.1 und 14.2)
 			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
 			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
 			- GNU Hurd (getestet unter Debian Sid)
-			- Haiku (getestet unter Haiku R1 Beta 2)
+			- Haiku (getestet unter Haiku R1 Beta 5)
 
 		Minimale Hardwarevoraussetzungen:
 			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv7-Prozessor

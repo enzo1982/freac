@@ -27,6 +27,7 @@ jobs:
         id: vm
         uses: vmactions/freebsd-vm@v1
         with:
+          release: "13.5"
           envs: 'AppImageArch RELEASE_TOKEN'
           sync: sshfs
 
