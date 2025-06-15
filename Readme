@@ -91,8 +91,13 @@ Installation
 
 			sudo pkg install freac
 
-		Alternatively, there is a binary version of fre:ac distributed as a .tar.gz archive. Please
-		extract the contents to a location of your choice and execute the freac binary to start fre:ac.
+		Alternatively, fre:ac is available as an AppImage package.
+
+		The AppImage package must be marked as executable after downloading using the following command:
+
+			chmod a+x freac*.AppImage
+
+		The AppImage can then be executed to start fre:ac.
 
 	Haiku:
 
@@ -164,6 +169,7 @@ History
 	Version 1.1.8 (June 2025)
 
 		- added Linux AppImage packages for the RISC-V and PPC64EL architectures
+		- added FreeBSD AppImage packages for the x86-64 architecture
 
 		- Improvements
 

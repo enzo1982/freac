@@ -1,0 +1,67 @@
+name: "Continuous build (FreeBSD)"
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - 'continuous*'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            arch: x86_64
+            dependencies: automake bash cmake gcc git gmake libtool meson nasm perl5 pkgconf python sudo wget wine yasm zip
+
+    runs-on: ${{ matrix.os }}
+
+    env:
+      AppImageArch: ${{ matrix.arch }}
+      RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+
+    steps:
+      - name: Start VM
+        id: vm
+        uses: vmactions/freebsd-vm@v1
+        with:
+          envs: 'AppImageArch RELEASE_TOKEN'
+          sync: sshfs
+
+      - name: Enable Linux support
+        shell: freebsd {0}
+        run: |
+          sysrc linux_enable="YES"
+          service linux start
+
+      - name: Install dependencies
+        shell: freebsd {0}
+        run: |
+          pkg update
+          pkg install -y ${{ matrix.dependencies }}
+          pkg install -y gnome-icon-theme gtk3
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Checkout smooth
+        uses: actions/checkout@v4
+        with:
+          repository: enzo1982/smooth
+          path: smooth
+
+      - name: Checkout BoCA
+        uses: actions/checkout@v4
+        with:
+          repository: enzo1982/BoCA
+          path: boca
+
+      - name: Build AppImage
+        shell: freebsd {0}
+        run: |
+          cd $GITHUB_WORKSPACE
+          pw user add -n vmuser -m -g wheel
+          echo "vmuser ALL=(ALL) NOPASSWD: ALL" >> /usr/local/etc/sudoers
+          su vmuser -c .github/workflows/tools/build-appimage
