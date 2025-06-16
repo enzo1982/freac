@@ -182,7 +182,7 @@ Geschichte
 	Version 1.1.8 (Juni 2025)
 
 		- Linux AppImage-Pakete für die Architekturen RISC-V und PPC64EL hinzugefügt
-		- FreeBSD AppImage-Pakete für die Architektur x86-64 hinzugefügt
+		- FreeBSD AppImage-Pakete für die Architekturn x86-64 und AArch64 hinzugefügt
 
 		- Verbesserungen
 

@@ -16,6 +16,10 @@ jobs:
             arch: x86_64
             dependencies: automake bash cmake gcc git gmake libtool meson nasm perl5 pkgconf python sudo wget wine yasm zip
 
+          - os: ubuntu-latest
+            arch: aarch64
+            dependencies: automake bash cmake gcc git gmake libtool meson nasm perl5 pkgconf python sudo wget yasm zip
+
     runs-on: ${{ matrix.os }}
 
     env:
@@ -28,6 +32,7 @@ jobs:
         uses: vmactions/freebsd-vm@v1
         with:
           release: "13.5"
+          arch: ${{ matrix.arch }}
           envs: 'AppImageArch RELEASE_TOKEN'
           sync: sshfs
 

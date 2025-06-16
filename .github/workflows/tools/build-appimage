@@ -44,9 +44,9 @@ tar xfj curl-8.11.0.tar.bz2
 cd curl-8.11.0
 
 if [ $AppImageArch = i686 ]; then
-  CFLAGS="-m32" ./configure --with-ssl --without-librtmp --without-libpsl --disable-ldap --without-zstd --without-brotli --without-nghttp2 --without-libidn2
+  CFLAGS="-m32" ./configure --disable-docs --with-ssl --without-librtmp --without-libpsl --disable-ldap --without-zstd --without-brotli --without-nghttp2 --without-libidn2
 else
-  ./configure --host=$HOST --with-ssl --without-librtmp --without-libpsl --disable-ldap --without-zstd --without-brotli --without-nghttp2 --without-libidn2
+  ./configure --host=$HOST --disable-docs --with-ssl --without-librtmp --without-libpsl --disable-ldap --without-zstd --without-brotli --without-nghttp2 --without-libidn2
 fi
 
 $MAKE -j$jobs
@@ -268,16 +268,21 @@ if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el || "$OS" != Linux ]
 fi
 
 # Create AppImage using appimagetool
-wget -c -nv "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage"
-chmod a+x appimagetool-x86_64.AppImage
+if [[ "$OS" = Linux || "$AppImageArch" = x86_64 ]]; then
+  APPIMAGETOOL=appimagetool-x86_64.AppImage
+else
+  APPIMAGETOOL=appimagetool-$AppImageArch.AppImage
+fi
+wget -c -nv "https://github.com/AppImage/appimagetool/releases/download/continuous/$APPIMAGETOOL"
+chmod a+x $APPIMAGETOOL
 if [[ "$OS" = Linux ]]; then
   if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
-    ARCH=x86_64 ./appimagetool-x86_64.AppImage --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+    ARCH=x86_64 ./$APPIMAGETOOL --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
   else
-    ARCH=$AppImageArch ./appimagetool-x86_64.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+    ARCH=$AppImageArch ./$APPIMAGETOOL appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
   fi
 else
-  ./appimagetool-x86_64.AppImage --appimage-extract
+  ./$APPIMAGETOOL --appimage-extract
   ARCH=$AppImageArch ./squashfs-root/AppRun --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
 fi
 

@@ -464,7 +464,7 @@ for package in ${packages[@]}; do
   elif [ $package == flac ]; then
     # Build FLAC
     export CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=0"
-    configure_flags="--disable-cpplibs --disable-doxygen-docs"
+    configure_flags="--disable-cpplibs --disable-programs --disable-examples --disable-doxygen-docs"
     if [[ $x86_64 == true ]] || [[ $arm64 == true ]] || [[ $riscv64 == true ]] || [[ $ppc64el == true ]]; then
       if [[ $uname == *MINGW* ]]; then
         prepare="sed -i -e \"s/#undef FLAC__CPU_IA32//\" config.h.in"
@@ -502,9 +502,7 @@ for package in ${packages[@]}; do
       patch_levels=(${lame_patch_levels[@]})
     fi
     prepare="sed -i -e \"/lame_init_old/d\" include/libmp3lame.sym"
-    if [[ $uname == Darwin ]]; then
-      prepare="$prepare; sed -i -e \"s/strnlen(\\(.*\\),[^)]*)/strlen(\1)/\" frontend/parse.c"
-    fi
+    configure_flags="--disable-frontend"
     if [[ $ppc == true ]]; then
         export CFLAGS="$cflags $cflags_unroll -faltivec -DALTIVEC"
     elif [[ $x86 == true ]]; then
@@ -512,14 +510,14 @@ for package in ${packages[@]}; do
         export CFLAGS="$cflags $cflags_unroll -mfpmath=sse"
       fi
 
-      configure_flags="--enable-nasm"
+      configure_flags="$configure_flags --enable-nasm"
     fi
     build $lame_location libmp3lame/.libs/libmp3lame$sharedinfix.$sharedext LAME.$sharedext
 
   elif [ $package == libcdio ]; then
     # Build libcdio
     export CFLAGS="$cflags -Os"
-    configure_flags="--disable-cxx"
+    configure_flags="--disable-cxx --disable-example-progs"
     build $libcdio_location lib/driver/.libs/libcdio$sharedinfix.$sharedext libcdio.$sharedext
 
   elif [ $package == libcdio-paranoia ]; then
@@ -565,7 +563,7 @@ for package in ${packages[@]}; do
     elif [[ $uname == Darwin ]]; then
       export LDFLAGS="$cflags $ldflags"
     fi
-    configure_flags="--disable-external-libs --disable-mpeg --disable-alsa"
+    configure_flags="--disable-full-suite --disable-external-libs --disable-mpeg --disable-alsa"
     build $libsndfile_location src/.libs/libsndfile$sharedinfix.$sharedext SndFile.$sharedext
 
   elif [ $package == mac ]; then
@@ -635,7 +633,7 @@ for package in ${packages[@]}; do
     if [[ $x86 == true ]]; then
       export CFLAGS="$CFLAGS -mfpmath=sse"
     fi
-    configure_flags="--enable-float-approx --enable-osce --disable-hardening"
+    configure_flags="--enable-float-approx --enable-osce --disable-hardening --disable-extra-programs"
     if [[ $uname == Darwin ]] && [[ $x86_64 != true ]]; then
       configure_flags="$configure_flags --disable-intrinsics"
     elif [[ $uname == *MINGW* ]] && [[ $arm64 == true ]]; then
