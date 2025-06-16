@@ -62,7 +62,9 @@ jobs:
       - name: Build AppImage
         shell: freebsd {0}
         run: |
-          cd $GITHUB_WORKSPACE
           pw user add -n vmuser -m -g wheel
           echo "vmuser ALL=(ALL) NOPASSWD: ALL" >> /usr/local/etc/sudoers
+          cp -R $GITHUB_WORKSPACE .
+          chown -R vmuser freac
+          cd freac
           su vmuser -c .github/workflows/tools/build-appimage
