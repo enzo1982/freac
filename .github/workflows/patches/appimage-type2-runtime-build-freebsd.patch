@@ -1,7 +1,7 @@
 diff -Naur type2-runtime-main/src/runtime/Makefile type2-runtime-freebsd/src/runtime/Makefile
 --- type2-runtime-main/src/runtime/Makefile	2025-05-30 13:05:28.000000000 +0200
-+++ type2-runtime-freebsd/src/runtime/Makefile	2025-06-11 14:29:55.000000000 +0200
-@@ -1,12 +1,12 @@
++++ type2-runtime-freebsd/src/runtime/Makefile	2025-06-18 19:41:01.549933400 +0200
+@@ -1,12 +1,13 @@
  GIT_COMMIT := $(shell cat version)
 -CC            = clang
 -CFLAGS        = -std=gnu99 -Os -D_FILE_OFFSET_BITS=64 -DGIT_COMMIT=\"$(GIT_COMMIT)\" -T data_sections.ld -ffunction-sections -fdata-sections -Wl,--gc-sections -static -Wall -Werror -static-pie
@@ -15,12 +15,13 @@ diff -Naur type2-runtime-main/src/runtime/Makefile type2-runtime-freebsd/src/run
  runtime: runtime.c
 -	$(CC) -I/usr/local/include/squashfuse -I/usr/include/fuse3 $(CFLAGS) $^ $(LIBS) -o $@
 +	$(CC) -I/usr/local/include -I/usr/local/include/fuse3 $(CFLAGS) $^ $(LIBS) -o $@
++	elfedit --output-osabi FreeBSD $@
  
  clean:
  	rm -f runtime
 diff -Naur type2-runtime-main/src/runtime/runtime.c type2-runtime-freebsd/src/runtime/runtime.c
 --- type2-runtime-main/src/runtime/runtime.c	2025-05-30 13:05:28.000000000 +0200
-+++ type2-runtime-freebsd/src/runtime/runtime.c	2025-06-11 17:53:16.423734200 +0200
++++ type2-runtime-freebsd/src/runtime/runtime.c	2025-06-18 19:40:25.010463700 +0200
 @@ -64,8 +64,7 @@
  #include <libgen.h>
  #include <dirent.h>
