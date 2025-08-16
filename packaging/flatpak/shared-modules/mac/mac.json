@@ -7,8 +7,8 @@
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_1116_SDK.zip",
-        "sha256": "c19f113ecebf87c3e12902eb3908449307869831b10c17d1a1fead65fead55e6",
+        "url": "https://freac.org/patches/MAC_1137_SDK.zip",
+        "sha256": "d578e193ca882474dba256d5d1f44d463a9f5cfa6a2191b741babbb1e8b026a2",
         "strip-components": 0
     }
   ]
