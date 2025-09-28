@@ -277,7 +277,8 @@ wget -c -nv "https://github.com/AppImage/appimagetool/releases/download/continuo
 chmod a+x $APPIMAGETOOL
 if [[ "$OS" = Linux ]]; then
   if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
-    ARCH=x86_64 ./$APPIMAGETOOL --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+    ./$APPIMAGETOOL --appimage-extract
+    ARCH=x86_64 ./squashfs-root/AppRun --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
   else
     ARCH=$AppImageArch ./$APPIMAGETOOL appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
   fi
