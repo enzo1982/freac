@@ -45,8 +45,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/libcdio/libcdio/releases/download/2.2.0/libcdio-2.2.0.tar.bz2",
-                    "sha256": "6f8fbdf4d189cf63f2a7a1549c516cd720c7b222c7aaadbc924a26e745a48539"
+                    "url": "https://github.com/libcdio/libcdio/archive/refs/tags/2.2.0.tar.gz",
+                    "sha256": "df007a9b9667797e027e573822cc865e5e106352f8a6fbca67ee8e9e7a1e5b51",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 1573,
+                        "url-template": "https://github.com/libcdio/libcdio/archive/refs/tags/$version.tar.gz"
+                    }
                 }
             ]
         },
@@ -62,16 +67,22 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/libcdio/libcdio-paranoia/releases/download/release-10.2+2.0.2/libcdio-paranoia-10.2+2.0.2.tar.bz2",
-                    "sha256": "186892539dedd661276014d71318c8c8f97ecb1250a86625256abd4defbf0d0c"
+                    "url": "https://github.com/libcdio/libcdio-paranoia/archive/refs/tags/release-10.2+2.0.2.tar.gz",
+                    "sha256": "fe35208811f3edfcb79ae7b4ad1984f3188aea42c4c8ba4d009efafb36734a8b",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 21751,
+                        "url-template": "https://github.com/libcdio/libcdio-paranoia/archive/refs/tags/release-10.2+$version.tar.gz"
+                    }
                 }
             ]
         },
         {
             "name": "libmp3lame",
+            "//": "Performance-enhancing patch, not part of runtime libmp3lame",
             "config-opts": [
-                 "--enable-nasm",
-                 "--disable-frontend"
+                "--enable-nasm",
+                "--disable-frontend"
             ],
             "cleanup": [
                 "/share/doc/lame"
@@ -80,7 +91,12 @@
                 {
                     "type": "archive",
                     "url": "https://sourceforge.net/projects/lame/files/lame/3.100/lame-3.100.tar.gz",
-                    "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e"
+                    "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 12523,
+                        "url-template": "https://sourceforge.net/projects/lame/files/lame/$version/lame-$version.tar.gz"
+                    }
                 },
                 {
                     "only-arches": [ "x86_64" ],
@@ -99,7 +115,12 @@
                 {
                     "type": "archive",
                     "url": "https://github.com/enzo1982/mp4v2/releases/download/v2.1.3/mp4v2-2.1.3.tar.bz2",
-                    "sha256": "033185c17bf3c5fdd94020c95f8325be2e5356558e3913c3d6547a85dd61f7f1"
+                    "sha256": "033185c17bf3c5fdd94020c95f8325be2e5356558e3913c3d6547a85dd61f7f1",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 98413,
+                        "url-template": "https://github.com/enzo1982/mp4v2/releases/download/v$version/mp4v2-$version.tar.bz2"
+                    }
                 }
             ]
         },
@@ -117,27 +138,40 @@
                 {
                     "type": "archive",
                     "url": "https://github.com/uriparser/uriparser/releases/download/uriparser-0.9.8/uriparser-0.9.8.tar.xz",
-                    "sha256": "1d71c054837ea32a31e462bce5a1af272379ecf511e33448e88100b87ff73b2e"
+                    "sha256": "1d71c054837ea32a31e462bce5a1af272379ecf511e33448e88100b87ff73b2e",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 10160,
+                        "url-template": "https://github.com/uriparser/uriparser/releases/download/uriparser-$version/uriparser-$version.tar.xz"
+                    }
                 }
             ]
         },
         {
             "name": "libvorbis",
+            "//": "Performance-enhancing patches, not part of runtime libvorbis",
             "cleanup": [
                 "/share/doc/libvorbis*"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.7.tar.xz",
-                    "sha256": "b33cc4934322bcbf6efcbacf49e3ca01aadbea4114ec9589d1b1e9d20f72954b"
+                    "url": "https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz",
+                    "sha256": "b33cc4934322bcbf6efcbacf49e3ca01aadbea4114ec9589d1b1e9d20f72954b",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 1758,
+                        "url-template": "https://downloads.xiph.org/releases/vorbis/libvorbis-$version.tar.xz"
+                    }
                 },
                 {
                     "type": "patch",
                     "path": "patches/libvorbis-1.3.7-aotuv-b6.03.patch"
                 },
                 {
-                    "only-arches": [ "x86_64" ],
+                    "only-arches": [
+                        "x86_64"
+                    ],
                     "type": "patch",
                     "path": "patches/libvorbis-1.3.7-aotuv-b6.03-lancer.patch"
                 }
@@ -160,7 +194,12 @@
                 {
                     "type": "archive",
                     "url": "https://files.musepack.net/source/musepack_src_r475.tar.gz",
-                    "sha256": "a4b1742f997f83e1056142d556a8c20845ba764b70365ff9ccf2e3f81c427b2b"
+                    "sha256": "a4b1742f997f83e1056142d556a8c20845ba764b70365ff9ccf2e3f81c427b2b",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 21865,
+                        "url-template": "https://files.musepack.net/source/musepack_src_r$version.tar.gz"
+                    }
                 },
                 {
                     "type": "patch",
@@ -196,7 +235,10 @@
         {
             "name": "rubberband",
             "build-options": {
-                "env": { "Vamp_CFLAGS": " ", "Vamp_LIBS": " " }
+                "env": {
+                    "Vamp_CFLAGS": " ",
+                    "Vamp_LIBS": " "
+                }
             },
             "sources": [
                 {
@@ -220,7 +262,9 @@
         {
             "name": "smooth",
             "no-autogen": true,
-            "make-install-args": [ "prefix=/app" ],
+            "make-install-args": [
+                "prefix=/app"
+            ],
             "sources": [
                 {
                     "type": "git",
@@ -231,7 +275,9 @@
         {
             "name": "BoCA",
             "no-autogen": true,
-            "make-install-args": [ "prefix=/app" ],
+            "make-install-args": [
+                "prefix=/app"
+            ],
             "sources": [
                 {
                     "type": "git",
@@ -242,7 +288,9 @@
         {
             "name": "freac",
             "no-autogen": true,
-            "make-install-args": [ "prefix=/app" ],
+            "make-install-args": [
+                "prefix=/app"
+            ],
             "build-options": {
                 "cxxflags": "-DFREAC_DATE=\\\"$(shell date +\"%Y%m%d\")\\\""
             },
