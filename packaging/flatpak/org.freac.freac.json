@@ -1,7 +1,7 @@
 {
     "app-id": "org.freac.freac",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "24.08",
+    "runtime-version": "25.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "freac",
     "finish-args": [
@@ -73,6 +73,21 @@
                         "type": "anitya",
                         "project-id": 21751,
                         "url-template": "https://github.com/libcdio/libcdio-paranoia/archive/refs/tags/release-10.2+$version.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "libfdk-aac",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/mstorsjo/fdk-aac/archive/v2.0.3.tar.gz",
+                    "sha256": "e25671cd96b10bad896aa42ab91a695a9e573395262baed4e4a2ff178d6a3a78",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 16208,
+                        "url-template": "https://github.com/mstorsjo/fdk-aac/archive/v$version.tar.gz"
                     }
                 }
             ]
