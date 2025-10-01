@@ -28,6 +28,13 @@ elif [ "$AppImageArch" = ppc64el ]; then
   export HOST=powerpc64le-linux-gnu
 fi
 
+# Make tool
+if [[ "$OS" = Linux ]]; then
+  export MAKE=make
+else
+  export MAKE=gmake
+fi
+
 # Build libcdio
 ./tools/build-codecs libcdio libcdio-paranoia
 
@@ -37,14 +44,17 @@ tar xfj curl-8.11.0.tar.bz2
 cd curl-8.11.0
 
 if [ $AppImageArch = i686 ]; then
-  CFLAGS="-m32" ./configure --with-ssl --without-librtmp --without-libpsl --disable-ldap
+  CFLAGS="-m32" ./configure --disable-docs --with-ssl --without-librtmp --without-libpsl --disable-ldap --without-zstd --without-brotli --without-nghttp2 --without-libidn2
 else
-  ./configure --host=$HOST --with-ssl --without-librtmp --without-libpsl --disable-ldap
+  ./configure --host=$HOST --disable-docs --with-ssl --without-librtmp --without-libpsl --disable-ldap --without-zstd --without-brotli --without-nghttp2 --without-libidn2
 fi
 
-make -j$jobs
-sudo make install
-sudo rm /usr/local/bin/curl
+$MAKE -j$jobs
+sudo $MAKE install
+
+if [ "$OS" = Linux ]; then
+  sudo rm /usr/local/bin/curl
+fi
 
 cd ..
 
@@ -55,8 +65,8 @@ CONFIG="release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bun
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/$HOST/pkgconfig
 
-make config=$CONFIG -j$jobs
-sudo make config=$CONFIG install
+$MAKE config=$CONFIG -j$jobs
+sudo $MAKE config=$CONFIG install
 
 unset PKG_CONFIG_PATH
 
@@ -67,24 +77,28 @@ cd boca
 
 CONFIG="release,bundledlibexpat,bundledliburiparser,bundledzlib"
 
-make config=$CONFIG -j$jobs
+$MAKE config=$CONFIG -j$jobs
 
 if [ "$AppImageArch" = i686 ]; then
-  sudo make BUILD_X86=True config=$CONFIG install
+  sudo $MAKE BUILD_X86=True config=$CONFIG install
 else
-  sudo make config=$CONFIG install
+  sudo $MAKE config=$CONFIG install
 fi
 
 if [ "$AppImageArch" = x86_64 ]; then
   # Install 32 bit Wine build tools
-  sudo apt install -y wine32-tools 
+  if [ "$OS" = Linux ]; then
+    sudo apt install -y wine32-tools
+  else
+    /usr/local/share/wine/pkg32.sh install -y wine
+  fi
 
   # Build 32 bit Core Audio connector
   cd components/encoder/coreaudioconnect/connector
 
-  make BUILD_X86=True config=$CONFIG clean
-  make BUILD_X86=True config=$CONFIG -j$jobs
-  sudo make BUILD_X86=True config=$CONFIG install
+  $MAKE BUILD_X86=True config=$CONFIG clean
+  $MAKE BUILD_X86=True config=$CONFIG -j$jobs
+  sudo $MAKE BUILD_X86=True config=$CONFIG install
 
   cd ../../../..
 fi
@@ -94,8 +108,8 @@ cd ..
 # Build fre:ac
 CONFIG="release"
 
-make config=$CONFIG -j$jobs
-sudo make config=$CONFIG install
+$MAKE config=$CONFIG -j$jobs
+sudo $MAKE config=$CONFIG install
 
 # Build codecs and DSP libraries
 cd tools
@@ -131,21 +145,30 @@ cp /usr/local/lib/libvorbisenc.so appdir/codecs/vorbisenc.so
 
 strip --strip-all appdir/codecs/*.so
 
-install -Dm 0755 /usr/local/bin/ffmpeg appdir/codecs/cmdline/ffmpeg
-install -Dm 0755 /usr/local/bin/mpcdec appdir/codecs/cmdline/mpcdec
-install -Dm 0755 /usr/local/bin/mpcenc appdir/codecs/cmdline/mpcenc
-install -Dm 0755 /usr/local/bin/wavpack appdir/codecs/cmdline/wavpack
-install -Dm 0755 /usr/local/bin/wvunpack appdir/codecs/cmdline/wvunpack
+mkdir -p appdir/codecs/cmdline
+
+install -m 0755 /usr/local/bin/ffmpeg appdir/codecs/cmdline/ffmpeg
+install -m 0755 /usr/local/bin/mpcdec appdir/codecs/cmdline/mpcdec
+install -m 0755 /usr/local/bin/mpcenc appdir/codecs/cmdline/mpcenc
+install -m 0755 /usr/local/bin/wavpack appdir/codecs/cmdline/wavpack
+install -m 0755 /usr/local/bin/wvunpack appdir/codecs/cmdline/wvunpack
 
 strip --strip-all appdir/codecs/cmdline/*
 
 # Copy icons
 mkdir -p appdir/icons/gnome/32x32/status
 
-cp /usr/share/icons/gnome/32x32/status/dialog-error.png appdir/icons/gnome/32x32/status
-cp /usr/share/icons/gnome/32x32/status/dialog-information.png appdir/icons/gnome/32x32/status
-cp /usr/share/icons/gnome/32x32/status/dialog-question.png appdir/icons/gnome/32x32/status
-cp /usr/share/icons/gnome/32x32/status/dialog-warning.png appdir/icons/gnome/32x32/status
+if [[ "$OS" = Linux ]]; then
+  cp /usr/share/icons/gnome/32x32/status/dialog-error.png appdir/icons/gnome/32x32/status
+  cp /usr/share/icons/gnome/32x32/status/dialog-information.png appdir/icons/gnome/32x32/status
+  cp /usr/share/icons/gnome/32x32/status/dialog-question.png appdir/icons/gnome/32x32/status
+  cp /usr/share/icons/gnome/32x32/status/dialog-warning.png appdir/icons/gnome/32x32/status
+else
+  cp /usr/local/share/icons/gnome/32x32/status/dialog-error.png appdir/icons/gnome/32x32/status
+  cp /usr/local/share/icons/gnome/32x32/status/dialog-information.png appdir/icons/gnome/32x32/status
+  cp /usr/local/share/icons/gnome/32x32/status/dialog-question.png appdir/icons/gnome/32x32/status
+  cp /usr/local/share/icons/gnome/32x32/status/dialog-warning.png appdir/icons/gnome/32x32/status
+fi
 
 # Copy smooth
 cp /usr/local/lib/libsmooth*.so.? appdir
@@ -165,10 +188,10 @@ cp -r /usr/local/share/doc/freac/manual appdir
 
 mv appdir/boca/freac.so appdir
 
-install -Dm 0755 /usr/local/bin/freac appdir/freac
-install -Dm 0755 /usr/local/bin/freaccmd appdir/freaccmd
-install -Dm 0755 /usr/local/bin/smooth-translator appdir/translator
-install -Dm 0755 packaging/appimage/AppRun appdir/AppRun
+install -m 0755 /usr/local/bin/freac appdir/freac
+install -m 0755 /usr/local/bin/freaccmd appdir/freaccmd
+install -m 0755 /usr/local/bin/smooth-translator appdir/translator
+install -m 0755 packaging/appimage/AppRun appdir/AppRun
 
 mkdir -p appdir/usr/share/applications
 mkdir -p appdir/usr/share/metainfo
@@ -184,25 +207,37 @@ cp /usr/local/lib/libcdio_cdda.so.2 appdir
 cp /usr/local/lib/libcdio_paranoia.so.2 appdir
 cp /usr/local/lib/libcurl.so.4 appdir
 
-if [ -f /usr/lib/$HOST/libssl.so.1.1* ]; then
-  cp -P /usr/lib/$HOST/libcrypto.so.1.1* appdir
-  cp -P /usr/lib/$HOST/libssl.so.1.1* appdir
+if [[ "$OS" = Linux ]]; then
+  cp -P /usr/lib/$HOST/libcrypto.so.3 appdir
+  cp -P /usr/lib/$HOST/libssl.so.3 appdir
 else
-  cp -P /lib/$HOST/libcrypto.so.1.1* appdir
-  cp -P /lib/$HOST/libssl.so.1.1* appdir
+  cp -P /lib/libcrypto.so.* appdir
+  cp -P /usr/lib/libssl.so.* appdir
+
+  chmod 0755 appdir/libcrypto.so.*
+  chmod 0755 appdir/libssl.so.*
 fi
 
 strip --strip-all appdir/lib*.so*
 
 # Build custom AppImage runtime
-if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
+if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el || "$OS" != Linux ]]; then
   # Check out AppImage runtime
-  git clone --depth=1 https://github.com/AppImage/type2-runtime.git
+  git clone https://github.com/AppImage/type2-runtime.git
+  cd type2-runtime
+  git reset --hard 5e7217b
+  cd ..
 
   # Build custom libfuse3
-  git clone --depth=1 --branch=fuse-3.16.2 https://github.com/libfuse/libfuse.git
+  if [[ "$OS" = Linux ]]; then
+    git clone --depth=1 --branch=fuse-3.16.2 https://github.com/libfuse/libfuse.git
+  else
+    git clone --depth=1 --branch=fuse-3.17.2 https://github.com/libfuse/libfuse.git
+  fi
   cd libfuse
-  patch -p1 < ../type2-runtime/patches/libfuse/mount.c.diff
+  if [[ "$OS" = Linux ]]; then
+    patch -p1 < ../type2-runtime/patches/libfuse/mount.c.diff
+  fi
   mkdir build
   cd build
   meson setup -D default_library=both ..
@@ -222,19 +257,34 @@ if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
 
   # Build AppImage runtime
   cd type2-runtime
-  patch -p1 < ../.github/workflows/patches/appimage-type2-runtime-build.patch
+  if [[ "$OS" = Linux ]]; then
+    patch -p1 < ../.github/workflows/patches/appimage-type2-runtime-build.patch
+  else
+    patch -p1 < ../.github/workflows/patches/appimage-type2-runtime-build-freebsd.patch
+  fi
   cd src/runtime
-  make
+  $MAKE
   cd ../../..
 fi
 
 # Create AppImage using appimagetool
-wget -c -nv "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage"
-chmod a+x appimagetool-x86_64.AppImage
-if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
-  ARCH=x86_64 ./appimagetool-x86_64.AppImage --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+if [[ "$OS" = Linux || "$AppImageArch" = x86_64 ]]; then
+  APPIMAGETOOL=appimagetool-x86_64.AppImage
 else
-  ARCH=$AppImageArch ./appimagetool-x86_64.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+  APPIMAGETOOL=appimagetool-$AppImageArch.AppImage
+fi
+wget -c -nv "https://github.com/AppImage/appimagetool/releases/download/continuous/$APPIMAGETOOL"
+chmod a+x $APPIMAGETOOL
+if [[ "$OS" = Linux ]]; then
+  if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
+    ./$APPIMAGETOOL --appimage-extract
+    ARCH=x86_64 ./squashfs-root/AppRun --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+  else
+    ARCH=$AppImageArch ./$APPIMAGETOOL appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+  fi
+else
+  ./$APPIMAGETOOL --appimage-extract
+  ARCH=$AppImageArch ./squashfs-root/AppRun --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
 fi
 
 # Upload AppImage to GitHub

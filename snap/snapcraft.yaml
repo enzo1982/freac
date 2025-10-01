@@ -63,19 +63,14 @@ parts:
 
   libfaad:
     after: [ patches ]
-    source: https://github.com/knik0/faad2/archive/2_10_0.tar.gz
-    source-checksum: sha256/0c6d9636c96f95c7d736f097d418829ced8ec6dbd899cc6cc82b728480a84bfb
-    plugin: autotools
-    autotools-configure-parameters: [ --prefix=/usr ]
+    source: https://github.com/knik0/faad2/archive/2.11.2.tar.gz
+    source-checksum: sha256/3fcbd305e4abd34768c62050e18ca0986f7d9c5eca343fb98275418013065c0e
+    plugin: cmake
+    cmake-parameters: [ -DCMAKE_INSTALL_PREFIX=/usr ]
     build-environment:
-      - PATH: "/usr/bin:$PATH"
       - CFLAGS: "${CFLAGS-} -O3 -funroll-loops"
-    override-build: |
-      patch -p1 < $CRAFT_STAGE/faad2-2.10.0-configure.patch
-      chmod a+x configure
-      craftctl default
     prime:
-      - usr/lib/libfaad.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libfaad.so*
 
   libfdk-aac:
     source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.3.tar.gz
@@ -102,17 +97,13 @@ parts:
       - usr/lib/libFLAC.so*
 
   libmac:
-    source: https://freac.org/patches/MAC_1096_SDK.zip
-    source-checksum: sha256/73b25a517079bb015e2066b65854a7de0d8468f050b9b96025b7a3cb038f4dba
+    source: https://freac.org/patches/MAC_1154_SDK.zip
+    source-checksum: sha256/6f825a606e474a03729eb50d8b6967c74dbd1863c172e0732d836bebd9813dfc
     source-subdir: .
     plugin: cmake
     cmake-parameters: [ -DCMAKE_INSTALL_PREFIX=/usr ]
     build-environment:
       - CXXFLAGS: "${CXXFLAGS-} -O3 -funroll-loops"
-    override-build: |
-      if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
-        craftctl default
-      fi
     prime:
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libMAC.so*
 
@@ -143,8 +134,8 @@ parts:
       - usr/lib/libmp4v2.so*
 
   libmpg123:
-    source: https://mpg123.de/download/mpg123-1.32.10.tar.bz2
-    source-checksum: sha256/87b2c17fe0c979d3ef38eeceff6362b35b28ac8589fbf1854b5be75c9ab6557c
+    source: https://mpg123.de/download/mpg123-1.33.2.tar.bz2
+    source-checksum: sha256/2c54fabbfa696dce8f9b137c8ef7a429a061f8fe633cd7d0a511809855f2c219
     plugin: make
     build-environment:
       - CFLAGS: "${CFLAGS-} -O3 -funroll-loops"
@@ -166,8 +157,8 @@ parts:
 
   libogg:
     after: [ patches ]
-    source: https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.5.tar.xz
-    source-checksum: sha256/c4d91be36fc8e54deae7575241e03f4211eb102afb3fc0775fbbc1b740016705
+    source: https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.6.tar.xz
+    source-checksum: sha256/5c8253428e181840cd20d41f3ca16557a9cc04bad4a3d04cce84808677fa1061
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
@@ -232,8 +223,8 @@ parts:
       - usr/lib/libvorbis*.so*
 
   ffmpeg:
-    source: https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
-    source-checksum: sha256/40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6
+    source: https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz
+    source-checksum: sha256/733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr, --disable-autodetect, --enable-gpl, --enable-small, --enable-runtime-cpudetect, --disable-vsx ]
     build-packages:

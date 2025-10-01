@@ -91,8 +91,27 @@ Installation
 
 			sudo pkg install freac
 
-		Alternatively, there is a binary version of fre:ac distributed as a .tar.gz archive. Please
-		extract the contents to a location of your choice and execute the freac binary to start fre:ac.
+		Alternatively, fre:ac is available as an AppImage package.
+
+		To run AppImages, FUSE support and user mounts need to be enabled. You can load the FUSE kernel
+		module and temporarily enable user mounts using the following commands:
+
+			kldload fusefs
+			sysctl vfs.usermount=1
+
+		To automatically load the FUSE module at boot, add the following line to your /boot/loader.conf:
+
+			fusefs_load="YES"
+
+		To enable user mounts at boot, add the following line to your /etc/sysctl.conf:
+
+			vfs.usermount=1
+
+		The AppImage package must be marked as executable after downloading using the following command:
+
+			chmod a+x freac*.AppImage
+
+		The AppImage can then be executed to start fre:ac.
 
 	Haiku:
 
@@ -109,12 +128,12 @@ Requirements
 			- Windows XP/Vista/7/8.x/10/11
 			- macOS 10.5 Leopard or later
 			- Linux (most modern distributions are supported)
-			- FreeBSD/PC-BSD (tested on FreeBSD 13.0)
+			- FreeBSD/PC-BSD (tested on FreeBSD 13.1 and 14.2)
 			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
 			- OpenBSD (tested on OpenBSD 5.3)
 			- Solaris (tested on Solaris 11)
 			- GNU Hurd (tested on Debian Sid)
-			- Haiku (tested on Haiku R1 beta 2)
+			- Haiku (tested on Haiku R1 beta 5)
 
 		Minimum hardware requirements:
 			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 or ARMv7 CPU
@@ -161,9 +180,10 @@ Requirements
 History
 -------
 
-	Version 1.1.8 (February 2025)
+	Version 1.1.8 (August 2025)
 
 		- added Linux AppImage packages for the RISC-V and PPC64EL architectures
+		- added FreeBSD AppImage packages for the x86-64 and AArch64 architectures
 
 		- Improvements
 
@@ -183,18 +203,23 @@ History
 			- fixed reading/writing of unencoded string fields from/to ID3v2 tags
 			- fixed delete/shutdown after encoding options not changing when switching configuration
 			- fixed ripping automation options not being available after switching configuration
+			- fixed album art files not being read when audio files contain chapters (or a cue sheet is used)
+			- fixed track gain/peak information getting lost when converting with freaccmd
 			- fixed hours missing from total duration in logs
+			- fixed detection of WMA Lossless files
 
 		- Updated codecs
 
-			- updated FFmpeg to version 7.1
+			- updated FFmpeg to version 7.1.1
 			- updated Opus to version 1.5.2 with Opus Speech Coding Enhancement
-			- updated Monkey's Audio to version 10.96
+			- updated Monkey's Audio to version 11.54
 			- updated WavPack to version 5.8.1
 			- updated FLAC to version 1.5.0
+			- updated FAAD2 to version 2.11.2
 			- updated MP4v2 to version 2.1.3
-			- updated mpg123 to version 1.32.10
+			- updated mpg123 to version 1.33.2
 			- updated libfdk-aac to version 2.0.3
+			- updated libogg to version 1.3.6
 			- updated libsndfile to version 1.2.2
 			- updated libcdio to version 2.2.0
 			- updated libcdio-paranoia to version 10.2+2.0.2

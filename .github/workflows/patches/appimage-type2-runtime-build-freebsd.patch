@@ -1,0 +1,246 @@
+diff -Naur type2-runtime-main/src/runtime/Makefile type2-runtime-freebsd/src/runtime/Makefile
+--- type2-runtime-main/src/runtime/Makefile	2025-05-30 13:05:28.000000000 +0200
++++ type2-runtime-freebsd/src/runtime/Makefile	2025-06-18 19:41:01.549933400 +0200
+@@ -1,12 +1,13 @@
+ GIT_COMMIT := $(shell cat version)
+-CC            = clang
+-CFLAGS        = -std=gnu99 -Os -D_FILE_OFFSET_BITS=64 -DGIT_COMMIT=\"$(GIT_COMMIT)\" -T data_sections.ld -ffunction-sections -fdata-sections -Wl,--gc-sections -static -Wall -Werror -static-pie
+-LIBS          = -lsquashfuse -lsquashfuse_ll -lzstd -lz -lfuse3 -lmimalloc
++CC            = gcc
++CFLAGS        = -std=gnu99 -Os -D_FILE_OFFSET_BITS=64 -DGIT_COMMIT=\"$(GIT_COMMIT)\" -T data_sections.ld -ffunction-sections -fdata-sections -Wl,--gc-sections -static -Wall
++LIBS          = -lsquashfuse -lsquashfuse_ll -lzstd -llzma -lz -llz4 -llzo2 -lfuse3 -lmd -ldl -lpthread
+ 
+ all: runtime
+ 
+ runtime: runtime.c
+-	$(CC) -I/usr/local/include/squashfuse -I/usr/include/fuse3 $(CFLAGS) $^ $(LIBS) -o $@
++	$(CC) -I/usr/local/include -I/usr/local/include/fuse3 $(CFLAGS) $^ $(LIBS) -o $@
++	elfedit --output-osabi FreeBSD $@
+ 
+ clean:
+ 	rm -f runtime
+diff -Naur type2-runtime-main/src/runtime/runtime.c type2-runtime-freebsd/src/runtime/runtime.c
+--- type2-runtime-main/src/runtime/runtime.c	2025-05-30 13:05:28.000000000 +0200
++++ type2-runtime-freebsd/src/runtime/runtime.c	2025-06-18 19:40:25.010463700 +0200
+@@ -64,8 +64,7 @@
+ #include <libgen.h>
+ #include <dirent.h>
+ #include <ctype.h>
+-
+-const char* fusermountPath = NULL;
++#include <sys/sysctl.h>
+ 
+ typedef struct {
+     uint32_t lo;
+@@ -414,106 +413,6 @@
+ 	return 0;
+ }
+ 
+-char* find_fusermount(bool verbose) {
+-    char* fusermount_base = "fusermount";
+-
+-    char* fusermount_path = getenv("PATH");
+-    if (fusermount_path == NULL) {
+-        return NULL;
+-    }
+-
+-    char* path_copy = strdup(fusermount_path);
+-    char* dir = strtok(path_copy, ":");
+-
+-    while (dir != NULL) {
+-        DIR* dir_ptr = opendir(dir);
+-        if (dir_ptr == NULL) {
+-            dir = strtok(NULL, ":");
+-            continue;
+-        }
+-
+-        struct dirent* entry;
+-        while ((entry = readdir(dir_ptr)) != NULL) {
+-            // Check if the entry starts with "fusermount"
+-            if (strncmp(entry->d_name, fusermount_base, 10) == 0) {
+-                // Check if the rest of the entry is a digit
+-                char* suffix = entry->d_name + 10;
+-                int j = 0;
+-                while (suffix[j] != '\0' && isdigit(suffix[j])) {
+-                    j++;
+-                }
+-
+-                if (suffix[j] == '\0') {
+-                    // Construct the full path of the entry
+-                    char* fusermount_full_path = malloc(strlen(dir) + strlen(entry->d_name) + 2);
+-                    sprintf(fusermount_full_path, "%s/%s", dir, entry->d_name);
+-
+-                    // Check if the binary is setuid root
+-                    struct stat sb;
+-                    if (stat(fusermount_full_path, &sb) == -1) {
+-                        perror("stat");
+-                        free(fusermount_full_path);
+-                        continue;
+-                    }
+-
+-                    if (sb.st_uid != 0 || (sb.st_mode & S_ISUID) == 0) {
+-                        if (verbose) {
+-                            printf("Not setuid root, skipping...\n");
+-                        }
+-                        free(fusermount_full_path);
+-                        continue;
+-                    }
+-
+-                    if (verbose) {
+-                        printf("Found setuid root executable: %s\n", fusermount_full_path);
+-                    }
+-
+-                    pid_t pid = fork();
+-                    if (pid == -1) {
+-                        perror("fork");
+-                        free(fusermount_full_path);
+-                        continue;
+-                    }
+-
+-                    if (pid == 0) {
+-                        // Child process
+-
+-                        // close stdout and stderr if not in verbose mode
+-                        if (!verbose) {
+-                            close(1);
+-                            close(2);
+-                        }
+-
+-                        char* args[] = {fusermount_full_path, "--version", NULL};
+-                        execvp(fusermount_full_path, args);
+-                        // If execvp returns, it means the executable was not found
+-                        exit(1);
+-                    } else {
+-                        // Parent process
+-                        int status;
+-                        waitpid(pid, &status, 0);
+-
+-                        if (WIFEXITED(status) && WEXITSTATUS(status) == 0) {
+-                            // The executable was found and executed successfully
+-                            closedir(dir_ptr);
+-                            free(path_copy);
+-                            return fusermount_full_path;
+-                        }
+-
+-                        free(fusermount_full_path);
+-                    }
+-                }
+-            }
+-        }
+-
+-        closedir(dir_ptr);
+-        dir = strtok(NULL, ":");
+-    }
+-
+-    free(path_copy);
+-    return NULL;
+-}
+-
+ /* Exit status to use when launching an AppImage fails.
+  * For applications that assign meanings to exit status codes (e.g. rsync),
+  * we avoid "cluttering" pre-defined exit status codes by using 127 which
+@@ -722,16 +621,8 @@
+ 
+     if (arg && strcmp(arg, option) == 0) {
+         char portable_dir[PATH_MAX];
+-        char fullpath[PATH_MAX];
+-
+-        ssize_t length = readlink(appimage_path, fullpath, sizeof(fullpath));
+-        if (length < 0) {
+-            fprintf(stderr, "Error getting realpath for %s\n", appimage_path);
+-            exit(EXIT_FAILURE);
+-        }
+-        fullpath[length] = '\0';
+ 
+-        sprintf(portable_dir, "%s.%s", fullpath, name);
++        sprintf(portable_dir, "%s.%s", appimage_path, name);
+         if (!mkdir(portable_dir, S_IRWXU))
+             fprintf(stderr, "Portable %s directory created at %s\n", name, portable_dir);
+         else
+@@ -1481,7 +1372,14 @@
+      * functionality specifically for builds used by appimaged.
+      */
+     if (getenv("TARGET_APPIMAGE") == NULL) {
+-        strcpy(appimage_path, "/proc/self/exe");
++        int mib[4] = { CTL_KERN, KERN_PROC, KERN_PROC_PATHNAME, -1 };
++        size_t len = PATH_MAX;
++
++        if (sysctl(mib, 4, appimage_path, &len, 0, 0) != 0) {
++            perror("Failed to obtain absolute path");
++            exit(EXIT_EXECERROR);
++        }
++
+         strcpy(argv0_path, argv[0]);
+     } else {
+         strcpy(appimage_path, getenv("TARGET_APPIMAGE"));
+@@ -1510,16 +1408,7 @@
+ 
+     /* Print the help and then exit */
+     if (arg && strcmp(arg, "appimage-help") == 0) {
+-        char fullpath[PATH_MAX];
+-
+-        ssize_t length = readlink(appimage_path, fullpath, sizeof(fullpath));
+-        if (length < 0) {
+-            fprintf(stderr, "Error getting realpath for %s\n", appimage_path);
+-            exit(EXIT_EXECERROR);
+-        }
+-        fullpath[length] = '\0';
+-
+-        print_help(fullpath);
++        print_help(appimage_path);
+         exit(0);
+     }
+ 
+@@ -1562,12 +1451,7 @@
+ 
+     if (getenv("TARGET_APPIMAGE") == NULL) {
+         // If we are operating on this file itself
+-        ssize_t len = readlink(appimage_path, fullpath, sizeof(fullpath));
+-        if (len < 0) {
+-            perror("Failed to obtain absolute path");
+-            exit(EXIT_EXECERROR);
+-        }
+-        fullpath[len] = '\0';
++        strcpy(fullpath, appimage_path);
+     } else {
+         char* abspath = realpath(appimage_path, NULL);
+         if (abspath == NULL) {
+@@ -1737,21 +1621,6 @@
+ 
+     if (pid == 0) {
+         /* in child */
+-
+-        fusermountPath = getenv("FUSERMOUNT_PROG");
+-        if (fusermountPath == NULL) {
+-            char* new_prog = find_fusermount(verbose);
+-            if (new_prog != NULL) {
+-                setenv("FUSERMOUNT_PROG", new_prog, 1);
+-                if (verbose) {
+-                    fprintf(stderr, "FUSERMOUNT_PROG set to %s\n", new_prog);
+-                }
+-                free(new_prog);
+-            } else {
+-                printf("Error: No suitable fusermount binary found on the $PATH\n");
+-            }
+-        }
+-
+         char* child_argv[5];
+ 
+         /* close read pipe */
+@@ -1847,6 +1716,16 @@
+         strcpy(filename, mount_dir);
+         strcat(filename, "/AppRun");
+ 
++        /* Wait for mounted image to become available (up to 1s) */
++        for (int i = 0; i < 100; i++) {
++            struct stat s;
++            if (stat(filename, &s) == 0)
++                break;
++
++            /* Wait 10ms */
++            usleep(10000);
++        }
++
+         /* TODO: Find a way to get the exit status and/or output of this */
+         execv(filename, real_argv);
+         /* Error if we continue here */

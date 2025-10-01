@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2025 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -142,7 +142,7 @@ Void BoCA::LayerPayPal::OnChangeSettings()
 
 	i18n->SetContext("Extensions::Donate::PayPal");
 
-	const Array<String>	&levels = i18n->TranslateString("5,10,20,other amount").Explode(",");
+	const Array<String>	&levels = i18n->TranslateString("10,15,20,other amount").Explode(",");
 
 	/* Disable monthly donations for other amounts.
 	 */
