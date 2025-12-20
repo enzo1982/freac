@@ -172,7 +172,7 @@ exhale_version=1.2.1.2
 faac_version=1.31.1
 faad2_version=2.11.2
 fdk_aac_version=2.0.3
-ffmpeg_version=7.1.1
+ffmpeg_version=8.0.1
 flac_version=1.5.0
 lame_version=3.100
 libcdio_version=2.2.0
@@ -423,7 +423,7 @@ for package in ${packages[@]}; do
   elif [ $package == ffmpeg ]; then
     # Build ffmpeg
     export CFLAGS="$cflags"
-    configure_flags="--disable-autodetect --disable-doc --enable-gpl --enable-small --enable-runtime-cpudetect"
+    configure_flags="--disable-autodetect --disable-doc --enable-gpl --enable-small --enable-runtime-cpudetect --disable-response-files"
     if [[ $arm == true || $arm64 == true || $riscv64 == true || $ppc64el == true ]] && [[ `uname -m` == x86_64 ]]; then
       host_flags="--enable-cross-compile"
       if [[ $arm64 == true ]]; then
