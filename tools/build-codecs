@@ -168,7 +168,7 @@ if [[ $uname == Haiku ]]; then
 fi
 
 # Package versions
-exhale_version=1.2.1.2
+exhale_version=1.2.2
 faac_version=1.31.1
 faad2_version=2.11.2
 fdk_aac_version=2.0.3
