@@ -228,7 +228,7 @@ parts:
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr, --disable-autodetect, --enable-gpl, --enable-small, --enable-runtime-cpudetect, --disable-vsx ]
     build-packages:
-      - yasm
+      - nasm
     prime:
       - usr/bin/ffmpeg
 
