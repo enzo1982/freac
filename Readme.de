@@ -195,6 +195,7 @@ Geschichte
 
 		- Bug fixes
 
+			- Einfrieren während der Konvertierung unter Linux und BSD behoben
 			- Absturz beim Einlesen von CD-Inhalten unter macOS Ventura behoben
 			- Absturz beim Versuch, nicht-Stereo-Daten mit FDK-AAC in HEv2-AAC zu kodieren, behoben
 			- Erzeugung ungültiger Ausgabedateien beim Versuch, nicht-Stereo-Daten mit Core Audio in ELDv2-AAC zu kodieren, behoben
