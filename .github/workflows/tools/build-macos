@@ -19,7 +19,7 @@ if [[ ${MACOSX_DEPLOYMENT_TARGET:0:2} = 11 ]]; then
   ../build-codecs libcdio libcdio-paranoia
   cd ..
 
-  lipo -create libcdio-2.2.0/lib/driver/.libs/libcdio.19.dylib arm64/libcdio-2.2.0/lib/driver/.libs/libcdio.19.dylib -output libcdio.19.dylib
+  lipo -create libcdio-2.3.0/lib/driver/.libs/libcdio.19.dylib arm64/libcdio-2.3.0/lib/driver/.libs/libcdio.19.dylib -output libcdio.19.dylib
   lipo -create libcdio-paranoia-10.2+2.0.2/lib/cdda_interface/.libs/libcdio_cdda.2.dylib arm64/libcdio-paranoia-10.2+2.0.2/lib/cdda_interface/.libs/libcdio_cdda.2.dylib -output libcdio_cdda.2.dylib
   lipo -create libcdio-paranoia-10.2+2.0.2/lib/paranoia/.libs/libcdio_paranoia.2.dylib arm64/libcdio-paranoia-10.2+2.0.2/lib/paranoia/.libs/libcdio_paranoia.2.dylib -output libcdio_paranoia.2.dylib
 
