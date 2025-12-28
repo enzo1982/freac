@@ -27,6 +27,8 @@ jobs:
             system: system-arm64
             mingw: 64
 
+      fail-fast: false
+
     runs-on: ${{ matrix.os }}
 
     defaults:

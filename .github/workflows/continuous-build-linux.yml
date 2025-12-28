@@ -48,6 +48,8 @@ jobs:
             pkgarch: ppc64el
             dependencies: g++-powerpc64le-linux-gnu nasm qemu qemu-user-static wget yasm meson
 
+      fail-fast: false
+
     runs-on: ${{ matrix.os }}
 
     steps:

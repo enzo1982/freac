@@ -18,6 +18,8 @@ jobs:
           - os: macos-15
             target: 11.0
 
+      fail-fast: false
+
     runs-on: ${{ matrix.os }}
 
     steps:

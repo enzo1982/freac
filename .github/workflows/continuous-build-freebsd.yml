@@ -20,6 +20,8 @@ jobs:
             arch: aarch64
             dependencies: automake bash cmake gcc git gmake libtool meson nasm perl5 pkgconf python sudo wget yasm zip
 
+      fail-fast: false
+
     runs-on: ${{ matrix.os }}
 
     env:
