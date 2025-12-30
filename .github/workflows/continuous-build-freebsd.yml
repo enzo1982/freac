@@ -29,6 +29,15 @@ jobs:
       RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - name: Free up space
+        run: |
+          rm -fr boca/system-*
+
       - name: Start VM
         id: vm
         uses: vmactions/freebsd-vm@v1
@@ -50,11 +59,6 @@ jobs:
           pkg update
           pkg install -y ${{ matrix.dependencies }}
           pkg install -y gnome-icon-theme gtk3
-
-      - name: Checkout repository
-        uses: actions/checkout@v6
-        with:
-          submodules: recursive
 
       - name: Build AppImage
         shell: freebsd {0}
