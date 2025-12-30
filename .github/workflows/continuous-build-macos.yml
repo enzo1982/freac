@@ -34,19 +34,9 @@ jobs:
           p12-password: ${{ secrets.CERTIFICATES_PASSWORD }}
 
       - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Checkout smooth
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
-          repository: enzo1982/smooth
-          path: smooth
-
-      - name: Checkout BoCA
-        uses: actions/checkout@v4
-        with:
-          repository: enzo1982/BoCA
-          path: boca
+          submodules: recursive
 
       - name: Build DMG
         env:

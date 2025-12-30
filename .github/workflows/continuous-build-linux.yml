@@ -87,19 +87,9 @@ jobs:
           sudo ln -s ${{ matrix.host }}-strip /usr/bin/strip
 
       - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Checkout smooth
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
-          repository: enzo1982/smooth
-          path: smooth
-
-      - name: Checkout BoCA
-        uses: actions/checkout@v4
-        with:
-          repository: enzo1982/BoCA
-          path: boca
+          submodules: recursive
 
       - name: Build AppImage
         env:

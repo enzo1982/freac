@@ -1,0 +1,8 @@
+[submodule "smooth"]
+	path = smooth
+	url = git@github.com:enzo1982/smooth.git
+	branch = master
+[submodule "boca"]
+	path = boca
+	url = git@github.com:enzo1982/BoCA.git
+	branch = master
