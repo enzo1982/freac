@@ -212,7 +212,7 @@ History
 		- Updated codecs
 
 			- updated FFmpeg to version 8.0.1
-			- updated Opus to version 1.5.2 with Opus Speech Coding Enhancement
+			- updated Opus to version 1.6 with Opus Speech Coding Enhancement
 			- updated Monkey's Audio to version 11.90
 			- updated WavPack to version 5.8.1
 			- updated FLAC to version 1.5.0
