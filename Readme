@@ -180,7 +180,7 @@ Requirements
 History
 -------
 
-	Version 1.1.8 (December 2025)
+	Version 1.1.8 (January 2026)
 
 		- added Linux AppImage packages for the RISC-V and PPC64EL architectures
 		- added FreeBSD AppImage packages for the x86-64 and AArch64 architectures

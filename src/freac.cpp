@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2025 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2026 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -70,7 +70,7 @@ String	 freac::freac::shortVersion   = "v1.1.7";
 String	 freac::freac::cddbVersion    = "v1.1.7"; // CDDB version may not contain spaces
 String	 freac::freac::cddbMode	      = "submit";
 
-String	 freac::freac::copyright      = "Copyright (C) 2001-2025 Robert Kausch";
+String	 freac::freac::copyright      = "Copyright (C) 2001-2026 Robert Kausch";
 
 String	 freac::freac::website	      = "https://www.freac.org/";
 
