@@ -97,8 +97,8 @@ parts:
       - usr/lib/libFLAC.so*
 
   libmac:
-    source: https://freac.org/patches/MAC_1190_SDK.zip
-    source-checksum: sha256/6aeb626ba379af91b69a76047d5fb6e8f498630fa4274f865eecfd2b5ccc74d0
+    source: https://freac.org/patches/MAC_1204_SDK.zip
+    source-checksum: sha256/c1664307451da792bc296b90d4ad343d078c5c1cc8dc59e50d36ee2b9566a195
     source-subdir: .
     plugin: cmake
     cmake-parameters: [ -DCMAKE_INSTALL_PREFIX=/usr ]
