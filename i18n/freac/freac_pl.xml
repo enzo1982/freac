@@ -812,6 +812,11 @@
       <section name="Opus">
 	<entry id="23000" string="Quality">Jakość</entry>
 	<entry id="23001" string="Complexity">Złożoność</entry>
+	<entry id="23002" string="Enable Speech Bandwidth Extension">Włącz rozszerzenie pasma mowy</entry>
+	<entry id="23003" string="Format">Format</entry>
+	<entry id="23004" string="Sample format">Format próbki</entry>
+	<entry id="23005" string="16 bit integer">16-bitowa całkowita</entry>
+	<entry id="23006" string="32 bit float">32-bitowa zmiennoprzecinkowa</entry>
       </section>
     </section>
 
