@@ -45,8 +45,8 @@ parts:
       - -*
 
   libcdio:
-    source: https://github.com/libcdio/libcdio/releases/download/2.2.0/libcdio-2.2.0.tar.bz2
-    source-checksum: sha256/6f8fbdf4d189cf63f2a7a1549c516cd720c7b222c7aaadbc924a26e745a48539
+    source: https://github.com/libcdio/libcdio/releases/download/2.3.0/libcdio-2.3.0.tar.bz2
+    source-checksum: sha256/53e83d284667535a767fd2d31edad1a6701591960459df373a10f1f21e80a7ed
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr, --disable-cxx, --disable-example-progs, --without-cd-drive, --without-cd-info, --without-cd-read, --without-cdda-player, --without-iso-info, --without-iso-read ]
     prime:
@@ -97,8 +97,8 @@ parts:
       - usr/lib/libFLAC.so*
 
   libmac:
-    source: https://freac.org/patches/MAC_1154_SDK.zip
-    source-checksum: sha256/6f825a606e474a03729eb50d8b6967c74dbd1863c172e0732d836bebd9813dfc
+    source: https://freac.org/patches/MAC_1204_SDK.zip
+    source-checksum: sha256/c1664307451da792bc296b90d4ad343d078c5c1cc8dc59e50d36ee2b9566a195
     source-subdir: .
     plugin: cmake
     cmake-parameters: [ -DCMAKE_INSTALL_PREFIX=/usr ]
@@ -134,8 +134,8 @@ parts:
       - usr/lib/libmp4v2.so*
 
   libmpg123:
-    source: https://mpg123.de/download/mpg123-1.33.2.tar.bz2
-    source-checksum: sha256/2c54fabbfa696dce8f9b137c8ef7a429a061f8fe633cd7d0a511809855f2c219
+    source: https://mpg123.de/download/mpg123-1.33.4.tar.bz2
+    source-checksum: sha256/3ae8c9ff80a97bfc0e22e89fbcd74687eca4fc1db315b12607f27f01cb5a47d9
     plugin: make
     build-environment:
       - CFLAGS: "${CFLAGS-} -O3 -funroll-loops"
@@ -167,16 +167,16 @@ parts:
       - usr/lib/libogg.so*
 
   libopus:
-    source: https://ftp.osuosl.org/pub/xiph/releases/opus/opus-1.5.2.tar.gz
-    source-checksum: sha256/65c1d2f78b9f2fb20082c38cbe47c951ad5839345876e46941612ee87f9a7ce1
+    source: https://ftp.osuosl.org/pub/xiph/releases/opus/opus-1.6.1.tar.gz
+    source-checksum: sha256/6ffcb593207be92584df15b32466ed64bbec99109f007c82205f0194572411a1
     plugin: make
     build-environment:
       - CFLAGS: "${CFLAGS-} -O3 -funroll-loops"
     override-build: |
       if [ "$CRAFT_ARCH_BUILD_FOR" = "armhf" ]; then
-        ./configure --prefix=/usr --enable-float-approx --enable-osce --disable-intrinsics --disable-rtcd
+        ./configure --prefix=/usr --enable-float-approx --enable-osce --enable-qext --disable-intrinsics --disable-rtcd
       else
-        ./configure --prefix=/usr --enable-float-approx --enable-osce
+        ./configure --prefix=/usr --enable-float-approx --enable-osce --enable-qext
       fi
       craftctl default
     prime:
@@ -223,12 +223,12 @@ parts:
       - usr/lib/libvorbis*.so*
 
   ffmpeg:
-    source: https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz
-    source-checksum: sha256/733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1
+    source: https://ffmpeg.org/releases/ffmpeg-8.0.1.tar.xz
+    source-checksum: sha256/05ee0b03119b45c0bdb4df654b96802e909e0a752f72e4fe3794f487229e5a41
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr, --disable-autodetect, --enable-gpl, --enable-small, --enable-runtime-cpudetect, --disable-vsx ]
     build-packages:
-      - yasm
+      - nasm
     prime:
       - usr/bin/ffmpeg
 

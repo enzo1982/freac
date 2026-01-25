@@ -180,7 +180,7 @@ Requirements
 History
 -------
 
-	Version 1.1.8 (August 2025)
+	Version 1.1.8 (January 2026)
 
 		- added Linux AppImage packages for the RISC-V and PPC64EL architectures
 		- added FreeBSD AppImage packages for the x86-64 and AArch64 architectures
@@ -196,6 +196,7 @@ History
 
 		- Bug fixes
 
+			- fixed freeze during conversion on Linux and BSD
 			- fixed crash reading CD contents on macOS Ventura
 			- fixed crash trying to encode non-stereo data in HEv2 AAC using FDK-AAC
 			- fixed creation of invalid output files trying to encode non-stereo data in ELDv2 AAC using Core Audio
@@ -210,18 +211,18 @@ History
 
 		- Updated codecs
 
-			- updated FFmpeg to version 7.1.1
-			- updated Opus to version 1.5.2 with Opus Speech Coding Enhancement
-			- updated Monkey's Audio to version 11.54
+			- updated FFmpeg to version 8.0.1
+			- updated Opus to version 1.6.1 with Opus Speech Coding Enhancement
+			- updated Monkey's Audio to version 12.04
 			- updated WavPack to version 5.8.1
 			- updated FLAC to version 1.5.0
 			- updated FAAD2 to version 2.11.2
 			- updated MP4v2 to version 2.1.3
-			- updated mpg123 to version 1.33.2
+			- updated mpg123 to version 1.33.4
 			- updated libfdk-aac to version 2.0.3
 			- updated libogg to version 1.3.6
 			- updated libsndfile to version 1.2.2
-			- updated libcdio to version 2.2.0
+			- updated libcdio to version 2.3.0
 			- updated libcdio-paranoia to version 10.2+2.0.2
 
 		- New and updated translations

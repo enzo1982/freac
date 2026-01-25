@@ -27,6 +27,8 @@ jobs:
             system: system-arm64
             mingw: 64
 
+      fail-fast: false
+
     runs-on: ${{ matrix.os }}
 
     defaults:
@@ -35,19 +37,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Checkout smooth
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
-          repository: enzo1982/smooth
-          path: smooth
-
-      - name: Checkout BoCA
-        uses: actions/checkout@v4
-        with:
-          repository: enzo1982/BoCA
-          path: boca
+          submodules: recursive
 
       - name: Build
         env:
