@@ -175,7 +175,7 @@ cp /usr/local/lib/libsmooth*.so.? appdir
 
 # Copy BoCA
 cp -r /usr/local/lib/boca appdir
-ln -s boca/boca.1.0.so appdir/libboca-1.0.so.3
+cp /usr/local/lib/libboca-1.0.so.3 appdir/libboca-1.0.so.3
 
 # Copy fre:ac
 cp COPYING Readme* appdir

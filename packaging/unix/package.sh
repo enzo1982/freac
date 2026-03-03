@@ -25,7 +25,7 @@ cp $PREFIX/bin/freaccmd freac/
 
 mkdir -p freac/boca
 
-cp $PREFIX/lib/boca/boca.$BOCAVER.so freac/boca/
+cp $PREFIX/lib/libboca-$BOCAVER.so.$BOCAREV freac/
 cp $PREFIX/lib/libsmooth-$SMOOTHVER.so.$SMOOTHREV freac/
 #cp $PREFIX/lib/libsmooth-js-$SMOOTHVER.so.$SMOOTHREV freac/
 
@@ -98,8 +98,6 @@ cp $PREFIX/bin/wvunpack freac/codecs/cmdline/
 strip --strip-all freac/libcdio*.so.*
 strip --strip-all freac/codecs/cmdline/*
 strip --strip-all freac/codecs/*.so
-
-ln -sf boca/boca.$BOCAVER.so freac/libboca-$BOCAVER.so.$BOCAREV
 
 rm freac/boca/boca_decoder_alac.1.0.xml
 rm freac/boca/boca_decoder_ffmpeg_alac.1.0.xml
