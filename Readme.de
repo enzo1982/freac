@@ -179,7 +179,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.8 (Februar 2026)
+	Version 1.1.8 (März 2026)
 
 		- Linux AppImage-Pakete für die Architekturen RISC-V und PPC64EL hinzugefügt
 		- FreeBSD AppImage-Pakete für die Architekturn x86-64 und AArch64 hinzugefügt
@@ -204,6 +204,7 @@ Geschichte
 			- Problem mit Optionen zum Löschen von Dateien und zum Herunterfahren nach der Kodierung beim Wechsel der Konfiguration behoben
 			- Problem mit nicht verfügbaren Ripping-Automatisierungsoptionen nach Wechsel der Konfiguration behoben
 			- Problem mit dem Lesen von Cover-Bild-Dateien bei Audiodateien mit Kapiteln behoben (oder wenn ein Cuesheet verwendet wird)
+			- Problem beim Lesen von Vorbis Comment-Kapiteln mit IDs beginnend mit 0 behoben
 			- Verlust von Track-Gain/-Peak-Informationen bei der Konvertierung mit freaccmd behoben
 			- Problem mit fehlenden Stunden bei Gesamtzeit in Log-Dateien behoben
 			- Problem mit der Erkennung von WMA Lossless Dateien behoben

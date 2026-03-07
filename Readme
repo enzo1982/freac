@@ -180,7 +180,7 @@ Requirements
 History
 -------
 
-	Version 1.1.8 (February 2026)
+	Version 1.1.8 (March 2026)
 
 		- added Linux AppImage packages for the RISC-V and PPC64EL architectures
 		- added FreeBSD AppImage packages for the x86-64 and AArch64 architectures
@@ -205,6 +205,7 @@ History
 			- fixed delete/shutdown after encoding options not changing when switching configuration
 			- fixed ripping automation options not being available after switching configuration
 			- fixed album art files not being read when audio files contain chapters (or a cue sheet is used)
+			- fixed reading Vorbis Comment chapters with IDs starting at 0
 			- fixed track gain/peak information getting lost when converting with freaccmd
 			- fixed hours missing from total duration in logs
 			- fixed detection of WMA Lossless files
