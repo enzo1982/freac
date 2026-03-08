@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2025 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2026 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -272,8 +272,9 @@ Int freac::CDDBRemote::Query(const String &queryString)
 		}
 		while (true);
 
-		if (str[2] == '0') return QUERY_RESULT_MULTIPLE;
-		else		   return QUERY_RESULT_FUZZY;
+		if (str[2] == '0' && ids.Length() == 1)	return QUERY_RESULT_SINGLE;
+		else if (str[2] == '0')			return QUERY_RESULT_MULTIPLE;
+		else					return QUERY_RESULT_FUZZY;
 	}
 
 	return QUERY_RESULT_ERROR;
