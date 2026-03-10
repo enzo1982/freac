@@ -14,12 +14,14 @@
 #include <smooth/main.h>
 #include <smooth/args.h>
 
-#if defined __HAIKU__
+#if !defined __WIN32__
 #	include <dlfcn.h>
 #endif
 
 using namespace smooth;
 using namespace smooth::System;
+
+static const String	&kDelimiter = Directory::GetDirectoryDelimiter();
 
 Int smooth::Main(const Array<String> &args)
 {
@@ -31,20 +33,20 @@ Int smooth::Main(const Array<String> &args)
 
 	if (loader->GetSystemModuleHandle() == NIL)
 	{
-#if defined __HAIKU__
+#if !defined __WIN32__
 		/* Query actual library path on Haiku.
 		 */
 		Dl_info	 info = { 0 };
 
 		dladdr((void *) &smooth::Init, &info);
 
+		Directory freacDirectory = File(info.dli_fname).GetFilePath();
+		if (freacDirectory.GetDirectoryName() != "freac") freacDirectory = String(freacDirectory).Append(kDelimiter).Append("freac");
+		String freacLibrary = String(freacDirectory).Append(kDelimiter).Append("freac");
+
 		Object::DeleteObject(loader);
 
-		loader = new DynamicLoader(File(info.dli_fname).GetFilePath().Append("/freac/freac"));
-#elif !defined __WIN32__
-		Object::DeleteObject(loader);
-
-		loader = new DynamicLoader("../lib/freac/freac");
+		loader = new DynamicLoader(freacLibrary);
 #endif
 	}
 
