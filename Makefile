@@ -47,8 +47,13 @@ CMDOBJECTS = $(OBJECTS)/console.o
 
 EXENAME	= $(BINDIR)/freac$(EXECUTABLE)
 CMDNAME	= $(BINDIR)/freaccmd$(EXECUTABLE)
-DLLNAME	= $(BINDIR)/freac$(SHARED)
-LIBNAME	= $(OBJECTS)/libfreac.a
+
+ifeq ($(BUILD_WIN32),True)
+	DLLNAME	= $(BINDIR)/freac$(SHARED)
+	LIBNAME	= $(LIBDIR)/libfreac.a
+else
+	DLLNAME	= $(LIBDIR)/libfreac-$(VERSION)$(SHARED)
+endif
 
 CCOPTS	     = -I$(INCLUDE) -fvisibility=hidden -c
 LDOPTS	     =
@@ -98,11 +103,15 @@ else
 	LDOPTS			+= -L$(prefix)/lib -lsmooth-$(SMOOTHVER)
 
 	LDOPTS_DLL		+= -lboca-$(BOCAVER)
+	LDOPTS_GUI		+= -L$(LIBDIR) -lfreac-$(VERSION)
+	LDOPTS_CMD		+= -L$(LIBDIR) -lfreac-$(VERSION)
 
 	ifeq ($(BUILD_OSX),True)
-		LDOPTS_DLL	+= -dynamiclib -framework Cocoa -framework IOKit -Wl,-dylib_install_name,freac$(SHARED) -Wl,-headerpad,80
+		LDOPTS_DLL	+= -dynamiclib -framework Cocoa -framework IOKit -Wl,-dylib_install_name,libfreac-$(VERSION).$(REVISION)$(SHARED) -Wl,-headerpad,80
+		LDOPTS_GUI	+= -Wl,-headerpad,80
+		LDOPTS_CMD	+= -Wl,-headerpad,80
 	else
-		LDOPTS_DLL	+= --shared
+		LDOPTS_DLL	+= --shared -Wl,-soname,libfreac-$(VERSION)$(SHARED).$(REVISION)
 	endif
 
 	ifeq ($(BUILD_OPENBSD),True)
@@ -127,7 +136,7 @@ codesign: all
 	signtool sign -fd sha256 -tr http://timestamp.digicert.com -td sha256 -as $(BINDIR)/freac$(EXECUTABLE) $(BINDIR)/freaccmd$(EXECUTABLE) $(BINDIR)/freac$(SHARED) $(BINDIR)/boca/freac_*$(SHARED)
 
 folders:
-	mkdir -p $(BINDIR) $(OBJECTS)
+	mkdir -p $(BINDIR) $(LIBDIR) $(OBJECTS)
 
 resources: folders
 ifeq ($(BUILD_WIN32),True)
@@ -165,7 +174,21 @@ ifneq ($(BUILD_WIN32),True)
 
 	$(INSTALL) -d "$(DESTDIR)"$(libdir)/freac
 
-	$(INSTALL_DATA) $(DLLNAME) "$(DESTDIR)"$(libdir)/freac
+ifneq ($(BUILD_OSX),True)
+	$(INSTALL_DATA) $(DLLNAME) "$(DESTDIR)"$(libdir)/libfreac-$(VERSION)$(SHARED).$(REVISION)
+	ln -fs libfreac-$(VERSION)$(SHARED).$(REVISION) "$(DESTDIR)"$(libdir)/libfreac-$(VERSION)$(SHARED)
+
+ifneq ($(BUILD_SOLARIS),True)
+ifneq ($(BUILD_HAIKU),True)
+ifeq ("$(DESTDIR)","")
+	$(LDCONFIG) 2> /dev/null || true
+endif
+endif
+endif
+else
+	$(INSTALL_DATA) $(DLLNAME) "$(DESTDIR)"$(libdir)/libfreac-$(VERSION).$(REVISION)$(SHARED)
+	ln -fs libfreac-$(VERSION).$(REVISION)$(SHARED) "$(DESTDIR)"$(libdir)/libfreac-$(VERSION)$(SHARED)
+endif
 
 	$(INSTALL) -d "$(DESTDIR)"$(datadir)/freac
 	$(INSTALL) -d "$(DESTDIR)"$(datadir)/freac/icons
@@ -234,7 +257,22 @@ ifneq ($(BUILD_WIN32),True)
 	rm -f "$(DESTDIR)"$(bindir)/freac
 	rm -f "$(DESTDIR)"$(bindir)/freaccmd
 
-	rm -f "$(DESTDIR)"$(libdir)/freac/freac$(SHARED)
+ifneq ($(BUILD_OSX),True)
+	rm -f "$(DESTDIR)"$(libdir)/libfreac-$(VERSION)$(SHARED)
+	rm -f "$(DESTDIR)"$(libdir)/libfreac-$(VERSION)$(SHARED).$(REVISION)
+
+ifneq ($(BUILD_SOLARIS),True)
+ifneq ($(BUILD_HAIKU),True)
+ifeq ("$(DESTDIR)","")
+	$(LDCONFIG) 2> /dev/null || true
+endif
+endif
+endif
+else
+	rm -f "$(DESTDIR)"$(libdir)/libfreac-$(VERSION)$(SHARED)
+	rm -f "$(DESTDIR)"$(libdir)/libfreac-$(VERSION).$(REVISION)$(SHARED)
+endif
+
 	rm -f -r "$(DESTDIR)"$(libdir)/freac
 
 	rm -f -r "$(DESTDIR)"$(datadir)/freac/icons
@@ -282,13 +320,13 @@ ifeq ($(findstring release,$(config)),release)
 	-countbuild BuildNumber
 endif
 
-$(EXENAME): $(EXEOBJECTS) $(RESOBJECTS) $(RESFILES)
+$(EXENAME): $(DLLNAME) $(EXEOBJECTS) $(RESOBJECTS) $(RESFILES)
 	$(LD) $(EXEOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_GUI) $(LDFLAGS) -o $@
 ifeq ($(BUILD_HAIKU),True)
 	$(RESLINKER) -o $@ $(RESFILES)
 endif
 
-$(CMDNAME): $(CMDOBJECTS) $(RESOBJECTS)
+$(CMDNAME): $(DLLNAME) $(CMDOBJECTS) $(RESOBJECTS)
 	$(LD) $(CMDOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_CMD) $(LDFLAGS) -o $@
 
 $(OBJECTS)/%.o: $(SRC)/%.cpp

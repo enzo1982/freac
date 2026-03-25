@@ -3,7 +3,6 @@
 # Change these variables to fit your project:
 TARGET	  = accuraterip
 TYPE	  = verifier
-VERSION	  = 1.0
 
 FREAC_PATH = ../../..
 

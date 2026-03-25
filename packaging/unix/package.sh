@@ -10,6 +10,9 @@ SMOOTHREV=0
 BOCAVER=1.0
 BOCAREV=3
 
+FREACVER=1.1
+FREACREV=0
+
 machine=`gcc -dumpmachine`
 
 if [[ $machine != *amd64* ]] && [[ $machine != *x86_64* ]]; then
@@ -29,7 +32,7 @@ cp $PREFIX/lib/libboca-$BOCAVER.so.$BOCAREV freac/
 cp $PREFIX/lib/libsmooth-$SMOOTHVER.so.$SMOOTHREV freac/
 #cp $PREFIX/lib/libsmooth-js-$SMOOTHVER.so.$SMOOTHREV freac/
 
-cp $PREFIX/lib/freac/freac.so freac/
+cp $PREFIX/lib/libfreac-$FREACVER.so.$FREACREV freac/
 cp $PREFIX/bin/smooth-translator freac/translator
 
 cp ../../COPYING freac/

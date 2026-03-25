@@ -1,5 +1,8 @@
 ########## fre:ac options makefile ##########
 
+VERSION	  = 1.1
+REVISION  = 0
+
 SMOOTHVER = 0.9
 BOCAVER	  = 1.0
 

@@ -4,6 +4,7 @@ PREFIX=/usr/local
 
 SMOOTHVER=0.9.0
 BOCAVER=1.0.3
+FREACVER=1.1.0
 
 if [[ -z $MACOSX_TARGET ]]; then
   MACOSX_TARGET=`sw_vers | awk '$1 == "ProductVersion:" { print $2 }'`
@@ -32,7 +33,7 @@ cp $PREFIX/lib/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Frameworks/
 
 cp $PREFIX/lib/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Resources/translator.app/Contents/Frameworks/
 
-cp $PREFIX/lib/freac/freac.dylib freac.app/Contents/Resources/
+cp $PREFIX/lib/libfreac-$FREACVER.dylib freac.app/Contents/Frameworks/
 
 cp $PREFIX/bin/smooth-translator freac.app/Contents/Resources/translator.app/Contents/MacOS/translator
 
@@ -100,11 +101,15 @@ rm freac.app/Contents/Resources/boca/boca_encoder_ffmpeg_alac.1.0.xml
 
 # Fix library names
 install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/MacOS/freac
+install_name_tool -change libfreac-$FREACVER.dylib @executable_path/../Frameworks/libfreac-$FREACVER.dylib freac.app/Contents/MacOS/freac
+
 install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/MacOS/freaccmd
+install_name_tool -change libfreac-$FREACVER.dylib @executable_path/../Frameworks/libfreac-$FREACVER.dylib freac.app/Contents/MacOS/freaccmd
+
 install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Frameworks/libboca-$BOCAVER.dylib
 
-install_name_tool -change libboca-$BOCAVER.dylib @executable_path/../Frameworks/libboca-$BOCAVER.dylib freac.app/Contents/Resources/freac.dylib
-install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Resources/freac.dylib
+install_name_tool -change libboca-$BOCAVER.dylib @executable_path/../Frameworks/libboca-$BOCAVER.dylib freac.app/Contents/Frameworks/libfreac-$FREACVER.dylib
+install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Frameworks/libfreac-$FREACVER.dylib
 
 find freac.app/Contents/Resources/boca -name boca_*.dylib | xargs -I $ install_name_tool -change libboca-$BOCAVER.dylib @executable_path/../Frameworks/libboca-$BOCAVER.dylib $
 find freac.app/Contents/Resources/boca -name boca_*.dylib | xargs -I $ install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib $

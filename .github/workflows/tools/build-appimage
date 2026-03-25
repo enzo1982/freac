@@ -186,7 +186,7 @@ cp -r /usr/local/share/freac/lang appdir
 cp -r /usr/local/share/freac/icons appdir
 cp -r /usr/local/share/doc/freac/manual appdir
 
-mv appdir/boca/freac.so appdir
+cp /usr/local/lib/libfreac-1.1.so.0 appdir/libfreac-1.1.so.0
 
 install -m 0755 /usr/local/bin/freac appdir/freac
 install -m 0755 /usr/local/bin/freaccmd appdir/freaccmd
