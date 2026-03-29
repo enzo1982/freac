@@ -306,8 +306,41 @@ build () {
     else
       cmake .. $cmakeflags $cmake_flags
     fi
+  elif [[ -f meson.build ]]; then
+    parent=../..
+    mkdir .build
+    cd .build
+    if [[ $uname == *MINGW* ]] && [[ $arm64 == true ]]; then
+      echo [properties] > cross.options
+      echo skip_sanity_check=true >> cross.options
+      meson setup .. $mesonflags $meson_flags --libdir lib --cross-file cross.options
+    elif [[ $uname == Darwin ]]; then
+      echo [host_machine] > cross.options
+      echo system=\'macos\' >> cross.options
+      if [[ $x86 == true ]]; then
+        echo cpu_family=\'x86\' >> cross.options
+        echo cpu=\'x86\' >> cross.options
+        echo endian=\'little\' >> cross.options
+      elif [[ $x86_64 == true ]]; then
+        echo cpu_family=\'x86_64\' >> cross.options
+        echo cpu=\'x86_64\' >> cross.options
+        echo endian=\'little\' >> cross.options
+      elif [[ $arm64 == true ]]; then
+        echo cpu_family=\'aarch64\' >> cross.options
+        echo cpu=\'aarch64\' >> cross.options
+        echo endian=\'little\' >> cross.options
+      fi
+      meson setup .. $mesonflags $meson_flags --libdir lib --cross-file cross.options
+    else
+      meson setup .. $mesonflags $meson_flags --libdir lib
+    fi
   fi
-  $MAKE $make_flags -j$jobs
+
+  if [[ -f build.ninja ]]; then
+    ninja $ninja_flags -j$jobs
+  else
+    $MAKE $make_flags -j$jobs
+  fi
 
   index=0
 
@@ -335,7 +368,12 @@ build () {
     if [[ -f ./install-sh ]]; then
       chmod a+x install-sh
     fi
-    $SUDO $MAKE $make_flags -j$jobs install
+
+    if [[ -f build.ninja ]]; then
+      $SUDO ninja $ninja_flags -j$jobs install
+    else
+      $SUDO $MAKE $make_flags -j$jobs install
+    fi
   fi
 
   cd $parent
@@ -346,8 +384,10 @@ build () {
   unset configure_exports
   unset configure_flags
   unset cmake_flags
+  unset meson_flags
   unset host_flags
   unset make_flags
+  unset ninja_flags
   unset install_script
   unset folder
 
