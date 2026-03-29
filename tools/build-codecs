@@ -286,6 +286,8 @@ build () {
     fi
   fi
 
+  parent=..
+
   if [[ -f ./configure ]]; then
     chmod a+x configure
     if [[ -z $host_flags && ! -z $host ]]; then
@@ -296,10 +298,13 @@ build () {
   elif [[ -f Makefile ]] || [[ -f makefile ]]; then
     true
   elif [[ -f CMakeLists.txt ]]; then
+    parent=../..
+    mkdir .build
+    cd .build
     if [[ $uname == *MINGW* ]]; then
-      cmake . -G "MSYS Makefiles" $cmakeflags $cmake_flags
+      cmake .. -G "MSYS Makefiles" $cmakeflags $cmake_flags
     else
-      cmake . $cmakeflags $cmake_flags
+      cmake .. $cmakeflags $cmake_flags
     fi
   fi
   $MAKE $make_flags -j$jobs
@@ -312,12 +317,12 @@ build () {
 
     for file in ${files[@]}; do
       strip --strip-all $file
-      cp $file ../${targets[index]}
+      cp $file $parent/${targets[index]}
 
       if [[ ${targets[index]} == *.$sharedext ]]; then
-        peflags -d1 -n1 ../${targets[index]}
+        peflags -d1 -n1 $parent/${targets[index]}
       else
-        peflags -n1 ../${targets[index]}
+        peflags -n1 $parent/${targets[index]}
       fi
 
       set +e
@@ -333,7 +338,7 @@ build () {
     $SUDO $MAKE $make_flags -j$jobs install
   fi
 
-  cd ..
+  cd $parent
 
   unset patches
   unset patch_levels
