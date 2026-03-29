@@ -169,7 +169,7 @@ fi
 
 # Package versions
 exhale_version=1.2.2
-faac_version=1.31.1
+faac_version=1.40
 faad2_version=2.11.2
 fdk_aac_version=2.0.3
 ffmpeg_version=8.1
@@ -439,20 +439,16 @@ for package in ${packages[@]}; do
   elif [ $package == faac ]; then
     # Build FAAC
     folder=faac-faac-${faac_version}
-    prepare="sed -i -e \"s/FAACAPI __stdcall/FAACAPI/\" include/faac.h"
-    if [[ $uname == *MINGW* ]]; then
-      if [[ $arm64 == true ]]; then
-        configure_exports="WINDRES=\"aarch64-w64-mingw32-windres\""
-      elif [[ $x86 == true ]]; then
-        configure_exports="WINDRES=\"windres -F pe-i386\""
-      fi
+    if [[ $uname == *MINGW* ]] && [[ $x86 == true ]]; then
+      export LDFLAGS="$ldflags -Wl,--kill-at"
     fi
     if [[ $x86_64 == true ]]; then
       if [[ $CC != clang ]]; then
         export CFLAGS="$cflags $cflags_unroll -mfpmath=387"
       fi
     fi
-    build $faac_location libfaac/.libs/libfaac$sharedinfix.$sharedext FAAC.$sharedext
+    meson_flags="-Dfrontend=false"
+    build $faac_location libfaac/libfaac$sharedinfix.$sharedext FAAC.$sharedext
 
   elif [ $package == faad2 ]; then
     # Build FAAD2
