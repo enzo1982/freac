@@ -224,6 +224,9 @@ lame_patch_levels=(0 1)
 lame_patches_ppc=(https://freac.org/patches/lame-$lame_version-altivec-20171014.diff https://freac.org/patches/lame-$lame_version-fastcrc.diff)
 lame_patch_levels_ppc=(0 1)
 
+rubberband_patches=(https://freac.org/patches/rubberband-$rubberband_version-fixed.diff)
+rubberband_patch_levels=(1)
+
 vorbis_patches=(https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03.patch https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03-lancer.patch https://freac.org/patches/libvorbis-$vorbis_version-macos-fix.patch)
 vorbis_patch_levels=(1 1 1)
 
@@ -237,6 +240,12 @@ fi
 if [[ $uname == Darwin ]] && [[ $BUILD_X86 == True ]]; then
   libsndfile_version=1.0.30
   libsndfile_location=https://github.com/libsndfile/libsndfile/releases/download/v$libsndfile_version/libsndfile-$libsndfile_version.tar.bz2
+fi
+
+# Keep using Rubber Band 1.8.2 on macOS PPC
+if [[ $uname == Darwin ]] && [[ $BUILD_PPC == True ]]; then
+  rubberband_version=1.8.2
+  rubberband_location=https://breakfastquay.com/files/releases/rubberband-$rubberband_version.tar.bz2
 fi
 
 # Main build function
@@ -692,8 +701,17 @@ for package in ${packages[@]}; do
   elif [ $package == rubberband ]; then
     # Build RubberBand
     export CXXFLAGS="$cflags $cflags_unroll"
-    meson_flags="-Dfft=builtin -Dresampler=builtin -Djni=disabled -Dladspa=disabled -Dlv2=disabled -Dvamp=disabled -Dcmdline=disabled -Dtests=disabled"
-    build $rubberband_location librubberband$sharedinfix.$sharedext RubberBand.$sharedext
+    if [[ $uname == Darwin ]] && [[ $BUILD_PPC == True ]]; then
+      patches=${rubberband_patches[@]}
+      patch_levels=(${rubberband_patch_levels[@]})
+      configure_exports="FFTW_CFLAGS=\" \" FFTW_LIBS=\" \" SRC_CFLAGS=\" \" SRC_LIBS=\" \" Vamp_CFLAGS=\" \" Vamp_LIBS=\" \""
+      prepare="sed -i -e \"s/-Wl,-Bsymbolic//\" Makefile.in && sed -i -e \"s/ -Wl,-soname=.*//\" Makefile.in && sed -i -e \"s/:= .so/:= .dylib/\" Makefile.in"
+      configure_exports="$configure_exports SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\"-lsndfile\""
+      build $rubberband_location lib/librubberband.$sharedext RubberBand.$sharedext
+    else
+      meson_flags="-Dfft=builtin -Dresampler=builtin -Djni=disabled -Dladspa=disabled -Dlv2=disabled -Dvamp=disabled -Dcmdline=disabled -Dtests=disabled"
+      build $rubberband_location librubberband$sharedinfix.$sharedext RubberBand.$sharedext
+    fi
 
   elif [ $package == speex ]; then
     # Build Speex
