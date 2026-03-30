@@ -249,28 +249,22 @@
         },
         {
             "name": "rubberband",
-            "build-options": {
-                "env": {
-                    "Vamp_CFLAGS": " ",
-                    "Vamp_LIBS": " "
-                }
-            },
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dfft=builtin",
+                "-Dresampler=builtin",
+                "-Djni=disabled",
+                "-Dladspa=disabled",
+                "-Dlv2=disabled",
+                "-Dvamp=disabled",
+                "-Dcmdline=disabled",
+                "-Dtests=disabled"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://breakfastquay.com/files/releases/rubberband-1.8.2.tar.bz2",
-                    "sha256": "86bed06b7115b64441d32ae53634fcc0539a50b9b648ef87443f936782f6c3ca"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i -e \"s/^all\\:.*/all: bin lib \\$\\(DYNAMIC_TARGET\\)/\" Makefile.in",
-                        "head -n 169 Makefile.in >> Makefile.in.temp",
-                        "head -n 172 Makefile.in | tail -n 1 >> Makefile.in.temp",
-                        "head -n 185 Makefile.in | tail -n 6 >> Makefile.in.temp",
-                        "tail -n 100 Makefile.in >> Makefile.in.temp",
-                        "mv Makefile.in.temp Makefile.in"
-                    ]
+                    "url": "https://breakfastquay.com/files/releases/rubberband-4.0.0.tar.bz2",
+                    "sha256": "af050313ee63bc18b35b2e064e5dce05b276aaf6d1aa2b8a82ced1fe2f8028e9"
                 }
             ]
         },

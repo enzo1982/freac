@@ -93,7 +93,7 @@ if [[ ${MACOSX_DEPLOYMENT_TARGET:0:2} = 11 ]]; then
   lipo -create libsndfile-1.2.2/src/.libs/libsndfile.1.dylib arm64/libsndfile-1.2.2/src/.libs/libsndfile.1.dylib -output libsndfile.1.dylib
   lipo -create libsamplerate-0.2.2/src/.libs/libsamplerate.0.dylib arm64/libsamplerate-0.2.2/src/.libs/libsamplerate.0.dylib -output libsamplerate.0.dylib
   lipo -create rnnoise-9acc1e5/.libs/librnnoise.0.dylib arm64/rnnoise-9acc1e5/.libs/librnnoise.0.dylib -output librnnoise.0.dylib
-  lipo -create rubberband-1.8.2/lib/librubberband.dylib arm64/rubberband-1.8.2/lib/librubberband.dylib -output librubberband.dylib
+  lipo -create rubberband-4.0.0/.build/librubberband.so.3 arm64/rubberband-4.0.0/.build/librubberband.so.3 -output librubberband.3.dylib
 
   lipo -create musepack_src_r475/mpcdec/mpcdec arm64/musepack_src_r475/mpcdec/mpcdec -output mpcdec
   lipo -create musepack_src_r475/mpcenc/mpcenc arm64/musepack_src_r475/mpcenc/mpcenc -output mpcenc

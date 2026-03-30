@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          brew install automake libtool nasm yasm
+          brew install automake libtool meson nasm yasm
 
       - name: Import certificates
         uses: apple-actions/import-codesign-certs@v3

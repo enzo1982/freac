@@ -213,6 +213,7 @@ History
 		- Updated codecs
 
 			- updated FFmpeg to version 8.1
+			- updated Rubber Band to version 4.0.0
 			- updated Opus to version 1.6.1 with Opus Speech Coding Enhancement
 			- updated Monkey's Audio to version 12.35
 			- updated WavPack to version 5.8.1
