@@ -103,8 +103,8 @@ else
 	LDOPTS			+= -L$(prefix)/lib -lsmooth-$(SMOOTHVER)
 
 	LDOPTS_DLL		+= -lboca-$(BOCAVER)
-	LDOPTS_GUI		+= -L$(LIBDIR) -lfreac-$(VERSION)
-	LDOPTS_CMD		+= -L$(LIBDIR) -lfreac-$(VERSION)
+	LDOPTS_GUI		+= -lboca-$(BOCAVER) -L$(LIBDIR) -lfreac-$(VERSION)
+	LDOPTS_CMD		+= -lboca-$(BOCAVER) -L$(LIBDIR) -lfreac-$(VERSION)
 
 	ifeq ($(BUILD_OSX),True)
 		LDOPTS_DLL	+= -dynamiclib -framework Cocoa -framework IOKit -Wl,-dylib_install_name,libfreac-$(VERSION).$(REVISION)$(SHARED) -Wl,-headerpad,80
