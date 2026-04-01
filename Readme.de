@@ -179,7 +179,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.8 (März 2026)
+	Version 1.1.8 (April 2026)
 
 		- Linux AppImage-Pakete für die Architekturen RISC-V und PPC64EL hinzugefügt
 		- FreeBSD AppImage-Pakete für die Architekturn x86-64 und AArch64 hinzugefügt
@@ -208,6 +208,7 @@ Geschichte
 			- Verlust von Track-Gain/-Peak-Informationen bei der Konvertierung mit freaccmd behoben
 			- Problem mit fehlenden Stunden bei Gesamtzeit in Log-Dateien behoben
 			- Problem mit der Erkennung von WMA Lossless Dateien behoben
+			- Umgehungslösung für LAME CBR/ABR Qualitätsprobleme bei Qualitätseinstellung 0-3 hinzugefügt
 
 		- Aktualisierte Codecs
 
