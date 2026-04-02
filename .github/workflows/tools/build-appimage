@@ -114,46 +114,46 @@ sudo $MAKE config=$CONFIG install
 # Build codecs and DSP libraries
 cd tools
 
-./build-codecs faad2 fdk-aac mp4v2
-./build-codecs lame mpg123
-./build-codecs libogg opus speex vorbis
-./build-codecs flac mac musepack wavpack
-./build-codecs ffmpeg libsndfile
-./build-codecs libsamplerate rnnoise rubberband
+#./build-codecs faad2 fdk-aac mp4v2
+#./build-codecs lame mpg123
+#./build-codecs libogg opus speex vorbis
+#./build-codecs flac mac musepack wavpack
+#./build-codecs ffmpeg libsndfile
+#./build-codecs libsamplerate rnnoise rubberband
 
 cd ..
 
 # Install codecs
 mkdir -p appdir/codecs
 
-cp /usr/local/lib/libFLAC.so appdir/codecs/FLAC.so
-cp /usr/local/lib/libMAC.so appdir/codecs/MAC.so
-cp /usr/local/lib/libfaad.so appdir/codecs/faad.so
-cp /usr/local/lib/libfdk-aac.so appdir/codecs/fdk-aac.so
-cp /usr/local/lib/libmp3lame.so appdir/codecs/mp3lame.so
-cp /usr/local/lib/libmp4v2.so appdir/codecs/mp4v2.so
-cp /usr/local/lib/libmpg123.so appdir/codecs/mpg123.so
-cp /usr/local/lib/libogg.so appdir/codecs/ogg.so
-cp /usr/local/lib/libopus.so appdir/codecs/opus.so
-cp /usr/local/lib/librnnoise.so appdir/codecs/rnnoise.so
-cp /usr/local/lib/librubberband.so appdir/codecs/rubberband.so
-cp /usr/local/lib/libsamplerate.so appdir/codecs/samplerate.so
-cp /usr/local/lib/libsndfile.so appdir/codecs/sndfile.so
-cp /usr/local/lib/libspeex.so appdir/codecs/speex.so
-cp /usr/local/lib/libvorbis.so appdir/codecs/vorbis.so
-cp /usr/local/lib/libvorbisenc.so appdir/codecs/vorbisenc.so
+#cp /usr/local/lib/libFLAC.so appdir/codecs/FLAC.so
+#cp /usr/local/lib/libMAC.so appdir/codecs/MAC.so
+#cp /usr/local/lib/libfaad.so appdir/codecs/faad.so
+#cp /usr/local/lib/libfdk-aac.so appdir/codecs/fdk-aac.so
+#cp /usr/local/lib/libmp3lame.so appdir/codecs/mp3lame.so
+#cp /usr/local/lib/libmp4v2.so appdir/codecs/mp4v2.so
+#cp /usr/local/lib/libmpg123.so appdir/codecs/mpg123.so
+#cp /usr/local/lib/libogg.so appdir/codecs/ogg.so
+#cp /usr/local/lib/libopus.so appdir/codecs/opus.so
+#cp /usr/local/lib/librnnoise.so appdir/codecs/rnnoise.so
+#cp /usr/local/lib/librubberband.so appdir/codecs/rubberband.so
+#cp /usr/local/lib/libsamplerate.so appdir/codecs/samplerate.so
+#cp /usr/local/lib/libsndfile.so appdir/codecs/sndfile.so
+#cp /usr/local/lib/libspeex.so appdir/codecs/speex.so
+#cp /usr/local/lib/libvorbis.so appdir/codecs/vorbis.so
+#cp /usr/local/lib/libvorbisenc.so appdir/codecs/vorbisenc.so
 
-strip --strip-all appdir/codecs/*.so
+#strip --strip-all appdir/codecs/*.so
 
 mkdir -p appdir/codecs/cmdline
 
-install -m 0755 /usr/local/bin/ffmpeg appdir/codecs/cmdline/ffmpeg
-install -m 0755 /usr/local/bin/mpcdec appdir/codecs/cmdline/mpcdec
-install -m 0755 /usr/local/bin/mpcenc appdir/codecs/cmdline/mpcenc
-install -m 0755 /usr/local/bin/wavpack appdir/codecs/cmdline/wavpack
-install -m 0755 /usr/local/bin/wvunpack appdir/codecs/cmdline/wvunpack
+#install -m 0755 /usr/local/bin/ffmpeg appdir/codecs/cmdline/ffmpeg
+#install -m 0755 /usr/local/bin/mpcdec appdir/codecs/cmdline/mpcdec
+#install -m 0755 /usr/local/bin/mpcenc appdir/codecs/cmdline/mpcenc
+#install -m 0755 /usr/local/bin/wavpack appdir/codecs/cmdline/wavpack
+#install -m 0755 /usr/local/bin/wvunpack appdir/codecs/cmdline/wvunpack
 
-strip --strip-all appdir/codecs/cmdline/*
+#strip --strip-all appdir/codecs/cmdline/*
 
 # Copy icons
 mkdir -p appdir/icons/gnome/32x32/status
@@ -267,24 +267,31 @@ if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el || "$OS" != Linux ]
   cd ../../..
 fi
 
-# Create AppImage using appimagetool
-if [[ "$OS" = Linux || "$AppImageArch" = x86_64 ]]; then
-  APPIMAGETOOL=appimagetool-x86_64.AppImage
-else
-  APPIMAGETOOL=appimagetool-$AppImageArch.AppImage
+# Build custom appimagetool
+if [[ "$OS" != Linux ]]; then
+  # Build appimagetool
+  git clone --branch=1.9.1 --depth=1 https://github.com/AppImage/appimagetool.git
+  cd appimagetool
+  mkdir build
+  cd build
+  cmake ..
+  make && sudo make install
+  cd ../..
 fi
-wget -c -nv "https://github.com/AppImage/appimagetool/releases/download/continuous/$APPIMAGETOOL"
-chmod a+x $APPIMAGETOOL
+
+# Create AppImage using appimagetool
 if [[ "$OS" = Linux ]]; then
+  wget -c -nv "https://github.com/AppImage/appimagetool/releases/download/1.9.1/appimagetool-x86_64.AppImage"
+  chmod a+x appimagetool-x86_64.AppImage
+
   if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el ]]; then
-    ./$APPIMAGETOOL --appimage-extract
+    ./appimagetool-x86_64.AppImage --appimage-extract
     ARCH=x86_64 ./squashfs-root/AppRun --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
   else
-    ARCH=$AppImageArch ./$APPIMAGETOOL appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+    ARCH=$AppImageArch ./appimagetool-x86_64.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
   fi
 else
-  ./$APPIMAGETOOL --appimage-extract
-  ARCH=$AppImageArch ./squashfs-root/AppRun --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+  ARCH=$AppImageArch appimagetool --runtime-file=type2-runtime/src/runtime/runtime appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
 fi
 
 # Upload AppImage to GitHub

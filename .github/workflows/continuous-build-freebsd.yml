@@ -14,11 +14,11 @@ jobs:
         include:
           - os: ubuntu-latest
             arch: x86_64
-            dependencies: automake bash cmake gcc git gmake libtool meson nasm perl5 pkgconf python sudo wget wine yasm zip
+            dependencies: argp-standalone automake bash cmake desktop-file-utils gcc git gmake gpgme libtool meson nasm perl5 pkgconf python squashfs-tools sudo wget wine yasm zip zsync
 
           - os: ubuntu-latest
             arch: aarch64
-            dependencies: automake bash cmake gcc git gmake libtool meson nasm perl5 pkgconf python sudo wget yasm zip
+            dependencies: argp-standalone automake bash cmake desktop-file-utils gcc git gmake gpgme libtool meson nasm perl5 pkgconf python squashfs-tools sudo wget yasm zip zsync
 
       fail-fast: false
 
@@ -46,12 +46,6 @@ jobs:
           arch: ${{ matrix.arch }}
           envs: 'AppImageArch RELEASE_TOKEN'
           sync: sshfs
-
-      - name: Enable Linux support
-        shell: freebsd {0}
-        run: |
-          sysrc linux_enable="YES"
-          service linux start
 
       - name: Install dependencies
         shell: freebsd {0}
