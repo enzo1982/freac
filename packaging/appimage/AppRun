@@ -18,6 +18,12 @@ else
   MAIN="$HERE/freac"
 fi
 
-LD_LIBRARY_PATH="${HERE}" \
+# Use system SSL libraries over our own if available
+
+if ! ld.so --list --library-path "${HERE}" "${HERE}/libsmooth-0.9.so.0" > /dev/null 2> /dev/null; then
+  LIBRARY_PATH="${HERE}/openssl"
+fi
+
+LD_LIBRARY_PATH="${HERE}:${LIBRARY_PATH}" \
 LD_PRELOAD="${HERE}/codecs/ogg.so:${HERE}/codecs/vorbis.so" \
 exec "${MAIN}" "$@"

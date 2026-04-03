@@ -207,18 +207,23 @@ cp /usr/local/lib/libcdio_cdda.so.2 appdir
 cp /usr/local/lib/libcdio_paranoia.so.2 appdir
 cp /usr/local/lib/libcurl.so.4 appdir
 
-if [[ "$OS" = Linux ]]; then
-  cp -P /usr/lib/$HOST/libcrypto.so.3 appdir
-  cp -P /usr/lib/$HOST/libssl.so.3 appdir
-else
-  cp -P /lib/libcrypto.so.* appdir
-  cp -P /usr/lib/libssl.so.* appdir
+strip --strip-all appdir/lib*.so*
 
-  chmod 0755 appdir/libcrypto.so.*
-  chmod 0755 appdir/libssl.so.*
+# Copy OpenSSL dependencies
+mkdir -p appdir/openssl
+
+if [[ "$OS" = Linux ]]; then
+  cp -P /usr/lib/$HOST/libcrypto.so.3 appdir/openssl
+  cp -P /usr/lib/$HOST/libssl.so.3 appdir/openssl
+else
+  cp -P /lib/libcrypto.so.* appdir/openssl
+  cp -P /usr/lib/libssl.so.* appdir/openssl
+
+  chmod 0755 appdir/openssl/libcrypto.so.*
+  chmod 0755 appdir/openssl/libssl.so.*
 fi
 
-strip --strip-all appdir/lib*.so*
+strip --strip-all appdir/openssl/lib*.so*
 
 # Build custom AppImage runtime
 if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el || "$OS" != Linux ]]; then
