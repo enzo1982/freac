@@ -209,6 +209,7 @@ History
 			- fixed track gain/peak information getting lost when converting with freaccmd
 			- fixed hours missing from total duration in logs
 			- fixed detection of WMA Lossless files
+			- fixed GTK file dialog appearing in the background on X11 systems
 			- added work-around for LAME CBR/ABR quality issue at quality values 0-3
 
 		- Updated codecs
