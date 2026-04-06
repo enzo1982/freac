@@ -101,9 +101,11 @@ rm freac.app/Contents/Resources/boca/boca_encoder_ffmpeg_alac.1.0.xml
 
 # Fix library names
 install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/MacOS/freac
+install_name_tool -change libboca-$BOCAVER.dylib @executable_path/../Frameworks/libboca-$BOCAVER.dylib freac.app/Contents/MacOS/freac
 install_name_tool -change libfreac-$FREACVER.dylib @executable_path/../Frameworks/libfreac-$FREACVER.dylib freac.app/Contents/MacOS/freac
 
 install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/MacOS/freaccmd
+install_name_tool -change libboca-$BOCAVER.dylib @executable_path/../Frameworks/libboca-$BOCAVER.dylib freac.app/Contents/MacOS/freaccmd
 install_name_tool -change libfreac-$FREACVER.dylib @executable_path/../Frameworks/libfreac-$FREACVER.dylib freac.app/Contents/MacOS/freaccmd
 
 install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Frameworks/libboca-$BOCAVER.dylib
