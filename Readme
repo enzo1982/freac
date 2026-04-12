@@ -199,6 +199,8 @@ History
 			- fixed freeze during conversion on Linux and BSD
 			- fixed crash reading CD contents on macOS Ventura
 			- fixed crash trying to encode non-stereo data in HEv2 AAC using FDK-AAC
+			- fixed wrong number of channels indicated in MP4 sound atom for non-stereo signals
+			- fixed decoding of mono HE-AAC data in MP4 containers as stereo
 			- fixed creation of invalid output files trying to encode non-stereo data in ELDv2 AAC using Core Audio
 			- fixed playback not working on some systems/configurations
 			- fixed reading/writing of unencoded string fields from/to ID3v2 tags
