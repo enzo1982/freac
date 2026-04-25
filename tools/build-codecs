@@ -169,7 +169,7 @@ fi
 
 # Package versions
 exhale_version=1.2.2
-faac_version=1.40
+faac_version=1.50
 faad2_version=2.11.2
 fdk_aac_version=2.0.3
 ffmpeg_version=8.1
@@ -453,7 +453,7 @@ for package in ${packages[@]}; do
         export CFLAGS="$cflags $cflags_unroll -mfpmath=387"
       fi
     fi
-    meson_flags="-Dfrontend=false"
+    meson_flags="-Dfrontend=false -Db_lto=false"
     build $faac_location libfaac/libfaac$sharedinfix.$sharedext FAAC.$sharedext
 
   elif [ $package == faad2 ]; then
