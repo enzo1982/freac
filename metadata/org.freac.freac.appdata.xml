@@ -37,17 +37,21 @@
         </ul>
     </description>
     <url type="homepage">https://www.freac.org</url>
-    <url type="bugtracker">https://github.com/enzo1982/freac/issues</url>
     <url type="donation">https://www.freac.org/donating.php</url>
+    <url type="vcs-browser">https://github.com/enzo1982/freac</url>
+    <url type="bugtracker">https://github.com/enzo1982/freac/issues</url>
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/flathub/org.freac.freac/master/screenshots/freac-linux.png</image>
+            <caption>Convert audio files between different formats</caption>
         </screenshot>
         <screenshot>
             <image>https://raw.githubusercontent.com/flathub/org.freac.freac/master/screenshots/freac-linux-tageditor.png</image>
+            <caption>Edit metadata in the integrated tag editor</caption>
         </screenshot>
         <screenshot>
             <image>https://raw.githubusercontent.com/flathub/org.freac.freac/master/screenshots/freac-linux-settings.png</image>
+            <caption>Customize every aspect in the settings dialog</caption>
         </screenshot>
     </screenshots>
     <releases>
