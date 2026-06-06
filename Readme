@@ -180,7 +180,7 @@ Requirements
 History
 -------
 
-	Version 1.1.8 (April 2026)
+	Version 1.1.8 (June 2026)
 
 		- added Linux AppImage packages for the RISC-V and PPC64EL architectures
 		- added FreeBSD AppImage packages for the x86-64 and AArch64 architectures
@@ -219,7 +219,7 @@ History
 			- updated FFmpeg to version 8.1
 			- updated Rubber Band to version 4.0.0
 			- updated Opus to version 1.6.1 with Opus Speech Coding Enhancement
-			- updated Monkey's Audio to version 12.60
+			- updated Monkey's Audio to version 13.01
 			- updated WavPack to version 5.8.1
 			- updated FLAC to version 1.5.0
 			- updated FAAD2 to version 2.11.2
