@@ -211,6 +211,7 @@ Geschichte
 			- Problem mit fehlenden Stunden bei Gesamtzeit in Log-Dateien behoben
 			- Problem mit der Erkennung von WMA Lossless Dateien behoben
 			- Problem mit im Hintergrund erscheinendem GTK-Dateiauswahldialog auf X11-Systemen behoben
+			- Problem mit zu kleiner Schriftart von IME Pre-Edit-Strings unter Windows behoben
 			- Umgehungslösung für LAME CBR/ABR Qualitätsprobleme bei Qualitätseinstellung 0-3 hinzugefügt
 
 		- Aktualisierte Codecs
