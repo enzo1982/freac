@@ -36,6 +36,7 @@ jobs:
 
       - name: Free up space
         run: |
+          rm -fr .git
           rm -fr boca/system-*
 
       - name: Start VM
