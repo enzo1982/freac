@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Exit on error
+set -e
+
+if [ -z "$AppImageArch" ]; then
+  AppImageArch=x86_64
+fi
+
+if [ "$AppImageArch" = i686 ]; then
+  export BUILD_X86=True
+fi
+
+# Build codecs and DSP libraries
+cd tools
+
+./build-codecs faad2 fdk-aac mp4v2
+./build-codecs lame mpg123
+./build-codecs libogg opus speex vorbis
+./build-codecs flac mac musepack wavpack
+./build-codecs ffmpeg libsndfile
+./build-codecs libsamplerate rnnoise rubberband
+
+cd ..

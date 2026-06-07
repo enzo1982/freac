@@ -24,6 +24,8 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
+    timeout-minutes: 600
+
     env:
       AppImageArch: ${{ matrix.arch }}
       RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
@@ -55,12 +57,22 @@ jobs:
           pkg install -y ${{ matrix.dependencies }}
           pkg install -y gnome-icon-theme gtk3
 
-      - name: Build AppImage
+      - name: Setup environment
         shell: freebsd {0}
         run: |
           pw user add -n vmuser -m -g wheel
           echo "vmuser ALL=(ALL) NOPASSWD: ALL" >> /usr/local/etc/sudoers
           cp -R $GITHUB_WORKSPACE .
           chown -R vmuser freac
+
+      - name: Build codecs
+        shell: freebsd {0}
+        run: |
+          cd freac
+          su vmuser -c .github/workflows/tools/build-codecs
+
+      - name: Build AppImage
+        shell: freebsd {0}
+        run: |
           cd freac
           su vmuser -c .github/workflows/tools/build-appimage

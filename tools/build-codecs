@@ -266,8 +266,6 @@ build () {
   if [[ $archive == *.tar.xz  ]]; then tar xfJ $archive; fi
   if [[ $archive == *.zip     ]]; then unzip   $archive; fi
 
-  rm -fr $archive
-
   cd $folder
 
   index=0

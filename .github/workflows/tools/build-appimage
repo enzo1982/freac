@@ -58,7 +58,6 @@ if [ "$OS" = Linux ]; then
 fi
 
 cd ..
-rm -fr curl-$CURL_VERSION curl-$CURL_VERSION.tar.bz2
 
 # Build smooth
 cd smooth
@@ -112,18 +111,6 @@ CONFIG="release"
 
 $MAKE config=$CONFIG -j$jobs
 sudo $MAKE config=$CONFIG install
-
-# Build codecs and DSP libraries
-cd tools
-
-./build-codecs faad2 fdk-aac mp4v2
-./build-codecs lame mpg123
-./build-codecs libogg opus speex vorbis
-./build-codecs flac mac musepack wavpack
-./build-codecs ffmpeg libsndfile
-./build-codecs libsamplerate rnnoise rubberband
-
-cd ..
 
 # Install codecs
 mkdir -p appdir/codecs

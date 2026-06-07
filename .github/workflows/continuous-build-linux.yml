@@ -91,6 +91,12 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Build codecs
+        env:
+          AppImageArch: ${{ matrix.arch }}
+        run: |
+          .github/workflows/tools/build-codecs
+
       - name: Build AppImage
         env:
           AppImageArch: ${{ matrix.arch }}
