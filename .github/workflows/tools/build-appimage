@@ -39,9 +39,10 @@ fi
 ./tools/build-codecs libcdio libcdio-paranoia
 
 # Build libcurl
-wget -c https://curl.se/download/curl-8.11.0.tar.bz2
-tar xfj curl-8.11.0.tar.bz2
-cd curl-8.11.0
+export CURL_VERSION=8.11.0
+wget -c https://curl.se/download/curl-$CURL_VERSION.tar.bz2
+tar xfj curl-$CURL_VERSION.tar.bz2
+cd curl-$CURL_VERSION
 
 if [ $AppImageArch = i686 ]; then
   CFLAGS="-m32" ./configure --disable-docs --with-ssl --without-librtmp --without-libpsl --disable-ldap --without-zstd --without-brotli --without-nghttp2 --without-libidn2
@@ -57,6 +58,7 @@ if [ "$OS" = Linux ]; then
 fi
 
 cd ..
+rm -fr curl-$CURL_VERSION curl-$CURL_VERSION.tar.bz2
 
 # Build smooth
 cd smooth
