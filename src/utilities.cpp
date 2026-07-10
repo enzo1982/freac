@@ -33,6 +33,7 @@ static const String	 kTitlePattern	     = "<title>";
 static const String	 kAlbumPattern	     = "<album>";
 static const String	 kGenrePattern	     = "<genre>";
 static const String	 kYearPattern	     = "<year>";
+static const String	 kLengthPattern	     = "<length>";
 static const String	 kDiscIDPattern	     = "<discid>";
 static const String	 kFileNamePattern    = "<filename>";
 static const String	 kFileTypePattern    = "<filetype>";
@@ -373,6 +374,7 @@ String freac::Utilities::GetOutputFileName(const Track &track, const String &fil
 		if (shortOutFileName.Contains(kAlbumPattern))	 shortOutFileName.Replace(kAlbumPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
 		if (shortOutFileName.Contains(kGenrePattern))	 shortOutFileName.Replace(kGenrePattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
 		if (shortOutFileName.Contains(kYearPattern))	 shortOutFileName.Replace(kYearPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+		if (shortOutFileName.Contains(kLengthPattern))	 shortOutFileName.Replace(kLengthPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(track.GetLengthString()));
 		if (shortOutFileName.Contains(kDiscIDPattern))	 shortOutFileName.Replace(kDiscIDPattern, CDDB::DiscIDToString(track.discid));
 		if (shortOutFileName.Contains(kFileTypePattern)) shortOutFileName.Replace(kFileTypePattern, fileExtension.ToUpper());
 
@@ -689,6 +691,7 @@ String freac::Utilities::GetPlaylistFileName(const BoCA::Config *config, const T
 		if (shortOutFileName.Contains(kAlbumPattern))  shortOutFileName.Replace(kAlbumPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
 		if (shortOutFileName.Contains(kGenrePattern))  shortOutFileName.Replace(kGenrePattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
 		if (shortOutFileName.Contains(kYearPattern))   shortOutFileName.Replace(kYearPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+		if (shortOutFileName.Contains(kLengthPattern)) shortOutFileName.Replace(kLengthPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(track.GetLengthString()));
 		if (shortOutFileName.Contains(kDiscIDPattern)) shortOutFileName.Replace(kDiscIDPattern, CDDB::DiscIDToString(track.discid));
 
 		/* Replace <disc> pattern.
