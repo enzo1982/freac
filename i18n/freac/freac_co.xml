@@ -7,6 +7,7 @@ Information about Corsican localization:
 
 2. History of Corsican translation for fre:ac:
 
+	- Updated in 2026 by Patriccollu di Santa Maria è Sichè: Aug. 13th (1.1.8)
 	- Updated in 2024 by Patriccollu di Santa Maria è Sichè: Mar. 30th (1.1.8)
 	- Updated in 2023 by Patriccollu di Santa Maria è Sichè: Jan. 6th (1.1.7), Jan. 28th (1.1.7), Aug. 1st (1.1.8)
 	- Updated in 2022 by Patriccollu di Santa Maria è Sichè: July 19th (1.1.7), Aug. 9th (1.1.7), Dec. 27th (1.1.7)
@@ -140,7 +141,7 @@ Information about Corsican localization:
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings">Preferenze generale</entry>
+	<entry id="1300" string="General settings">Parametri generali</entry>
 	<entry id="1301" string="Configure signal processing">Cunfigurà u trattamentu di u signale</entry>
 	<entry id="1302" string="Configure selected encoder">Cunfigurà u cudificatore selezziunatu</entry>
 	<entry id="1303" string="Active CD-ROM drive">Lettore CD-ROM attivu</entry>
@@ -176,7 +177,7 @@ Information about Corsican localization:
 	<entry id="1604" string="About %1">Apprupositu di %1</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
 	<entry id="1606" string="Report an issue">Signalà un penseru</entry>
-	<entry id="1607" string="Suggest a feature">Sugerisce una funzione</entry>
+	<entry id="1607" string="Suggest a feature">Suggerisce una funzione</entry>
       </section>
     </section>
 
@@ -187,7 +188,7 @@ Information about Corsican localization:
       <entry id="2003" string="Clear the entire joblist">Viutà tutta a lista di travagliu</entry>
       <entry id="2004" string="Query CDDB database">Interrugà a basa di dati CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Sottumette i dati CDDB</entry>
-      <entry id="2006" string="Configure general settings">Cunfigurà e preferenze generale</entry>
+      <entry id="2006" string="Configure general settings">Cunfigurà i parametri generali</entry>
       <entry id="2007" string="Configure signal processing">Cunfigurà u trattamentu di u signale</entry>
       <entry id="2008" string="Configure the selected audio encoder">Cunfigurà u cudificatore audio selezziunatu</entry>
       <entry id="2009" string="Start the encoding process">Principià u trattamentu di cudificazione</entry>
@@ -416,7 +417,7 @@ Information about Corsican localization:
     </section>
 
     <section name="Configuration">
-      <entry id="5000" string="General settings setup">Definizione di e preferenze generale</entry>
+      <entry id="5000" string="General settings setup">Definizione di i parametri generali</entry>
       <entry id="5001" string="Encoders">Cudificatori</entry>
       <entry id="5002" string="Playlists">Liste di lettura</entry>
       <entry id="5003" string="Language">Lingua</entry>
@@ -437,7 +438,7 @@ Information about Corsican localization:
       <entry id="5018" string="Default configuration">Cunfigurazione predefinita</entry>
       <entry id="5019" string="New configuration">Nova cunfigurazione</entry>
       <entry id="5020" string="Ripper">Estrattore</entry>
-      <entry id="5021" string="Settings">Preferenze</entry>
+      <entry id="5021" string="Settings">Parametri</entry>
       <entry id="5022" string="Resources">Risorse</entry>
       <entry id="5023" string="Verifiers">Verificadori</entry>
       <entry id="5024" string="Taggers">Creatori d’etichetta</entry>
@@ -495,7 +496,7 @@ Information about Corsican localization:
 	<entry id="5254" string="Prefer cue sheets over chapter information">Preferisce i foglii di mischiera Cue à l’infurmazione di capitulu</entry>
 	<entry id="5255" string="Output folder and filenames">Cartulare è schedarii d’esciuta</entry>
 	<entry id="5256" string="Note">Nota</entry>
-	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">E preferenze di u cartulare è i schedarii d’esciuta di u fogliu di mischiera Cue&#10;sò cunfigurati in a sezzione Lista di lettura.</entry>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">I parametri di u cartulare d’esciuta è i nomi di schedariu di u fogliu di mischiera Cue&#10;sò cunfigurati in a sezzione Liste di lettura.</entry>
       </section>
 
       <section name="CDDB">
@@ -508,8 +509,8 @@ Information about Corsican localization:
 	<entry id="5306" string="CDDB server">Servitore CDDB</entry>
 	<entry id="5307" string="Port">Portu</entry>
 	<entry id="5308" string="eMail address">Indirizzu elettronicu</entry>
-	<entry id="5309" string="HTTP settings">Preferenze HTTP</entry>
-	<entry id="5310" string="Proxy settings">Preferenze Proxy</entry>
+	<entry id="5309" string="HTTP settings">Parametri HTTP</entry>
+	<entry id="5310" string="Proxy settings">Parametri Proxy</entry>
 	<entry id="5311" string="Options">Ozzioni</entry>
 	<entry id="5312" string="Automatic CDDB queries">Richieste CDDB autumatiche</entry>
 	<entry id="5313" string="Prefer CDDB over CD-Text">Preferisce CDDB à u CD-Text</entry>
@@ -518,7 +519,7 @@ Information about Corsican localization:
 	<entry id="5316" string="Always select first entry">Selezziunà sempre u primu elementu</entry>
 
 	<section name="Extended">
-	  <entry id="5330" string="Extended CDDB settings">Preferenze CDDB avanzate</entry>
+	  <entry id="5330" string="Extended CDDB settings">Parametri CDDB avanzati</entry>
 	  <entry id="5331" string="CGI scripts">Scenarii CGI</entry>
 	  <entry id="5332" string="CDDB query script">Scenariu di richiesta CDDB</entry>
 	  <entry id="5333" string="CDDB submit script">Scenariu di sottumissione CDDB</entry>
@@ -593,7 +594,7 @@ Information about Corsican localization:
 	  <entry id="5654" string="Disc number">Numeru di u discu</entry>
 	  <entry id="5655" string="Track number">Numeru di a traccia</entry>
 	  <entry id="5656" string="Track rating">Valutazione di a traccia</entry>
-	  <entry id="5657" string="Track length">Longhezza di a traccia</entry>
+	  <entry id="5657" string="Track length">Durata di a traccia</entry>
 	  <entry id="5658" string="Track size">Dimensione di a traccia</entry>
 	  <entry id="5659" string="File name">Nome di schedariu</entry>
 	  <entry id="5660" string="File type">Tipu di schedariu</entry>
@@ -753,7 +754,7 @@ Information about Corsican localization:
       <entry id="9002" string="CD information">Infurmazione CD</entry>
       <entry id="9003" string="Read CD-Text">Leghje u CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Leghje cdplayer.ini</entry>
-      <entry id="9005" string="Ripper settings">Preferenze d’estrazzione</entry>
+      <entry id="9005" string="Ripper settings">Parametri d’estrazzione</entry>
       <entry id="9006" string="Activate cdparanoia mode">Attivà u modu cdparanoia</entry>
       <entry id="9007" string="Overlap only">Accavalcatura solu</entry>
       <entry id="9008" string="No verify">Senza verificazione</entry>
@@ -766,7 +767,7 @@ Information about Corsican localization:
       <entry id="9015" string="Start ripping automatically">Principià à estrae autumaticamente</entry>
       <entry id="9016" string="Eject disc after ripping">Espulsione di u discu dopu à l’estrazzione</entry>
       <entry id="9017" string="CD options">Ozzioni di u CD</entry>
-      <entry id="9018" string="Use read offset">Impiegà u spiazzamentu di lettura</entry>
+      <entry id="9018" string="Use read offset">Impiegà u spustime di lettura</entry>
       <entry id="9019" string="samples">campioni</entry>
       <entry id="9020" string="Read ISRC when adding tracks to joblist">Leghje u codice ISRC à l’aghjuntu di e traccie à a lista di travagliu</entry>
       <entry id="9021" string="Spin up before ripping">Mette in ballu u CD nanzu l’estrazzione</entry>
@@ -833,6 +834,11 @@ Information about Corsican localization:
       <section name="Opus">
 	<entry id="23000" string="Quality">Qualità</entry>
 	<entry id="23001" string="Complexity">Cumplessità</entry>
+	<entry id="23002" string="Enable Speech Bandwidth Extension">Attivà l’estensione di larghezza di striscia di discussione</entry>
+	<entry id="23003" string="Format">Furmatu</entry>
+	<entry id="23004" string="Sample format">Furmatu di campiunariu</entry>
+	<entry id="23005" string="16 bit integer">Numeru interu 16 bit</entry>
+	<entry id="23006" string="32 bit float">Virgula mobile 32 bit</entry>
       </section>
     </section>
 
@@ -840,20 +846,20 @@ Information about Corsican localization:
 
       <section name="BladeEnc">
 	<entry id="30000" string="Bitrate">Flussu binariu</entry>
-	<entry id="30001" string="Copyright bit">Bit Dirittu di copia</entry>
+	<entry id="30001" string="Copyright bit">Bit di dirittu di copia</entry>
 	<entry id="30002" string="CRC">CRC</entry>
-	<entry id="30003" string="Original bit">Bit Uriginale</entry>
+	<entry id="30003" string="Original bit">Bit uriginale</entry>
 	<entry id="30004" string="Channels">Canali</entry>
-	<entry id="30005" string="Private bit">Bit Privatu</entry>
-	<entry id="30006" string="Set Copyright bit">Definisce u bit Dirittu di copia</entry>
+	<entry id="30005" string="Private bit">Bit privatu</entry>
+	<entry id="30006" string="Set Copyright bit">Definisce u bit di dirittu di copia</entry>
 	<entry id="30007" string="Enable CRC">Permette CRC</entry>
-	<entry id="30008" string="Set Original bit">Definisce u bit Uriginale</entry>
+	<entry id="30008" string="Set Original bit">Definisce u bit uriginale</entry>
 	<entry id="30009" string="Dual channel encoding">Cudificazione canale doppiu</entry>
-	<entry id="30010" string="Set Private bit">Definisce u bit Privatu</entry>
+	<entry id="30010" string="Set Private bit">Definisce u bit privatu</entry>
       </section>
 
       <section name="Bonk">
-	<entry id="31000" string="Encoder mode">Modu di Cudificatore</entry>
+	<entry id="31000" string="Encoder mode">Modu di cudificatore</entry>
 	<entry id="31001" string="Stereo mode">Modu stereo</entry>
 	<entry id="31002" string="Quantization">Quantificazione</entry>
 	<entry id="31003" string="Downsampling ratio">Percentuale di campiunariu</entry>
@@ -869,9 +875,9 @@ Information about Corsican localization:
 	<entry id="32003" string="Audio processing">Trattamentu audio</entry>
 
 	<section name="Basic">
-	  <entry id="32100" string="Presets">Parametri predefiniti</entry>
-	  <entry id="32101" string="Use preset">Impiegà parametru predefinitu</entry>
-	  <entry id="32102" string="Custom settings">Preferenze persunalizate</entry>
+	  <entry id="32100" string="Presets">Prerigature predefinite</entry>
+	  <entry id="32101" string="Use preset">Impiegà a prerigatura predefinita</entry>
+	  <entry id="32102" string="Custom settings">Parametri persunalizati</entry>
 	  <entry id="32103" string="Medium">Medianu</entry>
 	  <entry id="32104" string="Standard">Classicu</entry>
 	  <entry id="32105" string="Extreme">Estremu</entry>
@@ -908,9 +914,9 @@ Information about Corsican localization:
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
 	  <entry id="32301" string="Enable ATH">Attivà ATH</entry>
-	  <entry id="32302" string="Use default setting">Impiegà a preferenza predefinita</entry>
-	  <entry id="32303" string="Psycho acoustic model">Mudellu Psycho-acoustic</entry>
-	  <entry id="32304" string="Use Temporal Masking Effect">Impiega l’Effettu di Maschera Tempurale</entry>
+	  <entry id="32302" string="Use default setting">Impiegà u parametru predefinitu</entry>
+	  <entry id="32303" string="Psycho acoustic model">Mudellu psico acusticu</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">Impiega l’effettu di maschera tempurale</entry>
 	  <entry id="32305" string="Stream format">Furmatu di flussu</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Mette in cunfurmità ISO stretta</entry>
 	  <entry id="32307" string="automatic">autumaticu</entry>
@@ -924,7 +930,7 @@ Information about Corsican localization:
 	  <entry id="32403" string="Lowpass filter">Filtru passa-bassu</entry>
 	  <entry id="32404" string="Set Lowpass frequency (Hz)">Definisce a frequenza passa-bassu (Hz)</entry>
 	  <entry id="32405" string="Set Lowpass width (Hz)">Definisce a larghezza passa-bassu (Hz)</entry>
-	  <entry id="32406" string="Misc settings">Preferenze diverse</entry>
+	  <entry id="32406" string="Misc settings">Parametri diversi</entry>
 	  <entry id="32407" string="Disable all filtering">Disattivà tutti i filtri</entry>
 	</section>
       </section>
@@ -952,6 +958,7 @@ Information about Corsican localization:
 	  <entry id="33210" string="worse">pechju</entry>
 	  <entry id="33211" string="better">più bona</entry>
 	  <entry id="33212" string="auto">autumaticu</entry>
+	  <entry id="33213" string="Enable Afterburner processing">Attivà u trattamentu Afterburner</entry>
 	</section>
 
 	<section name="Format">
@@ -972,9 +979,9 @@ Information about Corsican localization:
 	<entry id="34002" string="Expert">Espertu</entry>
 
 	<section name="Basic">
-	  <entry id="34100" string="Presets">Parametri predefiniti</entry>
-	  <entry id="34101" string="Use preset">Impiegà parametru predefinitu</entry>
-	  <entry id="34102" string="Custom settings">Preferenze persunalizate</entry>
+	  <entry id="34100" string="Presets">Prerigature predefinite</entry>
+	  <entry id="34101" string="Use preset">Impiegà a prerigatura predefinita</entry>
+	  <entry id="34102" string="Custom settings">Parametri persunalizati</entry>
 	  <entry id="34103" string="Fastest encoding">Cudificazione a più rapida</entry>
 	  <entry id="34104" string="Best compression">Cumpressione ottimale</entry>
 	  <entry id="34105" string="Stereo mode">Modu stereo</entry>
@@ -1021,13 +1028,13 @@ Information about Corsican localization:
       </section>
 
       <section name="WMA">
-	<entry id="36000" string="Select codec">Selezziunà u codec</entry>
-	<entry id="36001" string="Select codec format">Selezziunà u furmatu di codec</entry>
-	<entry id="36002" string="Codec settings">Preferenze di codec</entry>
-	<entry id="36003" string="Use codec">Impiegà u codec</entry>
+	<entry id="36000" string="Select codec">Selezziunà u cudecu</entry>
+	<entry id="36001" string="Select codec format">Selezziunà u furmatu di u cudecu</entry>
+	<entry id="36002" string="Codec settings">Parametri di u cudecu</entry>
+	<entry id="36003" string="Use codec">Impiegà u cudecu</entry>
 	<entry id="36004" string="Use format">Impiegà u furmatu</entry>
 	<entry id="36005" string="Write uncompressed WMA files">Scrittura di i schedarii WMA micca cumpressi</entry>
-	<entry id="36006" string="Automatically select format based on settings and input format">Selezziunà u furmatu autumaticamente basatu nant’à e preferenze è à u furmatu d’entrata</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Selezziunà autumaticamente u furmatu basatu nant’à i parametri è u furmatu d’entrata</entry>
 	<entry id="36007" string="Use VBR encoding">Impiegà a cudificazione VBR</entry>
 	<entry id="36008" string="Quality">Qualità</entry>
 	<entry id="36009" string="Target bitrate">Flussu binariu di destinazione</entry>
@@ -1076,7 +1083,7 @@ Information about Corsican localization:
       </section>
 
       <section name="Opus">
-	<entry id="40000" string="Basic settings">Preferenze di basa</entry>
+	<entry id="40000" string="Basic settings">Parametri basichi</entry>
 	<entry id="40001" string="Encoding mode">Modu di cudificazione</entry>
 	<entry id="40002" string="auto">autumaticu</entry>
 	<entry id="40003" string="Voice">Voce</entry>
@@ -1097,7 +1104,7 @@ Information about Corsican localization:
 	<entry id="40018" string="Stream">Flussu</entry>
 	<entry id="40019" string="Frame length">Durata di sequenza</entry>
 	<entry id="40020" string="Options">Ozzioni</entry>
-	<entry id="40021" string="Enable discontinuous transmission">Attivà a trasmissione discuntinuu</entry>
+	<entry id="40021" string="Enable discontinuous transmission">Attivà a trasmissione discuntinua</entry>
 	<entry id="40022" string="Expected packet loss">Perdita aspettata di pacchettu</entry>
 	<entry id="40023" string="Disable intensity stereo phase inversion">Disattivà l’inversione di fasa per l’intensità stereo</entry>
       </section>
@@ -1228,7 +1235,7 @@ Information about Corsican localization:
 
       <section name="AccurateRip">
 	<entry id="70000" string="Configure AccurateRip">Cunfigurà AccurateRip</entry>
-	<entry id="70001" string="General settings">Preferenze generale</entry>
+	<entry id="70001" string="General settings">Parametri generali</entry>
 	<entry id="70002" string="Enable AccurateRip">Attivà AccurateRip</entry>
 	<entry id="70003" string="Database URL">Indirizzu web di a basa di dati</entry>
 	<entry id="70004" string="Cache">Impiatta</entry>
@@ -1241,14 +1248,14 @@ Information about Corsican localization:
 	<entry id="70011" string="never">mai</entry>
 	<entry id="70012" string="Drives">Lettori</entry>
 	<entry id="70013" string="Drive">Lettore</entry>
-	<entry id="70014" string="Offset configuration">Cunfigurazione di u spiazzamentu</entry>
-	<entry id="70015" string="Offset in drive database">Spiazzamentu in a basa di dati di u lettore</entry>
-	<entry id="70016" string="Detected offset">Spiazzamentu scupertu</entry>
-	<entry id="70017" string="Configured offset">Spiazzamentu cunfiguratu</entry>
-	<entry id="70018" string="Detect offset now">Scopre u spiazzamentu subitu</entry>
+	<entry id="70014" string="Offset configuration">Cunfigurazione di u spustime</entry>
+	<entry id="70015" string="Offset in drive database">Spustime in a basa di dati di u lettore</entry>
+	<entry id="70016" string="Detected offset">Spustime scupertu</entry>
+	<entry id="70017" string="Configured offset">Spustime cunfiguratu</entry>
+	<entry id="70018" string="Detect offset now">Scopre u spustime subitu</entry>
 	<entry id="70019" string="not configured">micca cunfiguratu</entry>
 	<entry id="70020" string="automatically configured">cunfiguratu autumaticamente</entry>
-	<entry id="70021" string="configured by offset detection">cunfiguratu da a scuperta di spiazzamentu</entry>
+	<entry id="70021" string="configured by offset detection">cunfiguratu da a scuperta di u spustime</entry>
 	<entry id="70022" string="manually configured">cunfiguratu manualmente</entry>
 	<entry id="70023" string="not present">micca presente</entry>
 	<entry id="70024" string="not detected">micca scupertu</entry>
@@ -1259,13 +1266,13 @@ Information about Corsican localization:
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Cunfigurazione d’AccurateRip</entry>
-	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Ùn si pò truvà u vostru lettore CD in a basa di dati AccurateRip.&#10;Nome di u lettore : %1&#10;&#10;Vulete lancià subitu una scuperta autumatica di spiazzamentu&#10;nant’à u lettore ?</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Ùn si pò truvà u vostru lettore CD in a basa di dati AccurateRip.&#10;Nome di u lettore : %1&#10;&#10;Vulete lancià subitu una scuperta autumatica di u spustime&#10;nant’à u lettore ?</entry>
 	  <entry id="70052" string="Do not ask again">Ùn mi dumandà più</entry>
-	  <entry id="70053" string="AccurateRip offset detection">Scuperta di spiazzamentu AccurateRip</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Scuperta di u spustime AccurateRip</entry>
 	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">U discu framessu ùn si trova micca in a basa di dati AccurateRip.</entry>
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Ci vole à framette un altru discu dentru u lettore CD è cliccà Vai.&#10;&#10;U discu duve esse presente in a basa di dati AccurateRip. Sta pussibilità hè&#10;più maiò per i CD populari chì sò stati dighjà estratti da d’altri utilizatori.</entry>
-	  <entry id="70056" string="Offset detection needs to check another disc.">A scuperta di spiazzamentu hà bisognu di verificà un altru discu.</entry>
-	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">U spiazzamentu di u lettore hè statu scupertu bè è cunfiguratu à %1 campioni.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">A scuperta di u spustime hà bisognu di verificà un altru discu.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">U spustime di u lettore hè statu scupertu bè è cunfiguratu à %1 campioni.</entry>
 	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">Tutte e traccie sò state verificate currettamente cù AccurateRip.</entry>
 	</section>
       </section>
@@ -1314,7 +1321,7 @@ Information about Corsican localization:
       </section>
 
       <section name="Tom's Audiokompressor">
-	<entry id="80300" string="Encoder preset">Predefinizione di cudificatore</entry>
+	<entry id="80300" string="Encoder preset">Prerigatura di u cudificatore</entry>
 	<entry id="80301" string="fastest">u più rapidu</entry>
 	<entry id="80302" string="strongest">u più forte</entry>
 	<entry id="80303" string="Frame size limit">Limitu di dimensione di sequenza</entry>
