@@ -1,5 +1,5 @@
---- libmp3lame/fft.c.orig	2017-09-07 04:33:36.000000000 +0900
-+++ libmp3lame/fft.c	2017-10-14 12:03:44.000000000 +0900
+--- libmp3lame/fft.c.orig	2017-10-14 22:06:52.000000000 +0900
++++ libmp3lame/fft.c	2026-07-14 16:33:52.000000000 +0900
 @@ -331,7 +331,7 @@ init_fft(lame_internal_flags * const gfc
      }
  #else
@@ -9,8 +9,8 @@
      gfc->fft_fht = fht_SSE2;
  #endif
  #endif
---- libmp3lame/gain_analysis.c.orig	2017-10-11 04:08:39.000000000 +0900
-+++ libmp3lame/gain_analysis.c	2017-10-14 12:06:19.000000000 +0900
+--- libmp3lame/gain_analysis.c.orig	2017-10-14 22:06:52.000000000 +0900
++++ libmp3lame/gain_analysis.c	2026-07-14 16:33:52.000000000 +0900
 @@ -95,6 +95,9 @@
  #include <stdio.h>
  #include <stdlib.h>
@@ -236,8 +236,8 @@
  
  
  
---- libmp3lame/l3side.h.orig	2012-02-07 22:36:35.000000000 +0900
-+++ libmp3lame/l3side.h	2017-10-14 12:03:44.000000000 +0900
+--- libmp3lame/l3side.h.orig	2017-10-14 22:06:52.000000000 +0900
++++ libmp3lame/l3side.h	2026-07-14 16:33:52.000000000 +0900
 @@ -46,7 +46,7 @@ typedef struct {
  
  typedef struct {
@@ -256,9 +256,9 @@
      int     main_data_begin;
      int     private_bits;
      int     resvDrain_pre;
---- libmp3lame/lame.c.orig	2017-10-11 04:08:39.000000000 +0900
-+++ libmp3lame/lame.c	2017-10-14 12:03:44.000000000 +0900
-@@ -2364,7 +2364,7 @@ lame_init_internal_flags(lame_internal_f
+--- libmp3lame/lame.c.orig	2020-05-06 16:45:56.000000000 +0900
++++ libmp3lame/lame.c	2026-07-14 16:33:52.000000000 +0900
+@@ -2381,7 +2381,7 @@ lame_init_internal_flags(lame_internal_f
      gfc->ov_rpg.noclipGainChange = 0;
      gfc->ov_rpg.noclipScale = -1.0;
  
@@ -267,7 +267,7 @@
      if (NULL == gfc->ATH)
          return -2;      /* maybe error codes should be enumerated in lame.h ?? */
  
-@@ -2455,7 +2455,7 @@ lame_init_old(lame_global_flags * gfp)
+@@ -2472,7 +2472,7 @@ lame_init_old(lame_global_flags * gfp)
      gfp->report.errorf = &lame_report_def;
      gfp->report.msgf = &lame_report_def;
  
@@ -276,8 +276,8 @@
  
      if (lame_init_internal_flags(gfp->internal_flags) < 0) {
          freegfc(gfp->internal_flags);
---- libmp3lame/newmdct.c.orig	2011-05-08 01:05:17.000000000 +0900
-+++ libmp3lame/newmdct.c	2017-10-14 12:03:44.000000000 +0900
+--- libmp3lame/newmdct.c.orig	2017-10-14 22:06:52.000000000 +0900
++++ libmp3lame/newmdct.c	2026-07-14 16:33:52.000000000 +0900
 @@ -36,10 +36,13 @@
  #include "util.h"
  #include "newmdct.h"
@@ -543,8 +543,8 @@
      {
          FLOAT   s, t, u, v;
          t = x1[-16] * wp[-10];
---- libmp3lame/psymodel.c.orig	2017-09-07 04:38:23.000000000 +0900
-+++ libmp3lame/psymodel.c	2017-10-14 12:03:44.000000000 +0900
+--- libmp3lame/psymodel.c.orig	2017-10-14 22:06:52.000000000 +0900
++++ libmp3lame/psymodel.c	2026-07-14 16:33:52.000000000 +0900
 @@ -155,6 +155,9 @@ blocktype_d[2]        block type to use 
  #include "fft.h"
  #include "lame-analysis.h"
@@ -968,8 +968,8 @@
      FLOAT   eb[4][CBANDS], thr[4][CBANDS];
  
      FLOAT   sub_short_factor[4][3];
---- libmp3lame/quantize.c.orig	2017-08-15 22:40:45.000000000 +0900
-+++ libmp3lame/quantize.c	2017-10-14 12:03:44.000000000 +0900
+--- libmp3lame/quantize.c.orig	2020-05-06 16:45:56.000000000 +0900
++++ libmp3lame/quantize.c	2026-07-14 16:33:52.000000000 +0900
 @@ -99,7 +99,7 @@ init_xrpow_core_init(lame_internal_flags
          gfc->init_xrpow_core = init_xrpow_core_sse;
  #endif
@@ -986,9 +986,9 @@
 -    FLOAT   xrpow[576];
 +    FLOAT   xrpow[576] __attribute__ ((aligned (16)));
      int     bands[2][2];
-     int     frameBits[15];
+     int     frameBits[16];
      int     used_bits;
-@@ -1904,7 +1904,7 @@ ABR_iteration_loop(lame_internal_flags *
+@@ -1923,7 +1923,7 @@ ABR_iteration_loop(lame_internal_flags *
      SessionConfig_t const *const cfg = &gfc->cfg;
      EncResult_t *const eov = &gfc->ov_enc;
      FLOAT   l3_xmin[SFBMAX];
@@ -997,7 +997,7 @@
      int     targ_bits[2][2];
      int     mean_bits, max_frame_bits;
      int     ch, gr, ath_over;
-@@ -1991,7 +1991,7 @@ CBR_iteration_loop(lame_internal_flags *
+@@ -2012,7 +2012,7 @@ CBR_iteration_loop(lame_internal_flags *
  {
      SessionConfig_t const *const cfg = &gfc->cfg;
      FLOAT   l3_xmin[SFBMAX];
@@ -1006,8 +1006,8 @@
      int     targ_bits[2];
      int     mean_bits, max_bits;
      int     gr, ch;
---- libmp3lame/quantize_pvt.c.orig	2017-09-07 04:33:36.000000000 +0900
-+++ libmp3lame/quantize_pvt.c	2017-10-14 12:03:44.000000000 +0900
+--- libmp3lame/quantize_pvt.c.orig	2017-10-14 22:06:52.000000000 +0900
++++ libmp3lame/quantize_pvt.c	2026-07-14 16:33:52.000000000 +0900
 @@ -27,6 +27,7 @@
  # include <config.h>
  #endif
@@ -1201,8 +1201,8 @@
      }
  
      *startline = j;
---- libmp3lame/takehiro.c.orig	2017-09-07 04:33:36.000000000 +0900
-+++ libmp3lame/takehiro.c	2017-10-14 12:03:44.000000000 +0900
+--- libmp3lame/takehiro.c.orig	2017-10-14 22:06:52.000000000 +0900
++++ libmp3lame/takehiro.c	2026-07-14 16:33:52.000000000 +0900
 @@ -26,6 +26,7 @@
  # include <config.h>
  #endif
@@ -1639,8 +1639,8 @@
              }
          }
      }
---- libmp3lame/util.c.orig	2017-09-07 04:33:36.000000000 +0900
-+++ libmp3lame/util.c	2017-10-14 12:03:44.000000000 +0900
+--- libmp3lame/util.c.orig	2026-07-11 16:35:29.000000000 +0900
++++ libmp3lame/util.c	2026-07-14 16:33:52.000000000 +0900
 @@ -140,7 +140,7 @@ freegfc(lame_internal_flags * const gfc)
          gfc->VBR_seek_table.size = 0;
      }
@@ -1659,8 +1659,8 @@
  }
  
  void
---- libmp3lame/util.h.orig	2017-09-07 04:33:36.000000000 +0900
-+++ libmp3lame/util.h	2017-10-14 12:03:44.000000000 +0900
+--- libmp3lame/util.h.orig	2020-07-11 17:52:43.000000000 +0900
++++ libmp3lame/util.h	2026-07-14 16:33:52.000000000 +0900
 @@ -116,6 +116,36 @@ extern  "C" {
      typedef struct plotting_data plotting_data;
  #endif
@@ -1716,8 +1716,8 @@
  
          scalefac_struct scalefac_band;
  
---- libmp3lame/vbrquantize.c.orig	2012-02-07 22:36:35.000000000 +0900
-+++ libmp3lame/vbrquantize.c	2017-10-14 12:03:44.000000000 +0900
+--- libmp3lame/vbrquantize.c.orig	2017-10-14 22:06:52.000000000 +0900
++++ libmp3lame/vbrquantize.c	2026-07-14 16:33:52.000000000 +0900
 @@ -26,6 +26,7 @@
  #  include <config.h>
  #endif

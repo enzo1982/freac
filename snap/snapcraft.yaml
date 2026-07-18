@@ -109,15 +109,15 @@ parts:
 
   libmp3lame:
     after: [ patches ]
-    source: https://sourceforge.net/projects/lame/files/lame/3.100/lame-3.100.tar.gz
-    source-checksum: sha256/ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
+    source: https://sourceforge.net/projects/lame/files/lame/4.0/lame-4.0.tar.gz
+    source-checksum: sha256/3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr, --enable-nasm, --disable-frontend ]
     build-environment:
       - CFLAGS: "${CFLAGS-} -O3 -funroll-loops"
     override-build: |
       if [ "$CRAFT_ARCH_BUILD_FOR" = "amd64" ]; then
-        patch -p0 < $CRAFT_STAGE/lame-3.100-sse-20171014.patch
+        patch -p0 < $CRAFT_STAGE/lame-4.0-sse-20260715.patch
       fi
       craftctl default
     prime:
