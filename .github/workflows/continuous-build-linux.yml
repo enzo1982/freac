@@ -74,7 +74,9 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y ${{ matrix.dependencies }}
-          sudo apt install -y adwaita-icon-theme gnome-icon-theme libasound2-dev:${{ matrix.pkgarch }} libgdk-pixbuf2.0-dev:${{ matrix.pkgarch }} libgtk-3-dev:${{ matrix.pkgarch }} liblzma-dev:${{ matrix.pkgarch }} libncurses-dev:${{ matrix.pkgarch }} libpulse-dev:${{ matrix.pkgarch }} libssl-dev:${{ matrix.pkgarch }} libudev-dev:${{ matrix.pkgarch }} libzstd-dev:${{ matrix.pkgarch }}
+          sudo apt install -y --allow-downgrades libncurses-dev=6.3-2 libncurses6=6.3-2 libncursesw6=6.3-2 libtinfo-dev=6.3-2 libtinfo6=6.3-2
+          sudo apt install -y --allow-downgrades libncurses-dev:${{ matrix.pkgarch }}=6.3-2 libncurses6:${{ matrix.pkgarch }}=6.3-2 libncursesw6:${{ matrix.pkgarch }}=6.3-2 libtinfo-dev:${{ matrix.pkgarch }}=6.3-2 libtinfo6:${{ matrix.pkgarch }}=6.3-2
+          sudo apt install -y adwaita-icon-theme gnome-icon-theme libasound2-dev:${{ matrix.pkgarch }} libgdk-pixbuf2.0-dev:${{ matrix.pkgarch }} libgtk-3-dev:${{ matrix.pkgarch }} liblzma-dev:${{ matrix.pkgarch }} libpulse-dev:${{ matrix.pkgarch }} libssl-dev:${{ matrix.pkgarch }} libudev-dev:${{ matrix.pkgarch }} libzstd-dev:${{ matrix.pkgarch }}
 
       - name: Prepare toolchain
         if: ${{ matrix.arch != 'i686' && matrix.arch != 'x86_64' }}
