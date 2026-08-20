@@ -191,7 +191,7 @@ ln -s usr/share/applications/org.freac.freac.desktop appdir/org.freac.freac.desk
 cp /usr/local/share/icons/hicolor/128x128/apps/org.freac.freac.png appdir
 
 # Copy other dependencies
-cp /usr/local/lib/libcdio.so.19 appdir
+cp /usr/local/lib/libcdio.so.21 appdir
 cp /usr/local/lib/libcdio_cdda.so.2 appdir
 cp /usr/local/lib/libcdio_paranoia.so.2 appdir
 cp /usr/local/lib/libcurl.so.4 appdir

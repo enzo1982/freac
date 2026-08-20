@@ -175,7 +175,7 @@ fdk_aac_version=2.0.3
 ffmpeg_version=8.1.1
 flac_version=1.5.0
 lame_version=4.0
-libcdio_version=2.3.0
+libcdio_version=2.4.0
 libcdio_paranoia_version=10.2+2.0.2
 libcdrip_version=2.4a
 libogg_version=1.3.6
@@ -563,6 +563,26 @@ for package in ${packages[@]}; do
   elif [ $package == libcdio ]; then
     # Build libcdio
     export CFLAGS="$cflags -Os"
+    if [[ $uname == Darwin ]] && [[ $BUILD_PPC == True ]]; then
+      export CFLAGS="$cflags -Os -D__DARWIN_C_ANSI=010000L"
+      prepare="sed -i -e \"s/__thread//\" lib/driver/portable.h"
+      prepare="$prepare; sed -i -e \"s/0b0000/0x0/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b0001/0x1/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b0010/0x2/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b0011/0x3/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b0100/0x4/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b0101/0x5/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b0110/0x6/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b0111/0x7/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b1000/0x8/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b1001/0x9/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b1010/0xA/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b1011/0xB/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b1100/0xC/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b1101/0xD/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b1110/0xE/\" include/cdio/dvd.h"
+      prepare="$prepare; sed -i -e \"s/0b1111/0xF/\" include/cdio/dvd.h"
+    fi
     configure_flags="--disable-cxx --disable-example-progs"
     build $libcdio_location lib/driver/.libs/libcdio$sharedinfix.$sharedext libcdio.$sharedext
 

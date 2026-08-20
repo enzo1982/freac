@@ -45,8 +45,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/libcdio/libcdio/archive/refs/tags/2.3.0.tar.gz",
-                    "sha256": "f5eb6fb2a9141d200b4e5a88bca16f29d1c7b0d9fe7da2d0c4135c2d95f18268",
+                    "url": "https://github.com/libcdio/libcdio/archive/refs/tags/2.4.0.tar.gz",
+                    "sha256": "62b940b458241b3b03eee554f07094c89f4afbfdb3180b8bacd336970e145df1",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 1573,
