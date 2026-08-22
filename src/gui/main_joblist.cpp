@@ -392,6 +392,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	edb_outdir = new FolderEditBox(Point(0, 27), Size(0, 0), 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->onSelectEntry.Connect(&LayerJoblist::OnSelectFolder, this);
+	edb_outdir->onEnter.Connect(&LayerJoblist::OnSelectFolder, this);
 	list_outdir = new List();
 
 	UpdateOutputDir();
