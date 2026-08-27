@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">easyUpdate</property>
+    <property name="version">0.3</property>
+    <property name="language">Latvian / Latviešu</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">eupdate.xml</property>
+    <property name="author">Andis</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="1" string="Cancel">Atcelt</entry>
+    <entry id="2" string="Install">Instalēt</entry>
+    <entry id="3" string="Show unstable releases">Rādīt nestabilās versijas</entry>
+    <entry id="4" string="Select the updated program version to be installed:">Izvēlieties instalējamo atjaunināto programmas versiju:</entry>
+    <entry id="5" string="You can select optional components to be installed:">Varat izvēlēties papildu komponentus, ko instalēt:</entry>
+    <entry id="6" string="Version ID">Versijas ID</entry>
+    <entry id="7" string="Package">Pakotne</entry>
+    <entry id="8" string="Description">Apraksts</entry>
+    <entry id="9" string="Latest">Jaunākā</entry>
+    <entry id="10" string="Size">Izmērs</entry>
+    <entry id="11" string="Yes">Jā</entry>
+    <entry id="12" string="No">Nē</entry>
+    <entry id="13" string="unknown">nezināms</entry>
+    <entry id="14" string="Installing files...">Instalē failus...</entry>
+    <entry id="15" string="Installing file:">Instalē failu:</entry>
+    <entry id="16" string="Downloading file:">Lejupielādē failu:</entry>
+    <entry id="17" string="Extracting file:">Izgūst failu:</entry>
+    <entry id="18" string="Update complete">Atjaunināšana pabeigta</entry>
+    <entry id="19" string="Your application has been successfully updated!">Lietotne ir veiksmīgi atjaunināta!</entry>
+    <entry id="20" string="Error">Kļūda</entry>
+    <entry id="21" string="Error downloading package!">Kļūda, lejupielādējot pakotni!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Kļūda, instalējot "%1"!&#10;&#10;Piekļuve lietotnes direktorijai tika liegta.</entry>
+  </data>
+</LangFile>

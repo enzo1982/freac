@@ -1,0 +1,1536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Latvian / Latviešu</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">freac.xml</property>
+    <property name="author">[author] &lt;[author@server.tld]&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="OK">Labi</entry>
+    <entry id="101" string="Cancel">Atcelt</entry>
+    <entry id="102" string="Close">Aizvērt</entry>
+
+    <entry id="200" string="Error">Kļūda</entry>
+    <entry id="201" string="Warning">Brīdinājums</entry>
+    <entry id="202" string="Info">Informācija</entry>
+
+    <entry id="210" string="Do not display this warning again">Vairs nerādīt šo brīdinājumu</entry>
+    <entry id="211" string="Do not display this note again">Vairs nerādīt šo piezīmi</entry>
+
+    <entry id="300" string="Artist">Izpildītājs</entry>
+    <entry id="301" string="Title">Nosaukums</entry>
+    <entry id="302" string="Album">Albums</entry>
+    <entry id="303" string="Track">Celiņš</entry>
+    <entry id="304" string="Genre">Žanrs</entry>
+    <entry id="305" string="Comment">Komentārs</entry>
+    <entry id="306" string="Year">Gads</entry>
+    <entry id="307" string="Disc">Disks</entry>
+    <entry id="308" string="Rating">Vērtējums</entry>
+    <entry id="309" string="File name">Faila nosaukums</entry>
+    <entry id="310" string="File type">Faila tips</entry>
+    <entry id="311" string="Album artist">Albuma izpildītājs</entry>
+    <entry id="312" string="Conductor">Diriģents</entry>
+    <entry id="313" string="Composer">Komponists</entry>
+    <entry id="314" string="Tempo">Temps</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key">Tonalitāte</entry>
+
+    <entry id="350" string="unknown artist">nezināms izpildītājs</entry>
+    <entry id="351" string="unknown title">nezināms nosaukums</entry>
+    <entry id="352" string="unknown album">nezināms albums</entry>
+    <entry id="353" string="unknown genre">nezināms žanrs</entry>
+    <entry id="354" string="unknown year">nezināms gads</entry>
+    <entry id="355" string="unknown conductor">nezināms diriģents</entry>
+    <entry id="356" string="unknown composer">nezināms komponists</entry>
+    <entry id="357" string="unknown album artist">nezināms albuma izpildītājs</entry>
+    <entry id="358" string="unknown tempo">nezināms temps</entry>
+    <entry id="359" string="unknown key">nezināma tonalitāte</entry>
+
+    <entry id="380" string="hidden track">slēptais celiņš</entry>
+
+    <section name="Characters">
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbit/s</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 biti</entry>
+      <entry id="516" string="%1 bytes">%1 baiti</entry>
+      <entry id="517" string="%1 kB">%1 kB</entry>
+      <entry id="518" string="%1%">%1%</entry>
+    </section>
+
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">MiniDisc</entry>
+      <entry id="603" string="Compact Cassette">Kompaktkasete</entry>
+      <entry id="604" string="Reel tape">Spoļu lente</entry>
+      <entry id="605" string="Vinyl">Vinils</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">LaserDisc</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Video</entry>
+      <entry id="610" string="Radio">Radio</entry>
+      <entry id="611" string="Telephone">Telefons</entry>
+    </section>
+
+    <section name="Menu">
+      <entry id="1000" string="File">Fails</entry>
+      <entry id="1001" string="Options">Opcijas</entry>
+      <entry id="1002" string="Database">Datubāze</entry>
+      <entry id="1003" string="Processing">Apstrāde</entry>
+      <entry id="1004" string="Encode">Kodēšana</entry>
+      <entry id="1005" string="Help">Palīdzība</entry>
+
+      <section name="File">
+	<entry id="1100" string="Add">Pievienot</entry>
+	<entry id="1101" string="Remove">Noņemt</entry>
+	<entry id="1102" string="Load joblist">Ielādēt uzdevumu sarakstu</entry>
+	<entry id="1103" string="Save joblist">Saglabāt uzdevumu sarakstu</entry>
+	<entry id="1104" string="Clear joblist">Notīrīt uzdevumu sarakstu</entry>
+	<entry id="1105" string="Exit">Iziet</entry>
+	<entry id="1106" string="Audio file(s)">Audio failu(s)</entry>
+	<entry id="1107" string="Audio CD contents">Audio CD saturu</entry>
+	<entry id="1108" string="By pattern">Pēc šablona</entry>
+	<entry id="1109" string="From folder">No mapes</entry>
+      </section>
+
+      <section name="Database">
+	<entry id="1200" string="Query CDDB database">Vaicāt CDDB datubāzei</entry>
+	<entry id="1201" string="Submit CDDB data">Iesūtīt CDDB datus</entry>
+	<entry id="1202" string="Query CDDB database later">Vaicāt CDDB datubāzei vēlāk</entry>
+	<entry id="1203" string="Show queued CDDB entries">Rādīt rindā gaidošos CDDB ierakstus</entry>
+	<entry id="1204" string="Show queued CDDB queries">Rādīt rindā gaidošos CDDB vaicājumus</entry>
+	<entry id="1205" string="Enable CDDB cache">Iespējot CDDB kešatmiņu</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Pārvaldīt CDDB kešatmiņas ierakstus</entry>
+	<entry id="1207" string="Automatic CDDB queries">Automātiski CDDB vaicājumi</entry>
+      </section>
+
+      <section name="Options">
+	<entry id="1300" string="General settings">Vispārīgie iestatījumi</entry>
+	<entry id="1301" string="Configure signal processing">Konfigurēt signālu apstrādi</entry>
+	<entry id="1302" string="Configure selected encoder">Konfigurēt izvēlēto kodētāju</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktīvais CD-ROM diskdzinis</entry>
+	<entry id="1304" string="Active configuration">Aktīvā konfigurācija</entry>
+	<entry id="1305" string="Default configuration">Noklusējuma konfigurācija</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">Iespējot signālu apstrādi</entry>
+	<entry id="1401" string="Enable processing during playback">Iespējot apstrādi atskaņošanas laikā</entry>
+	<entry id="1402" string="Selected signal processors">Izvēlētie signālu apstrādātāji</entry>
+      </section>
+
+      <section name="Encode">
+	<entry id="1500" string="Start encoding">Sākt kodēšanu</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Sākt kodēšanu (dzēšot oriģinālos failus)</entry>
+	<entry id="1502" string="Start encoding with">Sākt kodēšanu ar</entry>
+	<entry id="1503" string="Pause/resume encoding">Pauzēt/turpināt kodēšanu</entry>
+	<entry id="1504" string="Stop encoding">Apturēt kodēšanu</entry>
+	<entry id="1505" string="Encoder options">Kodētāja opcijas</entry>
+	<entry id="1506" string="Encode to a single file">Kodēt vienā failā</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Ja iespējams, kodēt ievades faila mapē</entry>
+	<entry id="1508" string="Allow overwriting input file">Atļaut pārrakstīt ievades failu</entry>
+	<entry id="1509" string="Delete original files after encoding">Pēc kodēšanas dzēst oriģinālos failus</entry>
+	<entry id="1510" string="Shutdown after encoding">Pēc kodēšanas izslēgt datoru</entry>
+      </section>
+
+      <section name="Help">
+	<entry id="1600" string="Help topics">Palīdzības tēmas</entry>
+	<entry id="1601" string="Show Tip of the Day">Rādīt dienas padomu</entry>
+	<entry id="1602" string="Check for updates now">Meklēt atjauninājumus tagad</entry>
+	<entry id="1603" string="Check for updates at startup">Meklēt atjauninājumus programmas startēšanas laikā</entry>
+	<entry id="1604" string="About %1">Par %1</entry>
+	<entry id="1605" string="index_en.html">index_en.html</entry>
+	<entry id="1606" string="Report an issue">Ziņot par problēmu</entry>
+	<entry id="1607" string="Suggest a feature">Ieteikt jaunu iespēju</entry>
+      </section>
+    </section>
+
+    <section name="Toolbar">
+      <entry id="2000" string="Add audio file(s) to the joblist">Pievienot audio failu(s) uzdevumu sarakstam</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">Pievienot audio CD saturu uzdevumu sarakstam</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">Noņemt izvēlēto ierakstu no uzdevumu saraksta</entry>
+      <entry id="2003" string="Clear the entire joblist">Notīrīt visu uzdevumu sarakstu</entry>
+      <entry id="2004" string="Query CDDB database">Vaicāt CDDB datubāzei</entry>
+      <entry id="2005" string="Submit CDDB data">Iesūtīt CDDB datus</entry>
+      <entry id="2006" string="Configure general settings">Konfigurēt vispārīgos iestatījumus</entry>
+      <entry id="2007" string="Configure signal processing">Konfigurēt signālu apstrādi</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Konfigurēt izvēlēto audio kodētāju</entry>
+      <entry id="2009" string="Start the encoding process">Sākt kodēšanas procesu</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Sākt kodēšanas procesu (dzēšot oriģinālos failus)</entry>
+      <entry id="2011" string="Pause/resume encoding">Pauzēt/turpināt kodēšanu</entry>
+      <entry id="2012" string="Stop encoding">Apturēt kodēšanu</entry>
+      <entry id="2013" string="Open the output splitting tool">Atvērt izvades sadalīšanas rīku</entry>
+    </section>
+
+    <section name="Joblist">
+      <entry id="3000" string="Time left">Atlikušais laiks</entry>
+      <entry id="3001" string="File progress">Faila progress</entry>
+      <entry id="3002" string="Output folder">Izvades mape</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 fails(-i) uzdevumu sarakstā</entry>
+      <entry id="3004" string="Show title info">Rādīt informāciju par celiņu</entry>
+      <entry id="3005" string="Play">Atskaņot</entry>
+      <entry id="3006" string="Stop">Apturēt</entry>
+      <entry id="3007" string="Select all">Atlasīt visus</entry>
+      <entry id="3008" string="Select none">Neatlasīt nevienu</entry>
+      <entry id="3009" string="Toggle selection">Pārslēgt atlasi</entry>
+      <entry id="3010" string="ripping/decoding">izvilkšana/dekodēšana</entry>
+      <entry id="3011" string="encoding">kodēšana</entry>
+      <entry id="3012" string="Create playlist">Izveidot atskaņošanas sarakstu</entry>
+      <entry id="3013" string="Create cue sheet">Izveidot cue lapu</entry>
+      <entry id="3014" string="Select">Izvēlēties</entry>
+      <entry id="3015" string="Encode to a single file">Kodēt vienā failā</entry>
+      <entry id="3016" string="Remove">Noņemt</entry>
+      <entry id="3017" string="Clear joblist">Notīrīt uzdevumu sarakstu</entry>
+      <entry id="3018" string="Use for all selected tracks">Lietot visiem atlasītajiem celiņiem</entry>
+      <entry id="3019" string="Interpret string as">Interpretēt tekstu kā</entry>
+      <entry id="3020" string="selected tracks">atlasītie celiņi</entry>
+      <entry id="3021" string="Adjust upper/lower case">Pielāgot lielos/mazos burtus</entry>
+      <entry id="3022" string="all words upper case">visi vārdi ar lielo sākumburtu</entry>
+      <entry id="3023" string="long words upper case">garie vārdi ar lielo sākumburtu</entry>
+      <entry id="3024" string="first letter upper case">pirmais burts liels</entry>
+      <entry id="3025" string="all lower case">visi mazie burti</entry>
+      <entry id="3026" string="all upper case">visi lielie burti</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Izvēlieties mapi, kurā tiks ievietoti kodētie faili</entry>
+      <entry id="3028" string="Sampling rate">Iztveršanas frekvence</entry>
+      <entry id="3029" string="Sample resolution">Nolases izšķirtspēja</entry>
+      <entry id="3030" string="Number of samples">Nolašu skaits</entry>
+      <entry id="3031" string="Channels">Kanāli</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Garums</entry>
+      <entry id="3035" string="File">Fails</entry>
+      <entry id="3036" string="Size">Izmērs</entry>
+      <entry id="3037" string="Bitrate">Bitu ātrums</entry>
+      <entry id="3038" string="Audio Files">Audio faili</entry>
+      <entry id="3039" string="All Files">Visi faili</entry>
+      <entry id="3040" string="Playlist Files">Atskaņošanas saraksta faili</entry>
+      <entry id="3041" string="Joblist">Uzdevumu saraksts</entry>
+      <entry id="3042" string="Other">Citi</entry>
+      <entry id="3043" string="Output file name">Izvades faila nosaukums</entry>
+      <entry id="3044" string="verifying">pārbaude</entry>
+      <entry id="3045" string="Open">Atvērt</entry>
+      <entry id="3046" string="CD drive">CD diskdzinis</entry>
+      <entry id="3047" string="Disc ID">Diska ID</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Pašreizējais fails</entry>
+	<entry id="3051" string="none">nav</entry>
+	<entry id="3052" string="Skip current file">Izlaist pašreizējo failu</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder">Aktīvais dekodētājs</entry>
+	<entry id="3061" string="none">nav</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Izvēlētie filtri</entry>
+	<entry id="3071" string="none">nav</entry>
+	<entry id="3072" string="disabled">atspējota</entry>
+	<entry id="3073" string="Configure signal processing">Konfigurēt signālu apstrādi</entry>
+      </section>
+
+      <section name="Encoder">
+	<entry id="3080" string="Selected encoder">Izvēlētais kodētājs</entry>
+	<entry id="3081" string="Configure selected encoder">Konfigurēt izvēlēto kodētāju</entry>
+      </section>
+
+      <section name="Add folder">
+	<entry id="3100" string="Folder">Mape</entry>
+	<entry id="3101" string="Add folder">Pievienot mapi</entry>
+	<entry id="3102" string="Choose folder">Izvēlēties mapi</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Izvēlieties mapi, ko pievienot uzdevumu sarakstam</entry>
+      </section>
+
+      <section name="Add by pattern">
+	<entry id="3200" string="Add files by pattern">Pievienot failus pēc šablona</entry>
+	<entry id="3201" string="Pattern">Šablons</entry>
+	<entry id="3202" string="Start folder">Sākuma mape</entry>
+	<entry id="3203" string="Filename pattern">Faila nosaukuma šablons</entry>
+	<entry id="3204" string="Search subfolders">Meklēt apakšmapēs</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Izvēlieties mapi, ko pievienot uzdevumu sarakstam</entry>
+      </section>
+
+      <section name="Character set">
+	<entry id="3300" string="Character set">Rakstzīmju kopa</entry>
+	<entry id="3301" string="Choose character set">Izvēlieties rakstzīmju kopu</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="3400" string="You did not select a track!">Jūs neizvēlējāties nevienu celiņu!</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Nav atrasts neviens fails, kas atbilst šablonam: %1</entry>
+      </section>
+    </section>
+
+    <section name="Jobs">
+      <entry id="3500" string="Jobs">Uzdevumi</entry>
+      <entry id="3501" string="Progress">Progress</entry>
+      <entry id="3502" string="Errors / Warnings">Kļūdas / brīdinājumi</entry>
+      <entry id="3503" string="Details">Detaļas</entry>
+      <entry id="3504" string="Error details">Kļūdas detaļas</entry>
+      <entry id="3505" string="Time left">Atlikušais laiks</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">Gaida citu uzdevumu pabeigšanu</entry>
+
+      <section name="Joblist">
+	<entry id="3600" string="Reading folders">Nolasa mapes</entry>
+	<entry id="3601" string="Filtering duplicates">Filtrē dublikātus</entry>
+	<entry id="3602" string="Adding files">Pievieno failus</entry>
+	<entry id="3603" string="Adding tracks">Pievieno celiņus</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">Pievienoti %1 faili, radās %2 kļūdas</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">Pievienoti %1 celiņi, radās %2 kļūdas</entry>
+	<entry id="3606" string="Removing all tracks">Noņem visus celiņus</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">Noņem diskdzinī %1 ievietotā diska celiņus</entry>
+	<entry id="3608" string="Removed all tracks from joblist">Visi celiņi noņemti no uzdevumu saraksta</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Diskdzinī %1 ievietotā diska celiņi noņemti no uzdevumu saraksta</entry>
+      </section>
+
+      <section name="Convert">
+	<entry id="3700" string="Checking sample formats">Pārbauda nolašu formātus</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Pārbauda konvertēšanu no formāta ar zudumiem uz bezzudumu formātu</entry>
+	<entry id="3702" string="Checking output file names">Pārbauda izvades failu nosaukumus</entry>
+	<entry id="3703" string="Converting %1">Konvertē %1</entry>
+	<entry id="3704" string="Verifying %1">Pārbauda %1</entry>
+	<entry id="3705" string="Conversion cancelled">Konvertēšana atcelta</entry>
+	<entry id="3706" string="Conversion finished">Konvertēšana pabeigta</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">Konvertēšana pabeigta ar %1 brīdinājumiem</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">Konvertēšana pabeigta ar %1 kļūdām</entry>
+      </section>
+
+      <section name="Update">
+	<entry id="3800" string="Preparing update check">Sagatavo atjauninājumu pārbaudi</entry>
+	<entry id="3801" string="Contacting update server">Savienojas ar atjauninājumu serveri</entry>
+	<entry id="3802" string="Updates found">Atjauninājumi atrasti</entry>
+	<entry id="3803" string="No updates found">Atjauninājumi nav atrasti</entry>
+      </section>
+    </section>
+
+    <section name="CDDB">
+
+      <section name="Submit">
+	<entry id="4000" string="CDDB data">CDDB dati</entry>
+	<entry id="4001" string="Submit">Iesūtīt</entry>
+	<entry id="4002" string="No audio CD in drive!">Diskdzinī nav audio CD!</entry>
+	<entry id="4003" string="Submitting CD information">Iesūta informāciju par CD</entry>
+	<entry id="4004" string="Update joblist with this information">Atjaunināt uzdevumu sarakstu ar šo informāciju</entry>
+	<entry id="4005" string="Status">Statuss</entry>
+	<entry id="4006" string="Successfully read CD!">CD veiksmīgi nolasīts!</entry>
+	<entry id="4007" string="Save entry">Saglabāt ierakstu</entry>
+	<entry id="4008" string="Various artists">Dažādi izpildītāji</entry>
+	<entry id="4009" string="Data track">Datu celiņš</entry>
+	<entry id="4010" string="Submit to online database later">Iesūtīt tiešsaistes datubāzē vēlāk</entry>
+	<entry id="4011" string="Active CD-ROM drive">Aktīvais CD-ROM diskdzinis</entry>
+
+	<section name="Errors">
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Mēģinot savienoties ar freedb serveri, radās kļūda.</entry>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Pirms iesūtīšanas, lūdzu, aizpildiet visus laukus un celiņu nosaukumus.</entry>
+	</section>
+      </section>
+
+      <section name="Query">
+	<entry id="4100" string="CDDB query">CDDB vaicājums</entry>
+	<entry id="4101" string="No freedb entry for this disc.">Šim diskam nav freedb ieraksta.</entry>
+	<entry id="4102" string="Connecting to freedb server at">Savienojas ar freedb serveri:</entry>
+	<entry id="4103" string="Requesting CD information">Pieprasa informāciju par CD</entry>
+	<entry id="4104" string="No exact matches found">Precīzas atbilstības nav atrastas</entry>
+	<entry id="4105" string="Multiple matches found">Atrastas vairākas atbilstības</entry>
+	<entry id="4106" string="Matches">Atbilstības</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Izvēlieties ierakstu, kas vislabāk atbilst jūsu CD</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">Vai vēlaties veikt šo vaicājumu vēlāk?</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">Vai vēlaties veikt atlikušos vaicājumus vēlāk?</entry>
+	<entry id="4110" string="none">nav</entry>
+	<entry id="4111" string="Preview">Priekšskatījums</entry>
+	<entry id="4112" string="loading preview">ielādē priekšskatījumu</entry>
+
+	<section name="Errors">
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Mēģinot savienoties ar freedb serveri, radās kļūda.</entry>
+	</section>
+      </section>
+
+      <section name="Manage queries">
+	<entry id="4200" string="Remove entry">Noņemt ierakstu</entry>
+	<entry id="4201" string="CDDB queries">CDDB vaicājumi</entry>
+	<entry id="4202" string="Query">Vaicāt</entry>
+	<entry id="4203" string="Query all">Vaicāt visus</entry>
+	<entry id="4204" string="Query string">Vaicājuma virkne</entry>
+	<entry id="4205" string="CDDB queries to perform">Veicamie CDDB vaicājumi</entry>
+	<entry id="4206" string="Querying CD information">Vaicā informāciju par CD</entry>
+      </section>
+
+      <section name="Manage submits">
+	<entry id="4300" string="Remove entry">Noņemt ierakstu</entry>
+	<entry id="4301" string="CDDB entries to submit">Iesūtāmie CDDB ieraksti</entry>
+	<entry id="4302" string="Submit all">Iesūtīt visus</entry>
+	<entry id="4303" string="CDDB data">CDDB dati</entry>
+	<entry id="4304" string="Submit">Iesūtīt</entry>
+	<entry id="4305" string="Disc name">Diska nosaukums</entry>
+	<entry id="4306" string="Preview">Priekšskatījums</entry>
+	<entry id="4307" string="Category">Kategorija</entry>
+	<entry id="4308" string="Submitting CD information">Iesūta informāciju par CD</entry>
+      </section>
+
+      <section name="Manage cache">
+	<entry id="4400" string="CDDB data">CDDB dati</entry>
+	<entry id="4401" string="Update joblist with this information">Atjaunināt uzdevumu sarakstu ar šo informāciju</entry>
+	<entry id="4402" string="Charset">Rakstzīmju kopa</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Lejupielādētie CDDB ieraksti</entry>
+	<entry id="4404" string="Disc name">Diska nosaukums</entry>
+	<entry id="4405" string="Preview">Priekšskatījums</entry>
+	<entry id="4406" string="Remove entry">Noņemt ierakstu</entry>
+	<entry id="4407" string="Save entry">Saglabāt ierakstu</entry>
+      </section>
+    </section>
+
+    <section name="Configuration">
+      <entry id="5000" string="General settings setup">Vispārīgo iestatījumu konfigurēšana</entry>
+      <entry id="5001" string="Encoders">Kodētāji</entry>
+      <entry id="5002" string="Playlists">Atskaņošanas saraksti</entry>
+      <entry id="5003" string="Language">Valoda</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Saskarne</entry>
+      <entry id="5006" string="Metadata">Metadati</entry>
+      <entry id="5007" string="Components">Komponenti</entry>
+      <entry id="5008" string="Decoders">Dekodētāji</entry>
+      <entry id="5009" string="Output">Izvade</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">Paplašinājumi</entry>
+      <entry id="5012" string="Other">Citi</entry>
+      <entry id="5013" string="Active configuration">Aktīvā konfigurācija</entry>
+      <entry id="5014" string="New">Jauna</entry>
+      <entry id="5015" string="Delete">Dzēst</entry>
+      <entry id="5016" string="Command line arguments">Komandrindas argumenti</entry>
+      <entry id="5017" string="Resulting arguments string">Rezultējošā argumentu virkne</entry>
+      <entry id="5018" string="Default configuration">Noklusējuma konfigurācija</entry>
+      <entry id="5019" string="New configuration">Jauna konfigurācija</entry>
+      <entry id="5020" string="Ripper">Izvilkšana</entry>
+      <entry id="5021" string="Settings">Iestatījumi</entry>
+      <entry id="5022" string="Resources">Resursi</entry>
+      <entry id="5023" string="Verifiers">Pārbaudītāji</entry>
+      <entry id="5024" string="Taggers">Tagotāji</entry>
+      <entry id="5025" string="Processing">Apstrāde</entry>
+      <entry id="5026" string="Additional arguments">Papildu argumenti</entry>
+      <entry id="5027" string="Output files">Izvades faili</entry>
+
+      <section name="Encoders">
+	<entry id="5100" string="Configure encoder">Konfigurēt kodētāju</entry>
+	<entry id="5101" string="Encoder">Kodētājs</entry>
+	<entry id="5102" string="Options">Opcijas</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Kodēt 'On-The-Fly'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Saglabāt izvilktos Wave failus</entry>
+	<entry id="5105" string="Encode to a single file">Kodēt vienā failā</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Noņemt apstrādātos celiņus no uzdevumu saraksta</entry>
+	<entry id="5107" string="Add output files to joblist">Pievienot izvades failus uzdevumu sarakstam</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Izvades mape</entry>
+	<entry id="5151" string="Use input file folder if possible">Ja iespējams, lietot ievades faila mapi</entry>
+	<entry id="5152" string="Allow overwriting input file">Atļaut pārrakstīt ievades failu</entry>
+	<entry id="5153" string="Select">Izvēlēties</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Izvēlieties mapi, kurā tiks ievietoti kodētie faili</entry>
+	<entry id="5155" string="Output filenames">Izvades failu nosaukumi</entry>
+	<entry id="5156" string="Filename pattern">Faila nosaukuma šablons</entry>
+	<entry id="5157" string="Allow Unicode characters">Atļaut Unicode rakstzīmes</entry>
+	<entry id="5158" string="Replace spaces with underscores">Aizstāt atstarpes ar apakšsvītrām</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Pievienot kārtas numurus citādi identiskiem failu nosaukumiem</entry>
+	<entry id="5160" string="Keep time stamps of source files">Saglabāt avota failu laika zīmogus</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Lietot &lt;filename&gt;, ja informācija par nosaukumu nav pieejama</entry>
+
+	<section name="Errors">
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Izvades mape neeksistē! Vai vēlaties to izveidot?</entry>
+	</section>
+      </section>
+
+      <section name="Playlists">
+	<entry id="5200" string="Create playlists">Izveidot atskaņošanas sarakstus</entry>
+	<entry id="5202" string="Output folder">Izvades mape</entry>
+	<entry id="5203" string="Select">Izvēlēties</entry>
+	<entry id="5204" string="Use encoder output folder">Lietot kodētāja izvades mapi</entry>
+	<entry id="5205" string="Filename pattern">Faila nosaukuma šablons</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Izvēlieties mapi, kurā tiks ievietoti atskaņošanas saraksta faili</entry>
+	<entry id="5207" string="Output filenames">Izvades failu nosaukumi</entry>
+	<entry id="5208" string="Configure plugin">Konfigurēt spraudni</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Katrā konvertēšanā izveidot tikai vienu atskaņošanas saraksta un/vai cue lapas failu</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">Cue lapas</entry>
+	<entry id="5251" string="Create cue sheets">Izveidot cue lapas</entry>
+	<entry id="5252" string="Embedded cue sheets">Iegultās cue lapas</entry>
+	<entry id="5253" string="Read cue sheets embedded in metadata">Lasīt metadatos iegultās cue lapas</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">Dot priekšroku cue lapām, nevis nodaļu informācijai</entry>
+	<entry id="5255" string="Output folder and filenames">Izvades mape un failu nosaukumi</entry>
+	<entry id="5256" string="Note">Piezīme</entry>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">Cue lapu izvades mapes un failu nosaukumu iestatījumi tiek konfigurēti&#10;sadaļā Atskaņošanas saraksti.</entry>
+      </section>
+
+      <section name="CDDB">
+	<entry id="5300" string="Enable local CDDB database">Iespējot vietējo CDDB datubāzi</entry>
+	<entry id="5301" string="Enable remote CDDB database">Iespējot attālo CDDB datubāzi</entry>
+	<entry id="5302" string="CDDB path">CDDB ceļš</entry>
+	<entry id="5303" string="Select">Izvēlēties</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Izvēlieties CDDB datubāzes mapi</entry>
+	<entry id="5305" string="CDDB access mode">CDDB piekļuves režīms</entry>
+	<entry id="5306" string="CDDB server">CDDB serveris</entry>
+	<entry id="5307" string="Port">Ports</entry>
+	<entry id="5308" string="eMail address">E-pasta adrese</entry>
+	<entry id="5309" string="HTTP settings">HTTP iestatījumi</entry>
+	<entry id="5310" string="Proxy settings">Starpniekservera iestatījumi</entry>
+	<entry id="5311" string="Options">Opcijas</entry>
+	<entry id="5312" string="Automatic CDDB queries">Automātiski CDDB vaicājumi</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Dot priekšroku CDDB, nevis CD-Text</entry>
+	<entry id="5314" string="Enable CDDB cache">Iespējot CDDB kešatmiņu</entry>
+	<entry id="5315" string="Automatization">Automatizācija</entry>
+	<entry id="5316" string="Always select first entry">Vienmēr izvēlēties pirmo ierakstu</entry>
+
+	<section name="Extended">
+	  <entry id="5330" string="Extended CDDB settings">Paplašinātie CDDB iestatījumi</entry>
+	  <entry id="5331" string="CGI scripts">CGI skripti</entry>
+	  <entry id="5332" string="CDDB query script">CDDB vaicājumu skripts</entry>
+	  <entry id="5333" string="CDDB submit script">CDDB iesūtīšanas skripts</entry>
+	  <entry id="5334" string="no proxy">bez starpniekservera</entry>
+	  <entry id="5335" string="Proxy type">Starpniekservera tips</entry>
+	  <entry id="5336" string="Proxy server">Starpniekserveris</entry>
+	  <entry id="5337" string="User name">Lietotājvārds</entry>
+	  <entry id="5338" string="Password">Parole</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="5350" string="Please enter a valid eMail address.">Lūdzu, ievadiet derīgu e-pasta adresi.</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokolu nevar izmantot caur HTTP&#10;pārsūtīšanas starpniekserveriem!&#10;&#10;Vai vēlaties nomainīt protokolu uz HTTP?</entry>
+	</section>
+      </section>
+
+      <section name="Language">
+	<entry id="5400" string="Select language">Izvēlieties valodu</entry>
+	<entry id="5401" string="Edit language file">Rediģēt valodas failu</entry>
+	<entry id="5402" string="Information">Informācija</entry>
+	<entry id="5403" string="Encoding">Kodējums</entry>
+	<entry id="5404" string="Author(s)">Autors(-i)</entry>
+	<entry id="5405" string="URL">URL</entry>
+      </section>
+
+      <section name="Tags">
+	<entry id="5500" string="Tag formats">Tagu formāti</entry>
+	<entry id="5501" string="Tag fields">Tagu lauki</entry>
+	<entry id="5502" string="Default comment string">Noklusējuma komentāra teksts</entry>
+	<entry id="5503" string="Replace existing comments with default comment">Aizstāt esošos komentārus ar noklusējuma komentāru</entry>
+	<entry id="5504" string="Filename pattern">Faila nosaukuma šablons</entry>
+	<entry id="5505" string="Encoding">Kodējums</entry>
+	<entry id="5506" string="Comments">Komentāri</entry>
+	<entry id="5507" string="Album art">Vāka attēli</entry>
+	<entry id="5509" string="Read album art from tags">Lasīt vāka attēlus no tagiem</entry>
+	<entry id="5510" string="Read album art from files">Lasīt vāka attēlus no failiem</entry>
+	<entry id="5512" string="Write album art to tags">Rakstīt vāka attēlus tagos</entry>
+	<entry id="5513" string="Write album art to files">Rakstīt vāka attēlus failos</entry>
+	<entry id="5514" string="Add reference to audio file tag">Pievienot atsauci audio faila tagam</entry>
+	<entry id="5515" string="Other">Citi</entry>
+	<entry id="5516" string="Chapters">Nodaļas</entry>
+	<entry id="5517" string="Read chapters from files">Lasīt nodaļas no failiem</entry>
+	<entry id="5518" string="Write chapters to files">Rakstīt nodaļas failos</entry>
+	<entry id="5519" string="Special fields">Īpašie lauki</entry>
+	<entry id="5520" string="Write CD table of contents">Rakstīt CD satura rādītāju</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Saglabāt Replay Gain informāciju</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Celiņu numuriem, kas mazāki par 10, priekšā pievienot nulli</entry>
+	<entry id="5526" string="File size limit">Faila izmēra ierobežojums</entry>
+	<entry id="5527" string="unlimited">neierobežots</entry>
+	<entry id="5528" string="Miscellaneous">Dažādi</entry>
+	<entry id="5529" string="Fill missing fields with information obtained from file names">Aizpildīt trūkstošos laukus ar informāciju no failu nosaukumiem</entry>
+	<entry id="5530" string="Restrict file names">Ierobežot failu nosaukumus</entry>
+	<entry id="5531" string="Album art tags">Vāka attēlu tagi</entry>
+	<entry id="5532" string="Album art files">Vāka attēlu faili</entry>
+      </section>
+
+      <section name="Joblist">
+	<entry id="5600" string="Joblist">Uzdevumu saraksts</entry>
+	<entry id="5601" string="Columns">Kolonnas</entry>
+	<entry id="5602" string="Name">Nosaukums</entry>
+	<entry id="5603" string="Description">Apraksts</entry>
+	<entry id="5604" string="Up">Augšup</entry>
+	<entry id="5605" string="Down">Lejup</entry>
+	<entry id="5606" string="Jobs">Uzdevumi</entry>
+	<entry id="5607" string="Show Jobs tab">Rādīt cilni Uzdevumi</entry>
+
+	<section name="Columns">
+	  <entry id="5650" string="Track artist">Celiņa izpildītājs</entry>
+	  <entry id="5651" string="Track title">Celiņa nosaukums</entry>
+	  <entry id="5652" string="Track genre">Celiņa žanrs</entry>
+	  <entry id="5653" string="Album title">Albuma nosaukums</entry>
+	  <entry id="5654" string="Disc number">Diska numurs</entry>
+	  <entry id="5655" string="Track number">Celiņa numurs</entry>
+	  <entry id="5656" string="Track rating">Celiņa vērtējums</entry>
+	  <entry id="5657" string="Track length">Celiņa garums</entry>
+	  <entry id="5658" string="Track size">Celiņa izmērs</entry>
+	  <entry id="5659" string="File name">Faila nosaukums</entry>
+	  <entry id="5660" string="File type">Faila tips</entry>
+	  <entry id="5661" string="Output file name">Izvades faila nosaukums</entry>
+	  <entry id="5662" string="Bitrate">Bitu ātrums</entry>
+	  <entry id="5663" string="Sampling rate">Iztveršanas frekvence</entry>
+	  <entry id="5664" string="Channels">Kanāli</entry>
+	  <entry id="5665" string="Sample resolution">Nolases izšķirtspēja</entry>
+	  <entry id="5666" string="CD drive">CD diskdzinis</entry>
+	  <entry id="5667" string="Disc ID">Diska ID</entry>
+	</section>
+      </section>
+
+      <section name="Resources">
+	<entry id="5700" string="Parallel processing">Paralēlā apstrāde</entry>
+	<entry id="5701" string="Enable parallel processing">Iespējot paralēlo apstrādi</entry>
+	<entry id="5702" string="Enable SuperFast mode">Iespējot SuperFast režīmu</entry>
+	<entry id="5703" string="Number of conversion threads">Konvertēšanas pavedienu skaits</entry>
+	<entry id="5704" string="auto">automātiski</entry>
+	<entry id="5705" string="Process priority">Procesa prioritāte</entry>
+	<entry id="5706" string="lowest">zemākā</entry>
+	<entry id="5707" string="lower">zemāka</entry>
+	<entry id="5708" string="normal">normāla</entry>
+	<entry id="5709" string="higher">augstāka</entry>
+	<entry id="5710" string="highest">augstākā</entry>
+      </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification">Pārbaude</entry>
+	<entry id="5801" string="Enable input verification">Iespējot ievades pārbaudi</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Pārbaudīt, vai bezzudumu ievades faili tiek dekodēti tieši tajos&#10;datos, no kuriem tie sākotnēji tika izveidoti.</entry>
+	<entry id="5803" string="Enable output verification">Iespējot izvades pārbaudi</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Pārbaudīt, vai bezzudumu izvades faili tiek dekodēti tieši tajos&#10;datos, kas tika izmantoti to kodēšanā.</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="5900" string="Signal processing">Signālu apstrāde</entry>
+	<entry id="5901" string="Enable signal processing">Iespējot signālu apstrādi</entry>
+	<entry id="5902" string="Enable processing during playback">Iespējot apstrādi atskaņošanas laikā</entry>
+	<entry id="5903" string="Components">Komponenti</entry>
+	<entry id="5904" string="Available">Pieejamie</entry>
+	<entry id="5905" string="Selected">Izvēlētie</entry>
+	<entry id="5906" string="Configure component">Konfigurēt komponentu</entry>
+	<entry id="5907" string="Conversion to a single output file">Konvertēšana vienā izvades failā</entry>
+	<entry id="5908" string="Process each track individually">Apstrādāt katru celiņu atsevišķi</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">Uzskatīt apvienotos celiņus par vienu celiņu</entry>
+      </section>
+    </section>
+
+    <section name="About">
+      <entry id="6000" string="About %1">Par %1</entry>
+      <entry id="6001" string="Translated by %1.">Tulkojis %1.</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Šī programma tiek izplatīta saskaņā ar GNU Vispārējās&#10;publiskās licences (GPL) noteikumiem.</entry>
+    </section>
+
+    <section name="Updates">
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Tiešsaistē ir pieejami jauni %1 atjauninājumi!&#10;Vai vēlaties tagad apskatīt pieejamo atjauninājumu sarakstu?</entry>
+      <entry id="6101" string="There are no updates available at the moment!">Šobrīd nav pieejamu atjauninājumu!</entry>
+      <entry id="6102" string="Check for updates at startup">Meklēt atjauninājumus programmas startēšanas laikā</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 var automātiski pārbaudīt, vai tiešsaistē nav pieejami&#10;programmas atjauninājumi, katru reizi startējot programmu.&#10;&#10;Vai vēlaties, lai %1 meklē atjauninājumus startēšanas laikā?</entry>
+    </section>
+
+    <section name="Messages">
+      <entry id="7000" string="Currently converting">Notiek konvertēšana</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Konvertēšanas process joprojām ir aktīvs! Vai tiešām vēlaties iziet?</entry>
+      <entry id="7002" string="Delete original files after encoding">Pēc kodēšanas dzēst oriģinālos failus</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Šī opcija pēc kodēšanas procesa izdzēsīs oriģinālos failus&#10;no jūsu datora!&#10;&#10;Vai tiešām vēlaties aktivizēt šo funkciju?</entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">Atstāt šo opciju iespējotu arī pēc %1 restartēšanas</entry>
+      <entry id="7005" string="File already exists">Fails jau eksistē</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Izvades fails %1&#10;jau eksistē! Vai vēlaties to pārrakstīt?</entry>
+      <entry id="7007" string="Overwrite all further files">Pārrakstīt visus turpmākos failus</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Šķiet, ka jūs konvertējat no formāta ar zudumiem uz bezzudumu formātu.&#10;&#10;Ņemiet vērā, ka kvalitātes zudumu nevar atgriezt, tāpēc šis process&#10;nekādi neuzlabos kvalitāti, bet, visticamāk, palielinās faila izmēru.&#10;&#10;Vai tomēr vēlaties turpināt?</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Neizdevās izveidot dekodētāja komponentu: %1&#10;&#10;Fails: %1&#10;Ceļš: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">Neizdevās izveidot kodētāja komponentu: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Neizdevās sagatavot dekodētāju ievades failam: %1&#10;&#10;Fails: %1&#10;Ceļš: %2&#10;&#10;Kļūda: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Neizdevās sagatavot kodētāju izvades failam: %1&#10;&#10;Fails: %1&#10;Ceļš: %2&#10;&#10;Kļūda: %3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Neizdevās sagatavot DSP apstrādātāju: %1&#10;&#10;Kļūda: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nevar piekļūt ievades failam: %1&#10;&#10;Fails: %1&#10;Ceļš: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nevar izveidot izvades failu: %1&#10;&#10;Fails: %1&#10;Ceļš: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">Neizdevās pārbaudīt ievades failu: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">Neizdevās pārbaudīt ievades celiņu: %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Pārbaudot izvades failu, kontrolsummas nesakrīt: %1&#10;&#10;Kodēšanas kontrolsumma: %2&#10;Pārbaudes kontrolsumma: %3</entry>
+      <entry id="7110" string="File not found">Fails nav atrasts</entry>
+      <entry id="7111" string="Unknown file type">Nezināms faila tips</entry>
+      <entry id="7112" string="Invalid file format">Nederīgs faila formāts</entry>
+      <entry id="7113" string="Unsupported audio format">Neatbalstīts audio formāts</entry>
+      <entry id="7114" string="Unknown error">Nezināma kļūda</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Nevar ielādēt NT SCSI draiverus! Izvilkšana no CD ir atspējota!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Nevar atvērt failu: %1&#10;&#10;Kļūda: %2</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Nevar atskaņot CD celiņu, kamēr no tā paša diskdziņa notiek izvilkšana!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Nevar sākt izvilkšanu, kamēr no tā paša diskdziņa tiek atskaņots celiņš!</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB atbalsts ir atspējots! Lūdzu, konfigurācijas logā&#10;iespējojiet vietējo vai attālo CDDB atbalstu.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Attālais CDDB atbalsts ir atspējots! Lūdzu, konfigurācijas&#10;logā iespējojiet attālo CDDB atbalstu.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows liedza piekļuvi CD-ROM diskdziņiem.&#10;&#10;Lūdzu, sazinieties ar sistēmas administratoru, lai iegūtu&#10;tiesības piekļūt CD-ROM diskdzinim.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Šim komponentam nav pieejams konfigurācijas logs:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">Izvēlētā mape vairs neeksistē!</entry>
+      <entry id="7124" string="Access denied">Piekļuve liegta</entry>
+    </section>
+
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8000" string="Confirm overwrite">Apstiprināt pārrakstīšanu</entry>
+	<entry id="8001" string="Confirm">Apstiprināt</entry>
+	<entry id="8002" string="Skip all">Izlaist visus</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Šie %1 faili jau eksistē vai arī tiem ir dublēti failu nosaukumi</entry>
+	<entry id="8004" string="Action">Darbība</entry>
+	<entry id="8005" string="Overwrite">Pārrakstīt</entry>
+	<entry id="8006" string="Skip">Izlaist</entry>
+      </section>
+
+      <section name="Format">
+	<entry id="8100" string="Select sample format">Izvēlieties nolašu formātu</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">Izvēlētajiem celiņiem ir atšķirīgi nolašu formāti. Lūdzu, izvēlieties&#10;vēlamo izvades faila nolašu formātu:</entry>
+	<entry id="8102" string="Select">Izvēlēties</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="8200" string="Errors">Kļūdas</entry>
+	<entry id="8201" string="%1 errors while processing job">%1 kļūdas, apstrādājot uzdevumu</entry>
+	<entry id="8202" string="select an entry for details">izvēlieties ierakstu, lai redzētu detaļas</entry>
+      </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool">Izvades sadalīšanas rīks</entry>
+	<entry id="8301" string="%1 track(s) in joblist">%1 celiņš(-i) uzdevumu sarakstā</entry>
+	<entry id="8302" string="Split mode">Sadalīšanas režīms</entry>
+	<entry id="8303" string="Split by duration">Sadalīt pēc ilguma</entry>
+	<entry id="8304" string="Duration per part">Vienas daļas ilgums</entry>
+	<entry id="8305" string="at least">vismaz</entry>
+	<entry id="8306" string="approximately">apmēram</entry>
+	<entry id="8307" string="at most">ne vairāk kā</entry>
+	<entry id="8308" string="exactly">tieši</entry>
+	<entry id="8309" string="second(s)">sekunde(s)</entry>
+	<entry id="8310" string="minute(s)">minūte(s)</entry>
+	<entry id="8311" string="hour(s)">stunda(s)</entry>
+	<entry id="8312" string="Fixed number of parts">Noteikts daļu skaits</entry>
+	<entry id="8313" string="Number of parts">Daļu skaits</entry>
+	<entry id="8314" string="Split upon metadata change">Sadalīt, mainoties metadatiem</entry>
+	<entry id="8315" string="Metadata pattern to compare">Salīdzināmais metadatu šablons</entry>
+	<entry id="8316" string="Split at track boundaries">Sadalīt celiņu robežās</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Katras daļas sākumā atkārtot iepriekšējās daļas beigas</entry>
+	<entry id="8318" string="Repeat duration">Atkārtojuma ilgums</entry>
+	<entry id="8319" string="Output filenames">Izvades failu nosaukumi</entry>
+	<entry id="8320" string="Filename pattern">Faila nosaukuma šablons</entry>
+	<entry id="8321" string="Convert">Konvertēt</entry>
+	<entry id="8322" string="Save">Saglabāt</entry>
+      </section>
+    </section>
+
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Aktīvais CD-ROM diskdzinis</entry>
+      <entry id="9001" string="Set drive speed limit">Iestatīt diskdziņa ātruma ierobežojumu</entry>
+      <entry id="9002" string="CD information">Informācija par CD</entry>
+      <entry id="9003" string="Read CD-Text">Lasīt CD-Text</entry>
+      <entry id="9004" string="Read cdplayer.ini">Lasīt cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Izvilkšanas iestatījumi</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Aktivizēt cdparanoia režīmu</entry>
+      <entry id="9007" string="Overlap only">Tikai pārklāšanās</entry>
+      <entry id="9008" string="No verify">Bez pārbaudes</entry>
+      <entry id="9009" string="No scratch repair">Bez skrāpējumu labošanas</entry>
+      <entry id="9010" string="Full cdparanoia mode">Pilns cdparanoia režīms</entry>
+      <entry id="9011" string="Activate jitter correction">Aktivizēt džitera korekciju</entry>
+      <entry id="9012" string="Switch stereo channels">Apmainīt stereo kanālus</entry>
+      <entry id="9013" string="Automatization">Automatizācija</entry>
+      <entry id="9014" string="Read CD contents on insert">Nolasīt CD saturu, ievietojot disku</entry>
+      <entry id="9015" string="Start ripping automatically">Automātiski sākt izvilkšanu</entry>
+      <entry id="9016" string="Eject disc after ripping">Pēc izvilkšanas izstumt disku</entry>
+      <entry id="9017" string="CD options">CD opcijas</entry>
+      <entry id="9018" string="Use read offset">Lietot nolasīšanas nobīdi</entry>
+      <entry id="9019" string="samples">nolases</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">Nolasīt ISRC, pievienojot celiņus uzdevumu sarakstam</entry>
+      <entry id="9021" string="Spin up before ripping">Pirms izvilkšanas iegriezt disku</entry>
+      <entry id="9022" string="%1 seconds">%1 sekundes</entry>
+    </section>
+
+    <section name="Components">
+
+      <section name="Decoders">
+	<entry id="10000" string="Cue Sheet Reader">Cue lapu lasītājs</entry>
+      </section>
+
+      <section name="Encoders">
+	<entry id="11000" string="meh! - multi encoder hub">meh! - vairāku kodētāju centrs</entry>
+	<entry id="11001" string="SndFile Output Component">SndFile izvades komponents</entry>
+      </section>
+
+      <section name="DSP">
+	<entry id="12000" string="Channel Converter">Kanālu pārveidotājs</entry>
+	<entry id="12001" string="Sample Format Converter">Nolašu formāta pārveidotājs</entry>
+	<entry id="12002" string="Sample Rate Converter">Iztveršanas frekvences pārveidotājs</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">RNNoise trokšņu samazināšana</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band tempa/toņa mainītājs</entry>
+	<entry id="12005" string="HDCD Decoder">HDCD dekodētājs</entry>
+	<entry id="12006" string="Matrix Surround Decoder">Matrix Surround dekodētājs</entry>
+	<entry id="12007" string="Volume Adjustment">Skaļuma pielāgošana</entry>
+      </section>
+
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">AccurateRip pārbaudītājs</entry>
+      </section>
+
+      <section name="Extensions">
+	<entry id="15000" string="Notifications">Paziņojumi</entry>
+	<entry id="15001" string="Logging">Žurnalēšana</entry>
+	<entry id="15002" string="Video Downloader">Video lejupielādētājs</entry>
+	<entry id="15003" string="Tag Editor">Tagu redaktors</entry>
+      </section>
+    </section>
+
+    <section name="Decoders">
+
+      <section name="MAD">
+	<entry id="20000" string="Decoding">Dekodēšana</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Iespējot 24 bitu dekodēšanu</entry>
+      </section>
+
+      <section name="mpg123">
+	<entry id="21000" string="Decoder">Dekodētājs</entry>
+	<entry id="21001" string="Active decoder">Aktīvais dekodētājs</entry>
+	<entry id="21002" string="auto select">automātiska izvēle</entry>
+      </section>
+
+      <section name="CueSheet">
+	<entry id="22000" string="Title information">Informācija par nosaukumu</entry>
+	<entry id="22001" string="Read tags from referenced files">Lasīt tagus no norādītajiem failiem</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Dot priekšroku cue lapas metadatiem, nevis norādīto failu tagiem</entry>
+	<entry id="22003" string="Alternative files">Alternatīvie faili</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Ja norādītos Wave failus nevar atrast, meklēt saspiestas alternatīvas</entry>
+	<entry id="22005" string="Error handling">Kļūdu apstrāde</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Ignorēt kļūdas cue lapu apstrādes laikā</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="23000" string="Quality">Kvalitāte</entry>
+	<entry id="23001" string="Complexity">Sarežģītība</entry>
+      </section>
+    </section>
+
+    <section name="Encoders">
+
+      <section name="BladeEnc">
+	<entry id="30000" string="Bitrate">Bitu ātrums</entry>
+	<entry id="30001" string="Copyright bit">Autortiesību bits</entry>
+	<entry id="30002" string="CRC">CRC</entry>
+	<entry id="30003" string="Original bit">Oriģināla bits</entry>
+	<entry id="30004" string="Channels">Kanāli</entry>
+	<entry id="30005" string="Private bit">Privātais bits</entry>
+	<entry id="30006" string="Set Copyright bit">Iestatīt autortiesību bitu</entry>
+	<entry id="30007" string="Enable CRC">Iespējot CRC</entry>
+	<entry id="30008" string="Set Original bit">Iestatīt oriģināla bitu</entry>
+	<entry id="30009" string="Dual channel encoding">Divu kanālu kodēšana</entry>
+	<entry id="30010" string="Set Private bit">Iestatīt privāto bitu</entry>
+      </section>
+
+      <section name="Bonk">
+	<entry id="31000" string="Encoder mode">Kodētāja režīms</entry>
+	<entry id="31001" string="Stereo mode">Stereo režīms</entry>
+	<entry id="31002" string="Quantization">Kvantēšana</entry>
+	<entry id="31003" string="Downsampling ratio">Iztveršanas samazināšanas attiecība</entry>
+	<entry id="31004" string="Predictor size">Prognozētāja izmērs</entry>
+	<entry id="31005" string="Enable lossless encoding">Iespējot bezzudumu kodēšanu</entry>
+	<entry id="31006" string="Enable Joint Stereo">Iespējot Joint Stereo</entry>
+      </section>
+
+      <section name="LAME">
+	<entry id="32000" string="Basic">Pamata</entry>
+	<entry id="32001" string="Misc">Dažādi</entry>
+	<entry id="32002" string="Expert">Ekspertiem</entry>
+	<entry id="32003" string="Audio processing">Audio apstrāde</entry>
+
+	<section name="Basic">
+	  <entry id="32100" string="Presets">Sagataves</entry>
+	  <entry id="32101" string="Use preset">Lietot sagatavi</entry>
+	  <entry id="32102" string="Custom settings">Pielāgoti iestatījumi</entry>
+	  <entry id="32103" string="Medium">Vidēja</entry>
+	  <entry id="32104" string="Standard">Standarta</entry>
+	  <entry id="32105" string="Extreme">Ekstrēma</entry>
+	  <entry id="32106" string="Bitrate">Bitu ātrums</entry>
+	  <entry id="32107" string="Quality">Kvalitāte</entry>
+	  <entry id="32108" string="Set bitrate">Iestatīt bitu ātrumu</entry>
+	  <entry id="32109" string="Set ratio">Iestatīt attiecību</entry>
+	  <entry id="32110" string="Set quality">Iestatīt kvalitāti</entry>
+	  <entry id="32111" string="worse">sliktāka</entry>
+	  <entry id="32112" string="better">labāka</entry>
+	  <entry id="32113" string="VBR mode">VBR režīms</entry>
+	  <entry id="32114" string="no VBR">bez VBR</entry>
+	  <entry id="32115" string="VBR quality">VBR kvalitāte</entry>
+	  <entry id="32116" string="ABR target bitrate">ABR mērķa bitu ātrums</entry>
+	</section>
+
+	<section name="Misc">
+	  <entry id="32200" string="Control bits">Vadības biti</entry>
+	  <entry id="32201" string="Set Copyright bit">Iestatīt autortiesību bitu</entry>
+	  <entry id="32202" string="Set Original bit">Iestatīt oriģināla bitu</entry>
+	  <entry id="32203" string="Set Private bit">Iestatīt privāto bitu</entry>
+	  <entry id="32204" string="CRC">CRC</entry>
+	  <entry id="32205" string="Enable CRC">Iespējot CRC</entry>
+	  <entry id="32206" string="Stereo mode">Stereo režīms</entry>
+	  <entry id="32207" string="auto">automātiski</entry>
+	  <entry id="32208" string="Stereo">Stereo</entry>
+	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
+	  <entry id="32210" string="Force Joint Stereo">Piespiedu Joint Stereo</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR bitu ātruma diapazons</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Iestatīt minimālo VBR/ABR bitu ātrumu</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Iestatīt maksimālo VBR/ABR bitu ātrumu</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="32300" string="ATH">ATH</entry>
+	  <entry id="32301" string="Enable ATH">Iespējot ATH</entry>
+	  <entry id="32302" string="Use default setting">Lietot noklusējuma iestatījumu</entry>
+	  <entry id="32303" string="Psycho acoustic model">Psihoakustiskais modelis</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">Lietot laika maskēšanas efektu</entry>
+	  <entry id="32305" string="Stream format">Straumes formāts</entry>
+	  <entry id="32306" string="Enforce strict ISO compliance">Pieprasīt stingru atbilstību ISO standartam</entry>
+	  <entry id="32307" string="automatic">automātiski</entry>
+	  <entry id="32308" string="always">vienmēr</entry>
+	</section>
+
+	<section name="Audio processing">
+	  <entry id="32400" string="Highpass filter">Augšlaides filtrs</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Iestatīt augšlaides frekvenci (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Iestatīt augšlaides joslas platumu (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">Apakšlaides filtrs</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Iestatīt apakšlaides frekvenci (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Iestatīt apakšlaides joslas platumu (Hz)</entry>
+	  <entry id="32406" string="Misc settings">Dažādi iestatījumi</entry>
+	  <entry id="32407" string="Disable all filtering">Atspējot visu filtrēšanu</entry>
+	</section>
+      </section>
+
+      <section name="AAC">
+	<entry id="33000" string="Codec">Kodeks</entry>
+	<entry id="33001" string="Quality">Kvalitāte</entry>
+	<entry id="33002" string="Format">Formāts</entry>
+
+	<section name="Codec">
+	  <entry id="33100" string="Audio codec">Audio kodeks</entry>
+	</section>
+
+	<section name="Quality">
+	  <entry id="33200" string="Bitrate">Bitu ātrums</entry>
+	  <entry id="33201" string="Bitrate / Quality">Bitu ātrums / kvalitāte</entry>
+	  <entry id="33202" string="Bitrate per channel">Bitu ātrums uz kanālu</entry>
+	  <entry id="33203" string="Set quality">Iestatīt kvalitāti</entry>
+	  <entry id="33204" string="Stereo mode">Stereo režīms</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Atļaut Joint Stereo</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Lietot Temporal Noise Shaping</entry>
+	  <entry id="33208" string="Maximum bandwidth">Maksimālais joslas platums</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maksimālais izmantojamais AAC frekvenču joslas platums (Hz)</entry>
+	  <entry id="33210" string="worse">sliktāka</entry>
+	  <entry id="33211" string="better">labāka</entry>
+	  <entry id="33212" string="auto">automātiski</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="33300" string="MPEG version">MPEG versija</entry>
+	  <entry id="33301" string="AAC object type">AAC objekta tips</entry>
+	  <entry id="33302" string="File format">Faila formāts</entry>
+	  <entry id="33303" string="File extension">Faila paplašinājums</entry>
+	  <entry id="33304" string="Tags">Tagi</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Atļaut ID3v2 tagus AAC failos</entry>
+	  <entry id="33306" string="Note">Piezīme</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Dažiem atskaņotājiem var būt problēmas atskaņot AAC&#10;failus ar pievienotiem ID3 tagiem. Lietojiet šo opciju tikai tad,&#10;ja esat pārliecināts, ka jūsu atskaņotājs spēj apstrādāt šos tagus.</entry>
+	</section>
+      </section>
+
+      <section name="FLAC">
+	<entry id="34000" string="Basic">Pamata</entry>
+	<entry id="34001" string="Format">Formāts</entry>
+	<entry id="34002" string="Expert">Ekspertiem</entry>
+
+	<section name="Basic">
+	  <entry id="34100" string="Presets">Sagataves</entry>
+	  <entry id="34101" string="Use preset">Lietot sagatavi</entry>
+	  <entry id="34102" string="Custom settings">Pielāgoti iestatījumi</entry>
+	  <entry id="34103" string="Fastest encoding">Ātrākā kodēšana</entry>
+	  <entry id="34104" string="Best compression">Labākā saspiešana</entry>
+	  <entry id="34105" string="Stereo mode">Stereo režīms</entry>
+	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">Adaptīvais Joint Stereo</entry>
+	  <entry id="34108" string="File format">Faila formāts</entry>
+	  <entry id="34109" string="Default">Noklusējums</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="34200" string="Use streamable subset">Lietot straumēšanai piemēroto apakškopu</entry>
+	  <entry id="34201" string="Blocksize">Bloka izmērs</entry>
+	  <entry id="34202" string="%1 samples">%1 nolases</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="34300" string="Signal processing">Signālu apstrāde</entry>
+	  <entry id="34301" string="Window function(s)">Loga funkcija(s)</entry>
+	  <entry id="34302" string="Note">Piezīme</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Vairākas funkcijas var norādīt, atdalot tās ar semikoliem.</entry>
+	  <entry id="34304" string="Linear predictor">Lineārais prognozētājs</entry>
+	  <entry id="34305" string="Maximum LPC order">Maksimālā LPC kārta</entry>
+	  <entry id="34306" string="disabled">atspējots</entry>
+	  <entry id="34307" string="Exhaustive model search">Izsmeļoša modeļu meklēšana</entry>
+	  <entry id="34308" string="Quantized LPC precision">Kvantētā LPC precizitāte</entry>
+	  <entry id="34309" string="auto">automātiski</entry>
+	  <entry id="34310" string="Optimize LPC quantization">Optimizēt LPC kvantēšanu</entry>
+	  <entry id="34311" string="Residual coding">Atlikuma kodēšana</entry>
+	  <entry id="34312" string="Minimum partition order">Minimālā sadalījuma kārta</entry>
+	  <entry id="34313" string="Maximum partition order">Maksimālā sadalījuma kārta</entry>
+	</section>
+      </section>
+
+      <section name="Vorbis">
+	<entry id="35000" string="Encoding Mode">Kodēšanas režīms</entry>
+	<entry id="35001" string="Variable Bitrate">Mainīgs bitu ātrums</entry>
+	<entry id="35002" string="Average Bitrate">Vidējs bitu ātrums</entry>
+	<entry id="35003" string="Quality">Kvalitāte</entry>
+	<entry id="35004" string="Bitrate">Bitu ātrums</entry>
+	<entry id="35005" string="Minimum bitrate">Minimālais bitu ātrums</entry>
+	<entry id="35006" string="Average bitrate">Vidējais bitu ātrums</entry>
+	<entry id="35007" string="Maximum bitrate">Maksimālais bitu ātrums</entry>
+	<entry id="35008" string="File extension">Faila paplašinājums</entry>
+      </section>
+
+      <section name="WMA">
+	<entry id="36000" string="Select codec">Izvēlieties kodeku</entry>
+	<entry id="36001" string="Select codec format">Izvēlieties kodeka formātu</entry>
+	<entry id="36002" string="Codec settings">Kodeka iestatījumi</entry>
+	<entry id="36003" string="Use codec">Lietot kodeku</entry>
+	<entry id="36004" string="Use format">Lietot formātu</entry>
+	<entry id="36005" string="Write uncompressed WMA files">Rakstīt nesaspiestus WMA failus</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Automātiski izvēlēties formātu, balstoties uz iestatījumiem un ievades formātu</entry>
+	<entry id="36007" string="Use VBR encoding">Lietot VBR kodēšanu</entry>
+	<entry id="36008" string="Quality">Kvalitāte</entry>
+	<entry id="36009" string="Target bitrate">Mērķa bitu ātrums</entry>
+	<entry id="36010" string="Use 2-pass encoding">Lietot divu piegājienu kodēšanu</entry>
+      </section>
+
+      <section name="TwinVQ">
+	<entry id="37000" string="Bitrate">Bitu ātrums</entry>
+	<entry id="37001" string="Bitrate per channel">Bitu ātrums uz kanālu</entry>
+	<entry id="37002" string="Preselection">Priekšatlase</entry>
+	<entry id="37003" string="Number of preselection candidates">Priekšatlases kandidātu skaits</entry>
+      </section>
+
+      <section name="Monkey's Audio">
+	<entry id="38000" string="Compression">Saspiešana</entry>
+	<entry id="38001" string="Compression mode">Saspiešanas režīms</entry>
+	<entry id="38002" string="Fast">Ātrs</entry>
+	<entry id="38003" string="Normal">Normāls</entry>
+	<entry id="38004" string="High">Augsts</entry>
+	<entry id="38005" string="Extra high">Īpaši augsts</entry>
+	<entry id="38006" string="Insane">Ekstrēms</entry>
+      </section>
+
+      <section name="Speex">
+	<entry id="39000" string="Profile">Profils</entry>
+	<entry id="39001" string="Select encoding profile">Izvēlieties kodēšanas profilu</entry>
+	<entry id="39002" string="auto">automātiski</entry>
+	<entry id="39003" string="Narrowband (8 kHz)">Šaurjosla (8 kHz)</entry>
+	<entry id="39004" string="Wideband (16 kHz)">Platjosla (16 kHz)</entry>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)">Ultraplatjosla (32 kHz)</entry>
+	<entry id="39006" string="VBR mode">VBR režīms</entry>
+	<entry id="39007" string="CBR (no VBR)">CBR (bez VBR)</entry>
+	<entry id="39008" string="VBR">VBR</entry>
+	<entry id="39009" string="ABR">ABR</entry>
+	<entry id="39010" string="Options">Opcijas</entry>
+	<entry id="39011" string="Voice Activity Detection">Balss aktivitātes noteikšana</entry>
+	<entry id="39012" string="Discontinuous Transmission">Pārtraukta pārraide</entry>
+	<entry id="39013" string="Algorithm complexity">Algoritma sarežģītība</entry>
+	<entry id="39014" string="Complexity">Sarežģītība</entry>
+	<entry id="39015" string="CBR quality">CBR kvalitāte</entry>
+	<entry id="39016" string="VBR quality">VBR kvalitāte</entry>
+	<entry id="39017" string="ABR target bitrate">ABR mērķa bitu ātrums</entry>
+	<entry id="39018" string="Bitrate">Bitu ātrums</entry>
+	<entry id="39019" string="Quality">Kvalitāte</entry>
+	<entry id="39020" string="Max. bitrate">Maks. bitu ātrums</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40000" string="Basic settings">Pamata iestatījumi</entry>
+	<entry id="40001" string="Encoding mode">Kodēšanas režīms</entry>
+	<entry id="40002" string="auto">automātiski</entry>
+	<entry id="40003" string="Voice">Balss</entry>
+	<entry id="40004" string="Music">Mūzika</entry>
+	<entry id="40005" string="Bandwidth">Joslas platums</entry>
+	<entry id="40006" string="Narrowband">Šaurjosla</entry>
+	<entry id="40007" string="Mediumband">Vidējjosla</entry>
+	<entry id="40008" string="Wideband">Platjosla</entry>
+	<entry id="40009" string="Superwideband">Superplatjosla</entry>
+	<entry id="40010" string="Fullband">Pilna josla</entry>
+	<entry id="40011" string="File extension">Faila paplašinājums</entry>
+	<entry id="40012" string="Variable bitrate">Mainīgs bitu ātrums</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">Iespējot kodēšanu ar mainīgu bitu ātrumu</entry>
+	<entry id="40014" string="Constrain bitrate to target value">Ierobežot bitu ātrumu līdz mērķa vērtībai</entry>
+	<entry id="40015" string="Quality">Kvalitāte</entry>
+	<entry id="40016" string="Bitrate">Bitu ātrums</entry>
+	<entry id="40017" string="Complexity">Sarežģītība</entry>
+	<entry id="40018" string="Stream">Straume</entry>
+	<entry id="40019" string="Frame length">Kadra garums</entry>
+	<entry id="40020" string="Options">Opcijas</entry>
+	<entry id="40021" string="Enable discontinuous transmission">Iespējot pārtrauktu pārraidi</entry>
+	<entry id="40022" string="Expected packet loss">Gaidāmais paku zudums</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion">Atspējot intensitātes stereo fāzes inversiju</entry>
+      </section>
+
+      <section name="SndFile">
+	<entry id="41000" string="Output format">Izvades formāts</entry>
+	<entry id="41001" string="File format">Faila formāts</entry>
+	<entry id="41002" string="Audio format">Audio formāts</entry>
+	<entry id="41003" string="mono">mono</entry>
+	<entry id="41004" string="auto select">automātiska izvēle</entry>
+
+	<section name="Errors">
+	  <entry id="41100" string="Could not find suitable audio format.">Neizdevās atrast piemērotu audio formātu.</entry>
+	  <entry id="41101" string="Unable to use selected audio format.">Nevar lietot izvēlēto audio formātu.</entry>
+	</section>
+      </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">Kodētāji</entry>
+	<entry id="42001" string="Available">Pieejamie</entry>
+	<entry id="42002" string="Selected">Izvēlētie</entry>
+	<entry id="42003" string="Configure encoder">Konfigurēt kodētāju</entry>
+	<entry id="42004" string="Options">Opcijas</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Katram izvades formātam izveidot atsevišķu mapi</entry>
+      </section>
+    </section>
+
+    <section name="DSP">
+
+      <section name="Format">
+	<entry id="50000" string="Sample format">Nolašu formāts</entry>
+	<entry id="50001" string="Number format">Skaitļu formāts</entry>
+	<entry id="50002" string="Sample resolution">Nolases izšķirtspēja</entry>
+	<entry id="50003" string="bit">biti</entry>
+	<entry id="50004" string="unsigned">bez zīmes</entry>
+	<entry id="50005" string="Integer">Vesels skaitlis</entry>
+	<entry id="50006" string="Float">Peldošais punkts</entry>
+	<entry id="50007" string="Dithering">Ditērēšana</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Samazinot nolases izšķirtspēju, lietot ditērēšanu</entry>
+	<entry id="50009" string="Dither type">Ditērēšanas tips</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50100" string="Output channels">Izvades kanāli</entry>
+	<entry id="50101" string="Channel configuration">Kanālu konfigurācija</entry>
+	<entry id="50102" string="Mono">Mono</entry>
+	<entry id="50103" string="Stereo">Stereo</entry>
+	<entry id="50104" string="Switch stereo channels">Apmainīt stereo kanālus</entry>
+      </section>
+
+      <section name="Resample">
+	<entry id="50200" string="Converter">Pārveidotājs</entry>
+	<entry id="50201" string="Sampling rate">Iztveršanas frekvence</entry>
+	<entry id="50202" string="Output sampling rate">Izvades iztveršanas frekvence</entry>
+      </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls">Pamata vadība</entry>
+	<entry id="50301" string="Tempo">Temps</entry>
+	<entry id="50302" string="Pitch">Tonis</entry>
+	<entry id="50303" string="Semitones">Pustoņi</entry>
+	<entry id="50304" string="Advanced options">Papildu opcijas</entry>
+	<entry id="50305" string="Transient detection">Transientu noteikšana</entry>
+	<entry id="50306" string="Compound">Kombinēta</entry>
+	<entry id="50307" string="Percussive">Perkusīva</entry>
+	<entry id="50308" string="Soft">Mīksta</entry>
+	<entry id="50309" string="Transient handling">Transientu apstrāde</entry>
+	<entry id="50310" string="Crisp">Asa</entry>
+	<entry id="50311" string="Mixed">Jaukta</entry>
+	<entry id="50312" string="Smooth">Gluda</entry>
+	<entry id="50313" string="Transformation window">Transformācijas logs</entry>
+	<entry id="50314" string="Standard">Standarta</entry>
+	<entry id="50315" string="Short">Īss</entry>
+	<entry id="50316" string="Long">Garš</entry>
+	<entry id="50317" string="Use time-domain smoothing">Lietot izlīdzināšanu laika apgabalā</entry>
+	<entry id="50318" string="Phase handling">Fāzes apstrāde</entry>
+	<entry id="50319" string="Laminar">Lamināra</entry>
+	<entry id="50320" string="Independent">Neatkarīga</entry>
+	<entry id="50321" string="Formant handling">Formantu apstrāde</entry>
+	<entry id="50322" string="Shift">Nobīdīt</entry>
+	<entry id="50323" string="Preserve">Saglabāt</entry>
+	<entry id="50324" string="Pitch processing">Toņa apstrāde</entry>
+	<entry id="50325" string="High quality">Augsta kvalitāte</entry>
+	<entry id="50326" string="High speed">Liels ātrums</entry>
+	<entry id="50327" string="High consistency">Augsta konsekvence</entry>
+	<entry id="50328" string="Stereo processing">Stereo apstrāde</entry>
+	<entry id="50329" string="Separate">Atsevišķa</entry>
+	<entry id="50330" string="Combined">Apvienota</entry>
+      </section>
+
+      <section name="RNNoise">
+	<entry id="50400" string="Signal/noise type">Signāla/trokšņa tips</entry>
+	<entry id="50401" string="Signal type">Signāla tips</entry>
+	<entry id="50402" string="Noise type">Trokšņa tips</entry>
+	<entry id="50403" string="General">Vispārīgs</entry>
+	<entry id="50404" string="Recording">Ieraksts</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">Balss (t. sk. smiekli u. c.)</entry>
+	<entry id="50406" string="Speech">Runa</entry>
+      </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Izvades kanāli</entry>
+	<entry id="50501" string="Channel configuration">Kanālu konfigurācija</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel">Novirzīt zemās frekvences uz LFE kanālu</entry>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment">Skaļuma pielāgošana</entry>
+	<entry id="50601" string="Adjustment">Pielāgojums</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">Nodaļu formāts</entry>
+	<entry id="60001" string="both">abi</entry>
+      </section>
+    </section>
+
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Konfigurēt AccurateRip</entry>
+	<entry id="70001" string="General settings">Vispārīgie iestatījumi</entry>
+	<entry id="70002" string="Enable AccurateRip">Iespējot AccurateRip</entry>
+	<entry id="70003" string="Database URL">Datubāzes URL</entry>
+	<entry id="70004" string="Cache">Kešatmiņa</entry>
+	<entry id="70005" string="Enable cache">Iespējot kešatmiņu</entry>
+	<entry id="70006" string="Expires after">Derīguma termiņš</entry>
+	<entry id="70007" string="%1 day(s)">%1 diena(s)</entry>
+	<entry id="70008" string="%1 week(s)">%1 nedēļa(s)</entry>
+	<entry id="70009" string="%1 month(s)">%1 mēnesis(-ši)</entry>
+	<entry id="70010" string="%1 year(s)">%1 gads(-i)</entry>
+	<entry id="70011" string="never">nekad</entry>
+	<entry id="70012" string="Drives">Diskdziņi</entry>
+	<entry id="70013" string="Drive">Diskdzinis</entry>
+	<entry id="70014" string="Offset configuration">Nobīdes konfigurācija</entry>
+	<entry id="70015" string="Offset in drive database">Nobīde diskdziņu datubāzē</entry>
+	<entry id="70016" string="Detected offset">Noteiktā nobīde</entry>
+	<entry id="70017" string="Configured offset">Konfigurētā nobīde</entry>
+	<entry id="70018" string="Detect offset now">Noteikt nobīdi tagad</entry>
+	<entry id="70019" string="not configured">nav konfigurēta</entry>
+	<entry id="70020" string="automatically configured">konfigurēta automātiski</entry>
+	<entry id="70021" string="configured by offset detection">konfigurēta, nosakot nobīdi</entry>
+	<entry id="70022" string="manually configured">konfigurēta manuāli</entry>
+	<entry id="70023" string="not present">nav pieejama</entry>
+	<entry id="70024" string="not detected">nav noteikta</entry>
+	<entry id="70025" string="disabled">atspējota</entry>
+	<entry id="70026" string="Options">Opcijas</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">Paziņot, ja disks datubāzē nav atrasts</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Paziņot, ja visi celiņi ir veiksmīgi pārbaudīti</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">AccurateRip konfigurācija</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Jūsu CD diskdzinis netika atrasts AccurateRip datubāzē.&#10;&#10;Diskdziņa nosaukums: %1&#10;&#10;Vai vēlaties tagad veikt automātisku diskdziņa nobīdes noteikšanu?</entry>
+	  <entry id="70052" string="Do not ask again">Vairs nevaicāt</entry>
+	  <entry id="70053" string="AccurateRip offset detection">AccurateRip nobīdes noteikšana</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Ievietotais disks netika atrasts AccurateRip datubāzē.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Lūdzu, ievietojiet CD diskdzinī citu disku un noklikšķiniet uz Labi.&#10;&#10;Diskam jābūt AccurateRip datubāzē. Vislielākā iespēja tam ir&#10;populāriem CD, kurus, visticamāk, jau iepriekš izvilkuši citi lietotāji.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Nobīdes noteikšanai nepieciešams pārbaudīt vēl vienu disku.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Diskdziņa nobīde ir veiksmīgi noteikta un konfigurēta uz %1 nolasēm.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">Visi celiņi veiksmīgi pārbaudīti ar AccurateRip.</entry>
+	</section>
+      </section>
+    </section>
+
+    <section name="External">
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Pārveidot daudzkanālu audio uz stereo</entry>
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">Kvalitāte</entry>
+	<entry id="80101" string="poor">zema</entry>
+	<entry id="80102" string="excellent">izcila</entry>
+	<entry id="80103" string="Mid/Side stereo mode">Mid/Side stereo režīms</entry>
+	<entry id="80104" string="off">izslēgts</entry>
+	<entry id="80105" string="reduced">samazināts</entry>
+	<entry id="80106" string="on">ieslēgts</entry>
+	<entry id="80107" string="decoupled">atsaistīts</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">uzlabots 1,5/3 dB</entry>
+	<entry id="80109" string="enhanced 2/6 dB">uzlabots 2/6 dB</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">uzlabots 2,5/9 dB</entry>
+	<entry id="80111" string="enhanced 3/12 dB">uzlabots 3/12 dB</entry>
+	<entry id="80112" string="enhanced 3/inf dB">uzlabots 3/inf dB</entry>
+	<entry id="80113" string="Adaptive noise shaping order">Adaptīvās trokšņu veidošanas kārta</entry>
+	<entry id="80114" string="high">augsta</entry>
+	<entry id="80115" string="Clear Voice Detection">Clear Voice noteikšana</entry>
+	<entry id="80116" string="dual">dubulta</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80200" string="Encoding mode">Kodēšanas režīms</entry>
+	<entry id="80201" string="fast">ātrs</entry>
+	<entry id="80202" string="normal">normāls</entry>
+	<entry id="80203" string="high">augsts</entry>
+	<entry id="80204" string="extra">īpaši augsts</entry>
+	<entry id="80205" string="best">labākais</entry>
+	<entry id="80206" string="high, new">augsts, jauns</entry>
+	<entry id="80207" string="extra, new">īpaši augsts, jauns</entry>
+	<entry id="80208" string="best, new">labākais, jauns</entry>
+	<entry id="80209" string="Add MD5 checksum">Pievienot MD5 kontrolsummu</entry>
+	<entry id="80210" string="Seeking">Pozicionēšana</entry>
+	<entry id="80211" string="slow">lēna</entry>
+	<entry id="80212" string="minimum">minimāla</entry>
+	<entry id="80213" string="Optimization">Optimizācija</entry>
+	<entry id="80214" string="disabled">atspējota</entry>
+	<entry id="80215" string="low">zema</entry>
+      </section>
+
+      <section name="Tom's Audiokompressor">
+	<entry id="80300" string="Encoder preset">Kodētāja sagatave</entry>
+	<entry id="80301" string="fastest">ātrākā</entry>
+	<entry id="80302" string="strongest">spēcīgākā</entry>
+	<entry id="80303" string="Frame size limit">Kadra izmēra ierobežojums</entry>
+	<entry id="80304" string="Add MD5 checksum">Pievienot MD5 kontrolsummu</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80400" string="Enable lossy compression">Iespējot saspiešanu ar zudumiem</entry>
+	<entry id="80401" string="Compression mode">Saspiešanas režīms</entry>
+	<entry id="80402" string="fast">ātrs</entry>
+	<entry id="80403" string="high quality">augsta kvalitāte</entry>
+	<entry id="80404" string="very high quality">ļoti augsta kvalitāte</entry>
+	<entry id="80405" string="Extra encode processing">Papildu kodēšanas apstrāde</entry>
+	<entry id="80406" string="faster">ātrāka</entry>
+	<entry id="80407" string="better">labāka</entry>
+	<entry id="80408" string="%1 kbps">%1 kbit/s</entry>
+	<entry id="80409" string="Create correction file">Izveidot korekcijas failu</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80500" string="Encoding mode">Kodēšanas režīms</entry>
+	<entry id="80501" string="auto">automātiski</entry>
+	<entry id="80502" string="Quality">Kvalitāte</entry>
+	<entry id="80503" string="worse">sliktāka</entry>
+	<entry id="80504" string="better">labāka</entry>
+	<entry id="80505" string="Bitrate">Bitu ātrums</entry>
+	<entry id="80506" string="Bitrate (Streaming)">Bitu ātrums (straumēšana)</entry>
+	<entry id="80507" string="%1 kbps">%1 kbit/s</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">Bitu ātrums</entry>
+	<entry id="80601" string="%1 kbps">%1 kbit/s</entry>
+      </section>
+    </section>
+
+    <section name="Extensions">
+
+      <section name="Donate">
+	<entry id="100000" string="Support this project">Atbalstiet šo projektu</entry>
+	<entry id="100001" string="Please support this project!">Lūdzu, atbalstiet šo projektu!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Lūdzu, palīdziet saglabāt šo programmatūru brīvu, atbalstot %1&#10;projektu ar ziedojumu.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Ja vēlaties nosūtīt čeku vai naudu pa pastu, lūdzu, rakstiet uz&#10;%1.</entry>
+	<entry id="100004" string="Thank you very much!">Liels paldies!</entry>
+	<entry id="100005" string="Remind me later">Atgādināt vēlāk</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
+	<entry id="100007" string="Donate to the %1 project">Ziedot %1 projektam</entry>
+
+	<section name="PayPal">
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Izvēlieties summu un noklikšķiniet uz pogas, lai ziedotu ar PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Naudu ar PayPal var nosūtīt arī tieši uz %1.</entry>
+	  <entry id="100102" string="usd">eur</entry>
+	  <entry id="100103" string="$%1">%1 €</entry>
+	  <entry id="100104" string="10,15,20,other amount">10,15,20,cita summa</entry>
+	  <entry id="100105" string="monthly recurring">ik mēnesi atkārtoti</entry>
+	  <entry id="100106" string="Donate">Ziedot</entry>
+	</section>
+
+	<section name="Donorbox">
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox ļauj ātri un vienkārši ziedot ar kredītkarti. Noklikšķiniet uz šīs&#10;pogas, lai ziedotu ar Donorbox:</entry>
+	  <entry id="100201" string="Donate">Ziedot</entry>
+	  <entry id="100202" string="usd">eur</entry>
+	</section>
+
+	<section name="Bitcoin">
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Lai ziedotu Bitcoin, lūdzu, noskenējiet QR kodu, noklikšķiniet uz tā&#10;vai nokopējiet šo adresi:</entry>
+	</section>
+
+	<section name="Ethereum">
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Lai ziedotu Ethereum, lūdzu, noskenējiet QR kodu, noklikšķiniet uz tā&#10;vai nokopējiet šo adresi:</entry>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Šī adrese pieņem arī Ether Classic un ERC20 marķierus.</entry>
+	</section>
+
+	<section name="SEPA">
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Jūs varat ziedot, veicot elektronisku pārskaitījumu uz šo&#10;kontu:</entry>
+	  <entry id="100501" string="Account holder:">Konta turētājs:</entry>
+	  <entry id="100502" string="IBAN:">IBAN:</entry>
+	  <entry id="100503" string="BIC:">BIC:</entry>
+	</section>
+      </section>
+
+      <section name="Winamp Adapter">
+	<entry id="101000" string="Configure">Konfigurēt</entry>
+	<entry id="101001" string="About">Par</entry>
+      </section>
+
+      <section name="Video Downloader">
+	<entry id="102000" string="Video">Video</entry>
+	<entry id="102001" string="Enter video URL here">Šeit ievadiet video URL</entry>
+	<entry id="102002" string="Download">Lejupielādēt</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Automātiski lejupielādēt starpliktuvē nokopētos URL</entry>
+	<entry id="102004" string="Save downloaded video files">Saglabāt lejupielādētos video failus</entry>
+	<entry id="102005" string="Video downloads">Video lejupielādes</entry>
+	<entry id="102006" string="Downloaded tracks">Lejupielādētie celiņi</entry>
+	<entry id="102007" string="Uploader">Augšupielādētājs</entry>
+	<entry id="102008" string="Video URL">Video URL</entry>
+	<entry id="102009" string="Video title">Video nosaukums</entry>
+	<entry id="102010" string="Video description">Video apraksts</entry>
+	<entry id="102011" string="Site name">Vietnes nosaukums</entry>
+	<entry id="102012" string="Uploaded by">Augšupielādēja</entry>
+	<entry id="102013" string="Uploaded on">Augšupielādēts</entry>
+	<entry id="102014" string="Length">Garums</entry>
+	<entry id="102015" string="Size">Izmērs</entry>
+	<entry id="102016" string="Cancel download">Atcelt lejupielādi</entry>
+	<entry id="102017" string="unknown">nezināms</entry>
+	<entry id="102018" string="Note">Piezīme</entry>
+
+	<section name="Configuration">
+	  <entry id="102101" string="Automatization">Automatizācija</entry>
+	  <entry id="102102" string="Video files">Video faili</entry>
+	  <entry id="102103" string="Select">Izvēlēties</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">Izvēlieties mapi, kurā saglabāt lejupielādētos video failus</entry>
+	  <entry id="102105" string="Downloads">Lejupielādes</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">Maksimālais vienlaicīgo lejupielāžu skaits</entry>
+	  <entry id="102107" string="Output format">Izvades formāts</entry>
+	  <entry id="102108" string="keep original format">saglabāt oriģinālo formātu</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">Šis URL nav atbalstīts vai arī nav video lapas URL!</entry>
+	  <entry id="102202" string="Error downloading video!">Kļūda, lejupielādējot video!</entry>
+	  <entry id="102203" string="You are already downloading this video!">Šis video jau tiek lejupielādēts!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Dažus nepieciešamos video dekodētājus neizdevās atrast. Video failus&#10;nevar pievienot uzdevumu sarakstam konvertēšanai uz audio failiem.&#10;&#10;Lai novērstu šo problēmu, lūdzu, instalējiet FFmpeg vai avconv!</entry>
+	</section>
+      </section>
+
+      <section name="Tag Editor">
+	<entry id="103000" string="Tags">Tagi</entry>
+	<entry id="103001" string="Length">Garums</entry>
+	<entry id="103002" string="Size">Izmērs</entry>
+	<entry id="103003" string="Albums">Albumi</entry>
+	<entry id="103004" string="Files">Faili</entry>
+	<entry id="103005" string="File">Fails</entry>
+	<entry id="103006" string="Tracks">Celiņi</entry>
+	<entry id="103007" string="Save">Saglabāt</entry>
+	<entry id="103008" string="Save all">Saglabāt visu</entry>
+	<entry id="103009" string="no audio files found">audio faili nav atrasti</entry>
+
+	<section name="Basic">
+	  <entry id="103100" string="Basic">Pamata</entry>
+	  <entry id="103101" string="Title information">Informācija par nosaukumu</entry>
+	  <entry id="103102" string="Disc">Disks</entry>
+	  <entry id="103103" string="Album art">Vāka attēli</entry>
+	  <entry id="103104" string="Artwork">Vāki</entry>
+	  <entry id="103105" string="Type">Tips</entry>
+	  <entry id="103106" string="Description">Apraksts</entry>
+	  <entry id="103107" string="Add">Pievienot</entry>
+	  <entry id="103108" string="Remove">Noņemt</entry>
+	</section>
+
+	<section name="Details">
+	  <entry id="103200" string="Details">Detaļas</entry>
+	  <entry id="103201" string="Detailed information">Detalizēta informācija</entry>
+	  <entry id="103202" string="Band / orchestra">Grupa / orķestris</entry>
+	  <entry id="103205" string="Lyrics writer">Vārdu autors</entry>
+	  <entry id="103206" string="Modified / remixed by">Pārveidojis / miksējis</entry>
+	  <entry id="103207" string="Original information">Informācija par oriģinālu</entry>
+	  <entry id="103208" string="Original artist">Oriģināla izpildītājs</entry>
+	  <entry id="103209" string="Original album">Oriģināla albums</entry>
+	  <entry id="103210" string="Original lyrics writer">Oriģināla vārdu autors</entry>
+	  <entry id="103211" string="Original release year">Oriģināla izdošanas gads</entry>
+	  <entry id="103212" string="Musical key/tempo">Tonalitāte/temps</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key">Sākuma tonalitāte</entry>
+	</section>
+
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Izdevējs</entry>
+	  <entry id="103301" string="Publisher information">Informācija par izdevēju</entry>
+	  <entry id="103302" string="Publisher / label">Izdevējs / izdevniecība</entry>
+	  <entry id="103303" string="Media type">Datu nesēja tips</entry>
+	  <entry id="103304" string="Catalog number">Kataloga numurs</entry>
+	  <entry id="103305" string="Barcode">Svītrkods</entry>
+	  <entry id="103307" string="Webpage URLs">Tīmekļa lapu URL</entry>
+	  <entry id="103308" string="Artist webpage">Izpildītāja tīmekļa lapa</entry>
+	  <entry id="103309" string="Publisher webpage">Izdevēja tīmekļa lapa</entry>
+	  <entry id="103310" string="Internet radio station">Interneta radiostacija</entry>
+	  <entry id="103311" string="Audio source webpage">Audio avota tīmekļa lapa</entry>
+	  <entry id="103312" string="Copyright information">Informācija par autortiesībām</entry>
+	  <entry id="103313" string="Commercial information">Komerciālā informācija</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Dziesmas vārdi</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Vērtējums</entry>
+	  <entry id="103361" string="none">nav</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Uzvedība</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Notīrīt albuma izpildītāja lauku, ja tas sakrīt ar celiņa izpildītāju</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Nevar atvērt failu: %1&#10;&#10;Kļūda: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Nevar atjaunināt tagu: %1&#10;&#10;Kļūda: %2</entry>
+	</section>
+      </section>
+
+      <section name="Logging">
+	<entry id="104000" string="Logs">Žurnāli</entry>
+	<entry id="104001" string="Log">Žurnāls</entry>
+	<entry id="104002" string="Save as">Saglabāt kā</entry>
+	<entry id="104003" string="Log Files">Žurnāla faili</entry>
+	<entry id="104004" string="Time">Laiks</entry>
+	<entry id="104005" string="Message">Ziņojums</entry>
+
+	<section name="Configuration">
+	  <entry id="104100" string="User interface">Lietotāja saskarne</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Rādīt cilni Žurnāli galvenajā logā</entry>
+	  <entry id="104102" string="Log files">Žurnāla faili</entry>
+	  <entry id="104103" string="Archive log files">Arhivēt žurnāla failus</entry>
+	  <entry id="104104" string="Log file folder">Žurnāla failu mape</entry>
+	  <entry id="104105" string="Select">Izvēlēties</entry>
+	  <entry id="104106" string="Select the folder for saving log files">Izvēlieties mapi žurnāla failu saglabāšanai</entry>
+	  <entry id="104107" string="Delete old log files after">Dzēst vecos žurnāla failus pēc</entry>
+	  <entry id="104108" string="days">dienām</entry>
+	  <entry id="104109" string="Conversion logs">Konvertēšanas žurnāli</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">Saglabāt konvertēšanas žurnālus kopā ar audio failiem</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">Tikai audio CD izvilkšanas žurnālus</entry>
+	  <entry id="104112" string="Filename pattern">Faila nosaukuma šablons</entry>
+	  <entry id="104113" string="Log complete file paths">Žurnalēt pilnus failu ceļus</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<entry id="105000" string="Conversion process finished!">Konvertēšanas process pabeigts!</entry>
+
+	<section name="Configuration">
+	  <entry id="105100" string="Notifications">Paziņojumi</entry>
+	  <entry id="105101" string="Notify on finished conversion">Paziņot par pabeigtu konvertēšanu</entry>
+	  <entry id="105102" string="Play sound">Atskaņot skaņu</entry>
+	  <entry id="105103" string="Display message">Rādīt ziņojumu</entry>
+	  <entry id="105104" string="Select">Izvēlēties</entry>
+	  <entry id="105105" string="Only for conversions running longer than">Tikai konvertēšanām, kas ilgākas par</entry>
+	  <entry id="105106" string="second(s)">sekunde(s)</entry>
+	  <entry id="105107" string="minute(s)">minūte(s)</entry>
+	</section>
+      </section>
+    </section>
+  </data>
+</LangFile>
