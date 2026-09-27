@@ -40,6 +40,75 @@ using namespace smooth::GUI::Dialogs;
 using namespace BoCA;
 using namespace BoCA::AS;
 
+/* Lists of tag values are the same if they hold the same values in the same order.
+ */
+static Bool HaveSameValues(const Array<String> &values1, const Array<String> &values2)
+{
+	if (values1.Length() != values2.Length()) return False;
+
+	for (Int i = 0; i < values1.Length(); i++) if (values1.GetNth(i) != values2.GetNth(i)) return False;
+
+	return True;
+}
+
+/* The user defined text and URL keys hold independent fields of the
+ * form "<description>:|:<value>". Each description is compared on its
+ * own; all values of any other key form one group.
+ */
+static String GetValueGroup(const String &key, const String &value)
+{
+	if (key != INFO_USERTEXT && key != INFO_WEB_USERURL) return NIL;
+
+	Int	 separator = value.Find(":|:");
+
+	return separator >= 0 ? value.Head(separator) : value;
+}
+
+static Array<String> GetValueGroups(const Info &info, const String &key)
+{
+	const Array<String>	 values = Info::GetOtherInfoList(&info, key);
+	Array<String>		 groups;
+
+	foreach (const String &value, values)
+	{
+		String	 group = GetValueGroup(key, value);
+		Bool	 known = False;
+
+		foreach (const String &knownGroup, groups) if (knownGroup == group) { known = True; break; }
+
+		if (!known) groups.Add(group);
+	}
+
+	return groups;
+}
+
+static Array<String> GetGroupValues(const Info &info, const String &key, const String &group)
+{
+	const Array<String>	 all = Info::GetOtherInfoList(&info, key);
+	Array<String>		 values;
+
+	foreach (const String &value, all)
+	{
+		if (GetValueGroup(key, value) == group) values.Add(value);
+	}
+
+	return values;
+}
+
+static Void RemoveGroupValues(Info &info, const String &key, const String &group)
+{
+	const Array<String>	 values = Info::GetOtherInfoList(&info, key);
+	Array<String>		 remaining;
+
+	foreach (const String &value, values)
+	{
+		if (GetValueGroup(key, value) != group) remaining.Add(value);
+	}
+
+	info.SetOtherInfo(key, NIL);
+	Info::AddOtherInfo(&info, key, remaining);
+}
+
 Int					 freac::JobConvert::conversionCount	= 0;
 
 Array<freac::JobConvert *>		 freac::JobConvert::conversionJobs;
@@ -1662,19 +1731,21 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 		if (chapterInfo.track_gain != singleTrackInfo.track_gain) singleTrackInfo.track_gain = NIL;
 		if (chapterInfo.track_peak != singleTrackInfo.track_peak) singleTrackInfo.track_peak = NIL;
 
-		/* Process other text info.
+		/* Process other text info. A key stays only if every chapter
+		 * has the same list of values for it. A user defined text or
+		 * URL stays if every chapter has the same values for its
+		 * description.
 		 */
-		for (Int i = singleTrackInfo.other.Length() - 1; i >= 0; i--)
+		const Array<String>	 singleTrackKeys = Info::GetOtherInfoKeys(&singleTrackInfo);
+
+		foreach (const String &key, singleTrackKeys)
 		{
-			const String	&singleTrackPair = singleTrackInfo.other.GetNth(i);
-			Bool		 found		 = False;
+			const Array<String>	 groups = GetValueGroups(singleTrackInfo, key);
 
-			foreach (const String &chapterPair, chapterInfo.other)
+			foreach (const String &group, groups)
 			{
-				if (chapterPair == singleTrackPair) { found = True; break; }
+				if (!HaveSameValues(GetGroupValues(singleTrackInfo, key, group), GetGroupValues(chapterInfo, key, group))) RemoveGroupValues(singleTrackInfo, key, group);
 			}
-
-			if (!found) singleTrackInfo.other.RemoveNth(i);
 		}
 
 		/* Process attached pictures.
@@ -1715,19 +1786,21 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 		if (chapterInfo.album_gain == singleTrackInfo.album_gain) chapterInfo.album_gain = NIL;
 		if (chapterInfo.album_peak == singleTrackInfo.album_peak) chapterInfo.album_peak = NIL;
 
-		/* Process other text info.
+		/* Process other text info. A key that the file has with the
+		 * same list of values is removed from the chapter, and so is
+		 * a user defined text or URL that the file has with the same
+		 * values for its description.
 		 */
-		for (Int i = chapterInfo.other.Length() - 1; i >= 0; i--)
+		const Array<String>	 chapterKeys = Info::GetOtherInfoKeys(&chapterInfo);
+
+		foreach (const String &key, chapterKeys)
 		{
-			const String	&chapterPair = chapterInfo.other.GetNth(i);
-			Bool		 found	     = False;
+			const Array<String>	 groups = GetValueGroups(chapterInfo, key);
 
-			foreach (const String &singleTrackPair, singleTrackInfo.other)
+			foreach (const String &group, groups)
 			{
-				if (chapterPair == singleTrackPair) { found = True; break; }
+				if (HaveSameValues(GetGroupValues(chapterInfo, key, group), GetGroupValues(singleTrackInfo, key, group))) RemoveGroupValues(chapterInfo, key, group);
 			}
-
-			if (found) chapterInfo.other.RemoveNth(i);
 		}
 
 		/* Process attached pictures.

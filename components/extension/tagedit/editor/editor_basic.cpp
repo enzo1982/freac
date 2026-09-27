@@ -19,8 +19,6 @@ using namespace smooth::GUI::Dialogs;
 
 BoCA::LayerTagBasic::LayerTagBasic() : Editor("Basic")
 {
-	ignoreSelect = False;
-
 	group_info		= new GroupBox(NIL, Point(7, 10), Size(400, 178));
 
 	text_artist		= new Text(NIL, Point(9, 13));

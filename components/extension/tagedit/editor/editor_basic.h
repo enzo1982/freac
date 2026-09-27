@@ -73,9 +73,6 @@ namespace BoCA
 			Text				*text_albumart_desc;
 			MultiEdit			*edit_albumart_desc;
 
-			Track				 track;
-			Bool				 ignoreSelect;
-
 			EditBox				*GetActiveEditBox();
 
 			Void				 LoadAlbumArt(const Track &);

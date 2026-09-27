@@ -18,8 +18,6 @@ using namespace smooth::GUI::Dialogs;
 
 BoCA::LayerTagPublisher::LayerTagPublisher() : Editor("Publisher")
 {
-	ignoreSelect = False;
-
 	group_publisher		= new GroupBox(NIL, Point(7, 10), Size(400, 147));
 
 	text_publisher		= new Text(NIL, Point(9, 13));
@@ -31,16 +29,19 @@ BoCA::LayerTagPublisher::LayerTagPublisher() : Editor("Publisher")
 	edit_publisher		= new EditBox(text_publisher->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_publisher->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
 
-	edit_mediatype		= new EditBox(text_mediatype->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_mediatype		= new MultiValueEditBox(INFO_MEDIATYPE, text_mediatype, text_mediatype->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_mediatype->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
+	edit_mediatype->onRequestValueList.Connect(&LayerTagPublisher::OnRequestValueList, this);
 
 	list_mediatype		= new List();
 
-	edit_catalog		= new EditBox(text_catalog->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_catalog		= new MultiValueEditBox(INFO_CATALOGNUMBER, text_catalog, text_catalog->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_catalog->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
+	edit_catalog->onRequestValueList.Connect(&LayerTagPublisher::OnRequestValueList, this);
 
-	edit_barcode		= new EditBox(text_barcode->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_barcode		= new MultiValueEditBox(INFO_BARCODE, text_barcode, text_barcode->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_barcode->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
+	edit_barcode->onRequestValueList.Connect(&LayerTagPublisher::OnRequestValueList, this);
 
 	edit_isrc		= new EditBox(text_isrc->GetPosition() + Point(7, -3), Size(300, 0), 12);
 	edit_isrc->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
@@ -312,17 +313,17 @@ Void BoCA::LayerTagPublisher::OnSelectTrack(const Track &nTrack)
 		String	 key   = pair.Head(pair.Find(":"));
 		String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
 
-		if	(key == INFO_MEDIATYPE)	     edit_mediatype->SetText(value);
-		else if	(key == INFO_CATALOGNUMBER)  edit_catalog->SetText(value);
-		else if	(key == INFO_BARCODE)	     edit_barcode->SetText(value);
-
-		else if	(key == INFO_WEB_ARTIST)     edit_wartist->SetText(value);
+		if	(key == INFO_WEB_ARTIST)     edit_wartist->SetText(value);
 		else if	(key == INFO_WEB_PUBLISHER)  edit_wpublisher->SetText(value);
 		else if	(key == INFO_WEB_RADIO)	     edit_wradio->SetText(value);
 		else if	(key == INFO_WEB_SOURCE)     edit_wsource->SetText(value);
 		else if	(key == INFO_WEB_COPYRIGHT)  edit_wcopyright->SetText(value);
 		else if	(key == INFO_WEB_COMMERCIAL) edit_wcommercial->SetText(value);
 	}
+
+	edit_mediatype->SetValues(Info::GetOtherInfoList(&info, INFO_MEDIATYPE));
+	edit_catalog->SetValues(Info::GetOtherInfoList(&info, INFO_CATALOGNUMBER));
+	edit_barcode->SetValues(Info::GetOtherInfoList(&info, INFO_BARCODE));
 
 	EditBox	*activeEditBox = GetActiveEditBox();
 
@@ -367,17 +368,17 @@ Void BoCA::LayerTagPublisher::OnSelectAlbum(const Track &nTrack)
 		String	 key   = pair.Head(pair.Find(":"));
 		String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
 
-		if	(key == INFO_MEDIATYPE)	     edit_mediatype->SetText(value);
-		else if	(key == INFO_CATALOGNUMBER)  edit_catalog->SetText(value);
-		else if	(key == INFO_BARCODE)	     edit_barcode->SetText(value);
-
-		else if	(key == INFO_WEB_ARTIST)     edit_wartist->SetText(value);
+		if	(key == INFO_WEB_ARTIST)     edit_wartist->SetText(value);
 		else if	(key == INFO_WEB_PUBLISHER)  edit_wpublisher->SetText(value);
 		else if	(key == INFO_WEB_RADIO)	     edit_wradio->SetText(value);
 		else if	(key == INFO_WEB_SOURCE)     edit_wsource->SetText(value);
 		else if	(key == INFO_WEB_COPYRIGHT)  edit_wcopyright->SetText(value);
 		else if	(key == INFO_WEB_COMMERCIAL) edit_wcommercial->SetText(value);
 	}
+
+	edit_mediatype->SetValues(Info::GetOtherInfoList(&info, INFO_MEDIATYPE));
+	edit_catalog->SetValues(Info::GetOtherInfoList(&info, INFO_CATALOGNUMBER));
+	edit_barcode->SetValues(Info::GetOtherInfoList(&info, INFO_BARCODE));
 
 	EditBox	*activeEditBox = GetActiveEditBox();
 
@@ -401,9 +402,9 @@ Void BoCA::LayerTagPublisher::OnSelectNone()
 	if (surface) surface->StartPaint(GetVisibleArea());
 
 	edit_publisher->SetText(NIL);
-	edit_mediatype->SetText(NIL);
-	edit_catalog->SetText(NIL);
-	edit_barcode->SetText(NIL);
+	edit_mediatype->SetValues(Array<String>());
+	edit_catalog->SetValues(Array<String>());
+	edit_barcode->SetValues(Array<String>());
 	edit_isrc->SetText(NIL);
 
 	edit_wartist->SetText(NIL);
@@ -432,9 +433,9 @@ Void BoCA::LayerTagPublisher::OnModifyTrack()
 	info.label	= edit_publisher->GetText();
 	info.isrc	= edit_isrc->GetText();
 
-	info.SetOtherInfo(INFO_MEDIATYPE,      edit_mediatype->GetText());
-	info.SetOtherInfo(INFO_CATALOGNUMBER,  edit_catalog->GetText());
-	info.SetOtherInfo(INFO_BARCODE,	       edit_barcode->GetText());
+	if (!edit_mediatype->IsReadOnly()) info.SetOtherInfo(INFO_MEDIATYPE,	 edit_mediatype->GetText());
+	if (!edit_catalog->IsReadOnly())   info.SetOtherInfo(INFO_CATALOGNUMBER, edit_catalog->GetText());
+	if (!edit_barcode->IsReadOnly())   info.SetOtherInfo(INFO_BARCODE,	     edit_barcode->GetText());
 
 	info.SetOtherInfo(INFO_WEB_ARTIST,     edit_wartist->GetText());
 	info.SetOtherInfo(INFO_WEB_PUBLISHER,  edit_wpublisher->GetText());
