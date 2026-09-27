@@ -31,33 +31,33 @@ namespace BoCA
 			GroupBox			*group_details;
 
 			Text				*text_albumartist;
-			EditBox				*edit_albumartist;
+			MultiValueEditBox		*edit_albumartist;
 
 			Text				*text_band;
-			EditBox				*edit_band;
+			MultiValueEditBox		*edit_band;
 
 			Text				*text_conductor;
-			EditBox				*edit_conductor;
+			MultiValueEditBox		*edit_conductor;
 
 			Text				*text_remix;
-			EditBox				*edit_remix;
+			MultiValueEditBox		*edit_remix;
 
 			Text				*text_composer;
-			EditBox				*edit_composer;
+			MultiValueEditBox		*edit_composer;
 
 			Text				*text_textwriter;
-			EditBox				*edit_textwriter;
+			MultiValueEditBox		*edit_textwriter;
 
 			GroupBox			*group_original;
 
 			Text				*text_oartist;
-			EditBox				*edit_oartist;
+			MultiValueEditBox		*edit_oartist;
 
 			Text				*text_oalbum;
-			EditBox				*edit_oalbum;
+			MultiValueEditBox		*edit_oalbum;
 
 			Text				*text_otextwriter;
-			EditBox				*edit_otextwriter;
+			MultiValueEditBox		*edit_otextwriter;
 
 			Text				*text_oyear;
 			EditBox				*edit_oyear;
@@ -65,14 +65,11 @@ namespace BoCA
 			GroupBox			*group_musical;
 
 			Text				*text_initialkey;
-			EditBox				*edit_initialkey;
+			MultiValueEditBox		*edit_initialkey;
 
 			Text				*text_tempo;
 			EditBox				*edit_tempo;
 			Text				*text_tempo_bpm;
-
-			Track				 track;
-			Bool				 ignoreSelect;
 
 			EditBox				*GetActiveEditBox();
 		slots:

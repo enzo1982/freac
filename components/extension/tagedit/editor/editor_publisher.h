@@ -34,14 +34,14 @@ namespace BoCA
 			EditBox				*edit_publisher;
 
 			Text				*text_mediatype;
-			EditBox				*edit_mediatype;
+			MultiValueEditBox		*edit_mediatype;
 			List				*list_mediatype;
 
 			Text				*text_catalog;
-			EditBox				*edit_catalog;
+			MultiValueEditBox		*edit_catalog;
 
 			Text				*text_barcode;
-			EditBox				*edit_barcode;
+			MultiValueEditBox		*edit_barcode;
 
 			Text				*text_isrc;
 			EditBox				*edit_isrc;
@@ -65,9 +65,6 @@ namespace BoCA
 
 			Text				*text_wcommercial;
 			EditBox				*edit_wcommercial;
-
-			Track				 track;
-			Bool				 ignoreSelect;
 
 			EditBox				*GetActiveEditBox();
 		slots:
