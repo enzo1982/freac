@@ -1700,6 +1700,14 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 	singleTrack.pictures	   = firstTrack.pictures;
 
+	/* The basic fields that can have several values.
+	 */
+	Array<String>	 basicListKeys;
+
+	basicListKeys.Add(INFO_ARTISTS);
+	basicListKeys.Add(INFO_GENRES);
+	basicListKeys.Add(INFO_LABELS);
+
 	/* Step 1: Collect common information in top-level track.
 	 */
 	foreach (const Track &chapterTrack, tracks)
@@ -1708,13 +1716,18 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 		/* Process basic info.
 		 */
-		if (chapterInfo.artist	   != singleTrackInfo.artist)	  singleTrackInfo.artist     = NIL;
 		if (chapterInfo.title	   != singleTrackInfo.title)	  singleTrackInfo.title	     = NIL;
 		if (chapterInfo.album	   != singleTrackInfo.album)	  singleTrackInfo.album	     = NIL;
 		if (chapterInfo.year	   != singleTrackInfo.year)	  singleTrackInfo.year	     = NIL;
-		if (chapterInfo.genre	   != singleTrackInfo.genre)	  singleTrackInfo.genre	     = NIL;
-		if (chapterInfo.label	   != singleTrackInfo.label)	  singleTrackInfo.label	     = NIL;
 		if (chapterInfo.comment	   != singleTrackInfo.comment)	  singleTrackInfo.comment    = NIL;
+
+		/* The artist, genre and label stay only if every chapter has
+		 * the same list of values.
+		 */
+		foreach (const String &key, basicListKeys)
+		{
+			if (!HaveSameValues(Info::GetInfoList(&chapterInfo, key), Info::GetInfoList(&singleTrackInfo, key))) Info::SetInfoList(&singleTrackInfo, key, Array<String>());
+		}
 
 		if (chapterInfo.track	   != singleTrackInfo.track)	  singleTrackInfo.track	     = NIL;
 		if (chapterInfo.numTracks  != singleTrackInfo.numTracks)  singleTrackInfo.numTracks  = NIL;
@@ -1740,6 +1753,8 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 		foreach (const String &key, singleTrackKeys)
 		{
+			if (Info::IsBasicInfoList(key)) continue;
+
 			const Array<String>	 groups = GetValueGroups(singleTrackInfo, key);
 
 			foreach (const String &group, groups)
@@ -1772,13 +1787,15 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 		/* Process basic info.
 		 */
-		if (chapterInfo.artist	   == singleTrackInfo.artist)	  chapterInfo.artist	 = NIL;
 		if (chapterInfo.title	   == singleTrackInfo.title)	  chapterInfo.title	 = NIL;
 		if (chapterInfo.album	   == singleTrackInfo.album)	  chapterInfo.album	 = NIL;
 		if (chapterInfo.year	   == singleTrackInfo.year)	  chapterInfo.year	 = NIL;
-		if (chapterInfo.genre	   == singleTrackInfo.genre)	  chapterInfo.genre	 = NIL;
-		if (chapterInfo.label	   == singleTrackInfo.label)	  chapterInfo.label	 = NIL;
 		if (chapterInfo.comment	   == singleTrackInfo.comment)	  chapterInfo.comment	 = NIL;
+
+		foreach (const String &key, basicListKeys)
+		{
+			if (HaveSameValues(Info::GetInfoList(&chapterInfo, key), Info::GetInfoList(&singleTrackInfo, key))) Info::SetInfoList(&chapterInfo, key, Array<String>());
+		}
 
 		if (chapterInfo.track	   == singleTrackInfo.track)	  chapterInfo.track	 = NIL;
 		if (chapterInfo.disc	   == singleTrackInfo.disc)	  chapterInfo.disc	 = NIL;
@@ -1795,6 +1812,8 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 		foreach (const String &key, chapterKeys)
 		{
+			if (Info::IsBasicInfoList(key)) continue;
+
 			const Array<String>	 groups = GetValueGroups(chapterInfo, key);
 
 			foreach (const String &group, groups)

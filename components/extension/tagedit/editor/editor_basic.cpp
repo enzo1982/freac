@@ -27,8 +27,9 @@ BoCA::LayerTagBasic::LayerTagBasic() : Editor("Basic")
 	text_genre		= new Text(NIL, text_album->GetPosition() + Point(0, 27));
 	text_comment		= new Text(NIL, text_genre->GetPosition() + Point(0, 27));
 
-	edit_artist		= new EditBox(text_artist->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_artist		= new MultiValueEditBox(INFO_ARTISTS, text_artist, text_artist->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_artist->onInput.Connect(&LayerTagBasic::OnModifyTrack, this);
+	edit_artist->onRequestValueList.Connect(&LayerTagBasic::OnRequestValueList, this);
 
 	edit_title		= new EditBox(text_title->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_title->onInput.Connect(&LayerTagBasic::OnModifyTrack, this);
@@ -39,9 +40,10 @@ BoCA::LayerTagBasic::LayerTagBasic() : Editor("Basic")
 	list_genre		= new ListBox(Point(), Size());
 	TagUtilities::FillGenreList(list_genre);
 
-	edit_genre		= new EditBox(text_genre->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_genre		= new MultiValueEditBox(INFO_GENRES, text_genre, text_genre->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_genre->SetDropDownList(list_genre);
 	edit_genre->onInput.Connect(&LayerTagBasic::OnModifyTrack, this);
+	edit_genre->onRequestValueList.Connect(&LayerTagBasic::OnRequestValueList, this);
 
 	edit_comment		= new MultiEdit(text_comment->GetPosition() + Point(7, -3), Size(300, 50));
 	edit_comment->onInput.Connect(&LayerTagBasic::OnModifyTrack, this);
@@ -546,10 +548,11 @@ Void BoCA::LayerTagBasic::OnSelectTrack(const Track &nTrack)
 
 	const Info	&info = track.GetInfo();
 
-	edit_artist->SetText(info.artist);
+	edit_artist->SetSingleValue(False);
+	edit_artist->SetValues(Info::GetInfoList(&info, INFO_ARTISTS));
 	edit_title->SetText(info.title);
 	edit_album->SetText(info.album);
-	edit_genre->SetText(info.genre);
+	edit_genre->SetValues(Info::GetInfoList(&info, INFO_GENRES));
 	edit_comment->SetText(info.comment);
 
 	edit_year->SetText(info.year > 0 ? String::FromInt(info.year) : String());
@@ -613,10 +616,18 @@ Void BoCA::LayerTagBasic::OnSelectAlbum(const Track &nTrack)
 
 	const Info	&info = track.GetInfo();
 
-	edit_artist->SetText(info.artist);
+	/* The artist of an album is its first album artist, so it has one
+	 * value here and no value list.
+	 */
+	Array<String>	 artist;
+
+	artist.Add(info.artist);
+
+	edit_artist->SetSingleValue(True);
+	edit_artist->SetValues(artist);
 	edit_title->SetText(NIL);
 	edit_album->SetText(info.album);
-	edit_genre->SetText(info.genre);
+	edit_genre->SetValues(Info::GetInfoList(&info, INFO_GENRES));
 	edit_comment->SetText(info.comment);
 
 	edit_year->SetText(info.year > 0 ? String::FromInt(info.year) : String());
@@ -650,10 +661,10 @@ Void BoCA::LayerTagBasic::OnSelectNone()
 
 	FreeAlbumArt();
 
-	edit_artist->SetText(NIL);
+	edit_artist->SetValues(Array<String>());
 	edit_title->SetText(NIL);
 	edit_album->SetText(NIL);
-	edit_genre->SetText(NIL);
+	edit_genre->SetValues(Array<String>());
 	edit_year->SetText(NIL);
 	edit_comment->SetText(NIL);
 
@@ -692,10 +703,13 @@ Void BoCA::LayerTagBasic::OnModifyTrack()
 {
 	Info	 info = track.GetInfo();
 
-	info.artist	= edit_artist->GetText();
+	if (!edit_artist->IsReadOnly()) TagUtilities::SetSingleInfo(info, INFO_ARTISTS, edit_artist->GetText());
+
 	info.title	= edit_title->GetText();
 	info.album	= edit_album->GetText();
-	info.genre	= edit_genre->GetText();
+
+	if (!edit_genre->IsReadOnly())	TagUtilities::SetSingleInfo(info, INFO_GENRES,	edit_genre->GetText());
+
 	info.year	= edit_year->GetText().ToInt();
 	info.comment	= edit_comment->GetText();
 

@@ -14,8 +14,10 @@
 
 BoCA::MultiValueEditBox::MultiValueEditBox(const String &iKey, Text *iLabel, const Point &iPos, const Size &iSize) : EditBox(iPos, iSize)
 {
-	key   = iKey;
-	label = iLabel;
+	key	    = iKey;
+	label	    = iLabel;
+
+	singleValue = False;
 
 	cursor->getContextMenu.Connect(&MultiValueEditBox::GetMenu, this);
 
@@ -135,11 +137,12 @@ String BoCA::MultiValueEditBox::GetLabelText() const
 
 Void BoCA::MultiValueEditBox::OnEditValues()
 {
-	if (IsActive()) onRequestValueList.Emit(this);
+	if (IsActive() && !singleValue) onRequestValueList.Emit(this);
 }
 
 /* Standard edit menu plus "Edit values...". An inactive box
- * cannot be edited, so it does not offer the value list.
+ * cannot be edited, and a box for a single value has no value list,
+ * so these do not offer the value list.
  */
 PopupMenu *BoCA::MultiValueEditBox::GetMenu()
 {
@@ -148,7 +151,7 @@ PopupMenu *BoCA::MultiValueEditBox::GetMenu()
 
 	/* The cursor has no menu if it is inactive and empty.
 	 */
-	if (menu == NIL || !IsActive()) return menu;
+	if (menu == NIL || !IsActive() || singleValue) return menu;
 
 	i18n->SetContext("Extensions::Tag Editor::Value list");
 

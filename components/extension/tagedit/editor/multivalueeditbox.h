@@ -30,6 +30,8 @@ namespace BoCA
 			Array<String>			 values;
 			String				 proposedValue;
 
+			Bool				 singleValue;
+
 			String				 GetDisplayText() const		{ return String::Implode(values, "; "); }
 
 			PopupMenu			*GetMenu();
@@ -41,6 +43,8 @@ namespace BoCA
 
 			Void				 SetValues(const Array<String> &);
 			const Array<String>		&GetValues() const		{ return values; }
+
+			Void				 SetSingleValue(Bool nSingleValue)	{ singleValue = nSingleValue; }
 
 			Bool				 IsReadOnly() const		{ return values.Length() > 1; }
 			const String			&GetKey() const			{ return key; }
