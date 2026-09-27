@@ -64,7 +64,7 @@ const freac::CDDBInfo &freac::CDDBCache::GetCacheEntry(const String &queryString
 	CDDBLocal	 cddbLocal;
 	Int		 result = cddbLocal.Query(queryString);
 
-	if (result == QUERY_RESULT_SINGLE || result == QUERY_RESULT_MULTIPLE)
+	if (result == METADATA_QUERY_RESULT_SINGLE || result == METADATA_QUERY_RESULT_MULTIPLE)
 	{
 		CDDBInfo newInfo;
 

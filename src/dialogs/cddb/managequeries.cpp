@@ -163,7 +163,7 @@ Void freac::cddbManageQueriesDlg::QueryEntry()
 	 */
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Querying CD information")));
 
-	if (cddbQueries.Query(list_entries->GetSelectedEntryNumber()) != QUERY_RESULT_ERROR)
+	if (cddbQueries.Query(list_entries->GetSelectedEntryNumber()) != METADATA_QUERY_RESULT_ERROR)
 	{
 		list_entries->Remove(list_entries->GetSelectedEntry());
 

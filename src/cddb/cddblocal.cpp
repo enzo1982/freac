@@ -211,17 +211,17 @@ Int freac::CDDBLocal::Query(const String &queryString)
 
 	/* No match found.
 	 */
-	if (categories.Length() == 0) return QUERY_RESULT_NONE;
+	if (categories.Length() == 0) return METADATA_QUERY_RESULT_NONE;
 
 	/* Exact match.
 	 */
-	if (categories.Length() == 1) return QUERY_RESULT_SINGLE;
+	if (categories.Length() == 1) return METADATA_QUERY_RESULT_SINGLE;
 
 	/* Multiple exact matches.
 	 */
-	if (categories.Length() >  1) return QUERY_RESULT_MULTIPLE;
+	if (categories.Length() >  1) return METADATA_QUERY_RESULT_MULTIPLE;
 
-	return QUERY_RESULT_ERROR;
+	return METADATA_QUERY_RESULT_ERROR;
 }
 
 Bool freac::CDDBLocal::Read(const String &category, UnsignedInt32 discID, CDDBInfo &cddbInfo)

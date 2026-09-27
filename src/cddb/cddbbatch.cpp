@@ -285,7 +285,7 @@ Int freac::CDDBBatch::Query(Int n)
 			 */
 			BoCA::Utilities::ErrorMessage(i18n->TranslateString("Some error occurred trying to connect to the freedb server.", "CDDB::Query::Errors"));
 
-			return QUERY_RESULT_ERROR;
+			return METADATA_QUERY_RESULT_ERROR;
 		}
 		else if (errorString != NIL)
 		{
@@ -294,7 +294,7 @@ Int freac::CDDBBatch::Query(Int n)
 			queryErrors.Add(errorString);
 		}
 
-		if (cddbInfo == NIL) return QUERY_RESULT_NONE;
+		if (cddbInfo == NIL) return METADATA_QUERY_RESULT_NONE;
 
 		/* Save current freedb path.
 		 */
@@ -312,10 +312,10 @@ Int freac::CDDBBatch::Query(Int n)
 
 		DeleteQuery(n);
 
-		return QUERY_RESULT_SINGLE;
+		return METADATA_QUERY_RESULT_SINGLE;
 	}
 
-	return QUERY_RESULT_ERROR;
+	return METADATA_QUERY_RESULT_ERROR;
 }
 
 Bool freac::CDDBBatch::QueryAll()
@@ -328,8 +328,8 @@ Bool freac::CDDBBatch::QueryAll()
 	{
 		Int	 result = Query(skipped);
 
-		if	(result == QUERY_RESULT_ERROR) return False;
-		else if (result == QUERY_RESULT_NONE)  skipped++;
+		if	(result == METADATA_QUERY_RESULT_ERROR) return False;
+		else if (result == METADATA_QUERY_RESULT_NONE)  skipped++;
 	}
 
 	/* Display errors.
