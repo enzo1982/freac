@@ -183,36 +183,6 @@ const Bool	 freac::Config::SettingsDeleteAfterEncodingDefault		= False;
 
 /* Category Dialogs
  */
-const String	 freac::Config::DialogsCDDBSubmitSizeXID			= "CDDBSubmitSizeX";
-const Int	 freac::Config::DialogsCDDBSubmitSizeXDefault			= 510;
-
-const String	 freac::Config::DialogsCDDBSubmitSizeYID			= "CDDBSubmitSizeY";
-const Int	 freac::Config::DialogsCDDBSubmitSizeYDefault			= 461;
-
-const String	 freac::Config::DialogsCDDBMultiMatchSizeXID			= "CDDBMultiMatchSizeX";
-const Int	 freac::Config::DialogsCDDBMultiMatchSizeXDefault		= 360;
-
-const String	 freac::Config::DialogsCDDBMultiMatchSizeYID			= "CDDBMultiMatchSizeY";
-const Int	 freac::Config::DialogsCDDBMultiMatchSizeYDefault		= 369;
-
-const String	 freac::Config::DialogsCDDBManageQueriesSizeXID			= "CDDBManageQueriesSizeX";
-const Int	 freac::Config::DialogsCDDBManageQueriesSizeXDefault		= 500;
-
-const String	 freac::Config::DialogsCDDBManageQueriesSizeYID			= "CDDBManageQueriesSizeY";
-const Int	 freac::Config::DialogsCDDBManageQueriesSizeYDefault		= 250;
-
-const String	 freac::Config::DialogsCDDBManageSubmitsSizeXID			= "CDDBManageSubmitsSizeX";
-const Int	 freac::Config::DialogsCDDBManageSubmitsSizeXDefault		= 560;
-
-const String	 freac::Config::DialogsCDDBManageSubmitsSizeYID			= "CDDBManageSubmitsSizeY";
-const Int	 freac::Config::DialogsCDDBManageSubmitsSizeYDefault		= 360;
-
-const String	 freac::Config::DialogsCDDBManageCacheSizeXID			= "CDDBManageCacheSizeX";
-const Int	 freac::Config::DialogsCDDBManageCacheSizeXDefault		= 560;
-
-const String	 freac::Config::DialogsCDDBManageCacheSizeYID			= "CDDBManageCacheSizeY";
-const Int	 freac::Config::DialogsCDDBManageCacheSizeYDefault		= 360;
-
 const String	 freac::Config::DialogsMetadataMatchSizeXID			= "MetadataMatchSizeX";
 const Int	 freac::Config::DialogsMetadataMatchSizeXDefault		= 480;
 
@@ -425,24 +395,6 @@ const String	 freac::Config::FreedbDirectoryDefault				= String("freedb").Append
 const String	 freac::Config::FreedbServerID					= "Server";
 const String	 freac::Config::FreedbServerDefault				= "gnudb.gnudb.org";
 
-const String	 freac::Config::FreedbModeID					= "Mode";
-const Int	 freac::Config::FreedbModeDefault				= 0;
-
-const String	 freac::Config::FreedbHTTPPortID				= "HTTPPort";
-const Int	 freac::Config::FreedbHTTPPortDefault				= 80;
-
-const String	 freac::Config::FreedbCDDBPPortID				= "CDDBPPort";
-const Int	 freac::Config::FreedbCDDBPPortDefault				= 8880;
-
-const String	 freac::Config::FreedbQueryPathID				= "QueryPath";
-const String	 freac::Config::FreedbQueryPathDefault				= "/~cddb/cddb.cgi";
-
-const String	 freac::Config::FreedbSubmitPathID				= "SubmitPath";
-const String	 freac::Config::FreedbSubmitPathDefault				= "/~cddb/submit.cgi";
-
-const String	 freac::Config::FreedbEmailID					= "eMail";
-const String	 freac::Config::FreedbEmailDefault				= "cddb@freac.org";
-
 const String	 freac::Config::FreedbProxyID					= BoCA::ProxyConfig::ServerID;
 const String	 freac::Config::FreedbProxyDefault				= BoCA::ProxyConfig::ServerDefault;
 
@@ -458,29 +410,19 @@ const Int	 freac::Config::FreedbProxyModeDefault				= BoCA::ProxyConfig::ModeDef
 const String	 freac::Config::FreedbProxyPortID				= BoCA::ProxyConfig::PortID;
 const Int	 freac::Config::FreedbProxyPortDefault				= BoCA::ProxyConfig::PortDefault;
 
-const String	 freac::Config::FreedbEnableLocalID				= "EnableLocalCDDB";
-const Bool	 freac::Config::FreedbEnableLocalDefault			= False;
-
-const String	 freac::Config::FreedbEnableRemoteID				= "EnableRemoteCDDB";
-const Bool	 freac::Config::FreedbEnableRemoteDefault			= True;
-
-const String	 freac::Config::FreedbAutoQueryID				= "AutoCDDBQueries";
-const Bool	 freac::Config::FreedbAutoQueryDefault				= True;
-
-const String	 freac::Config::FreedbAutoSelectID				= "AutoSelectFirstEntry";
-const Bool	 freac::Config::FreedbAutoSelectDefault				= False;
-
 const String	 freac::Config::FreedbEnableCacheID				= "EnableCDDBCache";
 const Bool	 freac::Config::FreedbEnableCacheDefault			= True;
 
+/* Keys of the freedb category that are only
+ * read to migrate them to the Metadata category.
+ */
+const String	 freac::Config::FreedbEnableLocalID				= "EnableLocalCDDB";
+const String	 freac::Config::FreedbEnableRemoteID				= "EnableRemoteCDDB";
+const String	 freac::Config::FreedbAutoQueryID				= "AutoCDDBQueries";
+const String	 freac::Config::FreedbAutoSelectID				= "AutoSelectFirstEntry";
 const String	 freac::Config::FreedbOverwriteCDTextID				= "OverwriteCDText";
-const Bool	 freac::Config::FreedbOverwriteCDTextDefault			= True;
-
 const String	 freac::Config::FreedbUpdateJoblistID				= "UpdateJoblistOnSubmit";
-const Bool	 freac::Config::FreedbUpdateJoblistDefault			= True;
-
 const String	 freac::Config::FreedbDisplayNotFoundID				= "DisplayNotFoundNote";
-const Bool	 freac::Config::FreedbDisplayNotFoundDefault			= True;
 
 /* Category Metadata
  *

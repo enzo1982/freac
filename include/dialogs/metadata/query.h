@@ -68,10 +68,12 @@ namespace freac
 
 			const Error		&ShowDialog();
 		accessors:
-			Int			 GetResult() const	{ return result; }
-			const BoCA::DiscMetadata &GetRecord() const	{ return record; }
+			Int				 GetResult() const	{ return result; }
+			const BoCA::DiscMetadata	&GetRecord() const	{ return record; }
 
-			MetadataLookup		&GetLookup()		{ return lookup; }
+			Bool				 IsCanceled() const	{ return canceled; }
+
+			MetadataLookup			&GetLookup()		{ return lookup; }
 		slots:
 			Int			 SelectMatch(const String &, const Array<BoCA::MetadataMatch> &, Bool);
 			Void			 OnQueryProvider(const String &);

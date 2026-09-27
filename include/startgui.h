@@ -153,13 +153,13 @@ namespace freac
 			Void						 ReadCD()				{ ReadCD(False); }
 			Void						 ReadCD(Bool);
 
-			Void						 QueryCDDB();
-			Void						 QueryCDDBLater();
-			Void						 SubmitCDDBData();
+			Void						 QueryMetadata();
+			Void						 QueryMetadataLater();
+			Void						 LookupMetadataByID();
+			Void						 SubmitMetadata();
 
-			Void						 ManageCDDBData();
-			Void						 ManageCDDBBatchData();
-			Void						 ManageCDDBBatchQueries();
+			Void						 ConfigureCDDB();
+			Void						 ManageMetadataQueries();
 
 			Void						 AddFilesFromDirectory();
 			Void						 AddFilesByPattern();

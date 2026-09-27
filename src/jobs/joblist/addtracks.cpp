@@ -13,7 +13,9 @@
 #include <jobs/joblist/addtracks.h>
 #include <jobs/joblist/removeall.h>
 
-#include <dialogs/cddb/query.h>
+#include <dialogs/metadata/query.h>
+
+#include <metadata/metadatalookup.h>
 
 #include <config.h>
 #include <utilities.h>
@@ -21,6 +23,7 @@
 #include <engine/converter.h>
 
 #include <support/autorelease.h>
+#include <metadata/freedbdiscid.h>
 
 using namespace BoCA;
 using namespace BoCA::AS;
@@ -63,8 +66,8 @@ Error freac::JobAddTracks::Perform()
  
 	Array<Track>	 tracks;
 
-	CDDBInfo	 cdInfo;
-	Bool		 cddbQueried = False;
+	DiscMetadata	 record;
+	Bool		 metadataQueried = False;
 
 	for (Int i = 0; i < urls.Length(); i++)
 	{
@@ -114,7 +117,7 @@ Error freac::JobAddTracks::Perform()
 
 		/* Add disc ID to CD tracks.
 		 */
-		track.discid = CDDB::DiscIDFromMCDI(track.GetInfo().mcdi);
+		track.discid = FreedbDiscID::FromMCDI(track.GetInfo().mcdi);
 
 		/* Exit if we are auto-reading a CD that is already loaded in the joblist.
 		 */
@@ -145,17 +148,18 @@ Error freac::JobAddTracks::Perform()
 			track.SetInfo(info);
 		}
 
-		/* Query CDDB and update track info.
+		/* Look up metadata and update track info.
 		 */
-		if (configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault))
+		if (configuration->GetIntValue(Config::CategoryMetadataID, Config::MetadataAutoQueryID, Config::MetadataAutoQueryDefault))
 		{
-			if (!cddbQueried)
+			if (!metadataQueried)
 			{
-				cdInfo	    = cddbQueryDlg::QueryCDDB(track, True);
-				cddbQueried = True;
+				if (MetadataQueryDlg::QueryDisc(track, True, record) != LOOKUP_FOUND) record = DiscMetadata();
+
+				metadataQueried = True;
 			}
 
-			if (cdInfo != NIL) cdInfo.UpdateTrack(track);
+			if (record.provider != NIL) MetadataLookup::ApplyRecord(track, record);
 		}
 
 		/* Add track to joblist.

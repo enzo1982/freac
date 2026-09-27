@@ -40,8 +40,6 @@ namespace freac
 			static String	 version;
 			static String	 architecture;
 			static String	 shortVersion;
-			static String	 cddbVersion;
-			static String	 cddbMode;
 			static String	 copyright;
 			static String	 website;
 

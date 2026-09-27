@@ -7,9 +7,7 @@ OBJECTS	  = objects
 RESOURCES = resources
 SRC	  = src
 
-DLLOBJECTS  = $(OBJECTS)/cddb.o $(OBJECTS)/cddbbatch.o $(OBJECTS)/cddbcache.o $(OBJECTS)/cddbinfo.o $(OBJECTS)/cddblocal.o $(OBJECTS)/cddbremote.o
-DLLOBJECTS += $(OBJECTS)/cddb_extsettings.o $(OBJECTS)/cddb_manage.o $(OBJECTS)/cddb_managequeries.o $(OBJECTS)/cddb_managesubmits.o $(OBJECTS)/cddb_multimatch.o $(OBJECTS)/cddb_query.o $(OBJECTS)/cddb_submit.o
-DLLOBJECTS += $(OBJECTS)/dialog_config.o $(OBJECTS)/config_albumart.o $(OBJECTS)/config_cddb.o $(OBJECTS)/config_cuesheets.o $(OBJECTS)/config_dsp.o $(OBJECTS)/config_metadata.o $(OBJECTS)/config_encoders.o $(OBJECTS)/config_files.o $(OBJECTS)/config_interface.o $(OBJECTS)/config_language.o $(OBJECTS)/config_playlists.o $(OBJECTS)/config_resources.o $(OBJECTS)/config_tagfields.o $(OBJECTS)/config_tagformats.o $(OBJECTS)/config_verification.o $(OBJECTS)/configcomponent.o $(OBJECTS)/configentry.o
+DLLOBJECTS  = $(OBJECTS)/dialog_config.o $(OBJECTS)/config_albumart.o $(OBJECTS)/config_cuesheets.o $(OBJECTS)/config_dsp.o $(OBJECTS)/config_encoders.o $(OBJECTS)/config_files.o $(OBJECTS)/config_interface.o $(OBJECTS)/config_language.o $(OBJECTS)/config_metadata.o $(OBJECTS)/config_playlists.o $(OBJECTS)/config_resources.o $(OBJECTS)/config_tagfields.o $(OBJECTS)/config_tagformats.o $(OBJECTS)/config_verification.o $(OBJECTS)/configcomponent.o $(OBJECTS)/configentry.o
 DLLOBJECTS += $(OBJECTS)/freedbdiscid.o $(OBJECTS)/metadatalookup.o $(OBJECTS)/metadataqueue.o
 DLLOBJECTS += $(OBJECTS)/metadata_multimatch.o $(OBJECTS)/metadata_query.o $(OBJECTS)/metadata_managequeries.o $(OBJECTS)/metadata_submit.o $(OBJECTS)/metadata_lookupbyid.o $(OBJECTS)/metadata_proxy.o
 DLLOBJECTS += $(OBJECTS)/adddirectory.o $(OBJECTS)/addpattern.o $(OBJECTS)/charset.o $(OBJECTS)/error.o $(OBJECTS)/format.o $(OBJECTS)/overwrite.o $(OBJECTS)/splitter.o
@@ -334,13 +332,7 @@ $(CMDNAME): $(DLLNAME) $(CMDOBJECTS) $(RESOBJECTS)
 $(OBJECTS)/%.o: $(SRC)/%.cpp
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 
-$(OBJECTS)/%.o: $(SRC)/cddb/%.cpp
-	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-
 $(OBJECTS)/%.o: $(SRC)/dialogs/%.cpp
-	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-
-$(OBJECTS)/cddb_%.o: $(SRC)/dialogs/cddb/%.cpp
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 
 $(OBJECTS)/%.o: $(SRC)/metadata/%.cpp

@@ -13,12 +13,15 @@
 #include <jobs/joblist/addfiles.h>
 #include <jobs/joblist/removeall.h>
 
-#include <dialogs/cddb/query.h>
+#include <dialogs/metadata/query.h>
+
+#include <metadata/metadatalookup.h>
 
 #include <config.h>
 #include <utilities.h>
 
 #include <support/autorelease.h>
+#include <metadata/freedbdiscid.h>
 
 using namespace smooth::IO;
 using namespace smooth::Threads;
@@ -88,8 +91,8 @@ Error freac::JobAddFiles::Perform()
 	BoCA::JobList	*joblist = BoCA::JobList::Get();
 	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
  
-	Array<CDDBInfo>	 cdInfos;
-	Array<Bool>	 cddbsQueried;
+	Array<DiscMetadata>	 records;
+	Array<String>		 recordDiscs;
 
 	/* Get number of threads to use.
 	 */
@@ -151,19 +154,35 @@ Error freac::JobAddFiles::Perform()
 
 			if (track != NIL && !worker->GetErrorState() && !abort)
 			{
-				/* Query CDDB and update track info.
+				/* Look up metadata and update track info.
 				 */
-				if (track.isCDTrack && configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault))
+				if (track.isCDTrack && configuration->GetIntValue(Config::CategoryMetadataID, Config::MetadataAutoQueryID, Config::MetadataAutoQueryDefault))
 				{
-					if (!cddbsQueried.Get(track.discid))
+					/* Query each disc once. Discs are told apart by their
+					 * TOC, because two discs can have the same disc ID.
+					 */
+					String	 disc  = MetadataLookup::GetDiscKey(track.GetInfo());
+					Int	 index = -1;
+
+					if (disc == NIL) disc = String("#").Append(String::FromInt(track.discid));
+
+					for (Int n = 0; n < recordDiscs.Length(); n++) if (recordDiscs.GetNth(n) == disc) { index = n; break; }
+
+					if (index < 0)
 					{
-						cdInfos.Add(cddbQueryDlg::QueryCDDB(track, True), track.discid);
-						cddbsQueried.Add(True, track.discid);
+						DiscMetadata	 record;
+
+						if (MetadataQueryDlg::QueryDisc(track, True, record) != LOOKUP_FOUND) record = DiscMetadata();
+
+						records.Add(record);
+						recordDiscs.Add(disc);
+
+						index = records.Length() - 1;
 					}
 
-					const CDDBInfo	&cdInfo = cdInfos.Get(track.discid);
+					const DiscMetadata	&record = records.GetNth(index);
 
-					if (cdInfo != NIL) cdInfo.UpdateTrack(track);
+					if (record.provider != NIL) MetadataLookup::ApplyRecord(track, record);
 				}
 
 				/* Add track(s) to joblist.
@@ -273,7 +292,7 @@ Int freac::JobAddFilesWorker::Run()
 	{
 		/* Add disc ID to CD tracks.
 		 */
-		if (track.isCDTrack) track.discid = CDDB::DiscIDFromMCDI(track.GetInfo().mcdi);
+		if (track.isCDTrack) track.discid = FreedbDiscID::FromMCDI(track.GetInfo().mcdi);
 
 		/* Extract title info from path names.
 		 */

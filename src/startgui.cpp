@@ -35,14 +35,13 @@
 
 #include <dialogs/error.h>
 
-#include <cddb/cddbremote.h>
-#include <cddb/cddbcache.h>
+#include <dialogs/metadata/query.h>
+#include <dialogs/metadata/submit.h>
+#include <dialogs/metadata/lookupbyid.h>
+#include <dialogs/metadata/managequeries.h>
 
-#include <dialogs/cddb/query.h>
-#include <dialogs/cddb/submit.h>
-#include <dialogs/cddb/manage.h>
-#include <dialogs/cddb/managequeries.h>
-#include <dialogs/cddb/managesubmits.h>
+#include <metadata/metadatalookup.h>
+#include <metadata/metadataqueue.h>
 
 #include <gui/main_joblist.h>
 #include <gui/main_threads.h>
@@ -778,227 +777,172 @@ Void freac::freacGUI::ReadCD(Bool autoCDRead)
 	}
 }
 
-Void freac::freacGUI::QueryCDDB()
+/* Look up each disc in the joblist.
+ */
+Void freac::freacGUI::QueryMetadata()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	/* Check if CDDB support is enabled.
+	/* Collect the known data of each disc.
 	 */
-	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) && !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
-	{
-		BoCA::Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
-
-		return;
-	}
-
-	/* Collect CDDB query strings.
-	 */
-	Array<String>	 queryStrings;
+	Array<DiscMetadata>	 discs;
+	Array<String>		 keys;
 
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{
 		const Track	&track = joblist->GetNthTrack(i);
-		const Info	&info  = track.GetInfo();
+		String		 key   = MetadataLookup::GetDiscKey(track.GetInfo());
+		Bool		 found = False;
 
-		if (info.mcdi.IsValid())
+		if (key == NIL) continue;
+
+		foreach (const String &knownKey, keys) if (MetadataLookup::IsSameDisc(knownKey, key)) found = True;
+
+		if (found) continue;
+
+		keys.Add(key);
+		discs.Add(MetadataLookup::GetKnownData(track));
+	}
+
+	if (discs.Length() == 0) return;
+
+	/* Make sure that a provider is enabled.
+	 */
+	Array<String>	 providers = MetadataLookup::GetProviders();
+
+	if (providers.Length() == 0)
+	{
+		MetadataQueryDlg::ShowNoProviderError();
+
+		return;
+	}
+
+	/* Look up each disc. A provider that failed is
+	 * skipped for the other discs of this run.
+	 */
+	Array<String>	 failedProviders;
+	Array<String>	 notes;
+
+	Array<DiscMetadata>	 failedDiscs;
+	Array<String>		 errors;
+
+	for (Int i = 0; i < discs.Length(); i++)
+	{
+		const DiscMetadata	&known = discs.GetNth(i);
+		MetadataQueryDlg	 dlg(known, providers);
+
+		dlg.GetLookup().SetFailedProviders(failedProviders);
+		dlg.ShowDialog();
+
+		Int	 result = dlg.GetResult();
+
+		failedProviders = dlg.GetLookup().GetFailedProviders();
+
+		/* A cancel stops the whole run.
+		 */
+		if (dlg.IsCanceled() || result == LOOKUP_CANCELED) break;
+
+		/* Collect the errors of every lookup, also of one that another
+		 * provider answered: a provider that failed is skipped for the
+		 * later discs, so their lookups have no error text of it.
+		 */
+		const Array<String>	&lookupErrors = dlg.GetLookup().GetErrors();
+
+		foreach (const String &error, lookupErrors)
 		{
-			String	 queryString = CDDB::QueryStringFromMCDI(info.mcdi);
+			Bool	 known = False;
 
-			queryStrings.Add(queryString, queryString.ComputeCRC32());
+			foreach (const String &collected, errors) if (collected == error) known = True;
+
+			if (!known) errors.Add(error);
 		}
-		else if (info.offsets != NIL)
-		{
-			String	 queryString = CDDB::QueryStringFromOffsets(info.offsets);
 
-			queryStrings.Add(queryString, queryString.ComputeCRC32());
+		if (result == LOOKUP_FOUND)
+		{
+			MetadataLookup::CacheRecord(dlg.GetRecord());
+			MetadataLookup::ApplyToJoblist(dlg.GetRecord(), True);
+
+			MetadataQueue().RemoveQuery(known);
+		}
+		else if (result == LOOKUP_ERROR)
+		{
+			/* Collect the disc to offer its query for later.
+			 */
+			failedDiscs.Add(known);
+
+			/* If every provider failed, they would be skipped for the
+			 * remaining discs, so add those and stop here.
+			 */
+			if (failedProviders.Length() >= providers.Length())
+			{
+				for (Int j = i + 1; j < discs.Length(); j++) failedDiscs.Add(discs.GetNth(j));
+
+				break;
+			}
+		}
+		else if (result == LOOKUP_NOT_FOUND)
+		{
+			String	 note = MetadataQueue::GetDescription(known);
+
+			notes.Add(note.Append(": ").Append(i18n->TranslateString("No record for this disc was found in the online databases.", "Metadata::Query")));
 		}
 	}
 
-	/* Query database using each query string.
+	/* Show the discs without a record and offer to perform
+	 * the queries that failed later.
 	 */
-	Bool		 remoteCDDBEnabled = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault);
-	Array<String>	 queryErrors;
-
-	for (Int i = 0; i < queryStrings.Length(); i++)
+	if (notes.Length() > 0)
 	{
-		const String	&queryString = queryStrings.GetNth(i);
-		CDDBInfo	 cdInfo;
-
-		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(queryString);
-
-		if (cdInfo == NIL)
-		{
-			if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
-			    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
-			{
-				cddbQueryDlg	 dlg(queryString);
-
-				if (dlg.ShowDialog() == Error())
-				{
-					/* Ask whether to perform this query later.
-					 */
-					CDDBBatch	 queries;
-
-					if (i == queryStrings.Length() - 1 && QuickMessage(dlg.GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
-					{
-						queries.AddQuery(queryString);
-					}
-					else if (i < queryStrings.Length() - 1 && QuickMessage(dlg.GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform the remaining queries again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
-					{
-						for (Int j = i; j < queryStrings.Length(); j++) queries.AddQuery(queryStrings.GetNth(j));
-					}
-
-					/* Temporarily disable remote CDDB queries if connection failed.
-					 */
-					config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, False);
-				}
-				else if (dlg.GetErrorString() != NIL)
-				{
-					/* If there's an info message, add it to the list of errors.
-					 */
-					queryErrors.Add(dlg.GetErrorString());
-				}
-
-				cdInfo = dlg.GetCDDBInfo();
-			}
-
-			if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
-		}
-
-		/* Continue with next query if we couldn't find anything.
-		 */
-		if (cdInfo == NIL) continue;
-
-		/* Update tracks with CDDB data.
-		 */
-		for (Int j = 0; j < joblist->GetNOfTracks(); j++)
-		{
-			Track	 track = joblist->GetNthTrack(j);
-			Info	 info  = track.GetInfo();
-
-			if ((info.mcdi.IsValid() && queryString == CDDB::QueryStringFromMCDI(info.mcdi)) ||
-			    (info.offsets != NIL && queryString == CDDB::QueryStringFromOffsets(info.offsets)))
-			{
-				Int	 trackNumber = -1;
-
-				if (track.isCDTrack) trackNumber = track.cdTrack;
-				else		     trackNumber = info.track;
-
-				if (trackNumber == -1) continue;
-
-				info.artist = cdInfo.GetTrackArtist(trackNumber);
-
-				if (cdInfo.trackTitles.GetNth(trackNumber - 1) != NIL) info.title = cdInfo.trackTitles.GetNth(trackNumber - 1);
-
-				info.album = cdInfo.dTitle;
-				info.genre = cdInfo.dGenre;
-				info.year  = cdInfo.dYear;
-				info.track = trackNumber;
-
-				/* Set album artist.
-				 */
-				if (cdInfo.dArtist == CDDBInfo::VariousArtistsID) info.SetOtherInfo(BoCA::INFO_ALBUMARTIST, i18n->TranslateString("Various artists", "CDDB::Submit"));
-				else						  info.SetOtherInfo(BoCA::INFO_ALBUMARTIST, cdInfo.dArtist);
-
-				track.SetInfo(info);
-				track.SetOriginalInfo(info);
-
-				track.outputFile = NIL;
-
-				BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
-			}
-		}
-	}
-
-	/* Display errors.
-	 */
-	if (queryErrors.Length() > 0)
-	{
-		ErrorDialog	 dialog(queryErrors);
+		ErrorDialog	 dialog(notes);
 
 		dialog.ShowDialog();
 	}
 
-	/* Restore previous remote CDDB state.
-	 */
-	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, remoteCDDBEnabled);
+	if (failedDiscs.Length() > 0) MetadataQueryDlg::OfferQueryLater(errors, failedDiscs);
 }
 
-Void freac::freacGUI::QueryCDDBLater()
+Void freac::freacGUI::QueryMetadataLater()
 {
-	/* Collect CDDB query strings.
-	 */
-	Array<String>	 queryStrings;
+	Array<DiscMetadata>	 discs;
 
-	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
-	{
-		const Track	&track = joblist->GetNthTrack(i);
-		const Info	&info  = track.GetInfo();
+	for (Int i = 0; i < joblist->GetNOfTracks(); i++) discs.Add(MetadataLookup::GetKnownData(joblist->GetNthTrack(i)));
 
-		if (track.isCDTrack)
-		{
-			String	 queryString = CDDB::QueryStringFromMCDI(info.mcdi);
-
-			queryStrings.Add(queryString, queryString.ComputeCRC32());
-		}
-	}
-
-	/* Add queries to batch.
-	 */
-	if (queryStrings.Length() > 0)
-	{
-		CDDBBatch	 queries;
-
-		foreach (const String &queryString, queryStrings) queries.AddQuery(queryString);
-	}
+	if (MetadataQueue().AddQueries(discs) < 0) MetadataQueryDlg::ShowQueueError();
 }
 
-Void freac::freacGUI::SubmitCDDBData()
+Void freac::freacGUI::LookupMetadataByID()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n  = BoCA::I18n::Get();
+	const Track	&track = joblist->GetSelectedTrack();
 
-	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) && !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
+	if (track == NIL || MetadataLookup::GetDiscKey(track.GetInfo()) == NIL)
 	{
-		BoCA::Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
+		BoCA::Utilities::ErrorMessage(i18n->TranslateString("Please select a track of a disc in the joblist.", "Metadata::Lookup by ID"));
 
 		return;
 	}
 
-	cddbSubmitDlg().ShowDialog();
+	MetadataLookupByIDDlg	 dlg(track);
+
+	dlg.SetParentWindow(mainWnd);
+	dlg.ShowDialog();
 }
 
-Void freac::freacGUI::ManageCDDBData()
+Void freac::freacGUI::SubmitMetadata()
 {
-	cddbManageDlg().ShowDialog();
+	MetadataSubmitDlg().ShowDialog();
 }
 
-Void freac::freacGUI::ManageCDDBBatchData()
+/* The CDDB cache and the queued CDDB submits are in the CDDB component.
+ */
+Void freac::freacGUI::ConfigureCDDB()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-
-	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
-	{
-		BoCA::Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
-
-		return;
-	}
-
-	cddbManageSubmitsDlg().ShowDialog();
+	ConfigureComponent(Config::MetadataCDDBProviderID);
 }
 
-Void freac::freacGUI::ManageCDDBBatchQueries()
+Void freac::freacGUI::ManageMetadataQueries()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-
-	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
-	{
-		BoCA::Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
-
-		return;
-	}
-
-	cddbManageQueriesDlg().ShowDialog();
+	MetadataManageQueriesDlg().ShowDialog();
 }
 
 Bool freac::freacGUI::SetLanguage()
@@ -1147,37 +1091,51 @@ Void freac::freacGUI::FillMenus()
 	 */
 	i18n->SetContext("Menu::Database");
 
-	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-query.png")));
-	entry->onAction.Connect(&freacGUI::QueryCDDB, this);
+	entry = menu_database->AddEntry(i18n->TranslateString("Query online databases"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-query.png")));
+	entry->onAction.Connect(&freacGUI::QueryMetadata, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyQ, mainWnd);
+
+	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Look up by ID")))->onAction.Connect(&freacGUI::LookupMetadataByID, this);
 
 	if (menu_drives->Length() >= 1)
 	{
-		entry = menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-edit.png")));
-		entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
+		entry = menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Submit disc data")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-edit.png")));
+		entry->onAction.Connect(&freacGUI::SubmitMetadata, this);
 		entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyS, mainWnd);
-
-		menu_database->AddEntry();
-		menu_database->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&freacGUI::QueryCDDBLater, this);
-
-		menu_database->AddEntry();
-		menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB entries")))->onAction.Connect(&freacGUI::ManageCDDBBatchData, this);
-		menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB queries")))->onAction.Connect(&freacGUI::ManageCDDBBatchQueries, this);
 	}
+
+	/* The query queue also holds discs of audio files, so
+	 * offer it without a drive too.
+	 */
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Query online databases later"))->onAction.Connect(&freacGUI::QueryMetadataLater, this);
 
 	menu_database->AddEntry();
 
-	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault));
-	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Manage CDDB cache entries")))->onAction.Connect(&freacGUI::ManageCDDBData, this);
+	/* The CDDB entries need the CDDB component.
+	 */
+	Bool	 haveCDDB = boca.ComponentExists(Config::MetadataCDDBProviderID);
+
+	if (haveCDDB && menu_drives->Length() >= 1) menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB entries")))->onAction.Connect(&freacGUI::ConfigureCDDB, this);
+
+	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued queries")))->onAction.Connect(&freacGUI::ManageMetadataQueries, this);
+
+	if (haveCDDB)
+	{
+		menu_database->AddEntry();
+
+		menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault));
+		menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Manage CDDB cache entries")))->onAction.Connect(&freacGUI::ConfigureCDDB, this);
+	}
 
 	if (menu_drives->Length() >= 1)
 	{
 		menu_database->AddEntry();
-		menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault));
+		menu_database->AddEntry(i18n->TranslateString("Automatic online database queries"), (Bool *) &config->GetPersistentIntValue(Config::CategoryMetadataID, Config::MetadataAutoQueryID, Config::MetadataAutoQueryDefault));
 	}
 
-	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-query.png")))->onAction.Connect(&freacGUI::QueryCDDB, this);
-	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&freacGUI::QueryCDDBLater, this);
+	menu_database_query->AddEntry(i18n->TranslateString("Query online databases"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-query.png")))->onAction.Connect(&freacGUI::QueryMetadata, this);
+	menu_database_query->AddEntry(i18n->TranslateString("Query online databases later"))->onAction.Connect(&freacGUI::QueryMetadataLater, this);
 
 	/* Fill options menu.
 	 */
@@ -1399,14 +1357,14 @@ Void freac::freacGUI::FillMenus()
 	mainWnd_iconbar->AddEntry();
 
 	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-query.png")), menu_drives->Length() >= 1 ? menu_database_query : NIL);
-	entry->onAction.Connect(&freacGUI::QueryCDDB, this);
-	entry->SetTooltipText(i18n->TranslateString("Query CDDB database"));
+	entry->onAction.Connect(&freacGUI::QueryMetadata, this);
+	entry->SetTooltipText(i18n->TranslateString("Query online databases"));
 
 	if (menu_drives->Length() >= 1)
 	{
 		entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-edit.png")));
-		entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
-		entry->SetTooltipText(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")));
+		entry->onAction.Connect(&freacGUI::SubmitMetadata, this);
+		entry->SetTooltipText(i18n->AddEllipsis(i18n->TranslateString("Submit disc data")));
 	}
 
 	mainWnd_iconbar->AddEntry();

@@ -14,13 +14,13 @@
 #include <config.h>
 #include <utilities.h>
 
-#include <cddb/cddb.h>
 
 #include <gui/layer_tooltip.h>
 
 #include <jobs/joblist/addfiles.h>
 #include <jobs/joblist/addfolders.h>
 #include <jobs/joblist/removeall.h>
+#include <metadata/freedbdiscid.h>
 
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::IO;
@@ -1210,7 +1210,7 @@ String freac::JobList::GetEntryText(const Track &track)
 			jlEntry.Append(drives.Get(track.drive));
 		}
 
-		else if (field == "<discid>")	   jlEntry.Append(CDDB::DiscIDToString(track.discid));
+		else if (field == "<discid>")	   jlEntry.Append(FreedbDiscID::ToString(track.discid));
 		else if (field == "<isrc>")	   jlEntry.Append(info.isrc);
 		else if (field == "<file>")	   jlEntry.Append(track.fileName);
 

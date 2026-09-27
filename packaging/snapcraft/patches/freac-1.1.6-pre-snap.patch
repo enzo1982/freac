@@ -120,9 +120,9 @@
  				Console::OutputString("  --drive=<n|id>  | -cd <n|id>\tSpecify active CD drive (0..n or device path)\n");
  				Console::OutputString("  --track=<n>     | -t <n>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
  				Console::OutputString("  --timeout=<s>\t\t\tTimeout for CD track ripping (disabled by default)\n");
--				Console::OutputString("  --cddb\t\t\tEnable CDDB database lookup\n");
+-				Console::OutputString("  --cddb\t\t\tEnable online database lookup\n");
 -				Console::OutputString("  --eject\t\t\tEject disc after ripping\n\n");
-+				Console::OutputString("  --cddb\t\t\tEnable CDDB database lookup\n\n");
++				Console::OutputString("  --cddb\t\t\tEnable online database lookup\n\n");
  			}
  
  			boca.DeleteComponent(info);

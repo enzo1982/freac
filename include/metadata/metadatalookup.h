@@ -72,6 +72,8 @@ namespace freac
 			static Int			 GetAvailableKeys(const BoCA::DiscMetadata &);
 
 			static String			 GetDiscKey(const BoCA::Info &);
+			static Bool			 IsSameDisc(const String &, const String &);
+			static Bool			 IsSameQueuedDisc(const String &, const String &);
 			static Int			 GetTOCIndex(const BoCA::Track &);
 
 			/* Apply a record to a track or to the joblist tracks of its disc.
