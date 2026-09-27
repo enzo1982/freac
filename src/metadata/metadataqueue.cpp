@@ -220,7 +220,7 @@ Int freac::MetadataQueue::AddQueries(const Array<DiscMetadata> &discs)
 
 		for (Int i = 0; i < queries.Length() && !found; i++)
 		{
-			if (MetadataLookup::GetDiscKey(queries.GetNth(i).disc) == key) found = True;
+			if (MetadataLookup::IsSameQueuedDisc(MetadataLookup::GetDiscKey(queries.GetNth(i).disc), key)) found = True;
 		}
 
 		if (found) continue;
@@ -282,7 +282,7 @@ Bool freac::MetadataQueue::RemoveQuery(const DiscMetadata &disc)
 
 	for (Int i = queries.Length() - 1; i >= 0; i--)
 	{
-		if (MetadataLookup::GetDiscKey(queries.GetNth(i).disc) != key) continue;
+		if (!MetadataLookup::IsSameQueuedDisc(MetadataLookup::GetDiscKey(queries.GetNth(i).disc), key)) continue;
 
 		queries.RemoveNth(i);
 

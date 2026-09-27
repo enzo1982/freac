@@ -675,7 +675,7 @@ Void freac::MetadataSubmitDlg::ReadDisc()
 	{
 		const Track	&jobTrack = joblist->GetNth(i);
 
-		if (MetadataLookup::GetDiscKey(jobTrack.GetInfo()) != discKey) continue;
+		if (!MetadataLookup::IsSameDisc(MetadataLookup::GetDiscKey(jobTrack.GetInfo()), discKey)) continue;
 
 		Int		 index	= MetadataLookup::GetTOCIndex(jobTrack);
 

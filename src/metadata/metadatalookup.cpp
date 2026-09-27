@@ -27,7 +27,7 @@ Bool freac::MetadataLookup::GetCachedRecord(const DiscMetadata &known, DiscMetad
 
 	foreach (const DiscMetadata &cached, recordCache)
 	{
-		if (GetDiscKey(cached.disc) != key) continue;
+		if (!IsSameDisc(GetDiscKey(cached.disc), key)) continue;
 
 		record = cached;
 
@@ -56,7 +56,7 @@ Void freac::MetadataLookup::RemoveCachedRecord(const DiscMetadata &disc)
 
 	for (Int i = recordCache.Length() - 1; i >= 0; i--)
 	{
-		if (GetDiscKey(recordCache.GetNth(i).disc) == key) recordCache.RemoveNth(i);
+		if (IsSameDisc(GetDiscKey(recordCache.GetNth(i).disc), key)) recordCache.RemoveNth(i);
 	}
 }
 
@@ -67,22 +67,29 @@ Bool freac::MetadataLookup::IsInJoblist(const DiscMetadata &disc)
 	return GetJoblistKnownData(disc, known);
 }
 
-/* What fre:ac knows about a disc from its first track in the joblist.
- * This TOC is exact, while a queue entry that was converted from the
- * old CDDB queue has its lead-out in whole seconds only.
+/* What fre:ac knows about the disc of a queue entry from its first track
+ * in the joblist. This TOC is exact, while a queue entry that was
+ * converted from the old CDDB queue has its lead-out in whole seconds
+ * only. A disc with the same key is preferred over one that is close.
  */
 Bool freac::MetadataLookup::GetJoblistKnownData(const DiscMetadata &disc, DiscMetadata &known)
 {
 	String			 key	 = GetDiscKey(disc.disc);
 	const Array<Track>	*joblist = BoCA::JobList::Get()->getTrackList.Call();
 
-	foreach (const Track &track, *joblist)
+	for (Int pass = 0; pass < 2; pass++)
 	{
-		if (GetDiscKey(track.GetInfo()) != key) continue;
+		foreach (const Track &track, *joblist)
+		{
+			String	 trackKey = GetDiscKey(track.GetInfo());
 
-		known = GetKnownData(track);
+			if (pass == 0 && !IsSameDisc(key, trackKey))	   continue;
+			if (pass == 1 && !IsSameQueuedDisc(key, trackKey)) continue;
 
-		return True;
+			known = GetKnownData(track);
+
+			return True;
+		}
 	}
 
 	return False;
@@ -191,6 +198,45 @@ String freac::MetadataLookup::GetDiscKey(const Info &info)
 	else if (info.offsets != NIL) return info.offsets.ToUpper();
 
 	return NIL;
+}
+
+/* Disc keys match if they are the same. Two pressings of a disc can
+ * differ only in their lead-out, so a lead-out that is close is not
+ * enough.
+ */
+Bool freac::MetadataLookup::IsSameDisc(const String &key1, const String &key2)
+{
+	if (key1 == NIL || key2 == NIL) return False;
+
+	return key1 == key2;
+}
+
+/* A queue entry that was converted from the old CDDB queue counts data
+ * tracks too and has its lead-out in whole seconds. Such an entry matches
+ * a disc with the same track offsets and a lead-out less than a second
+ * away. Other entries must match exactly.
+ */
+Bool freac::MetadataLookup::IsSameQueuedDisc(const String &queueKey, const String &key)
+{
+	if (IsSameDisc(queueKey, key))	       return True;
+	if (queueKey == NIL || key == NIL)     return False;
+
+	const Array<String>	&values1 = queueKey.Explode("+");
+	const Array<String>	&values2 = key.Explode("+");
+
+	if (values1.Length() != values2.Length() || values1.Length() < 3) return False;
+
+	for (Int i = 1; i < values1.Length() - 1; i++)
+	{
+		if (values1.GetNth(i) != values2.GetNth(i)) return False;
+	}
+
+	Int64	 leadOut1 = (Int64) Number::FromHexString(values1.GetLast());
+	Int64	 leadOut2 = (Int64) Number::FromHexString(values2.GetLast());
+
+	if (leadOut1 % FRAMES_PER_SECOND != 0) return False;
+
+	return Math::Abs(leadOut1 - leadOut2) < FRAMES_PER_SECOND;
 }
 
 /* The index of the TOC entry of a track, or -1.
@@ -432,7 +478,7 @@ static Void ApplyField(Info &info, const String &name, const String &value, Bool
  */
 Bool freac::MetadataLookup::ApplyRecord(Track &track, const DiscMetadata &record, Bool merge)
 {
-	if (GetDiscKey(track.GetInfo()) != GetDiscKey(record.disc)) return False;
+	if (!IsSameDisc(GetDiscKey(track.GetInfo()), GetDiscKey(record.disc))) return False;
 
 	Bool	 hidden = (track.cdTrack == 0);
 	Int	 index	= GetTOCIndex(track);
@@ -550,7 +596,7 @@ Int freac::MetadataLookup::ApplyToJoblist(const DiscMetadata &record, Bool setOr
 	{
 		Track	 track = joblist->GetNth(i);
 
-		if (GetDiscKey(track.GetInfo()) != key) continue;
+		if (!IsSameDisc(GetDiscKey(track.GetInfo()), key)) continue;
 
 		if (!ApplyRecord(track, record, merge)) continue;
 

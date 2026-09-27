@@ -374,7 +374,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	if (numberOfThreads == "1") config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, False);
 	if (numberOfThreads != NIL) config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, numberOfThreads.ToInt());
 	
-	if (enableCDDB		  ) config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, True);
+	if (enableCDDB		  ) config->SetIntValue(Config::CategoryMetadataID, Config::MetadataAutoQueryID, True);
 
 	if (ripperTimeout   != NIL) config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, ripperTimeout.ToInt ());
 
@@ -1015,7 +1015,7 @@ Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userC
 
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, True);
 
-	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, True);
+	config->SetIntValue(Config::CategoryMetadataID, Config::MetadataAutoSelectID, True);
 	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, True);
 
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperEjectAfterRippingID, False);
@@ -1042,7 +1042,7 @@ Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userC
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, False);
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, 0);
 
-	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, False);
+	config->SetIntValue(Config::CategoryMetadataID, Config::MetadataAutoQueryID, False);
 
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, 0);
 
@@ -1201,7 +1201,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 				Console::OutputString("  --drive=<n|id>  | -cd <n|id>\tSpecify active CD drive (0..n or device path)\n");
 				Console::OutputString("  --track=<n>     | -t <n>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
 				Console::OutputString("  --timeout=<s>\t\t\tTimeout for CD track ripping (disabled by default)\n");
-				Console::OutputString("  --cddb\t\t\tEnable CDDB database lookup\n");
+				Console::OutputString("  --cddb\t\t\tEnable online database lookup\n");
 				Console::OutputString("  --eject\t\t\tEject disc after ripping\n\n");
 			}
 

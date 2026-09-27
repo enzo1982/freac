@@ -33,7 +33,9 @@
 #include <dialogs/overwrite.h>
 #include <dialogs/format.h>
 
-#include <cddb/cddbcache.h>
+#include <metadata/metadatalookup.h>
+#include <metadata/freedbdiscid.h>
+
 
 using namespace smooth::GUI::Dialogs;
 
@@ -2056,48 +2058,85 @@ Void freac::JobConvert::LogCDInfo() const
 
 		log->Write(NIL);
 
-		/* Log CDDB data if available.
+		/* Log the source of the disc metadata. Take the fields of the
+		 * first track of this disc in the conversion. Take the record
+		 * of the lookups of this session only if the tracks carry it.
 		 */
-		String		 queryString = CDDB::QueryStringFromMCDI(mcdi);
-		CDDBInfo	 cddbInfo    = CDDBCache::Get()->GetCacheEntry(queryString); 
-
 		log->Write("    Disc info:");
+		log->Write(String("        freedb disc ID: ").Append(FreedbDiscID::ToString(FreedbDiscID::FromMCDI(mcdi))));
 
-		if (cddbInfo != NIL)
+		DiscMetadata	 known;
+		DiscMetadata	 record;
+		DiscMetadata	 cached;
+
+		known.disc.mcdi = mcdi;
+
+		String		 discKey   = MetadataLookup::GetDiscKey(known.disc);
+		Bool		 haveTable = False;
+
+		foreach (const Track &track, tracks)
 		{
-			log->Write(String("        CDDB disc ID:  ").Append(CDDB::DiscIDToString(cddbInfo.discID)));
-			log->Write(String("        CDDB category: ").Append(cddbInfo.category));
+			if (!track.isCDTrack || track.drive != drive) continue;
+
+			const Info	&trackInfo = track.GetInfo();
+
+			if (!MetadataLookup::IsSameDisc(MetadataLookup::GetDiscKey(trackInfo), discKey)) continue;
+
+			record.provider	   = trackInfo.GetOtherInfo(INFO_METADATA_PROVIDER);
+			record.recordID	   = trackInfo.GetOtherInfo(INFO_METADATA_RECORDID);
+			record.disc.artist = trackInfo.GetOtherInfo(INFO_ALBUMARTIST) != NIL ? trackInfo.GetOtherInfo(INFO_ALBUMARTIST) : trackInfo.artist;
+			record.disc.album  = trackInfo.album;
+			record.disc.genre  = trackInfo.genre;
+			record.disc.year   = trackInfo.year;
+
+			break;
+		}
+
+		if (record.provider != NIL && MetadataLookup::GetCachedRecord(known, cached) &&
+		    cached.provider == record.provider && cached.recordID == record.recordID)
+		{
+			record	  = cached;
+			haveTable = True;
+		}
+
+		if (record.provider != NIL)
+		{
+			log->Write(String("        Provider:       ").Append(record.provider));
+			log->Write(String("        Record ID:      ").Append(record.recordID));
 			log->Write(NIL);
-			log->Write(String("        Artist:        ").Append(cddbInfo.dArtist));
-			log->Write(String("        Album:         ").Append(cddbInfo.dTitle));
-			log->Write(String("        Genre:         ").Append(cddbInfo.dGenre));
+			log->Write(String("        Artist:         ").Append(record.disc.artist));
+			log->Write(String("        Album:          ").Append(record.disc.album));
 
-			if (cddbInfo.dYear > 0) log->Write(String("        Published:     ").Append(String::FromInt(cddbInfo.dYear)));
+			if (record.disc.genre != NIL) log->Write(String("        Genre:          ").Append(record.disc.genre));
+			if (record.disc.year  >  0)   log->Write(String("        Published:      ").Append(String::FromInt(record.disc.year)));
 
-			log->Write(NIL);
-			log->Write("        Track | Offset | Track title");
-			log->Write("        -------------------------------------------------------");
-
-			for (Int i = 0; i < cddbInfo.trackOffsets.Length(); i++)
+			/* The track titles of the record.
+			 */
+			if (haveTable && record.tracks.Length() > 0)
 			{
-				Int	 trackNumber = mcdi.GetNthEntryTrackNumber(i);
-				Int	 trackOffset = cddbInfo.trackOffsets.GetNth(i);
+				log->Write(NIL);
+				log->Write("        Track | Track title");
+				log->Write("        -------------------------------------------------------");
 
-				String	 entry = String("        ");
+				for (Int i = 0; i < record.tracks.Length() && i < mcdi.GetNumberOfEntries(); i++)
+				{
+					const Info	&recordTrack = record.tracks.GetNth(i);
+					Int		 trackNumber = mcdi.GetNthEntryTrackNumber(i);
 
-				if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO) entry.Append("   ").Append(String().FillN(' ', 1 - Math::Floor(Math::Log10(trackNumber)))).Append(String::FromInt(trackNumber)).Append(" | ");
-				else					    entry.Append(" ").Append("DATA").Append(" | ");
+					String	 entry = String("        ");
 
-				entry.Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackOffset)))).Append(String::FromInt(trackOffset)).Append(" | ")
-				     .Append(cddbInfo.trackArtists.GetNth(i) != NIL ? String(cddbInfo.trackArtists.GetNth(i)).Append(" / ") : String()).Append(cddbInfo.trackTitles.GetNth(i));
+					if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO) entry.Append("   ").Append(String().FillN(' ', 1 - Math::Floor(Math::Log10(trackNumber)))).Append(String::FromInt(trackNumber)).Append(" | ");
+					else					    entry.Append(" ").Append("DATA").Append(" | ");
 
-				log->Write(entry);
+					if (recordTrack.artist != NIL && recordTrack.artist != record.disc.artist) entry.Append(recordTrack.artist).Append(" / ");
+
+					log->Write(entry.Append(recordTrack.title));
+				}
 			}
 		}
 		else
 		{
-			log->Write(String("        CDDB disc ID: ").Append(CDDB::DiscIDToString(CDDB::DiscIDFromMCDI(mcdi))));
-			log->Write("        CDDB info:    No CDDB data available for this disc!");
+			log->Write("        Provider:       No online database record for this disc.");
 		}
 
 		log->Write(NIL);

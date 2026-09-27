@@ -323,21 +323,17 @@
     </ClCompile>
     <ClCompile Include="..\..\src\support\notification_win32.cpp" />
     <ClCompile Include="..\..\src\utilities.cpp" />
-    <ClCompile Include="..\..\src\cddb\cddb.cpp" />
-    <ClCompile Include="..\..\src\cddb\cddbbatch.cpp" />
-    <ClCompile Include="..\..\src\cddb\cddbcache.cpp" />
-    <ClCompile Include="..\..\src\cddb\cddbinfo.cpp" />
-    <ClCompile Include="..\..\src\cddb\cddblocal.cpp" />
-    <ClCompile Include="..\..\src\cddb\cddbremote.cpp" />
+    <ClCompile Include="..\..\src\metadata\freedbdiscid.cpp" />
+    <ClCompile Include="..\..\src\metadata\metadatalookup.cpp" />
+    <ClCompile Include="..\..\src\metadata\metadataqueue.cpp" />
     <ClCompile Include="..\..\src\dialogs\adddirectory.cpp" />
     <ClCompile Include="..\..\src\dialogs\addpattern.cpp" />
-    <ClCompile Include="..\..\src\dialogs\cddb\extsettings.cpp" />
-    <ClCompile Include="..\..\src\dialogs\cddb\manage.cpp" />
-    <ClCompile Include="..\..\src\dialogs\cddb\managequeries.cpp" />
-    <ClCompile Include="..\..\src\dialogs\cddb\managesubmits.cpp" />
-    <ClCompile Include="..\..\src\dialogs\cddb\multimatch.cpp" />
-    <ClCompile Include="..\..\src\dialogs\cddb\query.cpp" />
-    <ClCompile Include="..\..\src\dialogs\cddb\submit.cpp" />
+    <ClCompile Include="..\..\src\dialogs\metadata\lookupbyid.cpp" />
+    <ClCompile Include="..\..\src\dialogs\metadata\managequeries.cpp" />
+    <ClCompile Include="..\..\src\dialogs\metadata\multimatch.cpp" />
+    <ClCompile Include="..\..\src\dialogs\metadata\proxy.cpp" />
+    <ClCompile Include="..\..\src\dialogs\metadata\query.cpp" />
+    <ClCompile Include="..\..\src\dialogs\metadata\submit.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
       <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
@@ -356,10 +352,10 @@
       <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
       <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\dialogs\config\config_cddb.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_encoders.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_interface.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_language.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_metadata.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_playlists.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\configcomponent.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\configentry.cpp" />
@@ -415,27 +411,23 @@
     <ClInclude Include="..\..\include\utilities.h" />
     <ClInclude Include="..\..\include\dialogs\adddirectory.h" />
     <ClInclude Include="..\..\include\dialogs\addpattern.h" />
-    <ClInclude Include="..\..\include\dialogs\cddb\extsettings.h" />
-    <ClInclude Include="..\..\include\dialogs\cddb\manage.h" />
-    <ClInclude Include="..\..\include\dialogs\cddb\managequeries.h" />
-    <ClInclude Include="..\..\include\dialogs\cddb\managesubmits.h" />
-    <ClInclude Include="..\..\include\dialogs\cddb\multimatch.h" />
-    <ClInclude Include="..\..\include\dialogs\cddb\query.h" />
-    <ClInclude Include="..\..\include\dialogs\cddb\submit.h" />
+    <ClInclude Include="..\..\include\dialogs\metadata\lookupbyid.h" />
+    <ClInclude Include="..\..\include\dialogs\metadata\managequeries.h" />
+    <ClInclude Include="..\..\include\dialogs\metadata\multimatch.h" />
+    <ClInclude Include="..\..\include\dialogs\metadata\proxy.h" />
+    <ClInclude Include="..\..\include\dialogs\metadata\query.h" />
+    <ClInclude Include="..\..\include\dialogs\metadata\submit.h" />
     <ClInclude Include="..\..\include\dialogs\config\config.h" />
-    <ClInclude Include="..\..\include\dialogs\config\config_cddb.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_encoders.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_interface.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_language.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_metadata.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_playlists.h" />
     <ClInclude Include="..\..\include\dialogs\config\configcomponent.h" />
     <ClInclude Include="..\..\include\dialogs\config\configentry.h" />
-    <ClInclude Include="..\..\include\cddb\cddb.h" />
-    <ClInclude Include="..\..\include\cddb\cddbbatch.h" />
-    <ClInclude Include="..\..\include\cddb\cddbcache.h" />
-    <ClInclude Include="..\..\include\cddb\cddbinfo.h" />
-    <ClInclude Include="..\..\include\cddb\cddblocal.h" />
-    <ClInclude Include="..\..\include\cddb\cddbremote.h" />
+    <ClInclude Include="..\..\include\metadata\freedbdiscid.h" />
+    <ClInclude Include="..\..\include\metadata\metadatalookup.h" />
+    <ClInclude Include="..\..\include\metadata\metadataqueue.h" />
     <ClInclude Include="..\..\include\gui\layer_tooltip.h" />
     <ClInclude Include="..\..\include\gui\main_joblist.h" />
     <ClInclude Include="..\..\include\gui\main_threads.h" />

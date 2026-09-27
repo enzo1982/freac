@@ -289,6 +289,10 @@ Int freac::MetadataQueryDlg::QueryDisc(const Track &track, Bool autoQuery, DiscM
 		if (result == LOOKUP_FOUND) MetadataQueue().RemoveQuery(known);
 	}
 
+	/* In console mode, print lookup errors instead of showing dialogs.
+	 */
+	if (console && result == LOOKUP_ERROR) BoCA::Utilities::ErrorMessage(String::Implode(errors, "\n"));
+
 	if (console || result == LOOKUP_FOUND || result == LOOKUP_CANCELED) return result;
 
 	i18n->SetContext("Metadata::Query");
