@@ -266,16 +266,37 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 			if (info.artist != origInfo.artist)
 			{
-				if (mTrackInfo.artist == mTrackInfo.GetOtherInfo(INFO_ALBUMARTIST) && clearAlbumArtist) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
+				/* The album artist is cleared only if all artists of the
+				 * track are the album artists. The other artists of the
+				 * track stay when its first artist changes.
+				 */
+				if (clearAlbumArtist && TagUtilities::HaveSameValues(Info::GetInfoList(&mTrackInfo, INFO_ARTISTS), Info::GetOtherInfoList(&mTrackInfo, INFO_ALBUMARTIST))) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
 
-				if (mTrackInfo.artist == origInfo.artist) mTrackInfo.artist = info.artist;
-				else					  TagUtilities::SetFirstOtherInfo(mTrackInfo, INFO_ALBUMARTIST, info.artist, origInfo.artist);
+				/* An empty album artist removed the first artist of the
+				 * track. A track with more artists then has another
+				 * first artist, so remember to put the new one in front.
+				 */
+				Int	 trackID       = mTrack.GetTrackID();
+				Bool	 artistRenamed = (mTrackInfo.artist == origInfo.artist || (origInfo.artist == NIL && firstArtistRemoved.Get(trackID)));
 
-				if (mTrackInfo.artist == mTrackInfo.GetOtherInfo(INFO_ALBUMARTIST) && clearAlbumArtist) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
+				if (artistRenamed)
+				{
+					Bool	 removed = (info.artist == NIL && Info::GetInfoList(&mTrackInfo, INFO_ARTISTS).Length() > 1);
+
+					TagUtilities::SetFirstOtherInfo(mTrackInfo, INFO_ARTISTS, info.artist, origInfo.artist);
+
+					if (!firstArtistRemoved.Add(removed, trackID)) firstArtistRemoved.Set(trackID, removed);
+				}
+
+				/* A track keeps its album artists if they are not the
+				 * same as its artists. Rename the first one then too.
+				 */
+				if (!artistRenamed || Info::GetOtherInfoList(&mTrackInfo, INFO_ALBUMARTIST).GetFirst() == origInfo.artist) TagUtilities::SetFirstOtherInfo(mTrackInfo, INFO_ALBUMARTIST, info.artist, origInfo.artist);
+
+				if (clearAlbumArtist && TagUtilities::HaveSameValues(Info::GetInfoList(&mTrackInfo, INFO_ARTISTS), Info::GetOtherInfoList(&mTrackInfo, INFO_ALBUMARTIST))) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
 			}
 
 			if (info.album	   != origInfo.album)	  mTrackInfo.album     = info.album;
-			if (info.genre	   != origInfo.genre)	  mTrackInfo.genre     = info.genre;
 			if (info.year	   != origInfo.year)	  mTrackInfo.year      = info.year;
 			if (info.comment   != origInfo.comment)	  mTrackInfo.comment   = info.comment;
 
@@ -284,7 +305,13 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 			if (info.disc	   != origInfo.disc)	  mTrackInfo.disc      = info.disc;
 			if (info.numDiscs  != origInfo.numDiscs)  mTrackInfo.numDiscs  = info.numDiscs;
 
-			if (info.label	   != origInfo.label)	  mTrackInfo.label     = info.label;
+			/* Genres and labels can have several values.
+			 */
+			const Array<String>	&genres = Info::GetInfoList(&info, INFO_GENRES);
+			const Array<String>	&labels = Info::GetInfoList(&info, INFO_LABELS);
+
+			if (!TagUtilities::HaveSameValues(genres, Info::GetInfoList(&origInfo, INFO_GENRES))) TagUtilities::ReplaceOtherInfo(mTrackInfo, INFO_GENRES, genres);
+			if (!TagUtilities::HaveSameValues(labels, Info::GetInfoList(&origInfo, INFO_LABELS))) TagUtilities::ReplaceOtherInfo(mTrackInfo, INFO_LABELS, labels);
 
 			/* Update other text info.
 			 */
@@ -555,7 +582,6 @@ Void BoCA::ChooserAlbums::UpdateAlbum(const Track &track)
 		 */
 		albumInfo.artist	= trackInfo.GetOtherInfo(INFO_ALBUMARTIST) == NIL ? trackInfo.artist : trackInfo.GetOtherInfo(INFO_ALBUMARTIST);
 		albumInfo.album		= trackInfo.album;
-		albumInfo.genre		= trackInfo.genre;
 		albumInfo.year		= trackInfo.year;
 		albumInfo.comment	= trackInfo.comment;
 
@@ -564,7 +590,10 @@ Void BoCA::ChooserAlbums::UpdateAlbum(const Track &track)
 		albumInfo.disc		= trackInfo.disc;
 		albumInfo.numDiscs	= trackInfo.numDiscs;
 
-		albumInfo.label		= trackInfo.label;
+		/* Genres and labels can have several values.
+		 */
+		TagUtilities::ReplaceOtherInfo(albumInfo, INFO_GENRES, Info::GetInfoList(&trackInfo, INFO_GENRES));
+		TagUtilities::ReplaceOtherInfo(albumInfo, INFO_LABELS, Info::GetInfoList(&trackInfo, INFO_LABELS));
 
 		/* Copy other text info.
 		 *

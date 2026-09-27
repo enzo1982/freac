@@ -31,7 +31,7 @@ namespace BoCA
 			GroupBox			*group_publisher;
 
 			Text				*text_publisher;
-			EditBox				*edit_publisher;
+			MultiValueEditBox		*edit_publisher;
 
 			Text				*text_mediatype;
 			MultiValueEditBox		*edit_mediatype;
@@ -44,7 +44,7 @@ namespace BoCA
 			MultiValueEditBox		*edit_barcode;
 
 			Text				*text_isrc;
-			EditBox				*edit_isrc;
+			MultiValueEditBox		*edit_isrc;
 
 			GroupBox			*group_web;
 

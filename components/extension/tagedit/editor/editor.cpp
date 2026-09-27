@@ -72,7 +72,7 @@ Void BoCA::Editor::OnChangeValues(const Array<String> &values)
 
 	TagUtilities::ReplaceOtherInfo(info, activeValueBox->GetKey(), values);
 
-	activeValueBox->SetValues(Info::GetOtherInfoList(&info, activeValueBox->GetKey()));
+	activeValueBox->SetValues(Info::GetInfoList(&info, activeValueBox->GetKey()));
 
 	track.SetInfo(info);
 

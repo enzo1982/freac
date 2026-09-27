@@ -222,12 +222,24 @@ Bool BoCA::TagUtilities::HaveSameValues(const Array<String> &values1, const Arra
 	return True;
 }
 
-/* Replace all values of a key; empty values are dropped.
+/* Replace all values of a key; empty values are dropped. For
+ * INFO_ARTISTS, INFO_GENRES, INFO_LABELS and INFO_ISRCS, the first value
+ * goes into the basic field.
  */
 Void BoCA::TagUtilities::ReplaceOtherInfo(Info &info, const String &key, const Array<String> &values)
 {
-	info.SetOtherInfo(key, NIL);
-	Info::AddOtherInfo(&info, key, values);
+	Info::SetInfoList(&info, key, values);
+}
+
+/* Replace all values of a key with one value.
+ */
+Void BoCA::TagUtilities::SetSingleInfo(Info &info, const String &key, const String &value)
+{
+	Array<String>	 values;
+
+	values.Add(value);
+
+	ReplaceOtherInfo(info, key, values);
 }
 
 /* Set the first value of a key and keep the other values. The first
@@ -236,7 +248,7 @@ Void BoCA::TagUtilities::ReplaceOtherInfo(Info &info, const String &key, const A
  */
 Void BoCA::TagUtilities::SetFirstOtherInfo(Info &info, const String &key, const String &value, const String &previous)
 {
-	Array<String>	 values = Info::GetOtherInfoList(&info, key);
+	Array<String>	 values = Info::GetInfoList(&info, key);
 
 	if (values.Length() > 0 && values.GetFirst() == value) return;
 

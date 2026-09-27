@@ -26,8 +26,9 @@ BoCA::LayerTagPublisher::LayerTagPublisher() : Editor("Publisher")
 	text_barcode		= new Text(NIL, text_catalog->GetPosition() + Point(0, 27));
 	text_isrc		= new Text(NIL, text_barcode->GetPosition() + Point(0, 27));
 
-	edit_publisher		= new EditBox(text_publisher->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_publisher		= new MultiValueEditBox(INFO_LABELS, text_publisher, text_publisher->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_publisher->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
+	edit_publisher->onRequestValueList.Connect(&LayerTagPublisher::OnRequestValueList, this);
 
 	edit_mediatype		= new MultiValueEditBox(INFO_MEDIATYPE, text_mediatype, text_mediatype->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_mediatype->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
@@ -43,8 +44,9 @@ BoCA::LayerTagPublisher::LayerTagPublisher() : Editor("Publisher")
 	edit_barcode->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
 	edit_barcode->onRequestValueList.Connect(&LayerTagPublisher::OnRequestValueList, this);
 
-	edit_isrc		= new EditBox(text_isrc->GetPosition() + Point(7, -3), Size(300, 0), 12);
+	edit_isrc		= new MultiValueEditBox(INFO_ISRCS, text_isrc, text_isrc->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_isrc->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
+	edit_isrc->onRequestValueList.Connect(&LayerTagPublisher::OnRequestValueList, this);
 
 	group_publisher->Add(text_publisher);
 	group_publisher->Add(edit_publisher);
@@ -305,8 +307,8 @@ Void BoCA::LayerTagPublisher::OnSelectTrack(const Track &nTrack)
 
 	const Info	&info = track.GetInfo();
 
-	edit_publisher->SetText(info.label);
-	edit_isrc->SetText(info.isrc);
+	edit_publisher->SetValues(Info::GetInfoList(&info, INFO_LABELS));
+	edit_isrc->SetValues(Info::GetInfoList(&info, INFO_ISRCS));
 
 	foreach (const String &pair, info.other)
 	{
@@ -361,7 +363,7 @@ Void BoCA::LayerTagPublisher::OnSelectAlbum(const Track &nTrack)
 
 	const Info	&info = track.GetInfo();
 
-	edit_publisher->SetText(info.label);
+	edit_publisher->SetValues(Info::GetInfoList(&info, INFO_LABELS));
 
 	foreach (const String &pair, info.other)
 	{
@@ -401,11 +403,11 @@ Void BoCA::LayerTagPublisher::OnSelectNone()
 
 	if (surface) surface->StartPaint(GetVisibleArea());
 
-	edit_publisher->SetText(NIL);
+	edit_publisher->SetValues(Array<String>());
 	edit_mediatype->SetValues(Array<String>());
 	edit_catalog->SetValues(Array<String>());
 	edit_barcode->SetValues(Array<String>());
-	edit_isrc->SetText(NIL);
+	edit_isrc->SetValues(Array<String>());
 
 	edit_wartist->SetText(NIL);
 	edit_wpublisher->SetText(NIL);
@@ -430,8 +432,8 @@ Void BoCA::LayerTagPublisher::OnModifyTrack()
 {
 	Info	 info = track.GetInfo();
 
-	info.label	= edit_publisher->GetText();
-	info.isrc	= edit_isrc->GetText();
+	if (!edit_publisher->IsReadOnly()) TagUtilities::SetSingleInfo(info, INFO_LABELS, edit_publisher->GetText());
+	if (!edit_isrc->IsReadOnly())	   TagUtilities::SetSingleInfo(info, INFO_ISRCS,  edit_isrc->GetText());
 
 	if (!edit_mediatype->IsReadOnly()) info.SetOtherInfo(INFO_MEDIATYPE,	 edit_mediatype->GetText());
 	if (!edit_catalog->IsReadOnly())   info.SetOtherInfo(INFO_CATALOGNUMBER, edit_catalog->GetText());
