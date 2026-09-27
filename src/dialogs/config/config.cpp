@@ -12,7 +12,7 @@
 
 #include <dialogs/config/config.h>
 #include <dialogs/config/config_albumart.h>
-#include <dialogs/config/config_cddb.h>
+#include <dialogs/config/config_metadata.h>
 #include <dialogs/config/config_cuesheets.h>
 #include <dialogs/config/config_dsp.h>
 #include <dialogs/config/config_encoders.h>
@@ -111,6 +111,7 @@ freac::ConfigDialog::ConfigDialog()
 	tree_encoders		= new Tree(i18n->TranslateString("Encoders"));
 	tree_decoders		= new Tree(i18n->TranslateString("Decoders"));
 	tree_verifiers		= new Tree(i18n->TranslateString("Verifiers"));
+	tree_providers		= new Tree(i18n->TranslateString("Metadata providers"));
 	tree_taggers		= new Tree(i18n->TranslateString("Taggers"));
 	tree_playlists		= new Tree(i18n->TranslateString("Playlists"));
 	tree_dsp		= new Tree(i18n->TranslateString("DSP"));
@@ -127,6 +128,7 @@ freac::ConfigDialog::ConfigDialog()
 	if (tree_encoders->Length()  > 0) tree_components->Add(tree_encoders);
 	if (tree_decoders->Length()  > 0) tree_components->Add(tree_decoders);
 	if (tree_verifiers->Length() > 0) tree_components->Add(tree_verifiers);
+	if (tree_providers->Length() > 0) tree_components->Add(tree_providers);
 	if (tree_taggers->Length()   > 0) tree_components->Add(tree_taggers);
 	if (tree_playlists->Length() > 0) tree_components->Add(tree_playlists);
 	if (tree_dsp->Length()	     > 0) tree_components->Add(tree_dsp);
@@ -205,6 +207,7 @@ freac::ConfigDialog::~ConfigDialog()
 	DeleteObject(tree_encoders);
 	DeleteObject(tree_decoders);
 	DeleteObject(tree_verifiers);
+	DeleteObject(tree_providers);
 	DeleteObject(tree_taggers);
 	DeleteObject(tree_playlists);
 	DeleteObject(tree_dsp);
@@ -315,9 +318,9 @@ Void freac::ConfigDialog::AddLayers()
 		}
 	}
 
-	layers.Add(new ConfigureCDDB());
+	layers.Add(new ConfigureMetadata());
 	createdLayers.Add(layers.GetLast());
-	entries.Add(new ConfigEntry(i18n->TranslateString("CDDB"), layers.GetLast()));
+	entries.Add(new ConfigEntry(i18n->TranslateString("Metadata lookup"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_ripper->Add(entries.GetLast());
 
@@ -390,6 +393,7 @@ Void freac::ConfigDialog::AddLayers()
 				case BoCA::COMPONENT_TYPE_DECODER:   tree = tree_decoders;  break;
 				case BoCA::COMPONENT_TYPE_ENCODER:   tree = tree_encoders;  break;
 				case BoCA::COMPONENT_TYPE_VERIFIER:  tree = tree_verifiers; break;
+				case BoCA::COMPONENT_TYPE_METADATA:  tree = tree_providers; break;
 				case BoCA::COMPONENT_TYPE_TAGGER:    tree = tree_taggers;   break;
 				case BoCA::COMPONENT_TYPE_PLAYLIST:  tree = tree_playlists; break;
 				case BoCA::COMPONENT_TYPE_DSP:	     tree = tree_dsp;	    break;
