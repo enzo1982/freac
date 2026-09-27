@@ -130,7 +130,7 @@ Bool freac::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 	Int	 query = Query(cddbInfo.GetQueryString());
 
-	if (query == QUERY_RESULT_ERROR)
+	if (query == METADATA_QUERY_RESULT_ERROR)
 	{
 		CloseConnection();
 
@@ -141,13 +141,13 @@ Bool freac::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 	{
 		/* This is a new entry; see if it already exists in another category.
 		 */
-		if (query == QUERY_RESULT_SINGLE || query == QUERY_RESULT_MULTIPLE)
+		if (query == METADATA_QUERY_RESULT_SINGLE || query == METADATA_QUERY_RESULT_MULTIPLE)
 		{
 			cddbInfo.category = GetNthCategory(0);
 		}
 	}
 
-	if (query != QUERY_RESULT_FUZZY)
+	if (query != METADATA_QUERY_RESULT_FUZZY)
 	{
 		CDDBInfo	 revisionInfo;
 

@@ -200,7 +200,7 @@ Int freac::CDDBRemote::Query(const String &queryString)
 
 	/* No match found.
 	 */
-	if (str.StartsWith("202")) return QUERY_RESULT_NONE;
+	if (str.StartsWith("202")) return METADATA_QUERY_RESULT_NONE;
 
 	/* Exact match.
 	 */
@@ -229,7 +229,7 @@ Int freac::CDDBRemote::Query(const String &queryString)
 		titles.Add(title);
 		categories.Add(category);
 
-		return QUERY_RESULT_SINGLE;
+		return METADATA_QUERY_RESULT_SINGLE;
 	}
 
 	/* Multiple exact matches.
@@ -272,12 +272,12 @@ Int freac::CDDBRemote::Query(const String &queryString)
 		}
 		while (true);
 
-		if (str[2] == '0' && ids.Length() == 1)	return QUERY_RESULT_SINGLE;
-		else if (str[2] == '0')			return QUERY_RESULT_MULTIPLE;
-		else					return QUERY_RESULT_FUZZY;
+		if (str[2] == '0' && ids.Length() == 1)	return METADATA_QUERY_RESULT_SINGLE;
+		else if (str[2] == '0')			return METADATA_QUERY_RESULT_MULTIPLE;
+		else					return METADATA_QUERY_RESULT_FUZZY;
 	}
 
-	return QUERY_RESULT_ERROR;
+	return METADATA_QUERY_RESULT_ERROR;
 }
 
 Bool freac::CDDBRemote::Read(const String &category, UnsignedInt32 discID, CDDBInfo &cddbInfo)

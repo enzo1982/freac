@@ -17,6 +17,11 @@
 
 using namespace smooth;
 
+namespace BoCA
+{
+	class Config;
+};
+
 namespace freac
 {
 	class Config
@@ -31,6 +36,7 @@ namespace freac
 			static const String	 CategoryPlaylistID;
 			static const String	 CategoryTagsID;
 			static const String	 CategoryFreedbID;
+			static const String	 CategoryMetadataID;
 			static const String	 CategoryVerificationID;
 			static const String	 CategoryProcessingID;
 			static const String	 CategoryLoggingID;
@@ -197,6 +203,24 @@ namespace freac
 
 			static const String	 DialogsCDDBManageCacheSizeYID;
 			static const Int	 DialogsCDDBManageCacheSizeYDefault;
+
+			static const String	 DialogsMetadataMatchSizeXID;
+			static const Int	 DialogsMetadataMatchSizeXDefault;
+
+			static const String	 DialogsMetadataMatchSizeYID;
+			static const Int	 DialogsMetadataMatchSizeYDefault;
+
+			static const String	 DialogsMetadataSubmitSizeXID;
+			static const Int	 DialogsMetadataSubmitSizeXDefault;
+
+			static const String	 DialogsMetadataSubmitSizeYID;
+			static const Int	 DialogsMetadataSubmitSizeYDefault;
+
+			static const String	 DialogsMetadataManageQueriesSizeXID;
+			static const Int	 DialogsMetadataManageQueriesSizeXDefault;
+
+			static const String	 DialogsMetadataManageQueriesSizeYID;
+			static const Int	 DialogsMetadataManageQueriesSizeYDefault;
 
 			/* Category Processing
 			 */
@@ -449,6 +473,28 @@ namespace freac
 			static const String	 FreedbDisplayNotFoundID;
 			static const Bool	 FreedbDisplayNotFoundDefault;
 
+			/* Category Metadata
+			 */
+			static const String	 MetadataCDDBProviderID;
+
+			static const String	 MetadataProvidersID;
+			static const String	 MetadataProvidersDefault;
+
+			static const String	 MetadataAutoQueryID;
+			static const Bool	 MetadataAutoQueryDefault;
+
+			static const String	 MetadataAutoSelectID;
+			static const Bool	 MetadataAutoSelectDefault;
+
+			static const String	 MetadataOverwriteCDTextID;
+			static const Bool	 MetadataOverwriteCDTextDefault;
+
+			static const String	 MetadataDisplayNotFoundID;
+			static const Bool	 MetadataDisplayNotFoundDefault;
+
+			static const String	 MetadataUpdateJoblistID;
+			static const Bool	 MetadataUpdateJoblistDefault;
+
 			/* Category Logging
 			 */
 			static const String	 LoggingLogCompletePathsID;
@@ -467,6 +513,9 @@ namespace freac
 
 						 Config();
 						~Config();
+
+			static Void		 MigrateMetadataSettings(BoCA::Config *);
+			static Bool		 MigrateMetadataConfiguration(BoCA::Config *);
 		public:
 			String			 resourcesPath;
 			String			 documentationPath;

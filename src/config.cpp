@@ -13,6 +13,8 @@
 #include <config.h>
 #include <freac.h>
 
+#include <metadata/metadataqueue.h>
+
 #include <jobs/engine/convert.h>
 
 #include <boca.h>
@@ -30,6 +32,7 @@ const String	 freac::Config::CategoryRipperID				= "Ripper";
 const String	 freac::Config::CategoryPlaylistID				= "Playlist";
 const String	 freac::Config::CategoryTagsID					= "Tags";
 const String	 freac::Config::CategoryFreedbID				= "freedb";
+const String	 freac::Config::CategoryMetadataID				= "Metadata";
 const String	 freac::Config::CategoryVerificationID				= "Verification";
 const String	 freac::Config::CategoryProcessingID				= "Processing";
 const String	 freac::Config::CategoryLoggingID				= "Logging";
@@ -209,6 +212,24 @@ const Int	 freac::Config::DialogsCDDBManageCacheSizeXDefault		= 560;
 
 const String	 freac::Config::DialogsCDDBManageCacheSizeYID			= "CDDBManageCacheSizeY";
 const Int	 freac::Config::DialogsCDDBManageCacheSizeYDefault		= 360;
+
+const String	 freac::Config::DialogsMetadataMatchSizeXID			= "MetadataMatchSizeX";
+const Int	 freac::Config::DialogsMetadataMatchSizeXDefault		= 480;
+
+const String	 freac::Config::DialogsMetadataMatchSizeYID			= "MetadataMatchSizeY";
+const Int	 freac::Config::DialogsMetadataMatchSizeYDefault		= 300;
+
+const String	 freac::Config::DialogsMetadataSubmitSizeXID			= "CDDBSubmitSizeX";
+const Int	 freac::Config::DialogsMetadataSubmitSizeXDefault		= 510;
+
+const String	 freac::Config::DialogsMetadataSubmitSizeYID			= "CDDBSubmitSizeY";
+const Int	 freac::Config::DialogsMetadataSubmitSizeYDefault		= 512;
+
+const String	 freac::Config::DialogsMetadataManageQueriesSizeXID		= "CDDBManageQueriesSizeX";
+const Int	 freac::Config::DialogsMetadataManageQueriesSizeXDefault	= 500;
+
+const String	 freac::Config::DialogsMetadataManageQueriesSizeYID		= "CDDBManageQueriesSizeY";
+const Int	 freac::Config::DialogsMetadataManageQueriesSizeYDefault	= 250;
 
 /* Category Processing
  */
@@ -422,20 +443,20 @@ const String	 freac::Config::FreedbSubmitPathDefault				= "/~cddb/submit.cgi";
 const String	 freac::Config::FreedbEmailID					= "eMail";
 const String	 freac::Config::FreedbEmailDefault				= "cddb@freac.org";
 
-const String	 freac::Config::FreedbProxyID					= "Proxy";
-const String	 freac::Config::FreedbProxyDefault				= "localhost";
+const String	 freac::Config::FreedbProxyID					= BoCA::ProxyConfig::ServerID;
+const String	 freac::Config::FreedbProxyDefault				= BoCA::ProxyConfig::ServerDefault;
 
-const String	 freac::Config::FreedbProxyUserID				= "ProxyUserName";
+const String	 freac::Config::FreedbProxyUserID				= BoCA::ProxyConfig::UserID;
 const String	 freac::Config::FreedbProxyUserDefault				= NIL;
 
-const String	 freac::Config::FreedbProxyPasswordID				= "ProxyPassword";
+const String	 freac::Config::FreedbProxyPasswordID				= BoCA::ProxyConfig::PasswordID;
 const String	 freac::Config::FreedbProxyPasswordDefault			= NIL;
 
-const String	 freac::Config::FreedbProxyModeID				= "ProxyMode";
-const Int	 freac::Config::FreedbProxyModeDefault				= 0;
+const String	 freac::Config::FreedbProxyModeID				= BoCA::ProxyConfig::ModeID;
+const Int	 freac::Config::FreedbProxyModeDefault				= BoCA::ProxyConfig::ModeDefault;
 
-const String	 freac::Config::FreedbProxyPortID				= "ProxyPort";
-const Int	 freac::Config::FreedbProxyPortDefault				= 1080;
+const String	 freac::Config::FreedbProxyPortID				= BoCA::ProxyConfig::PortID;
+const Int	 freac::Config::FreedbProxyPortDefault				= BoCA::ProxyConfig::PortDefault;
 
 const String	 freac::Config::FreedbEnableLocalID				= "EnableLocalCDDB";
 const Bool	 freac::Config::FreedbEnableLocalDefault			= False;
@@ -460,6 +481,30 @@ const Bool	 freac::Config::FreedbUpdateJoblistDefault			= True;
 
 const String	 freac::Config::FreedbDisplayNotFoundID				= "DisplayNotFoundNote";
 const Bool	 freac::Config::FreedbDisplayNotFoundDefault			= True;
+
+/* Category Metadata
+ *
+ * MetadataCDDBProviderID is the component ID of the CDDB provider.
+ */
+const String	 freac::Config::MetadataCDDBProviderID				= "cddb-metadata";
+
+const String	 freac::Config::MetadataProvidersID				= "Providers";
+const String	 freac::Config::MetadataProvidersDefault			= String("musicbrainz-metadata,").Append(MetadataCDDBProviderID);
+
+const String	 freac::Config::MetadataAutoQueryID				= "AutoQuery";
+const Bool	 freac::Config::MetadataAutoQueryDefault			= True;
+
+const String	 freac::Config::MetadataAutoSelectID				= "AutoSelectFirstEntry";
+const Bool	 freac::Config::MetadataAutoSelectDefault			= False;
+
+const String	 freac::Config::MetadataOverwriteCDTextID			= "OverwriteCDText";
+const Bool	 freac::Config::MetadataOverwriteCDTextDefault			= True;
+
+const String	 freac::Config::MetadataDisplayNotFoundID			= "DisplayNotFoundNote";
+const Bool	 freac::Config::MetadataDisplayNotFoundDefault			= True;
+
+const String	 freac::Config::MetadataUpdateJoblistID				= "UpdateJoblistOnSubmit";
+const Bool	 freac::Config::MetadataUpdateJoblistDefault			= True;
 
 /* Category Logging
  */
@@ -545,10 +590,91 @@ freac::Config::Config()
 
 		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, encoderID);
 	}
+
+	/* Set up the metadata settings once.
+	 */
+	MigrateMetadataSettings(config);
 }
 
 freac::Config::~Config()
 {
+}
+
+/* Set up the Metadata category in every configuration that does not
+ * have it yet. Upgrading users keep CDDB first and their CDDB settings;
+ * new installs get MusicBrainz first. Upgrading users who turned remote
+ * CDDB lookups off do not get MusicBrainz, so that no new network
+ * lookups happen. If they also had no local CDDB database, they get no
+ * provider, because fre:ac did no lookups at all for them before. No
+ * old key and no old file is removed, so that an older version of
+ * fre:ac still works with this configuration.
+ *
+ * The Providers key marks a configuration as set up. It is written only
+ * here and on the Metadata lookup configuration page. AutoQuery cannot
+ * be the marker, because it is a persistent menu value that is written
+ * to the active configuration at exit.
+ */
+Void freac::Config::MigrateMetadataSettings(BoCA::Config *config)
+{
+	String	 activeConfiguration = config->GetConfigurationName();
+	Bool	 upgraded	     = False;
+
+	for (Int i = 0; i < config->GetNOfConfigurations(); i++)
+	{
+		config->SetActiveConfiguration(config->GetNthConfigurationName(i));
+
+		if (MigrateMetadataConfiguration(config)) upgraded = True;
+	}
+
+	config->SetActiveConfiguration(activeConfiguration);
+
+	/* The query queue is shared by all configurations. Convert it once,
+	 * in the same start that upgrades the configurations.
+	 */
+	if (upgraded) MetadataQueue::MigrateCDDBQueries();
+}
+
+/* Set up the Metadata category of the active configuration. Returns True
+ * if the configuration was one of an earlier fre:ac version.
+ */
+Bool freac::Config::MigrateMetadataConfiguration(BoCA::Config *config)
+{
+	const String	 notSet	 = "?";
+
+	if (config->GetStringValue(CategoryMetadataID, MetadataProvidersID, notSet) != notSet) return False;
+
+	Bool	 upgrade = (config->GetStringValue(CategoryFreedbID, FreedbServerID, NIL) != NIL ||
+			    config->GetIntValue(CategoryFreedbID, FreedbEnableCacheID, -1) != -1 ||
+			    config->GetIntValue(CategoryFreedbID, FreedbAutoQueryID, -1) != -1 ||
+			    config->GetIntValue(CategoryFreedbID, FreedbEnableRemoteID, -1) != -1);
+
+	Bool	 remote	 = config->GetIntValue(CategoryFreedbID, FreedbEnableRemoteID, True);
+	Bool	 local	 = config->GetIntValue(CategoryFreedbID, FreedbEnableLocalID, False);
+	Bool	 cache	 = config->GetIntValue(CategoryFreedbID, FreedbEnableCacheID, FreedbEnableCacheDefault);
+
+	/* The old lookup read the CDDB cache even with local and remote
+	 * CDDB off, so CDDB stays on for the cache. The CDDB component
+	 * checks the local and remote values itself.
+	 */
+	if	(!upgrade)	   config->SetStringValue(CategoryMetadataID, MetadataProvidersID, MetadataProvidersDefault);
+	else if	(remote)	   config->SetStringValue(CategoryMetadataID, MetadataProvidersID, String(MetadataCDDBProviderID).Append(",musicbrainz-metadata"));
+	else if	(local || cache)   config->SetStringValue(CategoryMetadataID, MetadataProvidersID, MetadataCDDBProviderID);
+	else			   config->SetStringValue(CategoryMetadataID, MetadataProvidersID, NIL);
+
+	/* Take the old values only in an upgrade. In a configuration that
+	 * already has a Metadata value, for example the persistent AutoQuery
+	 * menu value, keep that value.
+	 */
+	if (upgrade)
+	{
+		config->SetIntValue(CategoryMetadataID, MetadataAutoQueryID,	   config->GetIntValue(CategoryFreedbID, FreedbAutoQueryID, MetadataAutoQueryDefault));
+		config->SetIntValue(CategoryMetadataID, MetadataAutoSelectID,	   config->GetIntValue(CategoryFreedbID, FreedbAutoSelectID, MetadataAutoSelectDefault));
+		config->SetIntValue(CategoryMetadataID, MetadataOverwriteCDTextID, config->GetIntValue(CategoryFreedbID, FreedbOverwriteCDTextID, MetadataOverwriteCDTextDefault));
+		config->SetIntValue(CategoryMetadataID, MetadataDisplayNotFoundID, config->GetIntValue(CategoryFreedbID, FreedbDisplayNotFoundID, MetadataDisplayNotFoundDefault));
+		config->SetIntValue(CategoryMetadataID, MetadataUpdateJoblistID,   config->GetIntValue(CategoryFreedbID, FreedbUpdateJoblistID, MetadataUpdateJoblistDefault));
+	}
+
+	return upgrade;
 }
 
 freac::Config *freac::Config::Get()

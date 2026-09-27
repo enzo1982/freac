@@ -31,7 +31,7 @@ namespace freac
 			Bool			 SaveEntries();
 
 			Bool			 ConnectToServer()					{ return True; }
-			Int			 Query(const String &)					{ return QUERY_RESULT_NONE; }
+			Int			 Query(const String &)					{ return METADATA_QUERY_RESULT_NONE; }
 			Bool			 Read(const String &, UnsignedInt32, CDDBInfo &)	{ return False; }
 			Bool			 CloseConnection()					{ return True; }
 		public:

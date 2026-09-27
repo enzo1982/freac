@@ -195,19 +195,19 @@ Bool freac::cddbQueryDlg::Query(CDDB &cddb)
 	UnsignedInt32	 discID	= 0;
 	Bool		 fuzzy	= False;
 
-	if (result == QUERY_RESULT_NONE)
+	if (result == METADATA_QUERY_RESULT_NONE)
 	{
 		errorState  = True;
 		errorString = i18n->TranslateString("%1:", "Characters").Replace("%1", queryString.SubString(11, 8)).Append(" ").Append(i18n->TranslateString("No freedb entry for this disc.")).Append("\n\n").Append(queryString);
 	}
-	else if (result == QUERY_RESULT_SINGLE)
+	else if (result == METADATA_QUERY_RESULT_SINGLE)
 	{
 		category = cddb.GetNthCategory(0);
 		discID	 = cddb.GetNthDiscID(0);
 	}
-	else if (result == QUERY_RESULT_MULTIPLE || result == QUERY_RESULT_FUZZY)
+	else if (result == METADATA_QUERY_RESULT_MULTIPLE || result == METADATA_QUERY_RESULT_FUZZY)
 	{
-		if (result == QUERY_RESULT_FUZZY) fuzzy = True;
+		if (result == METADATA_QUERY_RESULT_FUZZY) fuzzy = True;
 
 		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, Config::FreedbAutoSelectDefault))
 		{
@@ -261,7 +261,7 @@ Bool freac::cddbQueryDlg::Query(CDDB &cddb)
 
 	/* Process read errors.
 	 */
-	if (readError || result == QUERY_RESULT_ERROR)
+	if (readError || result == METADATA_QUERY_RESULT_ERROR)
 	{
 		errorState  = True;
 		errorString = i18n->TranslateString("Some error occurred trying to connect to the freedb server.", "CDDB::Query::Errors");
