@@ -732,6 +732,7 @@ for package in ${packages[@]}; do
       configure_exports="$configure_exports SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\"-lsndfile\""
       build $rubberband_location lib/librubberband.$sharedext RubberBand.$sharedext
     else
+      prepare="sed -i -e \"s/#include <math.h>/#include <math.h>\n#include <stdlib.h>/\" src/common/sysutils.h"
       meson_flags="-Dfft=builtin -Dresampler=builtin -Djni=disabled -Dladspa=disabled -Dlv2=disabled -Dvamp=disabled -Dcmdline=disabled -Dtests=disabled"
       build $rubberband_location librubberband$sharedinfix.$sharedext RubberBand.$sharedext
     fi
