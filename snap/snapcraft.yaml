@@ -63,8 +63,8 @@ parts:
 
   libfaad:
     after: [ patches ]
-    source: https://github.com/knik0/faad2/archive/2.11.3.tar.gz
-    source-checksum: sha256/860ab62087e336c1844a70e33196c1790b525fb9a9e7b6ac4fab1a1a4e4d5ce8
+    source: https://github.com/FreewareAdvancedAudio/faad2/archive/2.11.4.tar.gz
+    source-checksum: sha256/ee479ccbae4a8387ab696e6f21a481bd83fe3881471cafa81b4ae59d7d3aed43
     plugin: cmake
     cmake-parameters: [ -DCMAKE_INSTALL_PREFIX=/usr ]
     build-environment:
