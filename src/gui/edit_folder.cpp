@@ -14,7 +14,6 @@
 
 freac::FolderEditBox::FolderEditBox(const Point &iPos, const Size &iSize, Int maxSize) : EditBox(iPos, iSize, maxSize)
 {
-	cursor->Deactivate();
 }
 
 Int freac::FolderEditBox::Paint(Int message)
