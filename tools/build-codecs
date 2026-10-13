@@ -171,7 +171,7 @@ fi
 exhale_version=1.2.2
 faac_version=1.50
 faad2_version=2.11.4
-fdk_aac_version=2.0.3
+fdk_aac_version=3.0.0
 ffmpeg_version=9.0.2
 flac_version=1.5.0
 lame_version=4.0
@@ -464,8 +464,9 @@ for package in ${packages[@]}; do
 
   elif [ $package == fdk-aac ]; then
     # Build FDK-AAC
+    prepare="rm -f configure*"
     export CXXFLAGS="$cflags $cflags_unroll"
-    build $fdk_aac_location .libs/libfdk-aac$sharedinfix.$sharedext FDK-AAC.$sharedext
+    build $fdk_aac_location "libfdk-aac$sharedinfix.$sharedext libfdk-xhe-aac$sharedinfix.$sharedext" "FDK-AAC.$sharedext FDK-xHE-AAC.$sharedext"
 
   elif [ $package == ffmpeg ]; then
     # Build ffmpeg

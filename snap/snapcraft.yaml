@@ -73,8 +73,8 @@ parts:
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libfaad.so*
 
   libfdk-aac:
-    source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.3.tar.gz
-    source-checksum: sha256/e25671cd96b10bad896aa42ab91a695a9e573395262baed4e4a2ff178d6a3a78
+    source: https://github.com/mstorsjo/fdk-aac/archive/v3.0.0.tar.gz
+    source-checksum: sha256/8538ea8f0f9915e460c106a13e1866a9e13c7ee48c1b67d0b2cf7b4e8159bd1a
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
