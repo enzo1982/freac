@@ -1388,7 +1388,6 @@ Information about Corsican localization:
 
 	<section name="Bitcoin">
 	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Per fà una dunazione via Bitcoin, ci vole à fà un scan o&#10;cliccà nant’à u codice QR, o ancu cupià quell’indirizzu :</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">St’indirizzu accetteghja dinù pagamenti via Bitcoin Cash&#10;è altri imbrancamenti.</entry>
 	</section>
 
 	<section name="Ethereum">

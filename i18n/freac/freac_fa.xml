@@ -1224,7 +1224,6 @@
 
 	<section name="Bitcoin">
 	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">با اسکن يا کليک بروي کد مي توانيد به&#10;شکل بيت کوين از برنامه نويس حمايت کنيد:</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">اين آدرس از BitCoin Cash و بقيه گزينه ها نيز پشتيباني مي‌کند.</entry>
 	</section>
 
 	<section name="Ethereum">

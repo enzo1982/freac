@@ -1294,7 +1294,6 @@
 
 	<section name="Bitcoin">
 	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Nuskenuokite arba spustelėkite QR kodą arba nukopijuokite&#10;šį adresą, kad paaukoti „Bitcoin“:</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Šis adresas taip pat priima „Bitcoin Cash“ bei kitus variantus.</entry>
 	</section>
 
 	<section name="Ethereum">

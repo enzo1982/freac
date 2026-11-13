@@ -1339,7 +1339,6 @@
 
 	<section name="Bitcoin">
 	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Naskenujte nebo klikněte na QR kód nebo zkopírujte&#10;následující adresu a darujte bitcoiny:</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Tato adresa také přijímá bitcoinové hotovosti a další forks.</entry>
 	</section>
 
 	<section name="Ethereum">

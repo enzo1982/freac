@@ -1297,7 +1297,6 @@
 
 	<section name="Bitcoin">
 	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Scan de QR-code of klik erop of kopieer het volgende&#10;adres om Bitcoin te doneren:</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Dit adres accepteert ook Bitcoin Cash en andere forks.</entry>
 	</section>
 
 	<section name="Ethereum">

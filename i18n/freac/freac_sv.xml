@@ -1355,7 +1355,6 @@
 
 	<section name="Bitcoin">
 	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Läs in eller klicka på QR-koden, eller kopiera följande adress för&#10;att donera Bitcoin:</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Denna adress accepterar även Bitcoin Cash och andra förgreningar.</entry>
 	</section>
 
 	<section name="Ethereum">

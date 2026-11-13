@@ -1178,7 +1178,6 @@
 
 	<section name="Bitcoin">
 	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Molim skenirajte ili kliknite na QR kod ili kopirajte&#10;adresu za donaciju Bitcoina:</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Ova adresa također prima i Bitcoin Cash te druge inačice.</entry>
 	</section>
 
 	<section name="Ethereum">
