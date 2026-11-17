@@ -10,7 +10,8 @@
         "--share=ipc",
         "--share=network",
         "--socket=pulseaudio",
-        "--socket=x11",
+        "--socket=wayland",
+        "--socket=fallback-x11",
         "--metadata=X-DConf=migrate-path=/org/freac/freac/"
     ],
     "cleanup": [

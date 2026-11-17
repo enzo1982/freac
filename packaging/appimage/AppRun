@@ -20,10 +20,13 @@ fi
 
 # Use system SSL libraries over our own if available
 
-if ! ld.so --list --library-path "${HERE}" "${HERE}/libsmooth-0.9.so.0" > /dev/null 2> /dev/null; then
+if ! ld.so --list --library-path "${HERE}:${HERE}/libdecor" "${HERE}/libsmooth-0.9.so.0" > /dev/null 2> /dev/null; then
   LIBRARY_PATH="${HERE}/openssl"
 fi
 
-LD_LIBRARY_PATH="${HERE}:${LIBRARY_PATH}" \
+# Use bundled libdecor and decoration plugins, as many systems lack the GTK plugin
+
+LD_LIBRARY_PATH="${HERE}:${HERE}/libdecor:${LIBRARY_PATH}" \
 LD_PRELOAD="${HERE}/codecs/ogg.so:${HERE}/codecs/vorbis.so" \
+LIBDECOR_PLUGIN_DIR="${HERE}/libdecor/plugins-1" \
 exec "${MAIN}" "$@"

@@ -54,7 +54,7 @@ jobs:
         run: |
           pkg update
           pkg install -y ${{ matrix.dependencies }}
-          pkg install -y gnome-icon-theme gtk3
+          pkg install -y gnome-icon-theme gtk3 libdecor libxkbcommon wayland wayland-protocols
 
       - name: Setup environment
         shell: freebsd {0}

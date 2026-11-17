@@ -12,41 +12,41 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-22.04
+          - os: ubuntu-24.04
             arch: x86_64
             host: x86_64-linux-gnu
             pkgarch: amd64
             dependencies: g++-multilib meson nasm wget wine64-tools yasm
 
-          - os: ubuntu-22.04
+          - os: ubuntu-24.04
             arch: i686
             host: i386-linux-gnu
             pkgarch: i386
             dependencies: g++-multilib meson nasm wget wine32-tools yasm
 
-          - os: ubuntu-22.04
+          - os: ubuntu-24.04
             arch: armhf
             host: arm-linux-gnueabihf
             pkgarch: armhf
-            dependencies: g++-arm-linux-gnueabihf meson nasm qemu qemu-user-static wget yasm
+            dependencies: g++-arm-linux-gnueabihf meson nasm qemu-user-static wget yasm
 
-          - os: ubuntu-22.04
+          - os: ubuntu-24.04
             arch: aarch64
             host: aarch64-linux-gnu
             pkgarch: arm64
-            dependencies: g++-aarch64-linux-gnu meson nasm qemu qemu-user-static wget yasm
+            dependencies: g++-aarch64-linux-gnu meson nasm qemu-user-static wget yasm
 
-          - os: ubuntu-22.04
+          - os: ubuntu-24.04
             arch: riscv64
             host: riscv64-linux-gnu
             pkgarch: riscv64
-            dependencies: g++-riscv64-linux-gnu meson nasm qemu qemu-user-static wget yasm
+            dependencies: g++-riscv64-linux-gnu meson nasm qemu-user-static wget yasm
 
-          - os: ubuntu-22.04
+          - os: ubuntu-24.04
             arch: ppc64el
             host: powerpc64le-linux-gnu
             pkgarch: ppc64el
-            dependencies: g++-powerpc64le-linux-gnu meson nasm qemu qemu-user-static wget yasm
+            dependencies: g++-powerpc64le-linux-gnu meson nasm qemu-user-static wget yasm
 
       fail-fast: false
 
@@ -64,19 +64,15 @@ jobs:
       - name: Prepare sources
         if: ${{ matrix.arch != 'i686' && matrix.arch != 'x86_64' }}
         run: |
-          echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports jammy main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
-          echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports jammy-updates main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
-          echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports jammy-security main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
-          sudo sed -i 's/deb http/deb \[arch=amd64,i386\] http/g' /etc/apt/sources.list
-          sudo sed -i 's/deb mirror/deb \[arch=amd64,i386\] mirror/g' /etc/apt/sources.list
+          printf '%s\n' "Types: deb" "URIs: http://ports.ubuntu.com/ubuntu-ports" "Suites: noble noble-updates noble-security" "Components: main restricted universe" "Architectures: ${{ matrix.pkgarch }}" | sudo tee /etc/apt/sources.list.d/ubuntu-ports.sources > /dev/null
+          if [ -f /etc/apt/sources.list.d/ubuntu.sources ]; then sudo sed -i '/^Types:/a Architectures: amd64 i386' /etc/apt/sources.list.d/ubuntu.sources; fi
+          if [ -f /etc/apt/sources.list ]; then sudo sed -i 's/^deb \(http\|mirror\)/deb [arch=amd64,i386] \1/' /etc/apt/sources.list; fi
 
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install -y ${{ matrix.dependencies }}
-          sudo apt install -y --allow-downgrades libncurses-dev=6.3-2 libncurses6=6.3-2 libncursesw6=6.3-2 libtinfo-dev=6.3-2 libtinfo6=6.3-2
-          sudo apt install -y --allow-downgrades libncurses-dev:${{ matrix.pkgarch }}=6.3-2 libncurses6:${{ matrix.pkgarch }}=6.3-2 libncursesw6:${{ matrix.pkgarch }}=6.3-2 libtinfo-dev:${{ matrix.pkgarch }}=6.3-2 libtinfo6:${{ matrix.pkgarch }}=6.3-2
-          sudo apt install -y adwaita-icon-theme gnome-icon-theme libasound2-dev:${{ matrix.pkgarch }} libdecor-0-dev:${{ matrix.pkgarch }} libgdk-pixbuf2.0-dev:${{ matrix.pkgarch }} libgtk-3-dev:${{ matrix.pkgarch }} liblzma-dev:${{ matrix.pkgarch }} libpulse-dev:${{ matrix.pkgarch }} libssl-dev:${{ matrix.pkgarch }} libudev-dev:${{ matrix.pkgarch }} libzstd-dev:${{ matrix.pkgarch }}
+          sudo apt install -y adwaita-icon-theme gnome-icon-theme libasound2-dev:${{ matrix.pkgarch }} libdecor-0-dev:${{ matrix.pkgarch }} libdecor-0-plugin-1-cairo:${{ matrix.pkgarch }} libdecor-0-plugin-1-gtk:${{ matrix.pkgarch }} libgdk-pixbuf-2.0-dev:${{ matrix.pkgarch }} libgtk-3-dev:${{ matrix.pkgarch }} liblzma-dev:${{ matrix.pkgarch }} libpulse-dev:${{ matrix.pkgarch }} libssl-dev:${{ matrix.pkgarch }} libudev-dev:${{ matrix.pkgarch }} libwayland-dev:${{ matrix.pkgarch }} libxkbcommon-dev:${{ matrix.pkgarch }} libzstd-dev:${{ matrix.pkgarch }} wayland-protocols
 
       - name: Prepare toolchain
         if: ${{ matrix.arch != 'i686' && matrix.arch != 'x86_64' }}

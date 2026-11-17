@@ -20,6 +20,8 @@ apps:
     command: bin/freac
     desktop: share/applications/org.freac.freac.desktop
     extensions: [ gnome ]
+    environment:
+      LIBDECOR_PLUGIN_DIR: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libdecor/plugins-1
     plugs:
       - gsettings
       - home
@@ -243,6 +245,15 @@ parts:
       cp $CRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-question.png share/icons/gnome/32x32/status
       cp $CRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-warning.png share/icons/gnome/32x32/status
 
+  libdecor:
+    plugin: nil
+    stage-packages:
+      - libdecor-0-0
+      - libdecor-0-plugin-1-gtk
+    prime:
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libdecor-0.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libdecor/plugins-1/libdecor-gtk.so
+
   smooth:
     after: [ patches ]
     source: https://github.com/enzo1982/smooth.git
@@ -253,9 +264,13 @@ parts:
     build-packages:
       - libbz2-dev
       - libcurl4-gnutls-dev
+      - libdecor-0-dev
       - libfribidi-dev
       - libjpeg8-dev
+      - libwayland-dev
+      - libxkbcommon-dev
       - libxml2-dev
+      - wayland-protocols
     stage-packages:
       - libcurl3t64-gnutls
       - libfribidi0

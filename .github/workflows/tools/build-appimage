@@ -214,6 +214,23 @@ fi
 
 strip --strip-all appdir/openssl/lib*.so*
 
+# Copy libdecor and its decoration plugins
+#
+# Many systems only install the Cairo plugin, which does not match
+# the desktop look, so we ship the GTK plugin along with libdecor.
+mkdir -p appdir/libdecor/plugins-1
+
+if [[ "$OS" = Linux ]]; then
+  LIBDECOR_DIR=/usr/lib/$HOST
+else
+  LIBDECOR_DIR=/usr/local/lib
+fi
+
+cp -L $LIBDECOR_DIR/libdecor-0.so.0 appdir/libdecor
+cp $LIBDECOR_DIR/libdecor/plugins-1/*.so appdir/libdecor/plugins-1
+
+strip --strip-all appdir/libdecor/libdecor-0.so.0 appdir/libdecor/plugins-1/*.so
+
 # Build custom AppImage runtime
 if [[ "$AppImageArch" = riscv64 || "$AppImageArch" = ppc64el || "$OS" != Linux ]]; then
   # Check out AppImage runtime
