@@ -1,7 +1,7 @@
 {
     "app-id": "org.freac.freac",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "25.08",
+    "runtime-version": "26.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "freac",
     "finish-args": [
@@ -25,7 +25,21 @@
         "*.la"
     ],
     "modules": [
-        "shared-modules/mac/mac.json",
+        {
+            "name": "libmac",
+            "buildsystem": "cmake",
+            "cleanup": [
+                "/include/MAC"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://freac.org/patches/MAC_1343_SDK.zip",
+                    "sha256": "3fd1c60f994daba536902f30b1bebc2235099c8b8a039d8b37d9d27d4827e0ca",
+                    "strip-components": 0
+                }
+            ]
+        },
         {
             "name": "libcdio",
             "config-opts": [
@@ -115,7 +129,9 @@
                     }
                 },
                 {
-                    "only-arches": [ "x86_64" ],
+                    "only-arches": [
+                        "x86_64"
+                    ],
                     "type": "patch",
                     "path": "patches/lame-4.0-sse-20260715.patch",
                     "strip-components": 0
