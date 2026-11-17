@@ -179,7 +179,9 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.8 (Oktober 2026)
+	Version 1.1.8 (November 2026)
+
+		- Unterstützung für das Wayland Display-Server-Protokoll hinzugefügt
 
 		- Linux AppImage-Pakete für die Architekturen RISC-V und PPC64EL hinzugefügt
 		- FreeBSD AppImage-Pakete für die Architekturn x86-64 und AArch64 hinzugefügt
