@@ -26,6 +26,8 @@ namespace BoCA
 			const Config		*config;
 			const Bool		*cancel;
 
+			Int			 mode;
+
 			Bool			 connected;
 
 			Buffer<UnsignedByte>	 httpResultBuffer;
@@ -45,6 +47,7 @@ namespace BoCA
 			Int			 Query(const String &);
 			Bool			 Read(const String &, UnsignedInt32, CDDBInfo &);
 			Bool			 Submit(const CDDBInfo &);
+			Bool			 Submit(CDDBInfo &);
 			Bool			 CloseConnection();
 		slots:
 			Bool			 IsCanceled()	{ return cancel != NIL && *cancel; }

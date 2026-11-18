@@ -47,33 +47,59 @@ Void BoCA::CDDBCache::Free()
 	instance = NIL;
 }
 
+/* Check that a record has the TOC of a query string. Discs with
+ * different TOCs can have the same freedb disc ID.
+ */
+static Bool HasQueryTOC(const BoCA::CDDBInfo &cddbInfo, const String &queryString)
+{
+	const Array<String>	&values	       = queryString.Explode(" ");
+	Int			 numTocEntries = values.GetNth(3).ToInt();
+
+	if (values.Length() < numTocEntries + 5)		     return False;
+	if (cddbInfo.trackOffsets.Length() != numTocEntries)	     return False;
+	if (cddbInfo.discLength != values.GetNth(numTocEntries + 4).ToInt()) return False;
+
+	for (Int i = 0; i < numTocEntries; i++)
+	{
+		if (cddbInfo.trackOffsets.GetNth(i) != values.GetNth(i + 4).ToInt()) return False;
+	}
+
+	return True;
+}
+
 BoCA::CDDBInfo BoCA::CDDBCache::GetCacheEntry(const String &queryString)
 {
 	Threads::Lock	 lock(mutex);
 
 	const Array<String>	&values	  = queryString.Explode(" ");
 	UnsignedInt32		 discID	  = CDDB::StringToDiscID(values.GetNth(2));
-	const CDDBInfo		&cddbInfo = infoCache.Get(discID);
 
 	/* Soft cache entry found.
 	 */
-	if (cddbInfo != NIL) return cddbInfo;
+	{
+		const CDDBInfo	&cddbInfo = infoCache.Get(discID);
+
+		if (cddbInfo != NIL && HasQueryTOC(cddbInfo, queryString)) return cddbInfo;
+	}
 
 	/* Try to find an entry in the persistent cache.
 	 */
 	CDDBLocal	 cddbLocal(CDDBConfig::GetCacheDirectory(Config::Get()));
 	Int		 result = cddbLocal.Query(queryString);
 
-	if (result == METADATA_QUERY_RESULT_SINGLE || result == METADATA_QUERY_RESULT_MULTIPLE)
-	{
-		CDDBInfo	 newInfo;
+	if (result != METADATA_QUERY_RESULT_SINGLE && result != METADATA_QUERY_RESULT_MULTIPLE) return CDDBInfo();
 
-		cddbLocal.Read(cddbLocal.GetNthCategory(0), cddbLocal.GetNthDiscID(0), newInfo);
+	CDDBInfo	 newInfo;
 
-		infoCache.Add(newInfo, discID);
-	}
+	if (!cddbLocal.Read(cddbLocal.GetNthCategory(0), cddbLocal.GetNthDiscID(0), newInfo)) return CDDBInfo();
 
-	return infoCache.Get(discID);
+	/* Replace an entry of another disc with the same disc ID.
+	 */
+	if (infoCache.Get(discID) != NIL) infoCache.Remove(discID);
+
+	infoCache.Add(newInfo, discID);
+
+	return newInfo;
 }
 
 /* Add or replace an entry. The entry is written to the persistent
@@ -113,14 +139,29 @@ BoCA::CDDBInfo BoCA::CDDBCache::GetNthEntry(Int n)
 	return infoCache.GetNth(n);
 }
 
+BoCA::CDDBInfo BoCA::CDDBCache::GetEntry(UnsignedInt32 discID)
+{
+	Threads::Lock	 lock(mutex);
+
+	return infoCache.Get(discID);
+}
+
 Int BoCA::CDDBCache::RemoveNthEntry(Int n)
 {
 	Threads::Lock	 lock(mutex);
 
-	if (n >= infoCache.Length()) return Error();
+	if (n < 0 || n >= infoCache.Length()) return Error();
 
-	UnsignedInt32	 discID	  = infoCache.GetNthIndex(n);
+	return RemoveEntry(infoCache.GetNthIndex(n));
+}
+
+Int BoCA::CDDBCache::RemoveEntry(UnsignedInt32 discID)
+{
+	Threads::Lock	 lock(mutex);
+
 	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
+
+	if (cddbInfo == NIL) return Error();
 
 	File(String(CDDBConfig::GetCacheDirectory(Config::Get())).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(CDDB::DiscIDToString(cddbInfo.discID))).Delete();
 

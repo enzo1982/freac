@@ -62,7 +62,13 @@ Bool BoCA::CDDBBatch::ReadEntriesXML(XML::Document *document)
 
 		if (node->GetName() == "submit")
 		{
-			InStream	*in = new InStream(STREAM_FILE, CDDBConfig::GetCacheDirectory(config).Append(node->GetAttributeByName("category")->GetContent()).Append(Directory::GetDirectoryDelimiter()).Append(node->GetContent()), IS_READ);
+			/* Skip an entry without a category.
+			 */
+			XML::Attribute	*category = node->GetAttributeByName("category");
+
+			if (category == NIL || category->GetContent() == NIL) continue;
+
+			InStream	*in = new InStream(STREAM_FILE, CDDBConfig::GetCacheDirectory(config).Append(category->GetContent()).Append(Directory::GetDirectoryDelimiter()).Append(node->GetContent()), IS_READ);
 
 			if (in->Size() > 0)
 			{
@@ -71,7 +77,7 @@ Bool BoCA::CDDBBatch::ReadEntriesXML(XML::Document *document)
 
 				ParseCDDBRecord(result, cddbInfo);
 
-				cddbInfo.category = node->GetAttributeByName("category")->GetContent();
+				cddbInfo.category = category->GetContent();
 
 				for (Int j = 0; j < submits.Length(); j++)
 				{
@@ -130,12 +136,11 @@ Bool BoCA::CDDBBatch::SaveEntries()
 	return True;
 }
 
-Bool BoCA::CDDBBatch::AddSubmit(const CDDBInfo &oCddbInfo)
+/* Add a record to the queue and give back the category and revision
+ * that it was written with.
+ */
+Bool BoCA::CDDBBatch::AddSubmit(CDDBInfo &cddbInfo)
 {
-	CDDBInfo  cddbInfo = oCddbInfo;
-
-	UpdateEntry(cddbInfo);
-
 	/* Create directory for entry.
 	 */
 	Directory	 cddbDir(CDDBConfig::GetCacheDirectory(config));
@@ -146,9 +151,13 @@ Bool BoCA::CDDBBatch::AddSubmit(const CDDBInfo &oCddbInfo)
 
 	if (!categoryDir.Exists()) categoryDir.Create();
 
-	/* Save entry to batch queue.
+	/* Save entry to batch queue. The submit can move the entry to the
+	 * category of an older version of it, so the queue keeps the
+	 * category and revision that the file was written with.
 	 */
-	if (!CDDBLocal(CDDBConfig::GetCacheDirectory(config)).Submit(cddbInfo)) return False;
+	CDDBLocal	 cache(CDDBConfig::GetCacheDirectory(config));
+
+	if (!cache.Submit(cddbInfo)) return False;
 
 	for (Int i = 0; i < submits.Length(); i++)
 	{

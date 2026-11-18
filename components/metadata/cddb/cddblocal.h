@@ -35,6 +35,7 @@ namespace BoCA
 			Int		 Query(const String &);
 			Bool		 Read(const String &, UnsignedInt32, CDDBInfo &);
 			Bool		 Submit(const CDDBInfo &);
+			Bool		 Submit(CDDBInfo &);
 
 			Bool		 Write(const CDDBInfo &);
 			Bool		 CloseConnection();

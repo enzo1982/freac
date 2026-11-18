@@ -28,6 +28,11 @@ BoCA::CDDBRemote::CDDBRemote(const Config *iConfig, const Bool *iCancel)
 	config	  = iConfig;
 	cancel	  = iCancel;
 
+	/* Read the mode once. The connection state depends on it, so it
+	 * must not change when the configuration changes during a lookup.
+	 */
+	mode	  = config->GetIntValue(CDDBConfig::ConfigID, CDDBConfig::ModeID, CDDBConfig::ModeDefault);
+
 	connected = False;
 
 	socket	  = NIL;
@@ -44,9 +49,15 @@ String BoCA::CDDBRemote::SendCommand(const String &iCommand)
 {
 	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
 
-	Int	 freedbMode = config->GetIntValue(CDDBConfig::ConfigID, CDDBConfig::ModeID, CDDBConfig::ModeDefault);
+	Int	 freedbMode = mode;
 
 	if (!connected && freedbMode == FREEDB_MODE_CDDBP) return "error not connected";
+
+	/* A canceled lookup sends no more commands. A read that already
+	 * waits for the server still waits until the server answers or
+	 * closes the connection.
+	 */
+	if (freedbMode == FREEDB_MODE_CDDBP && IsCanceled() && !iCommand.StartsWith("quit")) return "error canceled";
 
 	String	 str;
 	String	 command = iCommand;
@@ -157,7 +168,9 @@ Bool BoCA::CDDBRemote::ConnectToServer()
 {
 	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
 
-	Int	 freedbMode = config->GetIntValue(CDDBConfig::ConfigID, CDDBConfig::ModeID, CDDBConfig::ModeDefault);
+	Int	 freedbMode = mode;
+
+	if (IsCanceled()) return False;
 
 	if (freedbMode == FREEDB_MODE_CDDBP)
 	{
@@ -359,9 +372,17 @@ Bool BoCA::CDDBRemote::Read(const String &category, UnsignedInt32 discID, CDDBIn
 
 Bool BoCA::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 {
-	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
+	CDDBInfo  cddbInfo = oCddbInfo;
 
-	CDDBInfo cddbInfo = oCddbInfo;
+	return Submit(cddbInfo);
+}
+
+/* Submit a record and give back the category and revision that it was
+ * sent with.
+ */
+Bool BoCA::CDDBRemote::Submit(CDDBInfo &cddbInfo)
+{
+	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
 
 	if (!UpdateEntry(cddbInfo)) return False;
 
@@ -427,7 +448,7 @@ Bool BoCA::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 
 Bool BoCA::CDDBRemote::CloseConnection()
 {
-	Int	 freedbMode = config->GetIntValue(CDDBConfig::ConfigID, CDDBConfig::ModeID, CDDBConfig::ModeDefault);
+	Int	 freedbMode = mode;
 
 	if (!connected && freedbMode == FREEDB_MODE_CDDBP) return False;
 
@@ -438,6 +459,12 @@ Bool BoCA::CDDBRemote::CloseConnection()
 		delete out;
 		delete in;
 		delete socket;
+
+		out	  = NIL;
+		in	  = NIL;
+		socket	  = NIL;
+
+		connected = False;
 	}
 
 	return True;

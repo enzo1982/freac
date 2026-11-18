@@ -145,11 +145,15 @@ Bool BoCA::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 	if (query != METADATA_QUERY_RESULT_FUZZY)
 	{
+		/* Reset the CDDBInfo before each read, so that the offsets
+		 * of an earlier category do not stay in it.
+		 */
 		CDDBInfo	 revisionInfo;
 
 		while (Read(cddbInfo.category, cddbInfo.discID, revisionInfo))
 		{
 			Bool	 foundCollision = False;
+			Bool	 noCategoryLeft = False;
 
 			for (Int i = 0; i < cddbInfo.trackOffsets.Length(); i++)
 			{
@@ -168,11 +172,21 @@ Bool BoCA::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 					else if (cddbInfo.category == "reggae")	    cddbInfo.category = "classical";
 					else if (cddbInfo.category == "classical")  cddbInfo.category = "data";
 					else if (cddbInfo.category == "data")	    cddbInfo.category = "unknown";
+					else					    noCategoryLeft = True;
 
 					foundCollision = True;
 
 					break;
 				}
+			}
+
+			/* Stop if every category holds another disc.
+			 */
+			if (noCategoryLeft)
+			{
+				CloseConnection();
+
+				return False;
 			}
 
 			if (!foundCollision)
@@ -183,6 +197,8 @@ Bool BoCA::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 				break;
 			}
+
+			revisionInfo.Reset();
 		}
 	}
 
@@ -495,36 +511,38 @@ String BoCA::CDDB::ParseCDDBEntry(const String &cddb, Int &index)
 		entry[entry.Length()] = cddb[index++];
 	}
 
-	result.Append(entry).Append("=");
+	/* A last line without "=" is returned as it is.
+	 */
+	if (index >= cddb.Length()) return entry;
+
+	String	 key = String(entry).Append("=");
+
+	result.Append(key);
 
 	index -= entry.Length();
 
-	while (index < cddb.Length())
+	/* Join the lines that start with the same key. The key is compared
+	 * as it is in the record, so that each line moves the index on.
+	 */
+	while (index + key.Length() <= cddb.Length() && cddb.SubString(index, key.Length()) == key)
 	{
-		String	 line;
-		Int	 oldIndex = index;
+		index += key.Length();
 
-		while (index < cddb.Length())
+		while (index < cddb.Length() && cddb[index] != '\n')
 		{
-			if (cddb[index] == '\n') break;
-
-			if (cddb[index] == '\\')
+			if (cddb[index] == '\\' && index + 1 < cddb.Length())
 			{
-				if (cddb[index + 1] == 'n') line[line.Length()] = '\n';
-				if (cddb[index + 1] == 't') line[line.Length()] = '\t';
-				if (cddb[index + 1] == '\\') line[line.Length()] = '\\';
+				if (cddb[index + 1] == 'n') result[result.Length()] = '\n';
+				if (cddb[index + 1] == 't') result[result.Length()] = '\t';
+				if (cddb[index + 1] == '\\') result[result.Length()] = '\\';
 
 				index += 2;
 			}
 			else
 			{
-				line[line.Length()] = cddb[index++];
+				result[result.Length()] = cddb[index++];
 			}
 		}
-
-		if (!line.StartsWith(String(entry).Append("="))) { index = oldIndex; break; }
-
-		for (Int i = entry.Length() + 1; i < line.Length(); i++) result[result.Length()] = line[i];
 
 		index++;
 	}
