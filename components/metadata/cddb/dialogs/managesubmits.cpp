@@ -220,8 +220,26 @@ Void BoCA::cddbManageSubmitsDlg::SendAllEntries()
 	 */
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Submitting CD information")));
 
-	if (cddbBatch.SubmitAll()) mainWnd->Close();
-	else			    BoCA::Utilities::ErrorMessage(i18n->TranslateString("Some error occurred trying to connect to the freedb server.", "CDDB::Submit::Errors"));
+	if (cddbBatch.SubmitAll())
+	{
+		mainWnd->Close();
+	}
+	else
+	{
+		/* The queue lost the entries that were sent before the
+		 * error, so show the queue again.
+		 */
+		list_entries->RemoveAllEntries();
+
+		ReadEntries();
+
+		edit_preview->SetText(NIL);
+
+		btn_delete->Deactivate();
+		btn_send->Deactivate();
+
+		BoCA::Utilities::ErrorMessage(i18n->TranslateString("Some error occurred trying to connect to the freedb server.", "CDDB::Submit::Errors"));
+	}
 
 	text_status->SetText(NIL);
 }

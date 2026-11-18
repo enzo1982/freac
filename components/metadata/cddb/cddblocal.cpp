@@ -31,6 +31,12 @@ namespace BoCA
 	 */
 	static const char	*OldFileSuffix = ".freac-old";
 
+	/* Readers put back old files that an interrupted replace left. A
+	 * replace that runs in another thread is not interrupted, so the
+	 * database is used by one thread at a time.
+	 */
+	static Threads::Mutex	 databaseMutex;
+
 	/* Write a string and count the bytes that it should add to the file.
 	 * The count is compared with the file size after the stream is closed,
 	 * because a short write is not reported by the stream.
@@ -235,11 +241,16 @@ Bool BoCA::CDDBLocal::QueryWinDB(const String &queryString)
 				Int	 start = in.GetPos();
 				Int	 end   = in.GetPos();
 
+				/* The record ends at the next #FILENAME= line or at the
+				 * end of the file.
+				 */
 				while (in.GetPos() < in.Size())
 				{
 					end = in.GetPos();
 
 					if (in.InputLine().StartsWith("#FILENAME=")) break;
+
+					end = in.GetPos();
 				}
 
 				in.Seek(start);
@@ -287,6 +298,8 @@ Bool BoCA::CDDBLocal::ConnectToServer()
 
 Int BoCA::CDDBLocal::Query(const String &queryString)
 {
+	Threads::Lock	 lock(databaseMutex);
+
 	/* Forget the matches of an earlier query.
 	 */
 	ids.RemoveAll();
@@ -330,6 +343,14 @@ Bool BoCA::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 {
 	CDDBInfo  cddbInfo = oCddbInfo;
 
+	return Submit(cddbInfo);
+}
+
+/* Submit a record and give back the category and revision that it was
+ * written with.
+ */
+Bool BoCA::CDDBLocal::Submit(CDDBInfo &cddbInfo)
+{
 	UpdateEntry(cddbInfo);
 
 	return Write(cddbInfo);
@@ -340,6 +361,8 @@ Bool BoCA::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
  */
 Bool BoCA::CDDBLocal::Write(const CDDBInfo &cddbInfo)
 {
+	Threads::Lock	 lock(databaseMutex);
+
 	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
 
 	String	  cddbFolder  = directory;

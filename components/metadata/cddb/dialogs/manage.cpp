@@ -63,6 +63,11 @@ BoCA::cddbManageDlg::cddbManageDlg()
 		const CDDBInfo	&entry = CDDBCache::Get()->GetNthEntry(i);
 
 		list_entries->AddEntry(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append(ListEntry::tabDelimiter).Append(entry.charset));
+
+		/* Keep the disc ID of each row. A save or a lookup can change
+		 * the order of the cache entries.
+		 */
+		entryIDs.Add(entry.discID);
 	}
 
 	text_preview	= new Text(i18n->AddColon(i18n->TranslateString("Preview")), Point(276, 10));
@@ -235,9 +240,21 @@ Void BoCA::cddbManageDlg::Cancel()
 	mainWnd->Close();
 }
 
+/* The cache entry of the selected row, or NIL if another lookup removed
+ * it meanwhile.
+ */
+BoCA::CDDBInfo BoCA::cddbManageDlg::GetSelectedEntry() const
+{
+	Int	 n = list_entries->GetSelectedEntryNumber();
+
+	if (n < 0 || n >= entryIDs.Length()) return CDDBInfo();
+
+	return CDDBCache::Get()->GetEntry(entryIDs.GetNth(n));
+}
+
 Void BoCA::cddbManageDlg::SetCharset()
 {
-	const CDDBInfo	&entry = CDDBCache::Get()->GetNthEntry(list_entries->GetSelectedEntryNumber());
+	const CDDBInfo	 entry = GetSelectedEntry();
 	String		 dArtist;
 	String		 dTitle;
 
@@ -262,7 +279,7 @@ Void BoCA::cddbManageDlg::SetCharset()
 
 Void BoCA::cddbManageDlg::SelectEntry()
 {
-	const CDDBInfo	&entry = CDDBCache::Get()->GetNthEntry(list_entries->GetSelectedEntryNumber());
+	const CDDBInfo	 entry = GetSelectedEntry();
 	String		 preview = String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\n\n");
 
 	for (Int i = 0; i < entry.trackTitles.Length(); i++)
@@ -280,7 +297,13 @@ Void BoCA::cddbManageDlg::SelectEntry()
 
 Void BoCA::cddbManageDlg::DeleteEntry()
 {
-	CDDBCache::Get()->RemoveNthEntry(list_entries->GetSelectedEntryNumber());
+	Int	 n = list_entries->GetSelectedEntryNumber();
+
+	if (n < 0 || n >= entryIDs.Length()) return;
+
+	CDDBCache::Get()->RemoveEntry(entryIDs.GetNth(n));
+
+	entryIDs.RemoveNth(n);
 
 	list_entries->Remove(list_entries->GetSelectedEntry());
 
@@ -293,7 +316,9 @@ Void BoCA::cddbManageDlg::DeleteEntry()
 
 Void BoCA::cddbManageDlg::SaveEntry()
 {
-	CDDBInfo entry = CDDBCache::Get()->GetNthEntry(list_entries->GetSelectedEntryNumber());
+	CDDBInfo entry = GetSelectedEntry();
+
+	if (entry == NIL) return;
 
 	entry.dArtist.ImportFrom(edit_charset->GetText(), entry.oDArtist);
 	entry.dTitle.ImportFrom(edit_charset->GetText(), entry.oDTitle);

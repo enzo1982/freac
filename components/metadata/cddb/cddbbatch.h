@@ -41,7 +41,7 @@ namespace BoCA
 
 			const Array<CDDBInfo>	&GetSubmits() const					{ return submits; }
 
-			Bool			 AddSubmit(const CDDBInfo &);
+			Bool			 AddSubmit(CDDBInfo &);
 			Bool			 DeleteSubmit(const CDDBInfo &);
 
 			Bool			 Submit(const CDDBInfo &);

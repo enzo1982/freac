@@ -49,6 +49,10 @@ namespace BoCA
 			Button		*btn_ok;
 
 			Bool		 updateJoblist;
+
+			Array<UnsignedInt32>	 entryIDs;
+
+			CDDBInfo	 GetSelectedEntry() const;
 		public:
 					 cddbManageDlg();
 					~cddbManageDlg();

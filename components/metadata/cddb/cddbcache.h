@@ -35,8 +35,10 @@ namespace BoCA
 
 			Int			 GetNOfEntries();
 			CDDBInfo		 GetNthEntry(Int);
+			CDDBInfo		 GetEntry(UnsignedInt32);
 
 			Int			 RemoveNthEntry(Int);
+			Int			 RemoveEntry(UnsignedInt32);
 
 			/* Returns a new or existing instance of CDDBCache
 			 */

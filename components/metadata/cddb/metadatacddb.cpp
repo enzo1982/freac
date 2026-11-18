@@ -124,11 +124,17 @@ Int BoCA::MetadataCDDB::Query(const DiscMetadata &nKnown, Array<MetadataMatch> &
 			match.recordID = CDDBConvert::GetRecordID(cached.category, cached.discID);
 			match.title    = String("(").Append(cached.category).Append(") ").Append(cached.dArtist == CDDBInfo::VariousArtistsID ? CDDBConvert::GetVariousArtists() : cached.dArtist).Append(" / ").Append(cached.dTitle);
 
+			/* A record of an inexact match has the revision -1, see
+			 * Read. It stays an inexact match, so that an exact match
+			 * of another provider comes first.
+			 */
+			match.fuzzy    = (cached.revision == -1);
+
 			matches.Add(match);
 
 			source = SourceCache;
 
-			return METADATA_QUERY_RESULT_SINGLE;
+			return match.fuzzy ? METADATA_QUERY_RESULT_FUZZY : METADATA_QUERY_RESULT_SINGLE;
 		}
 	}
 
@@ -165,6 +171,10 @@ Int BoCA::MetadataCDDB::Query(const DiscMetadata &nKnown, Array<MetadataMatch> &
 		remote = new CDDBRemote(config, &canceled);
 
 		Int	 result = QueryDatabase(*remote, matches);
+
+		/* A canceled query ends without an error.
+		 */
+		if (canceled) return METADATA_QUERY_RESULT_NONE;
 
 		if (result == METADATA_QUERY_RESULT_ERROR)
 		{
@@ -316,7 +326,14 @@ Bool BoCA::MetadataCDDB::Submit(const DiscMetadata &record)
 	 */
 	Bool	 remote = config->GetIntValue(CDDBConfig::ConfigID, CDDBConfig::EnableRemoteID, CDDBConfig::EnableRemoteDefault);
 
-	if (config->GetIntValue(CDDBConfig::ConfigID, CDDBConfig::EnableLocalID, CDDBConfig::EnableLocalDefault) && !CDDBLocal(CDDBConfig::GetLocalDirectory(config)).Submit(cddbInfo))
+	/* The local database gets a copy of the record, because the
+	 * category and revision that it writes apply to that database only.
+	 * The queue and the server give back the category and revision that
+	 * they used, and the cache keeps those.
+	 */
+	const CDDBInfo	&localInfo = cddbInfo;
+
+	if (config->GetIntValue(CDDBConfig::ConfigID, CDDBConfig::EnableLocalID, CDDBConfig::EnableLocalDefault) && !CDDBLocal(CDDBConfig::GetLocalDirectory(config)).Submit(localInfo))
 	{
 		if (!remote)
 		{

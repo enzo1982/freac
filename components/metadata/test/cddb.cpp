@@ -165,6 +165,21 @@ static Void CheckParse()
 	CDDBRecords::ParseCDDBRecord(CDDBRecords::FormatCDDBRecord(single), singleAgain);
 
 	CheckSameRecord(single, singleAgain, "round trip single");
+
+	/* A last line without "=" and without a newline, and a key with a
+	 * backslash, end the parse.
+	 */
+	CDDBInfo	 noNewline;
+
+	CDDBRecords::ParseCDDBRecord("DISCID=54123116\nDTITLE=Artist / Album\n# end", noNewline);
+
+	Check(noNewline.discID == 0x54123116 && noNewline.dTitle == "Album", "parse: last line without = and newline");
+
+	CDDBInfo	 backslashKey;
+
+	CDDBRecords::ParseCDDBRecord("A\\x=1\nDTITLE=Artist / Album\n", backslashKey);
+
+	Check(backslashKey.dTitle == "Album", "parse: key with a backslash");
 }
 
 static Void CheckConversion()
@@ -517,6 +532,21 @@ static Void CheckLocalSubmitWindows(const CDDBInfo &cddbInfo)
 	Check(!File(String(rangeFile).Append(".new")).Exists(), "local submit removes the new file on a short write");
 #endif
 
+	/* The record is the last one in the file. Its last line is read
+	 * too.
+	 */
+	CDDBInfo	 ordered = cddbInfo;
+
+	ordered.playOrder = "2,1";
+
+	Check(local.Submit(ordered), "local submit of the last record");
+
+	CDDBLocal	 reader(String(folder).Append(delimiter));
+	CDDBInfo	 readBack;
+
+	Check(reader.Query(cddbInfo.GetQueryString()) == METADATA_QUERY_RESULT_SINGLE && reader.Read("misc", cddbInfo.discID, readBack), "local read of the last record");
+	Check(readBack.playOrder == "2,1", "local read keeps the last line of the last record");
+
 	File(rangeFile).Delete();
 	Directory(category).Delete();
 	Directory(folder).Delete();
@@ -585,7 +615,26 @@ static Void CheckCacheRewrite()
 	Check(CDDBCache::Get()->AddCacheEntry(cddbInfo, True), "cache rewrite");
 	Check(CountText(ReadFile(record), "# Revision: 4\n") == 1, "cache rewrite keeps the revision");
 
-	Check(CDDBLocal(String(folder).Append(delimiter).Append("cddb").Append(delimiter)).Submit(cddbInfo), "submit to the cache folder");
+	/* The cache gives a record only for the TOC of the disc. Another
+	 * disc can have the same disc ID.
+	 */
+	String	 queryString = cddbInfo.GetQueryString();
+	String	 otherDisc   = String(queryString).Replace(String(" ").Append(String::FromInt(cddbInfo.trackOffsets.GetNth(1))).Append(" "), String(" ").Append(String::FromInt(cddbInfo.trackOffsets.GetNth(1) + 75)).Append(" "));
+
+	Check(otherDisc != queryString, "cache test query for another disc");
+	Check(CDDBCache::Get()->GetCacheEntry(queryString) != NIL, "cache finds the disc");
+	Check(CDDBCache::Get()->GetCacheEntry(otherDisc) == NIL, "cache does not give the record to another disc");
+
+	/* A new record with another category goes to the category of
+	 * its older version, and the submit gives that category back.
+	 */
+	CDDBInfo	 newRecord = cddbInfo;
+
+	newRecord.category = "rock";
+	newRecord.revision = 0;
+
+	Check(CDDBLocal(String(folder).Append(delimiter).Append("cddb").Append(delimiter)).Submit(newRecord), "submit to the cache folder");
+	Check(newRecord.category == "misc" && newRecord.revision == 5, "submit gives back the category and revision");
 	Check(CountText(ReadFile(record), "# Revision: 5\n") == 1, "submit raises the revision");
 
 	CDDBCache::Get()->RemoveNthEntry(CDDBCache::Get()->GetNOfEntries() - 1);
@@ -663,6 +712,110 @@ static Void CheckSubmitWithLocalError(AS::MetadataComponent *component, const Di
 	config->cacheDir = cacheDir;
 }
 
+/* The revision and category that the local database writes apply to
+ * that database only. The queue gets the record with its own revision.
+ */
+static Void CheckSubmitRevisions(AS::MetadataComponent *component, const DiscMetadata &record)
+{
+	Config	*config	   = Config::Get();
+	String	 delimiter = Directory::GetDirectoryDelimiter();
+	String	 cacheDir  = config->cacheDir;
+	String	 scratch   = GUI::Application::GetApplicationDirectory().Append("cddb-submit-revisions");
+	String	 localDir  = String(scratch).Append(delimiter).Append("local");
+	String	 localFile = String(localDir).Append(delimiter).Append("data").Append(delimiter).Append("3404f606");
+
+	Directory(String(localDir).Append(delimiter).Append("data")).Create();
+
+	{
+		OutStream	 out(STREAM_FILE, localFile, OS_REPLACE);
+
+		out.OutputString(ReadRecord("3404f606").Replace("# Revision: 0\n", "# Revision: 7\n"));
+	}
+
+	config->cacheDir = String(scratch).Append(delimiter).Append("cache").Append(delimiter);
+
+	config->SetStringValue("freedb", "Directory", String(localDir).Append(delimiter));
+	config->SetIntValue("freedb", "EnableLocalCDDB", True);
+	config->SetIntValue("freedb", "EnableRemoteCDDB", True);
+	config->SetIntValue("freedb", "QueueSubmits", True);
+
+	Check(component->Submit(record), "CDDB submit to the local database and the queue");
+	Check(CountText(ReadFile(localFile), "# Revision: 8\n") == 1, "local database raises its own revision");
+
+	{
+		CDDBBatch	 batch(config);
+
+		Check(batch.GetSubmits().Length() == 1 && batch.GetSubmits().GetFirst().revision == 1, "queued record keeps its own revision");
+
+		while (batch.GetSubmits().Length() > 0) batch.DeleteSubmit(batch.GetSubmits().GetFirst());
+	}
+
+	config->SetIntValue("freedb", "EnableLocalCDDB", False);
+	config->SetIntValue("freedb", "EnableRemoteCDDB", False);
+	config->SetIntValue("freedb", "QueueSubmits", False);
+
+	config->cacheDir = cacheDir;
+
+	String	 cacheCDDB = String(scratch).Append(delimiter).Append("cache").Append(delimiter).Append("cddb");
+
+	File(localFile).Delete();
+	File(String(cacheCDDB).Append(delimiter).Append("submits.xml")).Delete();
+	File(String(cacheCDDB).Append(delimiter).Append("data").Append(delimiter).Append("3404f606")).Delete();
+	Directory(String(cacheCDDB).Append(delimiter).Append("data")).Delete();
+	Directory(cacheCDDB).Delete();
+	Directory(String(scratch).Append(delimiter).Append("cache")).Delete();
+	Directory(String(localDir).Append(delimiter).Append("data")).Delete();
+	Directory(localDir).Delete();
+	Directory(scratch).Delete();
+
+	Check(!Directory(scratch).Exists(), "submit revision test leaves no files");
+}
+
+/* A record of an inexact match goes to the cache with the revision -1.
+ * A later query that finds it in the cache gives an inexact match too,
+ * so that an exact match of another provider comes first.
+ */
+static Void CheckCachedFuzzyRecord(AS::MetadataComponent *component)
+{
+	Config	*config	   = Config::Get();
+	String	 delimiter = Directory::GetDirectoryDelimiter();
+	String	 cacheDir  = config->cacheDir;
+	String	 scratch   = GUI::Application::GetApplicationDirectory().Append("cddb-fuzzy-cache");
+	String	 dataDir   = String(scratch).Append(delimiter).Append("cddb").Append(delimiter).Append("data");
+	String	 file	   = String(dataDir).Append(delimiter).Append("54123116");
+
+	Directory(dataDir).Create();
+
+	{
+		OutStream	 out(STREAM_FILE, file, OS_REPLACE);
+
+		out.OutputString(ReadRecord("54123116").Replace("# Revision: 2\n", "# Revision: -1\n"));
+	}
+
+	config->cacheDir = String(scratch).Append(delimiter);
+
+	DiscMetadata		 known;
+	Array<MetadataMatch>	 matches;
+
+	known.disc.offsets = offsetsArIS;
+
+	Check(component->Query(known, matches) == METADATA_QUERY_RESULT_FUZZY, "CDDB query gives a cached inexact record as inexact");
+	Check(matches.Length() == 1 && matches.GetFirst().fuzzy, "cached inexact record: match is inexact");
+
+	DiscMetadata	 record;
+
+	Check(component->Read("data/54123116", record) && record.tracks.Length() == 22, "cached inexact record: read");
+
+	config->cacheDir = cacheDir;
+
+	File(file).Delete();
+	Directory(dataDir).Delete();
+	Directory(String(scratch).Append(delimiter).Append("cddb")).Delete();
+	Directory(scratch).Delete();
+
+	Check(!Directory(scratch).Exists(), "cached inexact record test leaves no files");
+}
+
 static Void CheckComponent()
 {
 	Config		*config = Config::Get();
@@ -719,7 +872,9 @@ static Void CheckComponent()
 	Check(component->Query(unknown, matches) == METADATA_QUERY_RESULT_NONE, "CDDB query for an unknown disc");
 	Check(matches.Length() == 0, "no matches for an unknown disc");
 
+	CheckCachedFuzzyRecord(component);
 	CheckSubmitWithLocalError(component, record);
+	CheckSubmitRevisions(component, record);
 
 	boca.DeleteComponent(component);
 }
