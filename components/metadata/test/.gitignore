@@ -1,0 +1,6 @@
+*.o
+/boca/
+/cddb
+/cddb.exe
+/cddb-local-*/
+/cddb-submit-cache/

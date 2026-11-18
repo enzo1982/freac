@@ -60,6 +60,7 @@ cp -R $PREFIX/lib/freac/freac.extension.langnotify freac.app/Contents/Resources/
 cp -R $PREFIX/lib/freac/freac.extension.notifier freac.app/Contents/Resources/boca/
 
 cp $PREFIX/lib/freac/freac_extension_*.1.0.dylib freac.app/Contents/Resources/boca/
+cp $PREFIX/lib/freac/freac_metadata_*.1.0.dylib freac.app/Contents/Resources/boca/
 cp $PREFIX/lib/freac/freac_verifier_*.1.0.dylib freac.app/Contents/Resources/boca/
 
 cp $PREFIX/lib/libcdio.dylib freac.app/Contents/Resources/cdio.dylib
