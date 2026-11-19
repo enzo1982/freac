@@ -138,6 +138,13 @@ namespace freac
 			BoCA::Picture		 currentArtwork;
 
 			Bool			 dontUpdateInfo;
+			Bool			 modifyingTrack;
+
+			/* The artists and genres of the selected track after
+			 * the first one. The edit boxes show only the first one.
+			 */
+			Array<String>		 otherArtists;
+			Array<String>		 otherGenres;
 
 			Int			 clicked_charset;
 			Int			 clicked_case;
