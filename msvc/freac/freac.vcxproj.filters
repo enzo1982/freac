@@ -5,14 +5,14 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Quelldateien\cddb">
-      <UniqueIdentifier>{7c01d4a0-0e62-4615-b1fc-11c0b6e387d1}</UniqueIdentifier>
+    <Filter Include="Quelldateien\metadata">
+      <UniqueIdentifier>{cc0200a7-124f-4108-ad64-bc01860e33cf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Quelldateien\dialogs">
       <UniqueIdentifier>{828d1aaf-5279-491b-b82f-a61a3f397d9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Quelldateien\dialogs\cddb">
-      <UniqueIdentifier>{2af4ef34-ff3e-4a5f-a255-ad0566bd0e51}</UniqueIdentifier>
+    <Filter Include="Quelldateien\dialogs\metadata">
+      <UniqueIdentifier>{3b3b6ce1-c555-41dc-bd57-9dcdbb9c2108}</UniqueIdentifier>
     </Filter>
     <Filter Include="Quelldateien\dialogs\config">
       <UniqueIdentifier>{1bfae0ff-e1aa-47ce-8d92-c5f0fac46dda}</UniqueIdentifier>
@@ -30,14 +30,14 @@
     <Filter Include="Headerdateien\dialogs">
       <UniqueIdentifier>{9633be36-16e9-44cd-ae9b-5051151a796c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Headerdateien\dialogs\cddb">
-      <UniqueIdentifier>{92463fb5-bb87-4faa-9d0c-429d2d240aa5}</UniqueIdentifier>
+    <Filter Include="Headerdateien\dialogs\metadata">
+      <UniqueIdentifier>{49d81e17-3767-4192-b98f-c4de1d7fd3f6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Headerdateien\dialogs\config">
       <UniqueIdentifier>{4841c7e5-b7a3-4da0-87cb-1fd864c6dbba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Headerdateien\cddb">
-      <UniqueIdentifier>{23e97d65-7f39-4b6a-a39a-d228616587d6}</UniqueIdentifier>
+    <Filter Include="Headerdateien\metadata">
+      <UniqueIdentifier>{82aac347-1e47-4e61-b00d-6f25db702ca9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Headerdateien\gui">
       <UniqueIdentifier>{f9a70921-7a51-4f7c-8fcf-c9c7c20769b0}</UniqueIdentifier>
@@ -102,23 +102,14 @@
     <ClCompile Include="..\..\src\utilities.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\cddb\cddb.cpp">
-      <Filter>Quelldateien\cddb</Filter>
+    <ClCompile Include="..\..\src\metadata\freedbdiscid.cpp">
+      <Filter>Quelldateien\metadata</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\cddb\cddbbatch.cpp">
-      <Filter>Quelldateien\cddb</Filter>
+    <ClCompile Include="..\..\src\metadata\metadatalookup.cpp">
+      <Filter>Quelldateien\metadata</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\cddb\cddbcache.cpp">
-      <Filter>Quelldateien\cddb</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\cddb\cddbinfo.cpp">
-      <Filter>Quelldateien\cddb</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\cddb\cddblocal.cpp">
-      <Filter>Quelldateien\cddb</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\cddb\cddbremote.cpp">
-      <Filter>Quelldateien\cddb</Filter>
+    <ClCompile Include="..\..\src\metadata\metadataqueue.cpp">
+      <Filter>Quelldateien\metadata</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\dialogs\adddirectory.cpp">
       <Filter>Quelldateien\dialogs</Filter>
@@ -126,31 +117,25 @@
     <ClCompile Include="..\..\src\dialogs\addpattern.cpp">
       <Filter>Quelldateien\dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dialogs\cddb\extsettings.cpp">
-      <Filter>Quelldateien\dialogs\cddb</Filter>
+    <ClCompile Include="..\..\src\dialogs\metadata\lookupbyid.cpp">
+      <Filter>Quelldateien\dialogs\metadata</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dialogs\cddb\manage.cpp">
-      <Filter>Quelldateien\dialogs\cddb</Filter>
+    <ClCompile Include="..\..\src\dialogs\metadata\managequeries.cpp">
+      <Filter>Quelldateien\dialogs\metadata</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dialogs\cddb\managequeries.cpp">
-      <Filter>Quelldateien\dialogs\cddb</Filter>
+    <ClCompile Include="..\..\src\dialogs\metadata\multimatch.cpp">
+      <Filter>Quelldateien\dialogs\metadata</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dialogs\cddb\managesubmits.cpp">
-      <Filter>Quelldateien\dialogs\cddb</Filter>
+    <ClCompile Include="..\..\src\dialogs\metadata\proxy.cpp">
+      <Filter>Quelldateien\dialogs\metadata</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dialogs\cddb\multimatch.cpp">
-      <Filter>Quelldateien\dialogs\cddb</Filter>
+    <ClCompile Include="..\..\src\dialogs\metadata\query.cpp">
+      <Filter>Quelldateien\dialogs\metadata</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dialogs\cddb\query.cpp">
-      <Filter>Quelldateien\dialogs\cddb</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\dialogs\cddb\submit.cpp">
-      <Filter>Quelldateien\dialogs\cddb</Filter>
+    <ClCompile Include="..\..\src\dialogs\metadata\submit.cpp">
+      <Filter>Quelldateien\dialogs\metadata</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\dialogs\config\config.cpp">
-      <Filter>Quelldateien\dialogs\config</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\dialogs\config\config_cddb.cpp">
       <Filter>Quelldateien\dialogs\config</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\dialogs\config\config_encoders.cpp">
@@ -160,6 +145,9 @@
       <Filter>Quelldateien\dialogs\config</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\dialogs\config\config_language.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_metadata.cpp">
       <Filter>Quelldateien\dialogs\config</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\dialogs\config\config_playlists.cpp">
@@ -329,31 +317,25 @@
     <ClInclude Include="..\..\include\dialogs\addpattern.h">
       <Filter>Headerdateien\dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\dialogs\cddb\extsettings.h">
-      <Filter>Headerdateien\dialogs\cddb</Filter>
+    <ClInclude Include="..\..\include\dialogs\metadata\lookupbyid.h">
+      <Filter>Headerdateien\dialogs\metadata</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\dialogs\cddb\manage.h">
-      <Filter>Headerdateien\dialogs\cddb</Filter>
+    <ClInclude Include="..\..\include\dialogs\metadata\managequeries.h">
+      <Filter>Headerdateien\dialogs\metadata</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\dialogs\cddb\managequeries.h">
-      <Filter>Headerdateien\dialogs\cddb</Filter>
+    <ClInclude Include="..\..\include\dialogs\metadata\multimatch.h">
+      <Filter>Headerdateien\dialogs\metadata</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\dialogs\cddb\managesubmits.h">
-      <Filter>Headerdateien\dialogs\cddb</Filter>
+    <ClInclude Include="..\..\include\dialogs\metadata\proxy.h">
+      <Filter>Headerdateien\dialogs\metadata</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\dialogs\cddb\multimatch.h">
-      <Filter>Headerdateien\dialogs\cddb</Filter>
+    <ClInclude Include="..\..\include\dialogs\metadata\query.h">
+      <Filter>Headerdateien\dialogs\metadata</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\dialogs\cddb\query.h">
-      <Filter>Headerdateien\dialogs\cddb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\dialogs\cddb\submit.h">
-      <Filter>Headerdateien\dialogs\cddb</Filter>
+    <ClInclude Include="..\..\include\dialogs\metadata\submit.h">
+      <Filter>Headerdateien\dialogs\metadata</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\dialogs\config\config.h">
-      <Filter>Headerdateien\dialogs\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\dialogs\config\config_cddb.h">
       <Filter>Headerdateien\dialogs\config</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\dialogs\config\config_encoders.h">
@@ -365,6 +347,9 @@
     <ClInclude Include="..\..\include\dialogs\config\config_language.h">
       <Filter>Headerdateien\dialogs\config</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_metadata.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\include\dialogs\config\config_playlists.h">
       <Filter>Headerdateien\dialogs\config</Filter>
     </ClInclude>
@@ -374,23 +359,14 @@
     <ClInclude Include="..\..\include\dialogs\config\configentry.h">
       <Filter>Headerdateien\dialogs\config</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\cddb\cddb.h">
-      <Filter>Headerdateien\cddb</Filter>
+    <ClInclude Include="..\..\include\metadata\freedbdiscid.h">
+      <Filter>Headerdateien\metadata</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\cddb\cddbbatch.h">
-      <Filter>Headerdateien\cddb</Filter>
+    <ClInclude Include="..\..\include\metadata\metadatalookup.h">
+      <Filter>Headerdateien\metadata</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\cddb\cddbcache.h">
-      <Filter>Headerdateien\cddb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\cddb\cddbinfo.h">
-      <Filter>Headerdateien\cddb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\cddb\cddblocal.h">
-      <Filter>Headerdateien\cddb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\cddb\cddbremote.h">
-      <Filter>Headerdateien\cddb</Filter>
+    <ClInclude Include="..\..\include\metadata\metadataqueue.h">
+      <Filter>Headerdateien\metadata</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\gui\layer_tooltip.h">
       <Filter>Headerdateien\gui</Filter>

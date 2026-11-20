@@ -65,6 +65,7 @@ cp -R $PREFIX/lib/freac/freac.extension.notifier freac/boca/
 #cp -R $PREFIX/lib/freac/freac.extension.youtube freac/boca/
 
 cp $PREFIX/lib/freac/freac_extension_*.1.0.so freac/boca/
+cp $PREFIX/lib/freac/freac_metadata_*.1.0.so freac/boca/
 cp $PREFIX/lib/freac/freac_verifier_*.1.0.so freac/boca/
 
 cp $PREFIX/lib/libcdio.so.21 freac/libcdio.so.21

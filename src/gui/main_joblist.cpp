@@ -32,11 +32,42 @@ using namespace smooth::GUI::Dialogs;
 using namespace BoCA;
 using namespace BoCA::AS;
 
+namespace freac
+{
+	/* The values of a list key such as INFO_ARTISTS after the first one.
+	 */
+	static Array<String> GetOtherValues(const Info &info, const String &key)
+	{
+		const Array<String>	&values = Info::GetInfoList(&info, key);
+		Array<String>		 others;
+
+		for (Int i = 1; i < values.Length(); i++) others.Add(values.GetNth(i));
+
+		return others;
+	}
+
+	/* Set a list key such as INFO_ARTISTS to the text of an edit box,
+	 * followed by the other values of the track. The edit box shows only
+	 * the first value. If the box is empty, the next value moves up.
+	 */
+	static Void SetFirstValue(Info &info, const String &key, const String &value, const Array<String> &others)
+	{
+		Array<String>	 values;
+
+		values.Add(value);
+
+		foreach (const String &other, others) values.Add(other);
+
+		Info::SetInfoList(&info, key, values);
+	}
+};
+
 freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	dontUpdateInfo		= False;
+	modifyingTrack		= False;
 
 	clicked_charset		= -1;
 	clicked_case		= -1;
@@ -1119,7 +1150,18 @@ Void freac::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 		HideArtworkArea();
 	}
 
-	info_edit_artist->SetText(info.artist);
+	/* After a change in the edit boxes, the artist and genre boxes
+	 * keep their text. An empty box would otherwise show the next value.
+	 */
+	if (!modifyingTrack)
+	{
+		otherArtists = GetOtherValues(info, INFO_ARTISTS);
+		otherGenres  = GetOtherValues(info, INFO_GENRES);
+
+		info_edit_artist->SetText(info.artist);
+		info_edit_genre->SetText(info.genre);
+	}
+
 	info_edit_title->SetText(info.title);
 	info_edit_album->SetText(info.album);
 
@@ -1129,8 +1171,6 @@ Void freac::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 
 	if (info.year <= 0) info_edit_year->SetText(NIL);
 	else		    info_edit_year->SetText(String::FromInt(info.year));
-
-	info_edit_genre->SetText(info.genre);
 
 	dontUpdateInfo = False;
 }
@@ -1439,16 +1479,22 @@ Void freac::LayerJoblist::UpdateTitleInfo()
 		info_edit_genre->SetDropDownList(info_list_genre);
 	}
 
-	info.artist	= info_edit_artist->GetText();
+	SetFirstValue(info, INFO_ARTISTS, info_edit_artist->GetText(), otherArtists);
+
 	info.title	= info_edit_title->GetText();
 	info.album	= info_edit_album->GetText();
 	info.track	= info_edit_track->GetText().ToInt();
 	info.year	= info_edit_year->GetText().ToInt();
-	info.genre	= info_edit_genre->GetText();
+
+	SetFirstValue(info, INFO_GENRES, info_edit_genre->GetText(), otherGenres);
 
 	track.SetInfo(info);
 
+	modifyingTrack = True;
+
 	BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
+
+	modifyingTrack = False;
 }
 
 PopupMenu *freac::LayerJoblist::GetContextMenu()
@@ -2005,9 +2051,9 @@ Void freac::LayerJoblist::UseStringForSelectedTracks()
 			Track	 track = joblist->GetNthTrack(i);
 			Info	 info = track.GetInfo();
 
-			if	(activePopup == menu_edit_artist->GetHandle()) info.artist = info_edit_artist->GetText();
+			if	(activePopup == menu_edit_artist->GetHandle()) SetFirstValue(info, INFO_ARTISTS, info_edit_artist->GetText(), GetOtherValues(info, INFO_ARTISTS));
 			else if (activePopup == menu_edit_album->GetHandle())  info.album = info_edit_album->GetText();
-			else if (activePopup == menu_edit_genre->GetHandle())  info.genre = info_edit_genre->GetText();
+			else if (activePopup == menu_edit_genre->GetHandle())  SetFirstValue(info, INFO_GENRES, info_edit_genre->GetText(), GetOtherValues(info, INFO_GENRES));
 			else if (activePopup == menu_edit_year->GetHandle())   info.year = info_edit_year->GetText().ToInt();
 
 			track.SetInfo(info);
@@ -2133,7 +2179,7 @@ Void freac::LayerJoblist::AdjustStringCase()
 	Track	 track = joblist->GetSelectedTrack();
 	Info	 info = track.GetInfo();
 
-	if	(activePopup == menu_edit_artist->GetHandle()) info.artist = string;
+	if	(activePopup == menu_edit_artist->GetHandle()) SetFirstValue(info, INFO_ARTISTS, string, otherArtists);
 	else if (activePopup == menu_edit_title->GetHandle())  info.title  = string;
 	else if (activePopup == menu_edit_album->GetHandle())  info.album  = string;
 

@@ -12,8 +12,6 @@
 
 #include <jobs/joblist/addfolders.h>
 
-#include <cddb/cddbremote.h>
-
 #include <config.h>
 #include <utilities.h>
 

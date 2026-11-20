@@ -210,3 +210,51 @@ Void BoCA::TagUtilities::FillGenreList(List *list)
 	list->AddEntry("Vocal");
 	list->AddEntry("World Music");
 }
+
+/* Compare two value lists including their order.
+ */
+Bool BoCA::TagUtilities::HaveSameValues(const Array<String> &values1, const Array<String> &values2)
+{
+	if (values1.Length() != values2.Length()) return False;
+
+	for (Int i = 0; i < values1.Length(); i++) if (values1.GetNth(i) != values2.GetNth(i)) return False;
+
+	return True;
+}
+
+/* Replace all values of a key; empty values are dropped. For
+ * INFO_ARTISTS, INFO_GENRES, INFO_LABELS and INFO_ISRCS, the first value
+ * goes into the basic field.
+ */
+Void BoCA::TagUtilities::ReplaceOtherInfo(Info &info, const String &key, const Array<String> &values)
+{
+	Info::SetInfoList(&info, key, values);
+}
+
+/* Replace all values of a key with one value.
+ */
+Void BoCA::TagUtilities::SetSingleInfo(Info &info, const String &key, const String &value)
+{
+	Array<String>	 values;
+
+	values.Add(value);
+
+	ReplaceOtherInfo(info, key, values);
+}
+
+/* Set the first value of a key and keep the other values. The first
+ * value was the previous value. An empty previous value means that the
+ * first value was removed, so the new value goes in front of the others.
+ */
+Void BoCA::TagUtilities::SetFirstOtherInfo(Info &info, const String &key, const String &value, const String &previous)
+{
+	Array<String>	 values = Info::GetInfoList(&info, key);
+
+	if (values.Length() > 0 && values.GetFirst() == value) return;
+
+	if	(values.Length() == 0) values.Add(value);
+	else if	(previous == NIL)      values.InsertAtPos(0, value);
+	else			       values.SetNth(0, value);
+
+	ReplaceOtherInfo(info, key, values);
+}

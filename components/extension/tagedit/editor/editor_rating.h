@@ -36,9 +36,6 @@ namespace BoCA
 			ComboBox	*combo_rating;
 
 			Int		 rating;
-
-			Track		 track;
-			Bool		 ignoreSelect;
 		slots:
 			Void		 OnSelectTrack(const Track &);
 			Void		 OnSelectAlbum(const Track &);

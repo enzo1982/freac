@@ -20,7 +20,6 @@
 #include <dllinterfaces.h>
 
 #include <jobs/jobmanager.h>
-#include <cddb/cddbcache.h>
 
 #include <engine/component.h>
 
@@ -67,8 +66,6 @@ String	 freac::freac::architecture   = "unknown";
 #endif
 
 String	 freac::freac::shortVersion   = "v1.1.7";
-String	 freac::freac::cddbVersion    = "v1.1.7"; // CDDB version may not contain spaces
-String	 freac::freac::cddbMode	      = "submit";
 
 String	 freac::freac::copyright      = "Copyright (C) 2001-2026 Robert Kausch";
 
@@ -85,7 +82,6 @@ String	 freac::freac::updatePath     = String("https://www.freac.org/eUpdate/eUp
 
 /* Use these settings for debugging.
  */
-//String	 freac::freac::cddbMode	      = "test";
 //String	 freac::freac::updatePath     = "file://eUpdate/eUpdate.xml";
 
 freac::freac::freac() : Application(appName)
@@ -168,10 +164,6 @@ freac::freac::~freac()
 	/* Free conversion locks.
 	 */
 	Component::FreeLockObjects();
-
-	/* Free the CDDB cache.
-	 */
-	CDDBCache::Free();
 
 	/* Free easyUpdate library.
 	 */

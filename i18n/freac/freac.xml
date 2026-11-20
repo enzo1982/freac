@@ -116,6 +116,12 @@
 	<entry id="1205" string="Enable CDDB cache"/>
 	<entry id="1206" string="Manage CDDB cache entries"/>
 	<entry id="1207" string="Automatic CDDB queries"/>
+	<entry id="1208" string="Query online databases"/>
+	<entry id="1209" string="Submit disc data"/>
+	<entry id="1210" string="Query online databases later"/>
+	<entry id="1211" string="Show queued queries"/>
+	<entry id="1212" string="Automatic online database queries"/>
+	<entry id="1213" string="Look up by ID"/>
       </section>
 
       <section name="Options">
@@ -174,6 +180,8 @@
       <entry id="2011" string="Pause/resume encoding"/>
       <entry id="2012" string="Stop encoding"/>
       <entry id="2013" string="Open the output splitting tool"/>
+      <entry id="2014" string="Query online databases"/>
+      <entry id="2015" string="Submit disc data"/>
     </section>
 
     <section name="Joblist">
@@ -337,6 +345,9 @@
 	<section name="Errors">
 	  <entry id="4050" string="Some error occurred trying to connect to the freedb server."/>
 	  <entry id="4051" string="Please fill all fields and track titles before submitting."/>
+	  <entry id="4052" string="The disc has no table of contents."/>
+	  <entry id="4053" string="Unable to write to the local CDDB database."/>
+	  <entry id="4054" string="Unable to add the record to the submit queue."/>
 	</section>
       </section>
 
@@ -357,6 +368,9 @@
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server."/>
+	  <entry id="4151" string="Unable to read the local CDDB database."/>
+	  <entry id="4152" string="The record ID %1 is not valid."/>
+	  <entry id="4153" string="The record %1 is not in the result of the last query."/>
 	</section>
       </section>
 
@@ -394,6 +408,100 @@
       </section>
     </section>
 
+    <section name="Metadata">
+
+      <section name="Query">
+	<entry id="4500" string="Online database query"/>
+	<entry id="4501" string="Querying %1"/>
+	<entry id="4502" string="No record for this disc was found in the online databases."/>
+	<entry id="4503" string="Would you like to perform this query again later?"/>
+	<entry id="4504" string="Would you like to perform the remaining queries again later?"/>
+	<entry id="4505" string="No metadata provider is enabled. Please enable one on the Metadata lookup page of the configuration dialog."/>
+	<entry id="4506" string="Do not display this note again"/>
+	<entry id="4507" string="Multiple matches found"/>
+	<entry id="4508" string="No exact matches found"/>
+	<entry id="4509" string="Matches"/>
+	<entry id="4510" string="Select the entry that best fits your CD"/>
+	<entry id="4511" string="Provider"/>
+	<entry id="4512" string="Match"/>
+	<entry id="4513" string="none"/>
+	<entry id="4514" string="Error"/>
+	<entry id="4515" string="Cancel"/>
+	<entry id="4516" string="OK"/>
+      </section>
+
+      <section name="Queue">
+	<entry id="4600" string="%1 tracks, disc ID %2"/>
+	<entry id="4601" string="Queued queries"/>
+	<entry id="4602" string="Discs to look up"/>
+	<entry id="4603" string="Disc"/>
+	<entry id="4604" string="Remove entry"/>
+	<entry id="4605" string="Query"/>
+	<entry id="4606" string="Query all"/>
+	<entry id="4607" string="Querying CD information"/>
+	<entry id="4608" string="Close"/>
+	<entry id="4609" string="No track of this disc is in the joblist. Add the disc or its files and query again."/>
+	<entry id="4610" string="No track of %1 queued discs is in the joblist. Add the discs or their files and query again."/>
+	<entry id="4611" string="No record for %1 queued discs was found in the online databases."/>
+      </section>
+
+      <section name="Submit">
+	<entry id="4700" string="Disc data"/>
+	<entry id="4701" string="Online database"/>
+	<entry id="4702" string="No enabled online database takes submits."/>
+	<entry id="4703" string="You finish the submit on the web site."/>
+	<entry id="4704" string="Your web browser opens a page of %1. Please finish the submit on that page."/>
+	<entry id="4705" string="Submit"/>
+	<entry id="4706" string="Submitting CD information"/>
+	<entry id="4707" string="Update joblist with this information"/>
+	<entry id="4708" string="Status"/>
+	<entry id="4709" string="No audio CD in drive!"/>
+	<entry id="4710" string="Successfully read CD!"/>
+	<entry id="4712" string="Data track"/>
+	<entry id="4713" string="Active CD-ROM drive"/>
+	<entry id="4714" string="Artist"/>
+	<entry id="4715" string="Album"/>
+	<entry id="4716" string="Year"/>
+	<entry id="4717" string="Genre"/>
+	<entry id="4718" string="Comment"/>
+	<entry id="4719" string="Track"/>
+	<entry id="4720" string="Title"/>
+	<entry id="4721" string="unknown artist"/>
+	<entry id="4722" string="unknown title"/>
+	<entry id="4723" string="Cancel"/>
+
+	<section name="Errors">
+	  <entry id="4750" string="Please fill all fields and track titles before submitting."/>
+	  <entry id="4751" string="The web browser could not be opened."/>
+	  <entry id="4752" string="Unable to submit CD information."/>
+	</section>
+      </section>
+
+      <section name="Lookup by ID">
+	<entry id="4800" string="Look up by ID"/>
+	<entry id="4801" string="Disc"/>
+	<entry id="4802" string="Online database"/>
+	<entry id="4803" string="ID or URL"/>
+	<entry id="4804" string="Look up"/>
+	<entry id="4805" string="This is not a valid ID or URL for %1."/>
+	<entry id="4806" string="No record was found for this ID."/>
+	<entry id="4807" string="Please select a track of a disc in the joblist."/>
+	<entry id="4808" string="No enabled online database can look up an ID."/>
+	<entry id="4809" string="Cancel"/>
+      </section>
+
+      <section name="MusicBrainz">
+	<section name="Errors">
+	  <entry id="4900" string="Unable to connect to %1."/>
+	  <entry id="4901" string="The server %1 returned the HTTP status %2."/>
+	  <entry id="4902" string="The answer of %1 could not be read."/>
+	  <entry id="4903" string="The record %1 is not in the answer of the server."/>
+	  <entry id="4904" string="The disc has no table of contents."/>
+	  <entry id="4905" string="%1 is not a valid MusicBrainz release ID."/>
+	</section>
+      </section>
+    </section>
+
     <section name="Configuration">
       <entry id="5000" string="General settings setup"/>
       <entry id="5001" string="Encoders"/>
@@ -423,6 +531,8 @@
       <entry id="5025" string="Processing"/>
       <entry id="5026" string="Additional arguments"/>
       <entry id="5027" string="Output files"/>
+      <entry id="5028" string="Metadata lookup"/>
+      <entry id="5029" string="Metadata providers"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder"/>
@@ -495,6 +605,11 @@
 	<entry id="5314" string="Enable CDDB cache"/>
 	<entry id="5315" string="Automatization"/>
 	<entry id="5316" string="Always select first entry"/>
+	<entry id="5317" string="Cache"/>
+	<entry id="5318" string="Manage cache entries"/>
+	<entry id="5319" string="Submits"/>
+	<entry id="5320" string="Queue submits and send them later"/>
+	<entry id="5321" string="Show queued submits"/>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings"/>
@@ -511,6 +626,29 @@
 	<section name="Errors">
 	  <entry id="5350" string="Please enter a valid eMail address."/>
 	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?"/>
+	</section>
+      </section>
+
+      <section name="Metadata">
+	<entry id="6200" string="Metadata providers"/>
+	<entry id="6201" string="Up"/>
+	<entry id="6202" string="Down"/>
+	<entry id="6203" string="Options"/>
+	<entry id="6204" string="Query online databases automatically"/>
+	<entry id="6205" string="Always select first entry"/>
+	<entry id="6206" string="Prefer online data over CD-Text"/>
+	<entry id="6207" string="Show a note when no record is found"/>
+	<entry id="6208" string="Update joblist after a submit"/>
+	<entry id="6209" string="Proxy settings"/>
+      </section>
+
+      <section name="MusicBrainz">
+	<entry id="6300" string="Server"/>
+	<entry id="6301" string="Server URL"/>
+	<entry id="6302" string="Enter the address of a mirror to use it instead of musicbrainz.org."/>
+
+	<section name="Errors">
+	  <entry id="6350" string="Please enter a server URL that starts with http:// or https://."/>
 	</section>
       </section>
 
@@ -1499,6 +1637,16 @@
 	<section name="Errors">
 	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2"/>
 	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
+	</section>
+
+	<section name="Value list">
+	  <entry id="103600" string="Edit values"/>
+	  <entry id="103601" string="Double-click to edit values"/>
+	  <entry id="103602" string="Add"/>
+	  <entry id="103603" string="Remove"/>
+	  <entry id="103604" string="Move up"/>
+	  <entry id="103605" string="Move down"/>
+	  <entry id="103606" string="Close"/>
 	</section>
       </section>
 

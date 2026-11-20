@@ -1,0 +1,8 @@
+*.o
+/boca/
+/cddb
+/cddb.exe
+/musicbrainz
+/musicbrainz.exe
+/cddb-local-*/
+/cddb-submit-cache/

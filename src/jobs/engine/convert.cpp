@@ -33,12 +33,83 @@
 #include <dialogs/overwrite.h>
 #include <dialogs/format.h>
 
-#include <cddb/cddbcache.h>
+#include <metadata/metadatalookup.h>
+#include <metadata/freedbdiscid.h>
+
 
 using namespace smooth::GUI::Dialogs;
 
 using namespace BoCA;
 using namespace BoCA::AS;
+
+/* Lists of tag values are the same if they hold the same values in the same order.
+ */
+static Bool HaveSameValues(const Array<String> &values1, const Array<String> &values2)
+{
+	if (values1.Length() != values2.Length()) return False;
+
+	for (Int i = 0; i < values1.Length(); i++) if (values1.GetNth(i) != values2.GetNth(i)) return False;
+
+	return True;
+}
+
+/* The user defined text and URL keys hold independent fields of the
+ * form "<description>:|:<value>". Each description is compared on its
+ * own; all values of any other key form one group.
+ */
+static String GetValueGroup(const String &key, const String &value)
+{
+	if (key != INFO_USERTEXT && key != INFO_WEB_USERURL) return NIL;
+
+	Int	 separator = value.Find(":|:");
+
+	return separator >= 0 ? value.Head(separator) : value;
+}
+
+static Array<String> GetValueGroups(const Info &info, const String &key)
+{
+	const Array<String>	 values = Info::GetOtherInfoList(&info, key);
+	Array<String>		 groups;
+
+	foreach (const String &value, values)
+	{
+		String	 group = GetValueGroup(key, value);
+		Bool	 known = False;
+
+		foreach (const String &knownGroup, groups) if (knownGroup == group) { known = True; break; }
+
+		if (!known) groups.Add(group);
+	}
+
+	return groups;
+}
+
+static Array<String> GetGroupValues(const Info &info, const String &key, const String &group)
+{
+	const Array<String>	 all = Info::GetOtherInfoList(&info, key);
+	Array<String>		 values;
+
+	foreach (const String &value, all)
+	{
+		if (GetValueGroup(key, value) == group) values.Add(value);
+	}
+
+	return values;
+}
+
+static Void RemoveGroupValues(Info &info, const String &key, const String &group)
+{
+	const Array<String>	 values = Info::GetOtherInfoList(&info, key);
+	Array<String>		 remaining;
+
+	foreach (const String &value, values)
+	{
+		if (GetValueGroup(key, value) != group) remaining.Add(value);
+	}
+
+	info.SetOtherInfo(key, NIL);
+	Info::AddOtherInfo(&info, key, remaining);
+}
 
 Int					 freac::JobConvert::conversionCount	= 0;
 
@@ -1631,6 +1702,14 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 	singleTrack.pictures	   = firstTrack.pictures;
 
+	/* The basic fields that can have several values.
+	 */
+	Array<String>	 basicListKeys;
+
+	basicListKeys.Add(INFO_ARTISTS);
+	basicListKeys.Add(INFO_GENRES);
+	basicListKeys.Add(INFO_LABELS);
+
 	/* Step 1: Collect common information in top-level track.
 	 */
 	foreach (const Track &chapterTrack, tracks)
@@ -1639,13 +1718,18 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 		/* Process basic info.
 		 */
-		if (chapterInfo.artist	   != singleTrackInfo.artist)	  singleTrackInfo.artist     = NIL;
 		if (chapterInfo.title	   != singleTrackInfo.title)	  singleTrackInfo.title	     = NIL;
 		if (chapterInfo.album	   != singleTrackInfo.album)	  singleTrackInfo.album	     = NIL;
 		if (chapterInfo.year	   != singleTrackInfo.year)	  singleTrackInfo.year	     = NIL;
-		if (chapterInfo.genre	   != singleTrackInfo.genre)	  singleTrackInfo.genre	     = NIL;
-		if (chapterInfo.label	   != singleTrackInfo.label)	  singleTrackInfo.label	     = NIL;
 		if (chapterInfo.comment	   != singleTrackInfo.comment)	  singleTrackInfo.comment    = NIL;
+
+		/* The artist, genre and label stay only if every chapter has
+		 * the same list of values.
+		 */
+		foreach (const String &key, basicListKeys)
+		{
+			if (!HaveSameValues(Info::GetInfoList(&chapterInfo, key), Info::GetInfoList(&singleTrackInfo, key))) Info::SetInfoList(&singleTrackInfo, key, Array<String>());
+		}
 
 		if (chapterInfo.track	   != singleTrackInfo.track)	  singleTrackInfo.track	     = NIL;
 		if (chapterInfo.numTracks  != singleTrackInfo.numTracks)  singleTrackInfo.numTracks  = NIL;
@@ -1662,19 +1746,23 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 		if (chapterInfo.track_gain != singleTrackInfo.track_gain) singleTrackInfo.track_gain = NIL;
 		if (chapterInfo.track_peak != singleTrackInfo.track_peak) singleTrackInfo.track_peak = NIL;
 
-		/* Process other text info.
+		/* Process other text info. A key stays only if every chapter
+		 * has the same list of values for it. A user defined text or
+		 * URL stays if every chapter has the same values for its
+		 * description.
 		 */
-		for (Int i = singleTrackInfo.other.Length() - 1; i >= 0; i--)
+		const Array<String>	 singleTrackKeys = Info::GetOtherInfoKeys(&singleTrackInfo);
+
+		foreach (const String &key, singleTrackKeys)
 		{
-			const String	&singleTrackPair = singleTrackInfo.other.GetNth(i);
-			Bool		 found		 = False;
+			if (Info::IsBasicInfoList(key)) continue;
 
-			foreach (const String &chapterPair, chapterInfo.other)
+			const Array<String>	 groups = GetValueGroups(singleTrackInfo, key);
+
+			foreach (const String &group, groups)
 			{
-				if (chapterPair == singleTrackPair) { found = True; break; }
+				if (!HaveSameValues(GetGroupValues(singleTrackInfo, key, group), GetGroupValues(chapterInfo, key, group))) RemoveGroupValues(singleTrackInfo, key, group);
 			}
-
-			if (!found) singleTrackInfo.other.RemoveNth(i);
 		}
 
 		/* Process attached pictures.
@@ -1701,13 +1789,15 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 		/* Process basic info.
 		 */
-		if (chapterInfo.artist	   == singleTrackInfo.artist)	  chapterInfo.artist	 = NIL;
 		if (chapterInfo.title	   == singleTrackInfo.title)	  chapterInfo.title	 = NIL;
 		if (chapterInfo.album	   == singleTrackInfo.album)	  chapterInfo.album	 = NIL;
 		if (chapterInfo.year	   == singleTrackInfo.year)	  chapterInfo.year	 = NIL;
-		if (chapterInfo.genre	   == singleTrackInfo.genre)	  chapterInfo.genre	 = NIL;
-		if (chapterInfo.label	   == singleTrackInfo.label)	  chapterInfo.label	 = NIL;
 		if (chapterInfo.comment	   == singleTrackInfo.comment)	  chapterInfo.comment	 = NIL;
+
+		foreach (const String &key, basicListKeys)
+		{
+			if (HaveSameValues(Info::GetInfoList(&chapterInfo, key), Info::GetInfoList(&singleTrackInfo, key))) Info::SetInfoList(&chapterInfo, key, Array<String>());
+		}
 
 		if (chapterInfo.track	   == singleTrackInfo.track)	  chapterInfo.track	 = NIL;
 		if (chapterInfo.disc	   == singleTrackInfo.disc)	  chapterInfo.disc	 = NIL;
@@ -1715,19 +1805,23 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 		if (chapterInfo.album_gain == singleTrackInfo.album_gain) chapterInfo.album_gain = NIL;
 		if (chapterInfo.album_peak == singleTrackInfo.album_peak) chapterInfo.album_peak = NIL;
 
-		/* Process other text info.
+		/* Process other text info. A key that the file has with the
+		 * same list of values is removed from the chapter, and so is
+		 * a user defined text or URL that the file has with the same
+		 * values for its description.
 		 */
-		for (Int i = chapterInfo.other.Length() - 1; i >= 0; i--)
+		const Array<String>	 chapterKeys = Info::GetOtherInfoKeys(&chapterInfo);
+
+		foreach (const String &key, chapterKeys)
 		{
-			const String	&chapterPair = chapterInfo.other.GetNth(i);
-			Bool		 found	     = False;
+			if (Info::IsBasicInfoList(key)) continue;
 
-			foreach (const String &singleTrackPair, singleTrackInfo.other)
+			const Array<String>	 groups = GetValueGroups(chapterInfo, key);
+
+			foreach (const String &group, groups)
 			{
-				if (chapterPair == singleTrackPair) { found = True; break; }
+				if (HaveSameValues(GetGroupValues(chapterInfo, key, group), GetGroupValues(singleTrackInfo, key, group))) RemoveGroupValues(chapterInfo, key, group);
 			}
-
-			if (found) chapterInfo.other.RemoveNth(i);
 		}
 
 		/* Process attached pictures.
@@ -1964,48 +2058,85 @@ Void freac::JobConvert::LogCDInfo() const
 
 		log->Write(NIL);
 
-		/* Log CDDB data if available.
+		/* Log the source of the disc metadata. Take the fields of the
+		 * first track of this disc in the conversion. Take the record
+		 * of the lookups of this session only if the tracks carry it.
 		 */
-		String		 queryString = CDDB::QueryStringFromMCDI(mcdi);
-		CDDBInfo	 cddbInfo    = CDDBCache::Get()->GetCacheEntry(queryString); 
-
 		log->Write("    Disc info:");
+		log->Write(String("        freedb disc ID: ").Append(FreedbDiscID::ToString(FreedbDiscID::FromMCDI(mcdi))));
 
-		if (cddbInfo != NIL)
+		DiscMetadata	 known;
+		DiscMetadata	 record;
+		DiscMetadata	 cached;
+
+		known.disc.mcdi = mcdi;
+
+		String		 discKey   = MetadataLookup::GetDiscKey(known.disc);
+		Bool		 haveTable = False;
+
+		foreach (const Track &track, tracks)
 		{
-			log->Write(String("        CDDB disc ID:  ").Append(CDDB::DiscIDToString(cddbInfo.discID)));
-			log->Write(String("        CDDB category: ").Append(cddbInfo.category));
+			if (!track.isCDTrack || track.drive != drive) continue;
+
+			const Info	&trackInfo = track.GetInfo();
+
+			if (!MetadataLookup::IsSameDisc(MetadataLookup::GetDiscKey(trackInfo), discKey)) continue;
+
+			record.provider	   = trackInfo.GetOtherInfo(INFO_METADATA_PROVIDER);
+			record.recordID	   = trackInfo.GetOtherInfo(INFO_METADATA_RECORDID);
+			record.disc.artist = trackInfo.GetOtherInfo(INFO_ALBUMARTIST) != NIL ? trackInfo.GetOtherInfo(INFO_ALBUMARTIST) : trackInfo.artist;
+			record.disc.album  = trackInfo.album;
+			record.disc.genre  = trackInfo.genre;
+			record.disc.year   = trackInfo.year;
+
+			break;
+		}
+
+		if (record.provider != NIL && MetadataLookup::GetCachedRecord(known, cached) &&
+		    cached.provider == record.provider && cached.recordID == record.recordID)
+		{
+			record	  = cached;
+			haveTable = True;
+		}
+
+		if (record.provider != NIL)
+		{
+			log->Write(String("        Provider:       ").Append(record.provider));
+			log->Write(String("        Record ID:      ").Append(record.recordID));
 			log->Write(NIL);
-			log->Write(String("        Artist:        ").Append(cddbInfo.dArtist));
-			log->Write(String("        Album:         ").Append(cddbInfo.dTitle));
-			log->Write(String("        Genre:         ").Append(cddbInfo.dGenre));
+			log->Write(String("        Artist:         ").Append(record.disc.artist));
+			log->Write(String("        Album:          ").Append(record.disc.album));
 
-			if (cddbInfo.dYear > 0) log->Write(String("        Published:     ").Append(String::FromInt(cddbInfo.dYear)));
+			if (record.disc.genre != NIL) log->Write(String("        Genre:          ").Append(record.disc.genre));
+			if (record.disc.year  >  0)   log->Write(String("        Published:      ").Append(String::FromInt(record.disc.year)));
 
-			log->Write(NIL);
-			log->Write("        Track | Offset | Track title");
-			log->Write("        -------------------------------------------------------");
-
-			for (Int i = 0; i < cddbInfo.trackOffsets.Length(); i++)
+			/* The track titles of the record.
+			 */
+			if (haveTable && record.tracks.Length() > 0)
 			{
-				Int	 trackNumber = mcdi.GetNthEntryTrackNumber(i);
-				Int	 trackOffset = cddbInfo.trackOffsets.GetNth(i);
+				log->Write(NIL);
+				log->Write("        Track | Track title");
+				log->Write("        -------------------------------------------------------");
 
-				String	 entry = String("        ");
+				for (Int i = 0; i < record.tracks.Length() && i < mcdi.GetNumberOfEntries(); i++)
+				{
+					const Info	&recordTrack = record.tracks.GetNth(i);
+					Int		 trackNumber = mcdi.GetNthEntryTrackNumber(i);
 
-				if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO) entry.Append("   ").Append(String().FillN(' ', 1 - Math::Floor(Math::Log10(trackNumber)))).Append(String::FromInt(trackNumber)).Append(" | ");
-				else					    entry.Append(" ").Append("DATA").Append(" | ");
+					String	 entry = String("        ");
 
-				entry.Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackOffset)))).Append(String::FromInt(trackOffset)).Append(" | ")
-				     .Append(cddbInfo.trackArtists.GetNth(i) != NIL ? String(cddbInfo.trackArtists.GetNth(i)).Append(" / ") : String()).Append(cddbInfo.trackTitles.GetNth(i));
+					if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO) entry.Append("   ").Append(String().FillN(' ', 1 - Math::Floor(Math::Log10(trackNumber)))).Append(String::FromInt(trackNumber)).Append(" | ");
+					else					    entry.Append(" ").Append("DATA").Append(" | ");
 
-				log->Write(entry);
+					if (recordTrack.artist != NIL && recordTrack.artist != record.disc.artist) entry.Append(recordTrack.artist).Append(" / ");
+
+					log->Write(entry.Append(recordTrack.title));
+				}
 			}
 		}
 		else
 		{
-			log->Write(String("        CDDB disc ID: ").Append(CDDB::DiscIDToString(CDDB::DiscIDFromMCDI(mcdi))));
-			log->Write("        CDDB info:    No CDDB data available for this disc!");
+			log->Write("        Provider:       No online database record for this disc.");
 		}
 
 		log->Write(NIL);

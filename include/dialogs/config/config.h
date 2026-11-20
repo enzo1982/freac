@@ -74,6 +74,7 @@ namespace freac
 			Tree					*tree_encoders;
 			Tree					*tree_decoders;
 			Tree					*tree_verifiers;
+			Tree					*tree_providers;
 			Tree					*tree_taggers;
 			Tree					*tree_playlists;
 			Tree					*tree_dsp;

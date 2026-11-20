@@ -18,8 +18,6 @@ using namespace smooth::GUI::Dialogs;
 
 BoCA::LayerTagRating::LayerTagRating() : Editor("Rating")
 {
-	ignoreSelect = False;
-
 	rating = -1;
 
 	group_rating		= new GroupBox(NIL, Point(7, 10), Size(400, 39));
