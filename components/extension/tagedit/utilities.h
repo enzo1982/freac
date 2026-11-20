@@ -24,5 +24,10 @@ namespace BoCA
 	{
 		public:
 			static Void	 FillGenreList(List *);
+
+			static Bool	 HaveSameValues(const Array<String> &, const Array<String> &);
+			static Void	 ReplaceOtherInfo(Info &, const String &, const Array<String> &);
+			static Void	 SetSingleInfo(Info &, const String &, const String &);
+			static Void	 SetFirstOtherInfo(Info &, const String &, const String &, const String &);
 	};
 };

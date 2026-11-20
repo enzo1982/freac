@@ -21,10 +21,18 @@ using namespace smooth::GUI;
 
 using namespace BoCA;
 
+#include "multivalueeditbox.h"
+
 namespace BoCA
 {
 	class Editor : public Layer
 	{
+		protected:
+			Track				 track;
+			Bool				 ignoreSelect;
+
+			MultiValueEditBox		*activeValueBox;
+			Int				 activeTrackID;
 		public:
 							 Editor(const String &);
 			virtual				~Editor();
@@ -37,6 +45,9 @@ namespace BoCA
 			virtual Void			 OnSelectTrack(const Track &);
 			virtual Void			 OnSelectAlbum(const Track &);
 			virtual Void			 OnSelectNone();
+
+			Void				 OnRequestValueList(MultiValueEditBox *);
+			Void				 OnChangeValues(const Array<String> &);
 	};
 };
 
