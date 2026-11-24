@@ -182,9 +182,12 @@ Geschichte
 	Version 1.1.8 (November 2026)
 
 		- Unterstützung für das Wayland Display-Server-Protokoll hinzugefügt
+		- Unterstützung für die Darstellung mit Direct2D unter Windows 8 und neuer hinzugefügt
 
 		- Linux AppImage-Pakete für die Architekturen RISC-V und PPC64EL hinzugefügt
 		- FreeBSD AppImage-Pakete für die Architekturn x86-64 und AArch64 hinzugefügt
+
+		- MCP-Server hinzugefügt, der mit --mcp:stdio gestartet werden kann
 
 		- Verbesserungen
 
