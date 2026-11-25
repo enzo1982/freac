@@ -32,9 +32,6 @@ namespace BoCA
 
 			Text		*text_lyrics;
 			MultiEdit	*edit_lyrics;
-
-			Track		 track;
-			Bool		 ignoreSelect;
 		slots:
 			Void		 OnSelectTrack(const Track &);
 			Void		 OnSelectAlbum(const Track &);

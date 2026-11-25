@@ -1500,6 +1500,16 @@
 	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2"/>
 	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
 	</section>
+
+	<section name="Value list">
+	  <entry id="103600" string="Edit values"/>
+	  <entry id="103601" string="Double-click to edit values"/>
+	  <entry id="103602" string="Add"/>
+	  <entry id="103603" string="Remove"/>
+	  <entry id="103604" string="Move up"/>
+	  <entry id="103605" string="Move down"/>
+	  <entry id="103606" string="Close"/>
+	</section>
       </section>
 
       <section name="Logging">
