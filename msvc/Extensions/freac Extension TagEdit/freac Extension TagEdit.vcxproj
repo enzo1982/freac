@@ -255,6 +255,8 @@
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_advanced_text.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_details.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\multivalueeditbox.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\valuelist.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_albums.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_files.cpp" />
@@ -284,6 +286,8 @@
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_advanced_text.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_details.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\multivalueeditbox.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\valuelist.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

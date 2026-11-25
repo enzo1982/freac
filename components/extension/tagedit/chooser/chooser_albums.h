@@ -41,6 +41,11 @@ namespace BoCA
 
 			Bool		 dontUpdateAlbumList;
 
+			/* True for a track whose first artist an album edit
+			 * removed while it had more artists, by track ID.
+			 */
+			Array<Bool>	 firstArtistRemoved;
+
 			Void		 AddToAlbumList(const Track &);
 			Void		 RemoveFromAlbumList(const Track &);
 

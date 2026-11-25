@@ -17,6 +17,11 @@
 
 using namespace smooth;
 
+namespace BoCA
+{
+	class Config;
+};
+
 namespace freac
 {
 	class Config
@@ -31,6 +36,7 @@ namespace freac
 			static const String	 CategoryPlaylistID;
 			static const String	 CategoryTagsID;
 			static const String	 CategoryFreedbID;
+			static const String	 CategoryMetadataID;
 			static const String	 CategoryVerificationID;
 			static const String	 CategoryProcessingID;
 			static const String	 CategoryLoggingID;
@@ -168,35 +174,23 @@ namespace freac
 
 			/* Category Dialogs
 			 */
-			static const String	 DialogsCDDBSubmitSizeXID;
-			static const Int	 DialogsCDDBSubmitSizeXDefault;
+			static const String	 DialogsMetadataMatchSizeXID;
+			static const Int	 DialogsMetadataMatchSizeXDefault;
 
-			static const String	 DialogsCDDBSubmitSizeYID;
-			static const Int	 DialogsCDDBSubmitSizeYDefault;
+			static const String	 DialogsMetadataMatchSizeYID;
+			static const Int	 DialogsMetadataMatchSizeYDefault;
 
-			static const String	 DialogsCDDBMultiMatchSizeXID;
-			static const Int	 DialogsCDDBMultiMatchSizeXDefault;
+			static const String	 DialogsMetadataSubmitSizeXID;
+			static const Int	 DialogsMetadataSubmitSizeXDefault;
 
-			static const String	 DialogsCDDBMultiMatchSizeYID;
-			static const Int	 DialogsCDDBMultiMatchSizeYDefault;
+			static const String	 DialogsMetadataSubmitSizeYID;
+			static const Int	 DialogsMetadataSubmitSizeYDefault;
 
-			static const String	 DialogsCDDBManageQueriesSizeXID;
-			static const Int	 DialogsCDDBManageQueriesSizeXDefault;
+			static const String	 DialogsMetadataManageQueriesSizeXID;
+			static const Int	 DialogsMetadataManageQueriesSizeXDefault;
 
-			static const String	 DialogsCDDBManageQueriesSizeYID;
-			static const Int	 DialogsCDDBManageQueriesSizeYDefault;
-
-			static const String	 DialogsCDDBManageSubmitsSizeXID;
-			static const Int	 DialogsCDDBManageSubmitsSizeXDefault;
-
-			static const String	 DialogsCDDBManageSubmitsSizeYID;
-			static const Int	 DialogsCDDBManageSubmitsSizeYDefault;
-
-			static const String	 DialogsCDDBManageCacheSizeXID;
-			static const Int	 DialogsCDDBManageCacheSizeXDefault;
-
-			static const String	 DialogsCDDBManageCacheSizeYID;
-			static const Int	 DialogsCDDBManageCacheSizeYDefault;
+			static const String	 DialogsMetadataManageQueriesSizeYID;
+			static const Int	 DialogsMetadataManageQueriesSizeYDefault;
 
 			/* Category Processing
 			 */
@@ -392,24 +386,6 @@ namespace freac
 			static const String	 FreedbServerID;
 			static const String	 FreedbServerDefault;
 
-			static const String	 FreedbModeID;
-			static const Int	 FreedbModeDefault;
-
-			static const String	 FreedbHTTPPortID;
-			static const Int	 FreedbHTTPPortDefault;
-
-			static const String	 FreedbCDDBPPortID;
-			static const Int	 FreedbCDDBPPortDefault;
-
-			static const String	 FreedbQueryPathID;
-			static const String	 FreedbQueryPathDefault;
-
-			static const String	 FreedbSubmitPathID;
-			static const String	 FreedbSubmitPathDefault;
-
-			static const String	 FreedbEmailID;
-			static const String	 FreedbEmailDefault;
-
 			static const String	 FreedbProxyID;
 			static const String	 FreedbProxyDefault;
 
@@ -425,29 +401,41 @@ namespace freac
 			static const String	 FreedbProxyPortID;
 			static const Int	 FreedbProxyPortDefault;
 
-			static const String	 FreedbEnableLocalID;
-			static const Bool	 FreedbEnableLocalDefault;
-
-			static const String	 FreedbEnableRemoteID;
-			static const Bool	 FreedbEnableRemoteDefault;
-
-			static const String	 FreedbAutoQueryID;
-			static const Bool	 FreedbAutoQueryDefault;
-
-			static const String	 FreedbAutoSelectID;
-			static const Bool	 FreedbAutoSelectDefault;
-
 			static const String	 FreedbEnableCacheID;
 			static const Bool	 FreedbEnableCacheDefault;
 
+			/* Keys of the freedb category that are only
+			 * read to migrate them to the Metadata category.
+			 */
+			static const String	 FreedbEnableLocalID;
+			static const String	 FreedbEnableRemoteID;
+			static const String	 FreedbAutoQueryID;
+			static const String	 FreedbAutoSelectID;
 			static const String	 FreedbOverwriteCDTextID;
-			static const Bool	 FreedbOverwriteCDTextDefault;
-
 			static const String	 FreedbUpdateJoblistID;
-			static const Bool	 FreedbUpdateJoblistDefault;
-
 			static const String	 FreedbDisplayNotFoundID;
-			static const Bool	 FreedbDisplayNotFoundDefault;
+
+			/* Category Metadata
+			 */
+			static const String	 MetadataCDDBProviderID;
+
+			static const String	 MetadataProvidersID;
+			static const String	 MetadataProvidersDefault;
+
+			static const String	 MetadataAutoQueryID;
+			static const Bool	 MetadataAutoQueryDefault;
+
+			static const String	 MetadataAutoSelectID;
+			static const Bool	 MetadataAutoSelectDefault;
+
+			static const String	 MetadataOverwriteCDTextID;
+			static const Bool	 MetadataOverwriteCDTextDefault;
+
+			static const String	 MetadataDisplayNotFoundID;
+			static const Bool	 MetadataDisplayNotFoundDefault;
+
+			static const String	 MetadataUpdateJoblistID;
+			static const Bool	 MetadataUpdateJoblistDefault;
 
 			/* Category Logging
 			 */
@@ -467,6 +455,9 @@ namespace freac
 
 						 Config();
 						~Config();
+
+			static Void		 MigrateMetadataSettings(BoCA::Config *);
+			static Bool		 MigrateMetadataConfiguration(BoCA::Config *);
 		public:
 			String			 resourcesPath;
 			String			 documentationPath;

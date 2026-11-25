@@ -31,7 +31,7 @@ namespace BoCA
 			GroupBox			*group_info;
 
 			Text				*text_artist;
-			EditBox				*edit_artist;
+			MultiValueEditBox		*edit_artist;
 
 			Text				*text_title;
 			EditBox				*edit_title;
@@ -40,7 +40,7 @@ namespace BoCA
 			EditBox				*edit_album;
 
 			Text				*text_genre;
-			EditBox				*edit_genre;
+			MultiValueEditBox		*edit_genre;
 			ListBox				*list_genre;
 
 			Text				*text_year;
@@ -72,9 +72,6 @@ namespace BoCA
 
 			Text				*text_albumart_desc;
 			MultiEdit			*edit_albumart_desc;
-
-			Track				 track;
-			Bool				 ignoreSelect;
 
 			EditBox				*GetActiveEditBox();
 

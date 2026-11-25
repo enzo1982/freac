@@ -49,6 +49,12 @@
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_details.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\multivalueeditbox.cpp">
+      <Filter>Quelldateien\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\valuelist.cpp">
+      <Filter>Quelldateien\editor</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_publisher.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
@@ -112,6 +118,12 @@
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_details.h">
+      <Filter>Headerdateien\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\multivalueeditbox.h">
+      <Filter>Headerdateien\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\valuelist.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_publisher.h">

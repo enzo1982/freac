@@ -18,8 +18,6 @@ using namespace smooth::GUI::Dialogs;
 
 BoCA::LayerTagLyrics::LayerTagLyrics() : Editor("Lyrics")
 {
-	ignoreSelect = False;
-
 	group_lyrics	= new GroupBox(NIL, Point(7, 10), Size(400, 178));
 
 	text_lyrics	= new Text(NIL, Point(9, 13));
